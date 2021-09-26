@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="ResumePlus">
+        <title>ResumePlus</title>
+        <!-- styles -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/ResumePlusStylesheet.css') }}">
+    </head>
+    <body>
+        <header>
+            <h1>ResumePlus</h1>
+            <nav id="topNav">
+                <ul>
+                    <li>
+                        <a href="{{ url_for('index') }}">Home</a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('login') }}">Login</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <form method="POST" action="/register">
+            <span id="theLabel">
+                {{ form.username.label }}
+            </span>
+            <span id="inputForm">
+                {{ form.username }}
+            </span>
+            <br>
+            {% if form.username.errors %}
+            <span id="errors">
+                {% for error in form.username.errors %}
+                {{ error }}
+                <br>
+                {% endfor %}
+            </span>
+            {% endif %}
+            
+            <br>
+            
+            <span id="theLabel">{{ form.email.label }}</span>
+            <span id="inputForm">{{ form.email }}</span>
+            <br>
+            {% if form.email.errors %}
+            <span id="errors">
+                {% for error in form.email.errors %}
+                {{ error }}
+                <br>
+                {% endfor %}
+            </span>
+            {% endif %}
+            <br>
+            <span id="theLabel">{{ form.password.label }}</span>
+            <span id="inputForm">{{ form.password }}</span>
+            
+            <br>
+
+            {% if form.password.errors %}
+            <span id="errors">
+                {% for error in form.password.errors %}
+                {{ error }}
+                <br>
+                {% endfor %}
+            </span>
+            {% endif %}
+            
+            <br>
+
+            <span id="theLabel">{{ form.confirmPassword.label }}</span>
+            <span id="inputForm">{{ form.confirmPassword }}</span>
+            <br>
+            {% if form.confirmPassword.errors %}
+            <span id="errors">
+                {% for error in form.confirmPassword.errors %}
+                {{ error }}
+                <br>
+                {% endfor %}
+            </span>
+            {% endif %}
+            <br>
+            <br>        
+            {{ form.submit }}
+        </form>
+
+    </body>
+    <footer>
+        <p>
+            Group 10
+        </p>
+    </footer>
+    </html>

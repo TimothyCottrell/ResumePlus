@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="ResumePlus">
+        <title>ResumePlus</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/ResumePlusStylesheet.css') }}">
+    </head>
+    <body>
+        <header>
+            <h1>ResumePlus</h1>
+            <nav id="topNav">
+                <ul>
+                    <li>
+                        <a href="{{ url_for('logout') }}">Logout</a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('login') }}">Login</a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('register') }}">Register</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <h2>Welcome {{user}} to the ResumePlus Site!</h2>
+        
+    </body>
+    <footer>
+        <p>
+            Group 10
+        </p>
+    </footer>
+    </html>
