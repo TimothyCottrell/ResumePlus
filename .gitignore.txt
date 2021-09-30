@@ -1,0 +1,4 @@
+ResumePlus/
+pyvenv.cfg
+.idea/
+resumeplus_flask_event_app.db
