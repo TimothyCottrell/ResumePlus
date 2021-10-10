@@ -1,0 +1,435 @@
+/************************** Landing Page *************************/
+
+/* Style body */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: serif;
+}
+
+#home-page-body {
+    background-color: #C4C4C4;
+}
+
+/* Style header */
+header {
+    background-color: #C4C4C4;
+    height: 500px;
+}
+
+/* Style top bar */
+#top-wrapper {
+    display: flex;
+}
+
+/* Style logo */
+#circle-logo {
+    border-radius: 50%;
+    background-color: #3982FA;
+    width: 45px;
+    height: 45px;
+    margin: 15px 15px;
+}
+
+/* Style the title of website */
+#title {
+    color: white;
+}
+
+/* Style the navbar content*/
+.navbar-wrapper ul li {
+    list-style-type: none;
+    display: inline-block;
+    line-height: 50px;
+    font-size: 25px;
+    padding-left: 50px;
+}
+
+/* Style the navbar list */
+.navbar-wrapper ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Style hover effect on navbar */
+.navbar-wrapper ul li a:hover {
+    color: #3982FA;
+}
+
+#user-button {
+    display: inline-block;
+    position: absolute;
+    right: 60px;
+    padding-top: 5px;
+    padding-right: 15px;
+}
+
+.sign-button {
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    height: 40px;
+    width: 100px;
+    background-color: #3982FA;
+    color: white;
+    border-radius: 5px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+#message {
+    color: white;
+    font-size: 15px;
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 50px;
+}
+
+#search-wrapper {
+    padding-top: 10px;
+}
+
+/* Style search bar */
+#search-bar {
+    width: 500px;
+    height: 40px;
+    border: 1px solid grey;
+    padding-left: 20px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+/* Style search button */
+#search-button {
+    height: 40px;
+    width: 80px;
+    color: white;
+    background-color: #3982FA; 
+    border: 1px solid grey;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+/************************** Home Page *************************/
+
+/* Style background color in body*/
+#sign-in-body {
+    background-color: #3982FA;
+}
+
+/* Style header */
+header {
+    height: 500px;
+}
+
+/* Style top bar */
+#top-wrapper {
+    display: flex;
+}
+
+/* Style logo */
+#circle-logo {
+    border-radius: 50%;
+    background-color: #3982FA;
+    width: 45px;
+    height: 45px;
+    margin: 15px 15px;
+}
+
+/* Style the title of website */
+#title {
+    color: white;
+}
+
+/* Style the navbar content*/
+.navbar-wrapper ul li {
+    list-style-type: none;
+    display: inline-block;
+    line-height: 50px;
+    font-size: 25px;
+    padding-left: 50px;
+}
+
+/* Style the navbar list */
+.navbar-wrapper ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Style hover effect on navbar */
+.navbar-wrapper ul li a:hover {
+    color: #3982FA;
+}
+
+#profile-button {
+    display: inline-block;
+    position: absolute;
+    right: 60px;
+    padding-top: 5px;
+    padding-right: 15px;
+}
+
+.edit-button {
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    height: 40px;
+    width: 100px;
+    background-color: #3982FA;
+    color: white;
+    border-radius: 5px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+/************************** Sign In Page *************************/
+
+/* Style the form heading */
+.signIn-header {
+    line-height: 15px;
+    color: black;
+    text-align: center;
+}
+  
+/* Style the circle on Sign In Page */
+#circle-logo2 {
+    padding-left: 110px;
+}
+
+/* Style logo */
+.dots {
+    display: inline-block;
+    border-radius: 50%;
+    background-color: #3982FA;
+    width: 45px;
+    height: 45px;
+    margin: 15px 15px;
+}
+
+/* Style the form wrapper */
+.form-wrapper {
+    padding-top: 50px;
+    padding-left: 190px;
+    border-right: none;
+}
+
+/* Style the whole form */
+#form {
+    border-radius: 25px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    background-color: white;
+    height: 430px;
+    width: 450px;
+    justify-content: center;
+    margin: 15px auto;
+    padding: 30px 40px;
+    float: left;
+}
+
+/* Style the entire form */
+.form-control {
+    padding-top: 5px;
+}
+
+/* Style the checkbox */
+.checkbox-form {
+    justify-content: center;
+    font-size: 13pt;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+/* Style the input box: text */
+input[type = text] {
+    display: block;
+    width: 100%;
+    padding: 15px 20px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Style the input box: password */
+input[type = password] {
+    display: block;
+    width: 100%;
+    padding: 15px 20px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Style sign in wrapper */
+.signin-wrapper {
+    padding-top: 15px;
+}
+
+/* Style the submit button */
+#signin {
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    height: 40px;
+    width: 100px;
+    background-color: #3982FA;
+    color: white;
+}
+
+/* Style forgot username/password */
+#forgot-content {
+    padding-top: 10px;
+}
+
+/* Style forgot username/password */
+#forgot-account {
+    color: black;
+    text-decoration: none;
+    padding: 5px 0 5px 0;
+}
+
+/* Style forgot username/password hover effect */
+#forgot-account:hover {
+    color: #3982FA;
+}
+
+/* Style direct to user sign up */
+.direct-signUp {
+    float: right;
+    padding-right: 190px;
+}
+
+/* Style direct to user sign up */
+#direct-to-signup {
+    padding-top: 120px;
+}
+
+/* Style the sign up */
+.form2 {
+    text-align: center;
+}
+
+/* Style the submit button */
+#signup {
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    height: 40px;
+    width: 100px;
+    background-color: #3982FA;
+    color: white;
+}
+
+/* Style the whole form */
+#form2 {
+    border-radius: 25px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    background-color: #C4C4C4;
+    height: 430px;
+    width: 450px;
+    justify-content: center;
+    margin: 15px auto;
+    padding: 30px 40px;
+    float: left;
+}
+
+/************************** Sign Up Page *************************/
+
+/* Style the form heading */
+.signUp-header {
+    line-height: 15px;
+    color: black;
+}
+
+#signup-title {
+    text-align: center;
+}
+
+/* Style the circle on Sign In Page */
+#circle-logo3 {
+    padding-left: 110px;
+  }
+  
+/* Style logo */
+.dots2 {
+    display: inline-block;
+    border-radius: 50%;
+    background-color: #3982FA;
+    width: 45px;
+    height: 45px;
+    margin: 15px 15px;
+}
+
+/* Style the form wrapper */
+.form-wrapper2 {
+    padding-top: 50px;
+}
+
+/* Style the whole form */
+#form3 {
+    border-radius: 25px;
+    background-color: white;
+    height: 550px;
+    width: 450px;
+    justify-content: center;
+    margin: 15px auto;
+    padding: 30px 40px;
+}
+
+/* Style the entire form */
+.form-control2 {
+    padding-top: 5px;
+}
+
+/* Style the checkbox */
+.checkbox-form {
+    justify-content: center;
+    font-size: 13pt;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+/* Style the input box: text */
+input[type = text] {
+    display: block;
+    width: 100%;
+    padding: 15px 20px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Style the input box: password */
+input[type = password] {
+    display: block;
+    width: 100%;
+    padding: 15px 20px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Style the submit button */
+#signup {
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    height: 40px;
+    width: 100px;
+    background-color: #3982FA;
+    color: white;
+}

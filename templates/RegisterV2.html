@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <!--Head Section-->
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+        <title>ResumePlus SignUp</title>
+
+        <link rel = "stylesheet" type = "text/css" href = "../static/styles/ResumePlusStylesheet.css">
+    </head>
+
+    <!--Body Section-->
+    <body id = "sign-in-body">
+
+        <!--Main Section-->
+        <main>
+
+            <!--Input for user to receive newsletter and contacting us-->
+            <div class = "form-wrapper2">
+                <form id = "form3" aria-labelledby = "form">
+
+                    <!--Header for Contacting Us-->
+                    <div class = "signUp-header">
+                        <h1 id = "signup-title">Sign Up</h1>
+
+                        <!--Circle Logo below Sign Up-->
+                        <div id = "circle-logo3">
+                            <div class = "dots2"></div>
+                            <div class = "dots2"></div>
+                            <div class = "dots2"></div>
+                        </div>
+
+                        <!--Message to fill out the form-->
+                        <p>Please fill out the form below</p>
+                    </div>
+
+                    <!--Information Input-->
+                    <div class = "form-control2">
+
+                        <!--First Name Input-->
+                        <input type = "text" name = "fName" id = "fname" placeholder = "First Name" aria-required = "true">
+
+                        <!--Last Name Input-->
+                        <input type = "text" name = "lName" id = "lname" placeholder = "Last Name" aria-required = "true">
+
+                        <!--Email Input-->
+                        <input type = "text" name = "email" id = "email" placeholder = "Email" aria-required = "true">
+
+                        <!--Password Input-->
+                        <input type = "password" name = "password" id = "password" placeholder = "Password" aria-required = "true">
+
+                        <!--Confirm Password-->
+                        <input type = "password" name = "confirm-password" id = "confirm-password" placeholder = "Confirm Password" aria-required = "true">
+                    </div>
+
+                    <!--User have the option to receive weekly updates-->
+                    <div class = "checkbox-form">
+
+                        <!--Checkbox for weekly updates-->
+                        <input type = "checkbox" id = "newsletter" required>
+                        <label for = "newsletter">I accept the Term of Use & Privacy Policy</label>
+                    </div>
+
+                    <!--Submit Button-->
+                    <div class = "signup-wrapper">
+                        <a href = "HomeV2.html"><button id = "signup">Sign Up</button></a>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </body>
+</html>
