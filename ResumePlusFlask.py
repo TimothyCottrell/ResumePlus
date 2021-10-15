@@ -42,7 +42,6 @@ def register():
         return redirect(url_for('home_page'))
     return render_template('ResumePlusRegister.html', form=register_form)
 
-
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     login_form = LoginForm()
@@ -74,6 +73,5 @@ def logout():
 
 app.run(host=os.getenv('IP', '127.0.0.1'), port=int(os.getenv('PORT', 5000)), debug=True)
 
-# T
 # To see the web page in your web browser, go to the url,
 #   http://127.0.0.1:5000
