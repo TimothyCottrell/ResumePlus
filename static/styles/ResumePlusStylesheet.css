@@ -221,7 +221,6 @@ header {
 /* Style the form wrapper */
 .form-wrapper {
     padding-top: 50px;
-    padding-left: 190px;
     border-right: none;
 }
 
@@ -311,7 +310,6 @@ input[type = password] {
 /* Style direct to user sign up */
 .direct-signUp {
     float: right;
-    padding-right: 190px;
 }
 
 /* Style direct to user sign up */
