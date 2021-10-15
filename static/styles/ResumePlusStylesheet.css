@@ -190,6 +190,12 @@ header {
 
 /************************** Sign In Page *************************/
 
+/* Style the sign in body section */
+#sign-in-body {
+    padding-left: 190px;
+    padding-right: 190px;
+}
+
 /* Style the form heading */
 .signIn-header {
     line-height: 15px;
@@ -342,6 +348,17 @@ input[type = password] {
     margin: 15px auto;
     padding: 30px 40px;
     float: left;
+}
+
+/* Media Queries for different pixel size on computer */
+@media only screen and (min-width: 1800px) and (max-width: 1920px) {
+
+    /* Style sign in body for different screen size */
+    #sign-in-body {
+        padding-left: 430px;
+        padding-right: 430px;
+    }
+
 }
 
 /************************** Sign Up Page *************************/
