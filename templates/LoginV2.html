@@ -18,7 +18,7 @@
 
         <!--Input for user to receive newsletter and contacting us-->
         <div class = "form-wrapper">
-            <form id = "form" aria-labelledby = "form">
+            <form id = "form" aria-labelledby = "form" method = "POST" action = "/loginV2">
 
                 <!--Header for Contacting Us-->
                 <div class = "signIn-header">
@@ -35,9 +35,10 @@
                 <!--Information Input-->
                 <div class = "form-control">
 
-                    <!--Email Input-->
+                    <!--Email/Username Input-->
                     <label >Username</label>
-                    <input type = "text" name = "email" id = "email" placeholder = "Enter Email/Username" aria-required = "true"><br>
+                    <input type = "text" name = "username" id = "username" placeholder = "Enter Email/Username" aria-required = "true"><br>
+                    <!--Changed the name and id from "email" to "username" sence we search through the db using the username atm-->
 
                     <!--Password Input-->
                     <label>Password</label>
@@ -51,13 +52,13 @@
 
                 <!--Login Button-->
                 <div class = "signin-wrapper">
-                    <a href = "HomeV2.html"><button id = "signin">Login</button></a>
+                    <button type = "submit" form = "form" id = "signin" value = "Submit">Login</button>
                 </div>
             </form>
 
             <!--Direct user to sign up if they haven't already-->
             <div class = "direct-signUp">
-                <div id = "form2" class = "form2">
+                <form id = "form2" class = "form2" action = "/registerV2">
 
                     <!--Message to new user-->
                     <div id = "direct-to-signup">
@@ -67,9 +68,9 @@
 
                     <!--SignUp Button-->
                     <div class = "signup-wrapper">
-                        <a href = "RegisterV2.html"><button id = "signup">Sign Up</button></a>
+                        <button type = "submit" form = "form2" id = "signup" value = "Submit">Sign Up</button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </main>

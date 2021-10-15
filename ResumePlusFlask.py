@@ -16,6 +16,7 @@ app = Flask(__name__)  # create an app
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///resumeplus_flask_app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'SE3155'
+bcryptCode = 'utf-8'
 
 db.init_app(app)
 with app.app_context():
@@ -32,7 +33,7 @@ def index():
 def register():
     register_form = RegisterForm()
     if request.method == 'POST' and register_form.validate_on_submit():
-        h_password = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
+        h_password = bcrypt.hashpw(request.form['password'].encode(bcryptCode), bcrypt.gensalt())
         username = request.form['username']
         new_user = User(username, h_password)
         db.session.add(new_user)
@@ -42,6 +43,45 @@ def register():
         return redirect(url_for('home_page'))
     return render_template('ResumePlusRegister.html', form=register_form)
 
+@app.route('/registerV2', methods=['POST', 'GET'])
+def registerV2(): #non-functioning atm!!!
+    if request.method == 'POST':
+        h_password = bcrypt.hashpw(request.form['password'].encode(bcryptCode), bcrypt.gensalt())
+        username = request.form['username']
+        new_user = User(username, h_password)
+        db.session.add(new_user)
+        db.session.commit()
+        session['user'] = username
+        session['user_id'] = new_user.id
+        return redirect(url_for('home_pageV2'))
+    return render_template('RegisterV2.html')
+
+@app.route('/home_pageV2')
+def home_pageV2():
+    if session.get('user'):
+        return render_template('HomeV2.html', user=session['user'])
+    return redirect(url_for('loginV2'))
+
+@app.route('/loginV2', methods=['POST', 'GET'])
+def loginV2():
+    if request.method == 'POST':
+        the_user = db.session.query(User).filter_by(username=request.form['username']).one_or_none()
+        if the_user == None:
+            return render_template('LoginV2.html')
+        if bcrypt.checkpw(request.form['password'].encode(bcryptCode), the_user.password):
+            session['user'] = the_user.username
+            session['user_id'] = the_user.id
+            return redirect(url_for('home_pageV2'))
+        return render_template('LoginV2.html')
+    else:
+        return render_template('LoginV2.html')
+
+@app.route('/logoutV2')
+def logoutV2():
+    if session.get('user'):
+        session.clear()
+    return redirect(url_for('loginV2'))
+
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     login_form = LoginForm()
@@ -49,7 +89,7 @@ def login():
         the_user = db.session.query(User).filter_by(username=request.form['username']).one_or_none()
         if the_user == None:
             return render_template('ResumePlusLogin.html', form=login_form)
-        if bcrypt.checkpw(request.form['password'].encode('utf-8'), the_user.password):
+        if bcrypt.checkpw(request.form['password'].encode(bcryptCode), the_user.password):
             session['user'] = the_user.username
             session['user_id'] = the_user.id
             return redirect(url_for('home_page'))

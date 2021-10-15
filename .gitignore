@@ -3,5 +3,5 @@ pyvenv.cfg
 .idea/
 resumeplus_flask_app.db
 venv
-__pycache__
+__pycache__/
 templates/.DS_Store
