@@ -11,52 +11,55 @@
     </head>
 
     <!--Body Section-->
-    <body id = "sign-in-body">
+    <body id = "login-body">
 
         <!--Main Section-->
         <main>
 
             <!--Input for user to receive newsletter and contacting us-->
             <div class = "form-wrapper">
-                <form id = "form" aria-labelledby = "form">
 
-                    <!--Header for Contacting Us-->
-                    <div class = "signIn-header">
-                        <h1>Sign In</h1>
-                    </div>
+                <!--Form to sign in-->
+                <div class = "form">
+                    <form id = "form" aria-labelledby = "form">
 
-                    <!--Circle logo under signup-->
-                    <div id = "circle-logo2">
-                        <div class = "dots"></div>
-                        <div class = "dots"></div>
-                        <div class = "dots"></div>
-                    </div>
-
-                    <!--Information Input-->
-                    <div class = "form-control">
-
-                        <!--Email Input-->
-                        <label >Username</label>
-                        <input type = "text" name = "email" id = "email" placeholder = "Enter Email/Username" aria-required = "true"><br>
-
-                        <!--Password Input-->
-                        <label>Password</label>
-                        <input type = "password" name = "password" id = "Password" placeholder = "Enter Password">
-
-                        <div id = "forgot-content">
-                            <a id = "forgot-account" href = ""><label>Forgot your username/password</label></a>
+                        <!--Header for Contacting Us-->
+                        <div class = "signIn-header">
+                            <h1>Sign In</h1>
                         </div>
 
-                    </div>
+                        <!--Circle logo under signup-->
+                        <div id = "circle-logo2">
+                            <div class = "dots"></div>
+                            <div class = "dots"></div>
+                            <div class = "dots"></div>
+                        </div>
 
-                    <!--Login Button-->
-                    <div class = "signin-wrapper">
-                        <a href = "HomeV2.html"><button id = "signin">Login</button></a>
-                    </div>
-                </form>
+                        <!--Information Input-->
+                        <div class = "form-control">
+
+                            <!--Email Input-->
+                            <label >Username</label>
+                            <input type = "text" name = "email" id = "email" placeholder = "Enter Email/Username" aria-required = "true"><br>
+
+                            <!--Password Input-->
+                            <label>Password</label>
+                            <input type = "password" name = "password" id = "Password" placeholder = "Enter Password">
+
+                            <div id = "forgot-content">
+                                <a id = "forgot-account" href = ""><label>Forgot your username/password</label></a>
+                            </div>
+                        </div>
+
+                        <!--Login Button-->
+                        <div class = "signin-wrapper">
+                            <a href = "Home.html"><button id = "signin">Login</button></a>
+                        </div>
+                    </form>
+                </div>
 
                 <!--Direct user to sign up if they haven't already-->
-                <div class = "direct-signUp">
+                <div class = "direct-signup">
                     <div id = "form2" class = "form2">
 
                         <!--Message to new user-->
@@ -67,7 +70,7 @@
 
                         <!--SignUp Button-->
                         <div class = "signup-wrapper">
-                            <a href = "RegisterV2.html"><button id = "signup">Sign Up</button></a>
+                            <a href = "Register.html"><button id = "signup">Sign Up</button></a>
                         </div>
                     </div>
                 </div>

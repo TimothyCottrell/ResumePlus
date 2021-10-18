@@ -231,9 +231,8 @@ header {
 /************************** Sign In Page *************************/
 
 /* Style the sign in body section */
-#sign-in-body {
-    padding-left: 190px;
-    padding-right: 190px;
+#login-body {
+    background-color: #3982FA;
 }
 
 /* Style the form heading */
@@ -295,18 +294,7 @@ header {
 }
 
 /* Style the input box: text */
-input[type = text] {
-    display: block;
-    width: 100%;
-    padding: 15px 20px;
-    margin: 8px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-/* Style the input box: password */
-input[type = password] {
+input[type = text], input[type = password] {
     display: block;
     width: 100%;
     padding: 15px 20px;
@@ -399,7 +387,6 @@ input[type = password] {
         padding-left: 430px;
         padding-right: 430px;
     }
-
 }
 
 /************************** Sign Up Page *************************/
