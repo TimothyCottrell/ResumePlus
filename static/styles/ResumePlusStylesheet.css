@@ -491,3 +491,20 @@ input[type = password] {
     background-color: #3982FA;
     color: white;
 }
+
+/* Style direct to login */
+#direct-to-login {
+    color: white;
+    text-align: center;
+}
+
+/* Style to login */
+#direct-to-login a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Style the hover effect */
+#direct-to-login a:hover {
+    color: #C4C4C4;
+}
