@@ -166,6 +166,46 @@ header {
     color: #3982FA;
 }
 
+/* Style Account Button */
+.dropdown-container {
+    display: inline-block;
+    position: absolute;
+    top: 20px;
+    right: 60px;
+    padding-top: 5px;
+    padding-right: 15px; 
+}
+
+/* Style dropdown content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Style the dropdown content a */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    background-color: #F1F1F1;
+}
+
+/* Style the hover effect on dropdown menu */
+.dropdown-content a:hover {
+    background-color: #BEBEBE;
+}
+
+/* Style dropdown button */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
 #profile-button {
     display: inline-block;
     position: absolute;
@@ -222,6 +262,9 @@ header {
 .form-wrapper {
     padding-top: 50px;
     border-right: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Style the whole form */
