@@ -22,12 +22,18 @@ db.init_app(app)
 with app.app_context():
     db.create_all() # run under the app context
 
-@app.route('/')
+
 @app.route('/index', methods=['GET', 'POST'])
 def index():
     if session.get('user'):
         return render_template('ResumePlusHomePage.html', user=session['user'])
     return redirect(url_for('login'))
+
+@app.route('/')
+def landingV2():
+    if session.get('user'):
+        return redirect(url_for('home_pageV2'))
+    return render_template('LandingV2.html')
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
@@ -44,8 +50,10 @@ def register():
     return render_template('ResumePlusRegister.html', form=register_form)
 
 @app.route('/registerV2', methods=['POST', 'GET'])
-def registerV2(): #non-functioning atm!!!
+def registerV2():
     if request.method == 'POST':
+        # for i in request.form:
+        #     print(str(i) + ": " + str(request.form[i]))
         h_password = bcrypt.hashpw(request.form['password'].encode(bcryptCode), bcrypt.gensalt())
         username = request.form['username']
         new_user = User(username, h_password)
@@ -65,6 +73,8 @@ def home_pageV2():
 @app.route('/loginV2', methods=['POST', 'GET'])
 def loginV2():
     if request.method == 'POST':
+        # for i in request.form:
+        #     print(str(i) + ": " + str(request.form[i]))
         the_user = db.session.query(User).filter_by(username=request.form['username']).one_or_none()
         if the_user == None:
             return render_template('LoginV2.html')

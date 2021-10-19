@@ -33,14 +33,14 @@
                     <li><a href = "">Feature</a></li>
 
                     <div id = "user-button">
-                        <a href = "LoginV2.html"><button class = "sign-button" id = "signin-button">Sign In</button></a>
-                        <a href = "RegisterV2.html"><button class = "sign-button">Sign Up</button></a>
+                        <a href = "{{ url_for('loginV2') }}"><button class = "sign-button" id = "signin-button">Sign In</button></a>
+                        <a href = "{{ url_for('registerV2') }}"><button class = "sign-button">Sign Up</button></a>
                     </div>
                 </ul>
             </nav>
         </div>
 
-        <!--Message to the peopl-->
+        <!--Message to the people-->
         <div id = "message">
 
             <!--Message-->
