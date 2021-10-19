@@ -268,7 +268,7 @@ header {
 }
 
 /* Style the whole form */
-#form {
+.form-class {
     border-radius: 25px;
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
@@ -507,4 +507,9 @@ input[type = password] {
 /* Style the hover effect */
 #direct-to-login a:hover {
     color: #C4C4C4;
+}
+
+/* Completelly ignore all CSS */
+.ignore-css {
+    all: unset !important;
 }
