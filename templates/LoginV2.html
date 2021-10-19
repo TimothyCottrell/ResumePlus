@@ -1,55 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
     
-<!--Head Section-->
-<head>
-    <meta charset = "UTF-8">
-    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
-    <title>ResumePlus Sign In</title>
+    <!--Head Section-->
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+        <title>ResumePlus Sign In</title>
 
-    <link rel = "stylesheet" type = "text/css" href = "../static/styles/ResumePlusStylesheet.css">
-</head>
+        <link rel = "stylesheet" type = "text/css" href = "../static/styles/ResumePlusStylesheet.css">
+    </head>
 
-<!--Body Section-->
-<body id = "sign-in-body">
+    <!--Body Section-->
+    <body id = "sign-in-body">
 
-    <!--Main Section-->
-    <main>
+        <!--Main Section-->
+        <main>
 
         <!--Input for user to receive newsletter and contacting us-->
         <div class = "form-wrapper">
             <form id = "form" aria-labelledby = "form" method = "POST" action = "/loginV2">
 
-                <!--Header for Contacting Us-->
-                <div class = "signIn-header">
-                    <h1>Sign In</h1>
-                </div>
+                    <!--Header for Contacting Us-->
+                    <div class = "signIn-header">
+                        <h1>Sign In</h1>
+                    </div>
 
-                <!--Circle logo under signup-->
-                <div id = "circle-logo2">
-                    <div class = "dots"></div>
-                    <div class = "dots"></div>
-                    <div class = "dots"></div>
-                </div>
+                    <!--Circle logo under signup-->
+                    <div id = "circle-logo2">
+                        <div class = "dots"></div>
+                        <div class = "dots"></div>
+                        <div class = "dots"></div>
+                    </div>
 
-                <!--Information Input-->
-                <div class = "form-control">
-
+                    <!--Information Input-->
+                    <div class = "form-control">
                     <!--Email/Username Input-->
                     <label >Username</label>
                     <input type = "text" name = "username" id = "username" placeholder = "Enter Email/Username" aria-required = "true"><br>
                     <!--Changed the name and id from "email" to "username" sence we search through the db using the username atm-->
 
-                    <!--Password Input-->
-                    <label>Password</label>
-                    <input type = "password" name = "password" id = "Password" placeholder = "Enter Password">
+                        <!--Password Input-->
+                        <label>Password</label>
+                        <input type = "password" name = "password" id = "Password" placeholder = "Enter Password">
 
-                    <div id = "forgot-content">
-                        <a id = "forgot-account" href = ""><label>Forgot your username/password</label></a>
+                        <div id = "forgot-content">
+                            <a id = "forgot-account" href = ""><label>Forgot your username/password</label></a>
+                        </div>
+
                     </div>
-
-                </div>
-
                 <!--Login Button-->
                 <div class = "signin-wrapper">
                     <button type = "submit" form = "form" id = "signin" value = "Submit">Login</button>
@@ -60,19 +58,18 @@
             <div class = "direct-signUp">
                 <form id = "form2" class = "form2" action = "/registerV2">
 
-                    <!--Message to new user-->
-                    <div id = "direct-to-signup">
-                        <h1>Come Sign Up!</h1>
-                        <p>Enter your details and let yourself be known!</p>
-                    </div>
-
+                        <!--Message to new user-->
+                        <div id = "direct-to-signup">
+                            <h1>Come Sign Up!</h1>
+                            <p>Enter your details and let yourself be known!</p>
+                        </div>
+                        
                     <!--SignUp Button-->
                     <div class = "signup-wrapper">
                         <button type = "submit" form = "form2" id = "signup" value = "Submit">Sign Up</button>
                     </div>
                 </form>
             </div>
-        </div>
-    </main>
-</body>
+        </main>
+    </body>
 </html>

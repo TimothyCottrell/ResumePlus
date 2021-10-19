@@ -166,6 +166,46 @@ header {
     color: #3982FA;
 }
 
+/* Style Account Button */
+.dropdown-container {
+    display: inline-block;
+    position: absolute;
+    top: 20px;
+    right: 60px;
+    padding-top: 5px;
+    padding-right: 15px; 
+}
+
+/* Style dropdown content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Style the dropdown content a */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    background-color: #F1F1F1;
+}
+
+/* Style the hover effect on dropdown menu */
+.dropdown-content a:hover {
+    background-color: #BEBEBE;
+}
+
+/* Style dropdown button */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
 #profile-button {
     display: inline-block;
     position: absolute;
@@ -189,6 +229,12 @@ header {
 }
 
 /************************** Sign In Page *************************/
+
+/* Style the sign in body section */
+#sign-in-body {
+    padding-left: 190px;
+    padding-right: 190px;
+}
 
 /* Style the form heading */
 .signIn-header {
@@ -215,8 +261,10 @@ header {
 /* Style the form wrapper */
 .form-wrapper {
     padding-top: 50px;
-    padding-left: 190px;
     border-right: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Style the whole form */
@@ -305,7 +353,6 @@ input[type = password] {
 /* Style direct to user sign up */
 .direct-signUp {
     float: right;
-    padding-right: 190px;
 }
 
 /* Style direct to user sign up */
@@ -342,6 +389,17 @@ input[type = password] {
     margin: 15px auto;
     padding: 30px 40px;
     float: left;
+}
+
+/* Media Queries for different pixel size on computer */
+@media only screen and (min-width: 1800px) and (max-width: 1920px) {
+
+    /* Style sign in body for different screen size */
+    #sign-in-body {
+        padding-left: 430px;
+        padding-right: 430px;
+    }
+
 }
 
 /************************** Sign Up Page *************************/
@@ -432,4 +490,21 @@ input[type = password] {
     width: 100px;
     background-color: #3982FA;
     color: white;
+}
+
+/* Style direct to login */
+#direct-to-login {
+    color: white;
+    text-align: center;
+}
+
+/* Style to login */
+#direct-to-login a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Style the hover effect */
+#direct-to-login a:hover {
+    color: #C4C4C4;
 }
