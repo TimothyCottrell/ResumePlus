@@ -228,6 +228,46 @@ header {
     border-bottom-right-radius: 10px;
 }
 
+/* Style the Footer */
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 180px;
+    background-color: #3982FA;
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 20px;
+    color: white;
+}
+
+/* Style the about page */
+#about h2 {
+    font-size: 18pt;
+}
+
+/* Style the explore links */
+#explore-links a {
+    text-decoration: none;   
+    color: white;
+}
+
+/* Style hover effect */
+#explore-links a:hover {
+    color: #C4C4C4;
+}
+
+/* Style legal section */
+#legal a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Style hover Effect */
+#legal a:hover {
+    color: #C4C4C4;
+}
+
 /************************** Sign In Page *************************/
 
 /* Style the sign in body section */
