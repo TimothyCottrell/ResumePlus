@@ -228,12 +228,51 @@ header {
     border-bottom-right-radius: 10px;
 }
 
+/* Style the Footer */
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 180px;
+    background-color: #3982FA;
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 20px;
+    color: white;
+}
+
+/* Style the about page */
+#about h2 {
+    font-size: 18pt;
+}
+
+/* Style the explore links */
+#explore-links a {
+    text-decoration: none;   
+    color: white;
+}
+
+/* Style hover effect */
+#explore-links a:hover {
+    color: #C4C4C4;
+}
+
+/* Style legal section */
+#legal a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Style hover Effect */
+#legal a:hover {
+    color: #C4C4C4;
+}
+
 /************************** Sign In Page *************************/
 
 /* Style the sign in body section */
-#sign-in-body {
-    padding-left: 190px;
-    padding-right: 190px;
+#login-body {
+    background-color: #3982FA;
 }
 
 /* Style the form heading */
@@ -295,18 +334,7 @@ header {
 }
 
 /* Style the input box: text */
-input[type = text] {
-    display: block;
-    width: 100%;
-    padding: 15px 20px;
-    margin: 8px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-/* Style the input box: password */
-input[type = password] {
+input[type = text], input[type = password] {
     display: block;
     width: 100%;
     padding: 15px 20px;
@@ -399,7 +427,6 @@ input[type = password] {
         padding-left: 430px;
         padding-right: 430px;
     }
-
 }
 
 /************************** Sign Up Page *************************/

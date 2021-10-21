@@ -11,7 +11,7 @@
     </head>
 
     <!--Body Section-->
-    <body id = "sign-in-body">
+    <body id = "login-body">
 
         <!--Main Section-->
         <main>
@@ -20,17 +20,14 @@
         <div class = "form-wrapper">
             <form id = "form" aria-labelledby = "form" method = "POST" action = "/loginV2">
 
-                    <!--Header for Contacting Us-->
-                    <div class = "signIn-header">
-                        <h1>Sign In</h1>
-                    </div>
+                <!--Form to sign in-->
+                <div class = "form">
+                    <form id = "form" aria-labelledby = "form">
 
-                    <!--Circle logo under signup-->
-                    <div id = "circle-logo2">
-                        <div class = "dots"></div>
-                        <div class = "dots"></div>
-                        <div class = "dots"></div>
-                    </div>
+                        <!--Header for Contacting Us-->
+                        <div class = "signIn-header">
+                            <h1>Sign In</h1>
+                        </div>
 
                     <!--Information Input-->
                     <div class = "form-control">
@@ -38,15 +35,22 @@
                     <label >Username</label>
                     <input type = "text" name = "username" id = "username" placeholder = "Enter Email/Username" aria-required = "true"><br>
                     <!--Changed the name and id from "email" to "username" sence we search through the db using the username atm-->
-
-                        <!--Password Input-->
-                        <label>Password</label>
-                        <input type = "password" name = "password" id = "Password" placeholder = "Enter Password">
-
-                        <div id = "forgot-content">
-                            <a id = "forgot-account" href = ""><label>Forgot your username/password</label></a>
+                    
+                        <!--Circle logo under signup-->
+                        <div id = "circle-logo2">
+                            <div class = "dots"></div>
+                            <div class = "dots"></div>
+                            <div class = "dots"></div>
                         </div>
 
+                            <!--Password Input-->
+                            <label>Password</label>
+                            <input type = "password" name = "password" id = "Password" placeholder = "Enter Password">
+
+
+                            <div id = "forgot-content">
+                                <a id = "forgot-account" href = ""><label>Forgot your username/password</label></a>
+                            </div>
                     </div>
                 <!--Login Button-->
                 <div class = "signin-wrapper">
@@ -63,7 +67,7 @@
                             <h1>Come Sign Up!</h1>
                             <p>Enter your details and let yourself be known!</p>
                         </div>
-                        
+
                     <!--SignUp Button-->
                     <div class = "signup-wrapper">
                         <button type = "submit" form = "form2" id = "signup" value = "Submit">Sign Up</button>
