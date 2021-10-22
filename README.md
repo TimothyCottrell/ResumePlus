@@ -2,6 +2,6 @@ ResumePlus
 Contributor's:
 - Timothy Cottrell
 - Benson Huynh
-- Josh Bosher
+- Josh Boshers
 - Vanessa Liaw
 - Anastasia Meggison
