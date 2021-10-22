@@ -36,7 +36,7 @@ else:
 
 
 #sign in
-driver.find_element_by_id("signin-button").click()
-driver.find_element_by_id("username").send_keys(user)
-driver.find_element_by_id("Password").send_keys(user_pass)
-driver.find_element_by_id("signin").click()
+#driver.find_element_by_id("signin-button").click()
+#driver.find_element_by_id("username").send_keys(user)
+#driver.find_element_by_id("Password").send_keys(user_pass)
+#driver.find_element_by_id("signin").click()
