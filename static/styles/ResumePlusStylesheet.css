@@ -7,16 +7,6 @@ body {
     font-family: serif;
 }
 
-#home-page-body {
-    background-color: #C4C4C4;
-}
-
-/* Style header */
-header {
-    background-color: #C4C4C4;
-    height: 500px;
-}
-
 /* Style top bar */
 #top-wrapper {
     display: flex;
@@ -36,26 +26,7 @@ header {
     color: white;
 }
 
-/* Style the navbar content*/
-.navbar-wrapper ul li {
-    list-style-type: none;
-    display: inline-block;
-    line-height: 50px;
-    font-size: 25px;
-    padding-left: 50px;
-}
-
-/* Style the navbar list */
-.navbar-wrapper ul li a {
-    text-decoration: none;
-    color: white;
-}
-
-/* Style hover effect on navbar */
-.navbar-wrapper ul li a:hover {
-    color: #3982FA;
-}
-
+/* Style button */
 #user-button {
     display: inline-block;
     position: absolute;
@@ -78,41 +49,13 @@ header {
     border-bottom-right-radius: 10px;
 }
 
+/* Style message button */
 #message {
     color: white;
     font-size: 15px;
     text-align: center;
     margin-top: 40px;
     padding-top: 50px;
-}
-
-#search-wrapper {
-    padding-top: 10px;
-}
-
-/* Style search bar */
-#search-bar {
-    width: 500px;
-    height: 40px;
-    border: 1px solid grey;
-    padding-left: 20px;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-
-/* Style search button */
-#search-button {
-    height: 40px;
-    width: 80px;
-    color: white;
-    background-color: #3982FA; 
-    border: 1px solid grey;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
 }
 
 /************************** Home Page *************************/
@@ -123,27 +66,20 @@ header {
 }
 
 /* Style header */
-header {
-    height: 500px;
-}
+#home-header {
+    border: 1px #C5C5C5 solid;
 
-/* Style top bar */
-#top-wrapper {
-    display: flex;
 }
 
 /* Style logo */
-#circle-logo {
-    border-radius: 50%;
-    background-color: #3982FA;
-    width: 45px;
-    height: 45px;
-    margin: 15px 15px;
+#logo {
+    width: 90px;
+    height: 90px;
 }
 
 /* Style the title of website */
 #title {
-    color: white;
+    color: black;
 }
 
 /* Style the navbar content*/
@@ -158,12 +94,27 @@ header {
 /* Style the navbar list */
 .navbar-wrapper ul li a {
     text-decoration: none;
-    color: white;
+    color: black;
 }
 
 /* Style hover effect on navbar */
 .navbar-wrapper ul li a:hover {
     color: #3982FA;
+}
+
+/* Style search bar */
+.search {
+    padding-left: 50px;
+    padding-top: 15px;
+}
+
+/* Style the search bar */
+#search-bar {
+    width: 250px;
+    height: 40px;
+    background-color: #D3D3D3;
+    border: 0.5px solid;
+    font-size: 12px;
 }
 
 /* Style Account Button */
@@ -206,14 +157,7 @@ header {
     display: block;
 }
 
-#profile-button {
-    display: inline-block;
-    position: absolute;
-    right: 60px;
-    padding-top: 5px;
-    padding-right: 15px;
-}
-
+/* Style the edit button */
 .edit-button {
     border: 1px solid #ccc;
     box-sizing: border-box;
@@ -230,8 +174,6 @@ header {
 
 /* Style the Footer */
 #footer {
-    position: fixed;
-    bottom: 0;
     width: 100%;
     height: 180px;
     background-color: #3982FA;
@@ -271,8 +213,12 @@ header {
 /************************** Sign In Page *************************/
 
 /* Style the sign in body section */
-#login-body {
+.login-body, .register-body {
     background-color: #3982FA;
+}
+
+#register-header, #login-header {
+    background-color: white;
 }
 
 /* Style the form heading */
@@ -299,7 +245,7 @@ header {
 
 /* Style the form wrapper */
 .form-wrapper {
-    padding-top: 50px;
+    padding-top: 90px;
     border-right: none;
     display: flex;
     align-items: center;
@@ -458,7 +404,7 @@ input[type = text], input[type = password] {
 
 /* Style the form wrapper */
 .form-wrapper2 {
-    padding-top: 50px;
+    padding-top: 40px;
 }
 
 /* Style the whole form */

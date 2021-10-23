@@ -11,10 +11,52 @@
     </head>
 
     <!--Body Section-->
-    <body id = "login-body">
+    <body class = "login-body">
+
+        <!--Header Section-->
+        <header id = "login-header">
+
+            <!--Logo and Title Section-->
+            <div id = "top-wrapper">
+                
+                <!--Resume+ Logo-->
+                <div id = "circle-logo"></div>
+
+                <!--Title-->
+                <h1 id = "title">Resume+</h1>
+
+                <!--Search bar-->
+                <div class = "search">
+                    <input type = "text" placeholder = "Search" id = "search-bar">
+                </div>
+
+                <!--NavBar-->
+                <nav class = "navbar-wrapper">
+                    <ul>
+                        <li><a href = "">About</a></li>
+                        <li><a href = "">Messages</a></li>
+                        <li><a href = "">Support</a></li>
+                    </ul>
+            
+                    <!--Dropdown button-->
+                    <div class = "dropdown-container dropdown">
+                    
+                        <!--Button for dropdown-->
+                        <button class = "edit-button dropbtn">Account</button>
+
+                        <!--Dropdown Menu-->
+                        <div class = "dropdown-content">
+                            <a href = "Profile.html" class = "dropdown-menu">Profile</a>
+                            <a href = "Setting.html" class = "dropdown-menu">Setting</a>
+                            <a href = "#" class = "dropdown-menu">Log Out</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
 
         <!--Main Section-->
-        <main>
+        <main class = "login-main">
 
             <!--Input for user to receive newsletter and contacting us-->
             <div class = "form-wrapper">
