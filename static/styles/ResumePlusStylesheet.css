@@ -480,12 +480,329 @@ input[type = password] {
 /* Style the hover effect */
 #direct-to-login a:hover {
     color: #C4C4C4;
-<<<<<<< HEAD
-=======
 }
 
 /* Completelly ignore all CSS */
 .ignore-css {
     all: unset !important;
->>>>>>> 981a7cee149ee0610b5d00ebba3bca3a272bf026
+}
+
+/************************** Setting Page *************************/
+
+/* Style setting page header */
+#setting-header {
+    height: 100px;
+}
+
+/* Style setting title */
+#setting h1 {
+    font-size: 40px;
+    padding-top: 80px;
+    padding-left: 300px;
+}
+
+/* Style setting main */
+#setting-main {
+    display: flex;
+}
+
+/* Style setting navbar links */
+#setting-navbar a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    line-height: 200%;
+    margin-left: 280px;
+    padding: 0 30px 0 15px;
+    height: 30px;
+}
+
+/* Style the setting navbar hover effect */
+#setting-navbar a:hover {
+    border: 1px solid;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: #B5D1FF;
+}
+
+/* Style setting page */
+.setting-page {
+    padding-left: 100px;
+    padding-top: 100px;
+}
+
+/* Style border setting page */
+.setting-wrapper {
+    border: 1px solid; 
+    border-color: #C5C5C5;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    width: 500px;
+    height: 500px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+/* Style the heading 3 in account */
+.setting-wrapper h3 {
+    padding-left: 2px;
+}
+
+/* Style user photo */
+#user-photo {
+    width: 60px;
+	height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+/* Style user profile picture */
+#user-photo img {
+    width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+/* Style input file */
+#user-edit-button input[type='file'] {
+    display: none;
+}
+
+/* Style remove button */
+#remove-button {
+    font-weight: bold;
+}
+
+/* Style account profile */
+#account-profile {
+    display: flex;
+}
+
+/* Style account setting border size */
+#account-setting {
+    height: 2995px;
+}
+
+/* Style user edit button */
+#user-edit-button {
+    display: flex;
+    padding-top: 20px;
+    padding-left: 30px;
+}
+
+/* Style user edit button */
+#user-edit-button button {
+    width: 80px;
+    height: 40px;
+    font-size: 15px;
+    color: #3982FA;
+    border-style: none;
+    background-color: white;
+    border: 1px #C4C4C4 solid;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+/* Style remove button */
+.remove {
+    padding-left: 30px;
+}
+
+/* Style */
+.info {
+    display: flex;
+}
+
+/* Style input area */
+.info-input {
+    width: 225px;
+    padding-right: 50px;
+}
+
+/* Style datepicker */
+input [type = date] {
+    padding-left: 100px;
+}
+
+/* Style state selection */
+.select-option {
+    padding-top: 10px;
+}
+
+/* Style state selection */
+.info-input select {
+    width: 225px;
+    height: 45px;
+    border-color: #C4C4C4;
+    background-color: white;
+}
+
+/* Style textarea */
+.textarea-box {
+    padding-top: 10px;
+}
+
+/* Style the password box */
+#password-setting {
+    height: 460px;
+}
+
+/* Style save button */
+#save-button {
+    padding-top: 15px;
+}
+
+/* Style solid line */
+.solid-line {
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+#solid-line {
+    padding-bottom: 20px;
+}
+
+/* Style solid line */
+.line {
+    border: 0.2px solid;
+    border-color: #C4C4C4;
+}
+
+/* Style solid line */
+#line {
+    padding-top: 60px;
+
+}
+
+/* Style solid line */
+#line3 {
+    padding-top: 60px;
+    padding-bottom: 25px;
+}
+
+/* Style solid line */
+#line2 {
+    padding-top: 20x;
+    padding-bottom: 20px;
+}
+
+/* Style label */
+label {
+    font-weight: bold;
+}
+
+/* Style link button */
+.link {
+    display: flex;
+}
+
+/* Style textarea */
+textarea {
+    width: 100%;
+    height: 100px;
+    font-size: 18px;
+    font-family: sans-serif;
+    border-color: #C4C4C4;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+/* Style save button */
+#save-button button {
+    background-color: #3982FA;
+    color: white;
+    width: 80px;
+    height: 40px;
+    font-size: 14px;
+    border-style: none;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    float: right;
+}
+
+/* Style notification setting */
+#notification-setting {
+    height: 450px;
+}
+
+/* Style the border */
+.wrapper {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Style google logo */
+#google-logo img {
+    width: 40px;
+    height: 40px;
+    padding-right: 15px;
+}
+
+/* Style google link button */
+.connect-button {
+    padding-top: 10px;
+    padding-left: 230px;
+}
+
+/* Style google link button */
+.connect-button button {
+    width: 80px;
+    height: 40px;
+    font-size: 15px;
+    color: #3982FA;
+    background-color: white;
+    border: 1px #C4C4C4 solid;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+/* Style delete button */
+.delete {
+    display: flex;
+}
+
+/* Style delete button */
+.delete-button {
+    padding-left: 35px;
+}
+
+/* Style delete button */
+.delete-button button {
+    width: 100px;
+    height: 50px;
+    font-size: 15px;
+    color: #3982FA;
+    background-color: white;
+    border: 1px #C4C4C4 solid;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+/* Style paragraph in account */
+.describe {
+    color: #C4C4C4;
+}
+
+/* Style label */
+.notification {
+    font-weight: normal;
+}
+
+/* Style hide button */
+#hide-checkbox {
+    padding-left: 225px;
 }
