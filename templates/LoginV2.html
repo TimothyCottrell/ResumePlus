@@ -60,29 +60,30 @@
 
             <!--Input for user to receive newsletter and contacting us-->
             <div class = "form-wrapper">
+                <form id = "form" aria-labelledby = "form" method = "POST" action = "/loginV2">
 
-                <!--Form to sign in-->
-                <div class = "form">
-                    <form id = "form" aria-labelledby = "form">
+                    <!--Form to sign in-->
+                    <div class = "form">
 
                         <!--Header for Contacting Us-->
                         <div class = "signIn-header">
                             <h1>Sign In</h1>
                         </div>
 
-                        <!--Circle logo under signup-->
-                        <div id = "circle-logo2">
-                            <div class = "dots"></div>
-                            <div class = "dots"></div>
-                            <div class = "dots"></div>
-                        </div>
-
                         <!--Information Input-->
                         <div class = "form-control">
 
-                            <!--Email Input-->
+                            <!--Circle logo under signup-->
+                            <div id = "circle-logo2">
+                                <div class = "dots"></div>
+                                <div class = "dots"></div>
+                                <div class = "dots"></div>
+                            </div>
+
+                            <!--Email/Username Input-->
                             <label >Username</label>
-                            <input type = "text" name = "email" id = "email" placeholder = "Enter Email/Username" aria-required = "true"><br>
+                            <input type = "text" name = "username" id = "username" placeholder = "Enter Email/Username" aria-required = "true">
+                            <!--Changed the name and id from "email" to "username" sence we search through the db using the username atm-->
 
                             <!--Password Input-->
                             <label>Password</label>
@@ -92,29 +93,28 @@
                                 <a id = "forgot-account" href = ""><label>Forgot your username/password</label></a>
                             </div>
                         </div>
-
                         <!--Login Button-->
                         <div class = "signin-wrapper">
-                            <a href = "Home.html"><button id = "signin">Login</button></a>
+                            <button type = "submit" form = "form" id = "signin" value = "Submit">Login</button>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
 
                 <!--Direct user to sign up if they haven't already-->
-                <div class = "direct-signup">
-                    <div id = "form2" class = "form2">
+                <div class = "direct-signUp">
+                    <form id = "form2" class = "form2" action = "/registerV2">
 
-                        <!--Message to new user-->
-                        <div id = "direct-to-signup">
-                            <h1>Come Sign Up!</h1>
-                            <p>Enter your details and let yourself be known!</p>
-                        </div>
+                            <!--Message to new user-->
+                            <div id = "direct-to-signup">
+                                <h1>Come Sign Up!</h1>
+                                <p>Enter your details and let yourself be known!</p>
+                            </div>
 
                         <!--SignUp Button-->
                         <div class = "signup-wrapper">
-                            <a href = "Register.html"><button id = "signup">Sign Up</button></a>
+                            <button type = "submit" form = "form2" id = "signup" value = "Submit">Sign Up</button>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </main>

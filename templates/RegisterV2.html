@@ -60,7 +60,7 @@
 
             <!--Input for user to receive newsletter and contacting us-->
             <div class = "form-wrapper2">
-                <form id = "form3" aria-labelledby = "form">
+                <form id = "form3" aria-labelledby = "form" method = "POST" action = "/registerV2">
 
                     <!--Header for Contacting Us-->
                     <div class = "signUp-header">
@@ -81,19 +81,29 @@
                     <div class = "form-control2">
 
                         <!--First Name Input-->
-                        <input type = "text" name = "fName" id = "fname" placeholder = "First Name" aria-required = "true">
+                        <span id = "inputForm">
+                            <input type = "text" name = "username" id = "username" placeholder = "First Name" aria-required = "true">
+                        </span>
 
                         <!--Last Name Input-->
-                        <input type = "text" name = "lName" id = "lname" placeholder = "Last Name" aria-required = "true">
+                        <span id = "inputForm">
+                            <input type = "text" name = "lName" id = "lname" placeholder = "Last Name" aria-required = "true">
+                        </span>
 
                         <!--Email Input-->
-                        <input type = "text" name = "email" id = "email" placeholder = "Email" aria-required = "true">
+                        <span id = "inputForm">
+                            <input type = "text" name = "email" id = "email" placeholder = "Email" aria-required = "true">
+                        </span>
 
                         <!--Password Input-->
-                        <input type = "password" name = "password" id = "password" placeholder = "Password" aria-required = "true">
+                        <span id = "inputForm">
+                            <input type = "password" name = "password" id = "password" placeholder = "Password" aria-required = "true">
+                        </span>
 
                         <!--Confirm Password-->
-                        <input type = "password" name = "confirm-password" id = "confirm-password" placeholder = "Confirm Password" aria-required = "true">
+                        <span id = "inputForm">
+                            <input type = "password" name = "confirm-password" id = "confirm-password" placeholder = "Confirm Password" aria-required = "true">
+                        </span>
                     </div>
 
                     <!--User have the option to receive weekly updates-->
@@ -106,13 +116,13 @@
 
                     <!--Submit Button-->
                     <div class = "signup-wrapper">
-                        <a href = "HomeV2.html"><button id = "signup">Sign Up</button></a>
+                        <button type = "submit" form = "form3" value = "Submit" id = "signup">Sign Up</button>
                     </div>
                 </form>
 
                 <!--Direct user to sign in if they already have account-->
                 <div id = "direct-to-login">
-                    <p>Already have a account? <a href = "LoginV2.html">Sign In</a></p>
+                    <p>Already have a account? <a href = " {{ url_for('loginV2') }} ">Sign In</a></p>
                 </div>
             </div>
         </main>

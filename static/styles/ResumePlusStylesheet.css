@@ -480,4 +480,12 @@ input[type = password] {
 /* Style the hover effect */
 #direct-to-login a:hover {
     color: #C4C4C4;
+<<<<<<< HEAD
+=======
+}
+
+/* Completelly ignore all CSS */
+.ignore-css {
+    all: unset !important;
+>>>>>>> 981a7cee149ee0610b5d00ebba3bca3a272bf026
 }
