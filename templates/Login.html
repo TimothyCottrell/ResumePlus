@@ -63,7 +63,7 @@
 
                 <!--Form to sign in-->
                 <div class = "form">
-                    <form id = "form" aria-labelledby = "form">
+                    <form id = "form" aria-labelledby = "form" method = "POST" action = "/login">
 
                         <!--Header for Contacting Us-->
                         <div class = "signIn-header">
@@ -82,7 +82,7 @@
 
                             <!--Email Input-->
                             <label >Username</label>
-                            <input type = "text" name = "email" id = "email" placeholder = "Enter Email/Username" aria-required = "true"><br>
+                            <input type = "text" name = "username" id = "username" placeholder = "Enter Email/Username" aria-required = "true"><br>
 
                             <!--Password Input-->
                             <label>Password</label>
@@ -95,7 +95,7 @@
 
                         <!--Login Button-->
                         <div class = "signin-wrapper">
-                            <a href = "Home.html"><button id = "signin">Login</button></a>
+                            <button type = "submit" form = "form" value = "Submit" id = "signin">Login</button>
                         </div>
                     </form>
                 </div>
@@ -112,7 +112,7 @@
 
                         <!--SignUp Button-->
                         <div class = "signup-wrapper">
-                            <a href = "Register.html"><button id = "signup">Sign Up</button></a>
+                            <a href = "{{ url_for('register')}}"><button id = "signup">Sign Up</button></a>
                         </div>
                     </div>
                 </div>

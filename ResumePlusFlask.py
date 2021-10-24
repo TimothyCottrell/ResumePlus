@@ -39,7 +39,7 @@ def register():
         new_user = User(username, h_password)
         db.session.add(new_user)
         db.session.commit()
-        session['user'] = username
+        session['user'] = new_user.username
         session['user_id'] = new_user.id
         return redirect(url_for('home_page'))
     return render_template('Register.html')
@@ -66,12 +66,23 @@ def login():
     else:
         return render_template('Login.html')
 
+@app.route('/account/settings')
+def settings():
+    return render_template('Setting.html', user=session['user'])
+
 @app.route('/logout')
 def logout():
     if session.get('user'):
         session.clear()
     return redirect(url_for('login'))
 
+@app.route('/<user>/delete')
+def delete_account(user):
+    the_user = db.session.query(User).filter_by(username=user).one_or_none()
+    db.session.delete(the_user)
+    session.clear()
+    session.commit()
+    return redirect(url_for('home_page'))
 app.run(host=os.getenv('IP', '127.0.0.1'), port=int(os.getenv('PORT', 5000)), debug=True)
 
 # To see the web page in your web browser, go to the url,

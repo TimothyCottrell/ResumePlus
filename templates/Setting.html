@@ -100,7 +100,7 @@
 
                         <!--User profile-->
                         <div id = "account-profile">
-                            
+
                             <!--User Edit Photo-->
                             <div id = "user-photo" class = "navbar-profile">
                                 <img src = "../static/image/profile.jpg" id = "upload-image">
@@ -155,7 +155,7 @@
                                     <label>Display Name</label>
 
                                     <div class = "info-input">
-                                        <input type = "text">
+                                        <input type = "text">{{user}}</input>
                                     </div>
                                 </div>
 
@@ -782,7 +782,7 @@
 
                                 <!--Conntect Google Account-->
                                 <div class = "delete-button">
-                                    <button>Delete Account</button>
+                                    <a href = "{{ url_for('delete_account', user=user) }}"><button>Delete Account</button></a>
                                 </div>
                             </div>
                         </div>
