@@ -806,3 +806,97 @@ textarea {
 #hide-checkbox {
     padding-left: 225px;
 }
+
+/************************** Support Page *************************/
+
+/* Style support page */
+#support {
+    background-color: #3982FA;
+    height: 350px;
+}
+
+/* Style support wrapper */
+.support-wrapper {
+    padding-top: 70px;
+}
+
+/* Style support heading */
+.support-wrapper h1 {
+    margin: 0;
+    text-align: center;
+    padding-top: 50px;
+    color: white;
+}
+
+/* Style support wrapper */
+#support-wrapper {
+    justify-content: center;
+}
+
+/* Style support search */
+#search-support {
+    padding-left: 550px;
+    padding-top: 30px;
+}
+
+/* Style support search bar */
+#support-search {
+    width: 50%;
+}
+
+/* Style support box */
+.support-container {
+    margin: 0;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    background-color: #D3D3D3;
+    height: 310px;
+}
+
+/* Style support box */
+.support-box {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/* Style support box choice */
+.box {
+    border: 1px;
+    padding: 10px 10px 10px 10px;
+    height: 310px;
+    width: 300px;
+    background-color: white;
+    font-size: 18px;
+    text-align: center;
+}
+
+/* Style community and support image */
+#community-image, #manage-account-image, #support-form-image {
+    width: 170px;
+    height: 170px;
+}
+
+/* Style support form image */
+#support-form-image {
+    padding-top: 20px;
+}
+
+#paragraph {
+    padding-top: 20px;
+}
+
+/* Style the paragraph in support page */
+#paragraph p {
+    text-align: center;
+}
+
+/* Style heading for popular searches */
+.popular-search-section {
+    background-color: white;
+    height: 500px;
+}
+
+/* Style heading and description in popular search section */
+.heading-description {
+    text-align: center;
+}
