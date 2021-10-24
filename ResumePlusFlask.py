@@ -72,7 +72,7 @@ def settings():
 
 @app.route('/support')
 def support():
-    return render_template('Support.html', user=session['user'])
+    return render_template('Support.html')
 
 @app.route('/logout')
 def logout():
