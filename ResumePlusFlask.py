@@ -70,6 +70,10 @@ def login():
 def settings():
     return render_template('Setting.html', user=session['user'])
 
+@app.route('/support')
+def support():
+    return render_template('Support.html', user=session['user'])
+
 @app.route('/logout')
 def logout():
     if session.get('user'):

@@ -43,7 +43,7 @@
                     <ul>
                         <li><a href = "">About</a></li>
                         <li><a href = "">Messages</a></li>
-                        <li><a href = "">Support</a></li>
+                        <li><a href = "{{ url_for('support') }}">Support</a></li>
                     </ul>
             
                     <!--Dropdown button-->
@@ -55,8 +55,8 @@
                         <!--Dropdown Menu-->
                         <div class = "dropdown-content">
                             <a href = "Profile.html" class = "dropdown-menu">Profile</a>
-                            <a href = "Setting.html" class = "dropdown-menu">Setting</a>
-                            <a href = "#" class = "dropdown-menu">Log Out</a>
+                            <a href = "{{ url_for('settings') }}" class = "dropdown-menu">Setting</a>
+                            <a href = "{{ url_for('logout') }}" class = "dropdown-menu">Log Out</a>
                         </div>
                     </div>
                 </nav>
@@ -768,7 +768,7 @@
                         <!--Divider Line-->
                         <div class = "solid-line" id = "line2"> 
                             <div class = "line"></div>
-                        </div>
+                        </div> 
 
                         <!--Delete Account-->
                         <div id = "delete-account">
