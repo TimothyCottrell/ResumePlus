@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+
     <!--Head Section-->
     <head>
         <meta charset = "UTF-8">
@@ -18,7 +18,7 @@
 
             <!--Logo and Title Section-->
             <div id = "top-wrapper">
-                
+
                 <!--Resume+ Logo-->
                 <div id = "circle-logo"></div>
 
@@ -37,18 +37,18 @@
                         <li><a href = "">Messages</a></li>
                         <li><a href = "">Support</a></li>
                     </ul>
-            
+
                     <!--Dropdown button-->
                     <div class = "dropdown-container dropdown">
-                    
+
                         <!--Button for dropdown-->
                         <button class = "edit-button dropbtn">Account</button>
 
                         <!--Dropdown Menu-->
                         <div class = "dropdown-content">
                             <a href = "Profile.html" class = "dropdown-menu">Profile</a>
-                            <a href = "Setting.html" class = "dropdown-menu">Setting</a>
-                            <a href = "#" class = "dropdown-menu">Log Out</a>
+                            <a href = "/settings" class = "dropdown-menu">Setting</a>
+                            <a href = "/logout" class = "dropdown-menu">Log Out</a>
                         </div>
                     </div>
                 </nav>
@@ -60,7 +60,7 @@
 
             <!--Input for user to receive newsletter and contacting us-->
             <div class = "form-wrapper2">
-                <form id = "form3" aria-labelledby = "form" method = "POST" action = "/registerV2">
+                <form id = "form3" aria-labelledby = "form" method = "POST" action = "/register">
 
                     <!--Header for Contacting Us-->
                     <div class = "signUp-header">
@@ -82,17 +82,17 @@
 
                         <!--First Name Input-->
                         <span id = "inputForm">
-                            <input type = "text" name = "username" id = "username" placeholder = "First Name" aria-required = "true">
+                            <input type = "text" name = "FirstName" id = "FirstName" placeholder = "First Name" aria-required = "true">
                         </span>
 
                         <!--Last Name Input-->
                         <span id = "inputForm">
-                            <input type = "text" name = "lName" id = "lname" placeholder = "Last Name" aria-required = "true">
+                            <input type = "text" name = "LastName" id = "LastName" placeholder = "Last Name" aria-required = "true">
                         </span>
 
                         <!--Email Input-->
                         <span id = "inputForm">
-                            <input type = "text" name = "email" id = "email" placeholder = "Email" aria-required = "true">
+                            <input type = "text" name = "Username" id = "Username" placeholder = "Email" aria-required = "true">
                         </span>
 
                         <!--Password Input-->
@@ -122,7 +122,7 @@
 
                 <!--Direct user to sign in if they already have account-->
                 <div id = "direct-to-login">
-                    <p>Already have a account? <a href = " {{ url_for('loginV2') }} ">Sign In</a></p>
+                    <p>Already have a account? <a href = " {{ url_for('login') }} ">Sign In</a></p>
                 </div>
             </div>
         </main>

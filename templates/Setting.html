@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+
     <!--Head Section-->
     <head>
         <meta charset = "UTF-8">
@@ -26,7 +26,7 @@
 
             <!--Logo and Title Section-->
             <div id = "top-wrapper">
-                
+
                 <!--Resume+ Logo-->
                 <div id = "circle-logo"></div>
 
@@ -45,18 +45,18 @@
                         <li><a href = "">Messages</a></li>
                         <li><a href = "">Support</a></li>
                     </ul>
-            
+
                     <!--Dropdown button-->
                     <div class = "dropdown-container dropdown">
-                    
+
                         <!--Button for dropdown-->
                         <button class = "edit-button dropbtn">Account</button>
-                        
+
                         <!--Dropdown Menu-->
                         <div class = "dropdown-content">
                             <a href = "Profile.html" class = "dropdown-menu">Profile</a>
-                            <a href = "Setting.html" class = "dropdown-menu">Setting</a>
-                            <a href = "#" class = "dropdown-menu">Log Out</a>
+                            <a href = "/settings" class = "dropdown-menu">Setting</a>
+                            <a href = "/logout" class = "dropdown-menu">Log Out</a>
                         </div>
                     </div>
                 </nav>
@@ -91,7 +91,7 @@
                     <!--Account Setting (Edit Profile)-->
                     <div id = "account-setting" class = "setting-wrapper">
                         <!--Account Heading-->
-                        <h1>Account</h1>
+                        <h1>{{user.lname}}, {{user.fname}}</h1>
 
                         <!--Divider Line-->
                         <div id = "solid-line">
@@ -100,7 +100,7 @@
 
                         <!--User profile-->
                         <div id = "account-profile">
-                            
+
                             <!--User Edit Photo-->
                             <div id = "user-photo" class = "navbar-profile">
                                 <img src = "../static/image/profile.jpg" id = "upload-image">
@@ -152,19 +152,19 @@
 
                                 <!--Display Name-->
                                 <div class = "info-container">
-                                    <label>Display Name</label>
+                                    <label>First Name</label>
 
                                     <div class = "info-input">
-                                        <input type = "text">
+                                        <input type = "text"placeholder="{{user.fname}}">
                                     </div>
                                 </div>
 
                                 <!--Full Name-->
                                 <div class = "info-container">
-                                    <label>Full Name</label>
-                                    
+                                    <label>Last Name</label>
+
                                     <div class = "info-input">
-                                        <input type = "text">
+                                        <input type = "text" placeholder="{{user.lname}}">
                                     </div>
                                 </div>
                             </div>
@@ -174,17 +174,17 @@
 
                                 <!--Email Address-->
                                 <div class = "info-container"><br>
-                                    <label>Email Address</label>
-                                    
+                                    <label>Email</label>
+
                                     <div class = "info-input">
-                                        <input type = "text">
+                                        <input type = "text" placeholder="{{user.username}}">
                                     </div>
                                 </div>
 
                                 <!--Phone Number-->
                                 <div class = "info-container"><br>
                                     <label>Phone Number</label>
-                                    
+
                                     <div class = "info-input">
                                         <input type = "text">
                                     </div>
@@ -218,7 +218,7 @@
                                 <!--City-->
                                 <div class = "info-container">
                                     <label>City</label>
-                                    
+
                                     <div class = "info-input">
                                         <input type = "text">
                                     </div>
@@ -227,7 +227,7 @@
                                 <!--State-->
                                 <div class = "info-container">
                                     <label>State</label><br>
-                                    
+
                                     <!--List of all State-->
                                     <div class = "info-input select-option">
 
@@ -285,8 +285,8 @@
                                             <option value="WV">West Virginia</option>
                                             <option value="WI">Wisconsin</option>
                                             <option value="WY">Wyoming</option>
-                                        </select>	
-                                    </div> 
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
 
@@ -296,7 +296,7 @@
                                 <!--Zip Code-->
                                 <div class = "info-container"><br>
                                     <label>Zip Code</label>
-                                    
+
                                     <div class = "info-input">
                                         <input type = "text">
                                     </div>
@@ -305,7 +305,7 @@
                                 <!--Country/Region-->
                                 <div class = "info-container"><br>
                                     <label>Country/Region</label>
-                                    
+
                                     <!--Select Country/Region-->
                                     <div class = "info-input select-option">
 
@@ -569,7 +569,7 @@
                         </div>
 
                         <!--Divider Line-->
-                        <div class = "solid-line" id = "line"> 
+                        <div class = "solid-line" id = "line">
                             <div class = "line"></div>
                         </div>
 
@@ -596,7 +596,7 @@
                                 <!--Start Time-->
                                 <div class = "info-container"><br>
                                     <label>Start Time</label>
-                                    
+
                                     <div class = "info-input">
                                         <input type = "text" class = "date-picker">
                                     </div>
@@ -605,7 +605,7 @@
                                 <!--End Time-->
                                 <div class = "info-container"><br>
                                     <label>End Time</label>
-                                    
+
                                     <div class = "info-input">
                                         <input type = "text" class = "date-picker">
                                     </div>
@@ -613,7 +613,7 @@
                             </div>
 
                             <!--Divider Line-->
-                            <div class = "solid-line" id = "line2"> 
+                            <div class = "solid-line" id = "line2">
                                 <div class = "line"></div>
                             </div>
 
@@ -631,7 +631,7 @@
                                 <!--Department GPA-->
                                 <div class = "info-container">
                                     <label>Department GPA</label>
-                                    
+
                                     <div class = "info-input">
                                         <input type = "text">
                                     </div>
@@ -646,7 +646,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!--Checkbox to hide GPA-->
                             <div class = "info">
 
@@ -669,7 +669,7 @@
                             </div>
 
                             <!--Divider Line-->
-                            <div class = "solid-line" id = "line"> 
+                            <div class = "solid-line" id = "line">
                                 <div class = "line"></div>
                             </div>
                         </div>
@@ -701,7 +701,7 @@
                                  <!--Start Time-->
                                 <div class = "info-container"><br>
                                     <label>Start Time</label>
-                                    
+
                                     <div class = "info-input">
                                         <input type = "text" class = "date-picker">
                                     </div>
@@ -710,7 +710,7 @@
                                 <!--End Time-->
                                 <div class = "info-container"><br>
                                     <label>End Time</label>
-                                    
+
                                     <div class = "info-input">
                                         <input type = "text" class = "date-picker">
                                     </div>
@@ -766,13 +766,13 @@
                         </div>
 
                         <!--Divider Line-->
-                        <div class = "solid-line" id = "line2"> 
+                        <div class = "solid-line" id = "line2">
                             <div class = "line"></div>
                         </div>
 
                         <!--Delete Account-->
                         <div id = "delete-account">
-                            
+
                             <!--Heading-->
                             <label>Delete Account</label>
 
@@ -792,7 +792,7 @@
 
                 <!--Wrapper for setting-->
                 <div class = "wrapper">
-        
+
                     <!--Password Setting-->
                     <div id = "password-setting" class = "setting-wrapper">
 
@@ -830,7 +830,7 @@
                         </div>
                     </div>
                 </div>
-        
+
                 <!--Wrapper Setting-->
                 <div class = "wrapper">
 
@@ -930,7 +930,7 @@
 
                 <!--Heading-->
                 <h3 class = "footer-heading">Explore</h3>
-                
+
                 <!--Links to other pages in ResumePlus-->
                 <div id = "explore-links">
                     <a href = "Home.html">Home</a><br>
