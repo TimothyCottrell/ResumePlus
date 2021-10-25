@@ -9,12 +9,10 @@ class RegisterForm(FlaskForm):
     class Meta:
         csrf = False
 
-    username = StringField('Username',
+    username = StringField('Username', validators=[Length(1, 10)])
+
+    email = StringField('Email',
                         [Email(message='Not a valid email address.'), DataRequired()])
-
-    fname = StringField("FirstName", DataRequired(message="Please enter your first name."))
-
-    lname = StringField("LastName", DataRequired(message="Please enter your last name."))
 
     password = PasswordField('Password',
                              [DataRequired(message="Please enter a password."),
@@ -29,7 +27,7 @@ class LoginForm(FlaskForm):
     class Meta:
         csrf = False
 
-    username = StringField('Username', validators=[Length(1, 100)])
+    username = StringField('Username', validators=[Length(1, 10)])
 
     password = PasswordField('Password', [
         DataRequired(message='Please enter a password.')])

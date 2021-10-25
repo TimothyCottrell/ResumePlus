@@ -35,33 +35,31 @@
                 <ul>
                     <li><a href = "">About</a></li>
                     <li><a href = "">Messages</a></li>
-                    <li><a href = "">Support</a></li>
+                    <li><a href = "{{ url_for('support') }}">Support</a></li>
                 </ul>
 
-                <!--Dropdown button-->
-                <div class = "dropdown-container dropdown">
+                {% if user %}
+                    <!--Dropdown button-->
+                    <div class = "dropdown-container dropdown">
 
-                    <!--Button for dropdown-->
-                    <button class = "edit-button dropbtn">Account</button>
+                        <!--Button for dropdown-->
+                        <button class = "edit-button dropbtn">Account</button>
 
-<<<<<<< HEAD
-                    <!--Dropdown Menu-->
-                    <div class = "dropdown-content">
-                        <a href = "Profile.html" class = "dropdown-menu">Profile</a>
-                        <a href = "/settings" class = "dropdown-menu">Setting</a>
-                        <a href = "/logout" class = "dropdown-menu">Log Out</a>
-=======
+                            <!--Dropdown Menu-->
+                            <div class = "dropdown-content">
+                                <a href = "Profile.html" class = "dropdown-menu">Profile</a>
+                                <a href = "{{ url_for('settings') }}" class = "dropdown-menu">Setting</a>
+                                <a href = "{{ url_for('logout') }}" class = "dropdown-menu">Log Out</a>
+                            </div>
+                    </div>
+                {% else %}
                     <div id = "user-button">
                         <a href = "{{ url_for('login') }}"><button class = "sign-button" id = "signin-button">Sign In</button></a>
                         <a href = "{{ url_for('register') }}"><button class = "sign-button">Sign Up</button></a>
->>>>>>> 981a7cee149ee0610b5d00ebba3bca3a272bf026
                     </div>
-                </div>
+                {% endif %}
             </nav>
         </div>
-<<<<<<< HEAD
-=======
-
         <!--Message to the people-->
         <div id = "message">
 
@@ -74,7 +72,6 @@
                 <button id = "search-button">Search</button>
             </div>
         </div>
->>>>>>> 981a7cee149ee0610b5d00ebba3bca3a272bf026
     </header>
 
     <!--Main Section-->

@@ -43,7 +43,7 @@
                     <ul>
                         <li><a href = "">About</a></li>
                         <li><a href = "">Messages</a></li>
-                        <li><a href = "">Support</a></li>
+                        <li><a href = "{{ url_for('support') }}">Support</a></li>
                     </ul>
 
                     <!--Dropdown button-->
@@ -55,8 +55,8 @@
                         <!--Dropdown Menu-->
                         <div class = "dropdown-content">
                             <a href = "Profile.html" class = "dropdown-menu">Profile</a>
-                            <a href = "/settings" class = "dropdown-menu">Setting</a>
-                            <a href = "/logout" class = "dropdown-menu">Log Out</a>
+                            <a href = "{{ url_for('settings') }}" class = "dropdown-menu">Setting</a>
+                            <a href = "{{ url_for('logout') }}" class = "dropdown-menu">Log Out</a>
                         </div>
                     </div>
                 </nav>
@@ -91,7 +91,7 @@
                     <!--Account Setting (Edit Profile)-->
                     <div id = "account-setting" class = "setting-wrapper">
                         <!--Account Heading-->
-                        <h1>{{user.lname}}, {{user.fname}}</h1>
+                        <h1>Account</h1>
 
                         <!--Divider Line-->
                         <div id = "solid-line">
@@ -152,19 +152,19 @@
 
                                 <!--Display Name-->
                                 <div class = "info-container">
-                                    <label>First Name</label>
+                                    <label>Display Name</label>
 
                                     <div class = "info-input">
-                                        <input type = "text"placeholder="{{user.fname}}">
+                                        <input type = "text">{{user}}</input>
                                     </div>
                                 </div>
 
                                 <!--Full Name-->
                                 <div class = "info-container">
-                                    <label>Last Name</label>
+                                    <label>Full Name</label>
 
                                     <div class = "info-input">
-                                        <input type = "text" placeholder="{{user.lname}}">
+                                        <input type = "text">
                                     </div>
                                 </div>
                             </div>
@@ -174,10 +174,10 @@
 
                                 <!--Email Address-->
                                 <div class = "info-container"><br>
-                                    <label>Email</label>
+                                    <label>Email Address</label>
 
                                     <div class = "info-input">
-                                        <input type = "text" placeholder="{{user.username}}">
+                                        <input type = "text">
                                     </div>
                                 </div>
 
@@ -782,7 +782,7 @@
 
                                 <!--Conntect Google Account-->
                                 <div class = "delete-button">
-                                    <button>Delete Account</button>
+                                    <a href = "{{ url_for('delete_account', user=user) }}"><button>Delete Account</button></a>
                                 </div>
                             </div>
                         </div>
