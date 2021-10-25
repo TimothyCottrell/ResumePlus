@@ -54,16 +54,17 @@ def register():
     if request.method == 'POST':
         # for i in request.form:
         #     print(str(i) + ": " + str(request.form[i]))
-        h_password = bcrypt.hashpw(request.form['password'].encode(bcryptCode), bcrypt.gensalt())
-        username = request.form['Username']
-        fname = request.form['FirstName']
-        lname = request.form['LastName']
-        new_user = User(fname, lname, username, h_password)
-        db.session.add(new_user)
-        db.session.commit()
-        session['user'] = username
-        session['user_id'] = new_user.id
-        return redirect(url_for('home_pageV2'))
+        if db.session.query(User).filter_by(username=request.form['Username']).count() == 0:
+            h_password = bcrypt.hashpw(request.form['password'].encode(bcryptCode), bcrypt.gensalt())
+            username = request.form['Username']
+            fname = request.form['FirstName']
+            lname = request.form['LastName']
+            new_user = User(fname, lname, username, h_password)
+            db.session.add(new_user)
+            db.session.commit()
+            session['user'] = username
+            session['user_id'] = new_user.id
+            return redirect(url_for('home_pageV2'))
     return render_template('RegisterV2.html')
 
 @app.route('/home_page')
@@ -77,6 +78,7 @@ def login():
     if request.method == 'POST':
         # for i in request.form:
         #     print(str(i) + ": " + str(request.form[i]))
+
         the_user = db.session.query(User).filter_by(username=request.form['Username']).one_or_none()
         if the_user == None:
             return render_template('LoginV2.html')
