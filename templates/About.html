@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+
     <!--Head Section-->
     <head>
         <meta charset = "UTF-8">
@@ -12,13 +12,13 @@
 
     <!--Body Section-->
     <body id = "profile-page-body">
-        
+
        <!--Header Section-->
        <header id = "home-header">
 
             <!--Logo and Title Section-->
             <div id = "top-wrapper">
-                
+
                 <!--Resume+ Logo-->
                 <div id = "circle-logo"></div>
 
@@ -33,14 +33,14 @@
                 <!--NavBar-->
                 <nav class = "navbar-wrapper">
                     <ul>
-                        <li><a href = "About.html">About</a></li>
+                        <li><a href = "{{url_for('about')}}">About</a></li>
                         <li><a href = "">Messages</a></li>
                         <li><a href = "Support.html">Support</a></li>
                     </ul>
-            
+
                     <!--Dropdown button-->
                     <div class = "dropdown-container dropdown">
-                    
+
                         <!--Button for dropdown-->
                         <button class = "edit-button dropbtn">Account</button>
 
@@ -57,7 +57,7 @@
 
         <!--Main Section-->
         <main>
-            
+
             <!--About Page Header Section-->
             <div id = "about-wrapper">
 
@@ -71,17 +71,17 @@
 
                 <!--Explantation one-->
                 <div id = "explantation-one">
-                    <p>Through a team of college students, driven to give users<br> the best opportunity to illustrate and 
+                    <p>Through a team of college students, driven to give users<br> the best opportunity to illustrate and
                         present their work<br> to recruiter.</p>
                 </div>
 
                 <!--Explantation two-->
                 <div id = "explantation-two">
-                    <p>As college students we recognize that by applying to job positions through applications and<br> multiple 
-                        interview we understand the flaws and nature of how inefficient the current job<br> recruitment system is 
+                    <p>As college students we recognize that by applying to job positions through applications and<br> multiple
+                        interview we understand the flaws and nature of how inefficient the current job<br> recruitment system is
                         structured. One of the major flaws that is highly noticeable is that job<br> seekers are unable to actually
-                        distinguish themselves from other applicants. In order to solve<br> this issue we created this software so 
-                        users are able to present themselves of their true worth<br> and recruiter can find the best possible 
+                        distinguish themselves from other applicants. In order to solve<br> this issue we created this software so
+                        users are able to present themselves of their true worth<br> and recruiter can find the best possible
                         candidate.</p>
                 </div>
             </div>
@@ -101,7 +101,7 @@
 
                     <!--Product Manager-->
                     <div class = "team-list">
-                        
+
                         <!--Team Photo-->
                         <div class = "team-photo">
                             <img src = "../static/image/profile.jpg" class = "team-picture team-pic">
@@ -116,7 +116,7 @@
 
                     <!--Product Manager-->
                     <div class = "team-list">
-                        
+
                         <!--Team Photo-->
                         <div class = "team-photo">
                             <img src = "../static/image/profile.jpg" class = "team-picture">
@@ -131,7 +131,7 @@
 
                     <!--Product Manager-->
                     <div class = "team-list">
-                        
+
                         <!--Team Photo-->
                         <div class = "team-photo">
                             <img src = "../static/image/profile.jpg" class = "team-picture">
@@ -146,7 +146,7 @@
 
                     <!--Product Manager-->
                     <div class = "team-list">
-                        
+
                         <!--Team Photo-->
                         <div class = "team-photo">
                             <img src = "../static/image/profile.jpg" class = "team-picture">
@@ -161,7 +161,7 @@
 
                     <!--Product Manager-->
                     <div class = "team-list">
-                        
+
                         <!--Team Photo-->
                         <div class = "team-photo">
                             <img src = "../static/image/profile.jpg" class = "team-picture team-pic">
@@ -179,7 +179,7 @@
 
         <!--Footer Section-->
         <footer id = "footer">
-            
+
             <!--About Section of ResumePlus-->
             <div id = "about">
                 <h2>Resume+</h2>
@@ -195,8 +195,8 @@
                 <!--Links to other pages in ResumePlus-->
                 <div id = "explore-links">
                     <a href = "Home.html">Home</a><br>
-                    <br><a href = "#">About</a><br>
-                    <br><a href = "#">Support</a>
+                    <br><a href = "{{url_for('about')}}">About</a><br>
+                    <br><a href = "{{ url_for('support') }}">Support</a>
                 </div>
             </div>
 

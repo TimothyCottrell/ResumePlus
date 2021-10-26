@@ -83,6 +83,10 @@ def logout():
         session.clear()
     return redirect(url_for('login'))
 
+@app.route('/about')
+def about():
+    return render_template('About.html')
+
 @app.route('/<user>/delete')
 def delete_account(user):
     the_user = db.session.query(User).filter_by(username=user).one_or_none()
