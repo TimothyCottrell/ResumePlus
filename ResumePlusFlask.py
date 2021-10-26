@@ -32,18 +32,19 @@ def landing():
 @app.route('/register', methods=['POST', 'GET'])
 def register():
     if request.method == 'POST':
-        # for i in request.form:
-        #     print(str(i) + ": " + str(request.form[i]))
-        h_password = bcrypt.hashpw(request.form['password'].encode(bcryptCode), bcrypt.gensalt())
-        username = request.form['username'].lower()
-        fname = request.form['fname']
-        lname = request.form['lname']
-        new_user = User(fname, lname, username, h_password)
-        db.session.add(new_user)
-        db.session.commit()
-        session['user'] = new_user.username
-        session['user_id'] = new_user.id
-        return redirect(url_for('home_page'))
+        if db.session.query(User).filter_by(username=request.form['username'].lower()).count() == 0:
+            # for i in request.form:
+            #     print(str(i) + ": " + str(request.form[i]))
+            h_password = bcrypt.hashpw(request.form['password'].encode(bcryptCode), bcrypt.gensalt())
+            username = request.form['username'].lower()
+            fname = request.form['fname']
+            lname = request.form['lname']
+            new_user = User(fname, lname, username, h_password)
+            db.session.add(new_user)
+            db.session.commit()
+            session['user'] = new_user.username
+            session['user_id'] = new_user.id
+            return redirect(url_for('home_page'))
     return render_template('Register.html')
 
 @app.route('/home_page')
