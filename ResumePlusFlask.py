@@ -35,7 +35,7 @@ def register():
         # for i in request.form:
         #     print(str(i) + ": " + str(request.form[i]))
         h_password = bcrypt.hashpw(request.form['password'].encode(bcryptCode), bcrypt.gensalt())
-        username = request.form['username']
+        username = request.form['username'].lower()
         fname = request.form['fname']
         lname = request.form['lname']
         new_user = User(fname, lname, username, h_password)
@@ -57,11 +57,11 @@ def login():
     if request.method == 'POST':
         # for i in request.form:
         #     print(str(i) + ": " + str(request.form[i]))
-        the_user = db.session.query(User).filter_by(username=request.form['username']).one_or_none()
+        the_user = db.session.query(User).filter_by(username=request.form['username'].lower()).one_or_none()
         if the_user == None:
             return render_template('Login.html')
         if bcrypt.checkpw(request.form['password'].encode(bcryptCode), the_user.password):
-            session['user'] = the_user.username
+            session['user'] = the_user.username.lower()
             session['user_id'] = the_user.id
             return redirect(url_for('home_page'))
         return render_template('Login.html')
