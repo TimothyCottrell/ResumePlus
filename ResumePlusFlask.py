@@ -36,7 +36,9 @@ def register():
         #     print(str(i) + ": " + str(request.form[i]))
         h_password = bcrypt.hashpw(request.form['password'].encode(bcryptCode), bcrypt.gensalt())
         username = request.form['username']
-        new_user = User(username, h_password)
+        fname = request.form['fname']
+        lname = request.form['lname']
+        new_user = User(fname, lname, username, h_password)
         db.session.add(new_user)
         db.session.commit()
         session['user'] = new_user.username
@@ -68,7 +70,8 @@ def login():
 
 @app.route('/account/settings')
 def settings():
-    return render_template('Setting.html', user=session['user'])
+    user = db.session.query(User).filter_by(username=session.get('user')).one()
+    return render_template('Setting.html', user=user)
 
 @app.route('/support')
 def support():

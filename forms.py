@@ -10,7 +10,7 @@ class RegisterForm(FlaskForm):
         csrf = False
 
     username = StringField('Username', validators=[Length(1, 10)])
-
+    
     email = StringField('Email',
                         [Email(message='Not a valid email address.'), DataRequired()])
 
