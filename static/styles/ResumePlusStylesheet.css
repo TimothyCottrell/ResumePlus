@@ -900,3 +900,87 @@ textarea {
 .heading-description {
     text-align: center;
 }
+
+/************************** About Us Page *************************/
+
+/* Style about page top heading */
+#about-wrapper {
+    background-color: #3982FA;
+    width: 100%;
+    height: 465px;
+    margin: 0;
+    color: white;
+    padding-left: 500px;
+    font-size: 20px;
+}
+
+/* Style the heading */
+#about-wrapper h1 {
+    margin: 0;
+    padding-top: 50px;
+}
+
+/* Style the paragraph */
+#about-wrapper p {
+    font-size: 60px;
+    text-transform: uppercase;
+    line-height: 70px;
+}
+
+/* Style explantation section */
+#explantation {
+    text-align: center;
+    border: 1px solid;
+    margin: 30px 30px 30px 30px;
+    padding: 5px 0 5px 0;
+}
+
+/* Style explantation section */
+#explantation-one p {
+    color:#3982FA;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 40px;
+    letter-spacing: 1px;
+}
+
+/* Style explantation section */
+#explantation-two p  {
+    text-align: center;
+    font-size: 18px;
+}
+
+/* Style the team heading */
+#about-heading {
+    padding-left: 30px;
+}
+
+/* Style team wrapper */
+#team-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 20px;
+}
+
+/* Style team picture */
+.team-picture {
+    padding-left: 35px;
+    width: 80px;
+    height: 80px; 
+}
+
+/* Style team picture */
+.team-pic {
+    padding-right: 30px;
+}
+
+/* Style team members name and position */
+.team-name {
+    text-align: center;
+    font-size: 12px;
+}
+
+/* Style team position */
+.team-name p {
+    font-size: 18px;
+}
