@@ -54,7 +54,7 @@
 
                         <!--Dropdown Menu-->
                         <div class = "dropdown-content">
-                            <a href = "Profile.html" class = "dropdown-menu">Profile</a>
+                            <a href = "#" class = "dropdown-menu">Profile</a>
                             <a href = "{{ url_for('settings') }}" class = "dropdown-menu">Setting</a>
                             <a href = "{{ url_for('logout') }}" class = "dropdown-menu">Log Out</a>
                         </div>
@@ -933,9 +933,9 @@
 
                 <!--Links to other pages in ResumePlus-->
                 <div id = "explore-links">
-                    <a href = "Home.html">Home</a><br>
-                    <br><a href = "#">About</a><br>
-                    <br><a href = "#">Support</a>
+                    <a href = "{{url_for('landing')}}">Home</a><br>
+                    <br><a href = "{{url_for('about')}}">About</a><br>
+                    <br><a href = "{{url_for(support)}}">Support</a>
                 </div>
             </div>
 
