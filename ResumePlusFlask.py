@@ -32,18 +32,23 @@ def landing():
 @app.route('/register', methods=['POST', 'GET'])
 def register():
     if request.method == 'POST':
-        # for i in request.form:
-        #     print(str(i) + ": " + str(request.form[i]))
-        h_password = bcrypt.hashpw(request.form['password'].encode(bcryptCode), bcrypt.gensalt())
-        username = request.form['username'].lower()
-        fname = request.form['fname']
-        lname = request.form['lname']
-        new_user = User(fname, lname, username, h_password)
-        db.session.add(new_user)
-        db.session.commit()
-        session['user'] = new_user.username
-        session['user_id'] = new_user.id
-        return redirect(url_for('home_page'))
+        if db.session.query(User).filter_by(username=request.form['username']).count() == 0:
+            # for i in request.form:
+            #     print(str(i) + ": " + str(request.form[i]))
+            h_password = bcrypt.hashpw(request.form['password'].encode(bcryptCode), bcrypt.gensalt())
+            username = request.form['username']
+            fname = request.form['fname']
+            lname = request.form['lname']
+            new_user = User(fname, lname, username, h_password)
+            db.session.add(new_user)
+            db.session.commit()
+            session['user'] = new_user.fname
+            session['email'] = new_user.username
+            session['user_id'] = new_user.id
+            return redirect(url_for('home_page'))
+        else:
+            # Insert case for if the username is already taken
+            return render_template('Register.html')
     return render_template('Register.html')
 
 @app.route('/home_page')
@@ -57,11 +62,14 @@ def login():
     if request.method == 'POST':
         # for i in request.form:
         #     print(str(i) + ": " + str(request.form[i]))
-        the_user = db.session.query(User).filter_by(username=request.form['username'].lower()).one_or_none()
+        the_user = db.session.query(User).filter_by(username=request.form['username']).one_or_none()
         if the_user == None:
-            return render_template('Login.html')
+            the_user = db.session.query(User).filter_by(fname=request.form['username']).one_or_none()
+            if the_user == None:
+                return render_template('Login.html')
         if bcrypt.checkpw(request.form['password'].encode(bcryptCode), the_user.password):
-            session['user'] = the_user.username.lower()
+            session['user'] = the_user.fname
+            session['email'] = the_user.username
             session['user_id'] = the_user.id
             return redirect(url_for('home_page'))
         return render_template('Login.html')
@@ -70,11 +78,15 @@ def login():
 
 @app.route('/account/settings')
 def settings():
-    user = db.session.query(User).filter_by(username=session.get('user')).one()
-    return render_template('Setting.html', user=user)
+    the_user = db.session.query(User).filter_by(username=session.get('email')).one_or_none()
+    if the_user:
+        return render_template('Setting.html', user=the_user)
+    return(redirect(url_for('login')))
 
 @app.route('/support')
 def support():
+    if session.get('user'):
+        return render_template('Support.html', user=session['user'])
     return render_template('Support.html')
 
 @app.route('/logout')
@@ -85,15 +97,16 @@ def logout():
 
 @app.route('/about')
 def about():
-    return render_template('About.html')
+    return render_template('About.html', user=session['user'])
 
-@app.route('/<user>/delete')
-def delete_account(user):
-    the_user = db.session.query(User).filter_by(username=user).one_or_none()
+@app.route('/<fname>/delete')
+def delete_account(fname):
+    the_user = db.session.query(User).filter_by(username=session.get('email')).one_or_none()
     db.session.delete(the_user)
     session.clear()
-    session.commit()
+    db.session.commit()
     return redirect(url_for('home_page'))
+
 app.run(host=os.getenv('IP', '127.0.0.1'), port=int(os.getenv('PORT', 5000)), debug=True)
 
 # To see the web page in your web browser, go to the url,
