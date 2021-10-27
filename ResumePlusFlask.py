@@ -71,8 +71,10 @@ def login():
 
 @app.route('/account/settings')
 def settings():
-    user = db.session.query(User).filter_by(username=session.get('user')).one()
-    return render_template('Setting.html', user=user)
+    user = db.session.query(User).filter_by(username=session.get('user')).one_or_none()
+    if user:
+        return render_template('Setting.html', user=user)
+    return(redirect(url_for('login')))
 
 @app.route('/support')
 def support():
