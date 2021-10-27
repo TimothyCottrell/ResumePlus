@@ -57,7 +57,18 @@
 
         <!--Main Section-->
         <main>
+          <script>
+              function save_resume() {
+                var html = document.getElementById("sample_resume_div")
+                console.log(html)
+              }
+          </script>
 
+          <div id="sample_resume_div">
+            <h1>Sample Header</h1>
+            <p> This is a sample paragraph for testing purposes only</p>
+          </div>
+          <button onclick="save_resume()"> SAVE </button>
         </main>
 
         <!--Footer Section-->
