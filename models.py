@@ -15,3 +15,8 @@ class User(db.Model):
 
     def __repr__(self):
         return f"User('{self.id}', '{self.username}', '{self.fname}', '{self.lname}','{self.password}')"
+
+#Just a start still gotta lot of planning to do
+# class Resume(db.Model):
+#     id = db.Column("id", db.Integer, primary_key=True)
+    

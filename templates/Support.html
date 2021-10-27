@@ -35,7 +35,7 @@
                 <!--NavBar-->
                 <nav class = "navbar-wrapper">
                     <ul>
-                        <li><a href = "">About</a></li>
+                        <li><a href = "{{url_for('about')}}">About</a></li>
                         <li><a href = "">Messages</a></li>
                         <li><a href = "{{ url_for('support') }}">Support</a></li>
                     </ul>
@@ -140,9 +140,9 @@
 
                 <!--Links to other pages in ResumePlus-->
                 <div id = "explore-links">
-                    <a href = "Home.html">Home</a><br>
-                    <br><a href = "#">About</a><br>
-                    <br><a href = "#">Support</a>
+                    <a href = "{{url_for('landing')}}">Home</a><br>
+                    <br><a href = "{{url_for('about')}}">About</a><br>
+                    <br><a href = "{{url_for('support')}}">Support</a>
                 </div>
             </div>
 

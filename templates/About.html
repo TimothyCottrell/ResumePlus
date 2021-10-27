@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <!--Head Section-->
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+        <title>ResumePlus Profile</title>
+
+        <link rel = "stylesheet" type = "text/css" href = "../static/styles/ResumePlusStylesheet.css">
+    </head>
+
+    <!--Body Section-->
+    <body id = "profile-page-body">
+
+       <!--Header Section-->
+       <header id = "home-header">
+
+            <!--Logo and Title Section-->
+            <div id = "top-wrapper">
+
+                <!--Resume+ Logo-->
+                <div id = "circle-logo"></div>
+
+                <!--Title-->
+                <h1 id = "title">Resume+</h1>
+
+                <!--Search bar-->
+                <div class = "search">
+                    <input type = "text" placeholder = "Search" id = "search-bar">
+                </div>
+
+                <!--NavBar-->
+                <nav class = "navbar-wrapper">
+                    <ul>
+                        <li><a href = "{{url_for('about')}}">About</a></li>
+                        <li><a href = "">Messages</a></li>
+                        <li><a href = "{{url_for('support')}}">Support</a></li>
+                    </ul>
+
+                    <!--Dropdown button-->
+                    <div class = "dropdown-container dropdown">
+
+                        <!--Button for dropdown-->
+                        <button class = "edit-button dropbtn">Account</button>
+
+                        <!--Dropdown Menu-->
+                        <div class = "dropdown-content">
+                            <a href = "Profile.html" class = "dropdown-menu">Profile</a>
+                            <a href = "Setting.html" class = "dropdown-menu">Setting</a>
+                            <a href = "#" class = "dropdown-menu">Log Out</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <!--Main Section-->
+        <main>
+
+            <!--About Page Header Section-->
+            <div id = "about-wrapper">
+
+                <!--About Us Page-->
+                <h1>About Us</h1>
+                <p>Creating Opportunities<br> to fully express<br> yourself</p>
+            </div>
+
+            <!--Explantation of Resume+-->
+            <div id = "explantation">
+
+                <!--Explantation one-->
+                <div id = "explantation-one">
+                    <p>Through a team of college students, driven to give users<br> the best opportunity to illustrate and
+                        present their work<br> to recruiter.</p>
+                </div>
+
+                <!--Explantation two-->
+                <div id = "explantation-two">
+                    <p>As college students we recognize that by applying to job positions through applications and<br> multiple
+                        interview we understand the flaws and nature of how inefficient the current job<br> recruitment system is
+                        structured. One of the major flaws that is highly noticeable is that job<br> seekers are unable to actually
+                        distinguish themselves from other applicants. In order to solve<br> this issue we created this software so
+                        users are able to present themselves of their true worth<br> and recruiter can find the best possible
+                        candidate.</p>
+                </div>
+            </div>
+
+            <!--Team member of who created Resume+-->
+            <div id = "team-member">
+
+                <!--Team Heading-->
+                <div id = "about-heading">
+
+                    <!--Heading-->
+                    <h1>Our Team</h1>
+                </div>
+
+                <!--Team Members-->
+                <div id = "team-wrapper">
+
+                    <!--Product Manager-->
+                    <div class = "team-list">
+
+                        <!--Team Photo-->
+                        <div class = "team-photo">
+                            <img src = "../static/image/profile.jpg" class = "team-picture team-pic">
+                        </div>
+
+                        <!--Team Name and Position-->
+                        <div class = "team-name">
+                            <h1>Name</h1>
+                            <p>Product Manager</p>
+                        </div>
+                    </div>
+
+                    <!--Product Manager-->
+                    <div class = "team-list">
+
+                        <!--Team Photo-->
+                        <div class = "team-photo">
+                            <img src = "../static/image/profile.jpg" class = "team-picture">
+                        </div>
+
+                        <!--Team Name and Position-->
+                        <div class = "team-name">
+                            <h1>Name</h1>
+                            <p>Full-Stack Developer</p>
+                        </div>
+                    </div>
+
+                    <!--Product Manager-->
+                    <div class = "team-list">
+
+                        <!--Team Photo-->
+                        <div class = "team-photo">
+                            <img src = "../static/image/profile.jpg" class = "team-picture">
+                        </div>
+
+                        <!--Team Name and Position-->
+                        <div class = "team-name">
+                            <h1>Name</h1>
+                            <p>Back-End Developer</p>
+                        </div>
+                    </div>
+
+                    <!--Product Manager-->
+                    <div class = "team-list">
+
+                        <!--Team Photo-->
+                        <div class = "team-photo">
+                            <img src = "../static/image/profile.jpg" class = "team-picture">
+                        </div>
+
+                        <!--Team Name and Position-->
+                        <div class = "team-name">
+                            <h1>Name</h1>
+                            <p>Front-End Developer</p>
+                        </div>
+                    </div>
+
+                    <!--Product Manager-->
+                    <div class = "team-list">
+
+                        <!--Team Photo-->
+                        <div class = "team-photo">
+                            <img src = "../static/image/profile.jpg" class = "team-picture team-pic">
+                        </div>
+
+                        <!--Team Name and Position-->
+                        <div class = "team-name">
+                            <h1>Name</h1>
+                            <p>UX/UI Designer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!--Footer Section-->
+        <footer id = "footer">
+
+            <!--About Section of ResumePlus-->
+            <div id = "about">
+                <h2>Resume+</h2>
+                <p>Creating opportunities by allowing your true worth show.</p>
+            </div>
+
+            <!--Explore ResumePlus-->
+            <div id = "explore">
+
+                <!--Heading-->
+                <h3 class = "footer-heading">Explore</h3>
+
+                <!--Links to other pages in ResumePlus-->
+                <div id = "explore-links">
+                    <a href = "{{url_for('landing')}}">Home</a><br>
+                    <br><a href = "{{url_for('about')}}">About</a><br>
+                    <br><a href = "{{ url_for('support') }}">Support</a>
+                </div>
+            </div>
+
+            <!--Visit ReumePlus-->
+            <div id = "visit">
+
+                <!--Heading-->
+                <h3>Visit</h3>
+
+                <!--ResumePlus location-->
+                <p>University of North Carolina Charlotte</p>
+                <p>9201 University City Blvd</p>
+                <p>Charlotte, NC, 28223</p>
+            </div>
+
+            <!--Contact ResumePlus-->
+            <div id = "contact">
+
+                <!--Heading-->
+                <h3>Contact</h3>
+
+                <!--ResumePlus contact informtion-->
+                <p>resumeplus@gmail.com</p>
+                <p>704-123-123</p>
+            </div>
+
+            <!--Legal-->
+            <div id = "legal">
+
+                <!--Heading-->
+                <h3>Legal</h3>
+
+                <!--Links to Terms and Privacy-->
+                <a href = "#">Terms</a><br>
+                <br><a href = "#">Privacy</a>
+            </div>
+        </footer>
+    </body>
+</html>
