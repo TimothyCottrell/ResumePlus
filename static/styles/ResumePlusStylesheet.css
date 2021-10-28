@@ -584,7 +584,7 @@ input[type = password] {
 
 /* Style account setting border size */
 #account-setting {
-    height: 2995px;
+    height: 4250px;
 }
 
 /* Style user edit button */
@@ -656,6 +656,11 @@ input [type = date] {
 /* Style save button */
 #save-button {
     padding-top: 15px;
+}
+
+/* Style skill description */
+#skill-description, .accomplishment-description {
+    color: #BEBEBE;
 }
 
 /* Style solid line */

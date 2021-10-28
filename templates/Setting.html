@@ -5,7 +5,7 @@
     <head>
         <meta charset = "UTF-8">
         <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
-        <title>ResumePlus Home Page</title>
+        <title>ResumePlus Setting</title>
 
         <!--CSS Files-->
         <link rel = "stylesheet" type = "text/css" href = "../static/styles/ResumePlusStylesheet.css">
@@ -46,19 +46,26 @@
                         <li><a href = "{{ url_for('support') }}">Support</a></li>
                     </ul>
 
-                    <!--Dropdown button-->
-                    <div class = "dropdown-container dropdown">
+                    {% if user %}
+                        <!--Dropdown button-->
+                        <div class = "dropdown-container dropdown">
 
-                        <!--Button for dropdown-->
-                        <button class = "edit-button dropbtn">Account</button>
+                            <!--Button for dropdown-->
+                            <button class = "edit-button dropbtn">Account</button>
 
-                        <!--Dropdown Menu-->
-                        <div class = "dropdown-content">
-                            <a href = "#" class = "dropdown-menu">Profile</a>
-                            <a href = "{{ url_for('settings') }}" class = "dropdown-menu">Setting</a>
-                            <a href = "{{ url_for('logout') }}" class = "dropdown-menu">Log Out</a>
+                                <!--Dropdown Menu-->
+                                <div class = "dropdown-content">
+                                    <a href = "#" class = "dropdown-menu">Profile</a>
+                                    <a href = "{{ url_for('settings') }}" class = "dropdown-menu">Setting</a>
+                                    <a href = "{{ url_for('logout') }}" class = "dropdown-menu">Log Out</a>
+                                </div>
+                        </div>            
+                    {% else %}
+                        <div class = "dropdown-container dropdown" id = "user-button">
+                            <a href = "{{ url_for('login') }}"><button class = "sign-button" id = "signin-button">Sign In</button></a>
+                            <a href = "{{ url_for('register') }}"><button class = "sign-button">Sign Up</button></a>
                         </div>
-                    </div>
+                    {% endif %}
                 </nav>
             </div>
         </header>
@@ -674,6 +681,29 @@
                             </div>
                         </div>
 
+                        <!--List of skills-->
+                        <div id = "user-skills">
+                            
+                            <!--Heading-->
+                            <h1>Skills</h1>
+
+                            <!--Description on how to update skills-->
+                            <p id = "skill-description">If multiple skills, list them in commas</p>
+
+                            <!--Text box-->
+                            <textarea></textarea>
+                        </div>
+
+                        <!--Button for password change-->
+                        <div id = "save-button">
+                            <button>Save</button>
+                        </div>
+
+                        <!--Divider Line-->
+                        <div class = "solid-line" id = "line">
+                            <div class = "line"></div>
+                        </div>
+
                         <!--Work And Volunteer Experience-->
                         <div id = "user-edit-work">
 
@@ -740,6 +770,82 @@
                             <div class = "line"></div>
                         </div>
 
+                        <!--User list of certification-->
+                        <div id = "user-certification">
+
+                            <!--Heading-->
+                            <h1>License & Certification </h1>
+
+                            <!--Certification Name-->
+                            <label>License/Ceritifcation Name</label>
+                            <input type = "text"><br>
+
+                            <!--License/Certification Company-->
+                            <label>License/Ceritifcation Company (Who issue it)</label>
+                            <input type = "text">
+
+                            <!--Start Time and End Time-->
+                            <div class = "info">
+
+                                <!--Start Time-->
+                                <div class = "info-container"><br>
+                                    <label>Start Time</label>
+
+                                    <div class = "info-input">
+                                        <input type = "text" class = "date-picker">
+                                    </div>
+                                </div>
+
+                                <!--End Time-->
+                                <div class = "info-container"><br>
+                                    <label>End Time</label>
+
+                                    <div class = "info-input">
+                                        <input type = "text" class = "date-picker">
+                                    </div>
+                                </div>
+                            </div><br>
+
+                            <!--User Issue Date-->
+                            <label>License/Ceritifcation Date Issue</label>
+                            <input type = "text">
+                        </div>
+
+                        <!--Button for password change-->
+                        <div id = "save-button">
+                            <button>Save</button>
+                        </div>
+
+                        <!--Divider Line-->
+                        <div class = "solid-line" id = "line" id = "solid-line">
+                            <div class = "line"></div>
+                        </div>
+
+                        <!--User accomplishment-->
+                        <div id = "user-accomplishment">
+
+                            <!--Heading-->
+                            <h1>Accomplishments</h1>
+
+                            <!--User list of courses-->
+                            <p class = "accomplishment-description">List Courses</p>
+                            <textarea></textarea>
+
+                            <!--User list of languages-->
+                            <p class = "accomplishment-description">List Languages</p>
+                            <textarea></textarea>
+                        </div>
+
+                        <!--Button for password change-->
+                        <div id = "save-button">
+                            <button>Save</button>
+                        </div>
+
+                        <!--Divider Line-->
+                        <div class = "solid-line" id = "line" id = "solid-line">
+                            <div class = "line"></div>
+                        </div><br>
+
                         <!--User can link google account-->
                         <div class = "link-account">
 
@@ -768,7 +874,7 @@
                         <!--Divider Line-->
                         <div class = "solid-line" id = "line2">
                             <div class = "line"></div>
-                        </div>
+                        </div> 
 
                         <!--Delete Account-->
                         <div id = "delete-account">
@@ -782,7 +888,7 @@
 
                                 <!--Conntect Google Account-->
                                 <div class = "delete-button">
-                                    <a href = "{{ url_for('delete_account', user=user) }}"><button>Delete Account</button></a>
+                                    <a href = "{{ url_for('delete_account', fname=user.fname) }}"><button>Delete Account</button></a>
                                 </div>
                             </div>
                         </div>
