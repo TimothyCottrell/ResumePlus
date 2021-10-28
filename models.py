@@ -13,9 +13,10 @@ class User(db.Model):
         self.fname = fname
         self.lname = lname
         self.password = pwd
+        #self.pfp = pfp
 
     def __repr__(self):
-        return f"User('{self.id}', '{self.username}', '{self.fname}', '{self.lname}','{self.password}')"
+        return f"User('{self.id}', '{self.username}', '{self.fname}', '{self.lname}','{self.password}', '{self.pfp}')"
 
 #Just a start still gotta lot of planning to do
 class Resume(db.Model):
