@@ -1,138 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!--Head Section-->
-<head>
-    <meta charset = "UTF-8">
-    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
-    <title>ResumePlus Landing Page</title>
+    <!--Head Section-->
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+        <title>ResumePlus Landing Page</title>
 
-    <link rel = "stylesheet" type = "text/css" href = "../static/styles/ResumePlusStylesheet.css">
-</head>
+        <link rel = "stylesheet" type = "text/css" href = "../static/styles/ResumePlusStylesheet.css">
+    </head>
 
-<!--Body Section-->
-<body>
+    <!--Body Section-->
+    <body>
 
-    <!--Header Section-->
-    <header id = "home-header">
+        <!--Header Section-->
+        <header id = "home-header">
 
-        <!--Logo and Title Section-->
-        <div id = "top-wrapper">
+            <!--Logo and Title Section-->
+            <div id = "top-wrapper">
 
-            <!--Resume+ Logo-->
-            <div id = "circle-logo"></div>
+                <!--Resume+ Logo-->
+                <div id = "circle-logo"></div>
 
-            <!--Title-->
-            <h1 id = "title">Resume+</h1>
+                <!--Title-->
+                <h1 id = "title">Resume+</h1>
 
-            <!--Search bar-->
-            <div class = "search">
-                <input type = "text" placeholder = "Search" id = "search-bar">
+                <!--Search bar-->
+                <div class = "search">
+                    <input type = "text" placeholder = "Search" id = "search-bar">
+                </div>
+
+                <!--NavBar-->
+                <nav class = "navbar-wrapper">
+                    <ul>
+                        <li><a href = "{{url_for('about')}}">About</a></li>
+                        <li><a href = "">Messages</a></li>
+                        <li><a href = "{{ url_for('support') }}">Support</a></li>
+                    </ul>
+            
+                    {% if user %}
+                        <!--Dropdown button-->
+                        <div class = "dropdown-container dropdown">
+
+                            <!--Button for dropdown-->
+                            <button class = "edit-button dropbtn">Account</button>
+
+                                <!--Dropdown Menu-->
+                                <div class = "dropdown-content">
+                                    <a href = "#" class = "dropdown-menu">Profile</a>
+                                    <a href = "{{ url_for('settings') }}" class = "dropdown-menu">Setting</a>
+                                    <a href = "{{ url_for('logout') }}" class = "dropdown-menu">Log Out</a>
+                                </div>
+                        </div>            
+                    {% else %}
+                        <div class = "dropdown-container dropdown" id = "user-button">
+                            <a href = "{{ url_for('login') }}"><button class = "sign-button" id = "signin-button">Sign In</button></a>
+                            <a href = "{{ url_for('register') }}"><button class = "sign-button">Sign Up</button></a>
+                        </div>
+                    {% endif %}
+                </nav>
+            </div>
+        </header>
+
+        <!--Main Section-->
+        <main>
+            <div class="top">
+                <h1>Show your true worth</h1>
+                <h3>Traditional resumes do not offer the full picture</h3>
+                <a href = "{{ url_for('login') }}"><button class = "signIn-button" id = "signin-button">Sign In</button></a>
             </div>
 
-            <!--NavBar-->
-            <nav class = "navbar-wrapper">
-                <ul>
-                    <li><a href = "{{url_for('about')}}">About</a></li>
-                    <li><a href = "">Messages</a></li>
-                    <li><a href = "{{ url_for('support') }}">Support</a></li>
-                </ul>
-        
-                {% if user %}
-                    <!--Dropdown button-->
-                    <div class = "dropdown-container dropdown">
+            <div class="buttons">
+                <div id="con">
+                    <a href = "#connect"><div id = "circle-logo"></div></a>
+                    <a href = "#connect">Connect</a>
+                </div>
+                <div id="dis">
+                    <a href = "#display"><div id = "circle-logo"></div></a>
+                    <a href = "#display">Display</a>
+                </div>
+                <div id="cre">
+                    <a href = "#create"><div id = "circle-logo"></div></a>
+                    <a href = "#create">Create</a>
+                </div>
+                <div id="enh">
+                    <a href = "#enhance"><div id = "circle-logo"></div></a>
+                    <a href = "#enhance">Enhance</a>
+                </div>
+            </div>
+            <div id="connect">
+                <div id="conn-text">
+                    <h2>Connect with others</h2>
+                    <h3>Collaborate or reach out to other professional and find potential canidates</h3>
+                </div>
+                <img src="../static/image/resume+(1).jpg" alt="hands"id="image">
+            </div>
+            <div id="display">
+                <div id="disp-text">
+                    <h2>Display</h2>
+                    <h3>Show recruiters and others your true potential. Upload videos, documents, and photos of your work</h3>
+                </div>
+                <img src="../static/image/Resume+(2).jpg" alt="lady holding IPad" id="image">
+            </div>
+            <div id="create">
+                <div id="crea-text">
+                    <h2>Create</h2>
+                    <h3>Fully customize your resume and portfolio freely with our tools or integrate and manipulate your portfolio</h3>
+                </div>
+                <img src="../static/image/resume+(3).jpg" alt="create at mac"id="image">
+            </div>
+            <div id="enhance">
+                <div id="enha-text">
+                    <h2>Enhance</h2>
+                    <h3>Further enhance and improve your portfolio and resume to better represent yourself</h3>
+                </div>
+                <img src="../static/image/resume+(4).jpg" alt="Man at Computer"id="image">
+            </div>
+        </main>
 
-                        <!--Button for dropdown-->
-                        <button class = "edit-button dropbtn">Account</button>
+        <!--Footer Section-->
+        <footer id = "footer">
 
-                            <!--Dropdown Menu-->
-                            <div class = "dropdown-content">
-                                <a href = "#" class = "dropdown-menu">Profile</a>
-                                <a href = "{{ url_for('settings') }}" class = "dropdown-menu">Setting</a>
-                                <a href = "{{ url_for('logout') }}" class = "dropdown-menu">Log Out</a>
-                            </div>
-                    </div>            
-                {% else %}
-                    <div class = "dropdown-container dropdown" id = "user-button">
-                        <a href = "{{ url_for('login') }}"><button class = "sign-button" id = "signin-button">Sign In</button></a>
-                        <a href = "{{ url_for('register') }}"><button class = "sign-button">Sign Up</button></a>
-                    </div>
-                {% endif %}
-            </nav>
-        </div>
-        <!--Message to the people-->
-        <div id = "message">
+            <!--About Section of ResumePlus-->
+            <div id = "about">
+                <h2>Resume+</h2>
+                <p>Creating opportunities by allowing your true worth show.</p>
+            </div>
 
-            <!--Message-->
-            <h1>"Traditional resumes don't offer the full picture"</h1>
+            <!--Explore ResumePlus-->
+            <div id = "explore">
 
-            <!--Search Wrapper-->
-            <div class = "search">
-                <input id = "search-bar" placeholder = "Search Portflio">
-                <button id = "search-button">Search</button>
-            </div>
-        </div>
-    </header>
+                <!--Heading-->
+                <h3 class = "footer-heading">Explore</h3>
 
-    <!--Main Section-->
-    <main>
-        <div class="top">
-            <h1>Show your true worth</h1>
-            <h3>Traditional resumes do not offer the full picture</h3>
-            <a href = "{{ url_for('login') }}"><button class = "signIn-button" id = "signin-button">Sign In</button></a>
-        </div>
+                <!--Links to other pages in ResumePlus-->
+                <div id = "explore-links">
+                    <a href = "Home.html">Home</a><br>
+                    <br><a href = "{{url_for('about')}}">About</a><br>
+                    <br><a href = "{{url_for('support')}}">Support</a>
+                </div>
+            </div>
 
-        <div class="buttons">
-            <div id="con">
-                <a href = "#connect"><div id = "circle-logo"></div></a>
-                <a href = "#connect">Connect</a>
-            </div>
-            <div id="dis">
-                <a href = "#display"><div id = "circle-logo"></div></a>
-                <a href = "#display">Display</a>
-            </div>
-            <div id="cre">
-                <a href = "#create"><div id = "circle-logo"></div></a>
-                <a href = "#create">Create</a>
-            </div>
-            <div id="enh">
-                <a href = "#enhance"><div id = "circle-logo"></div></a>
-                <a href = "#enhance">Enhance</a>
-            </div>
-        </div>
-        <div id="connect">
-            <div id="conn-text">
-                <h2>Connect with others</h2>
-                <h3>Collaborate or reach out to other professional and find potential canidates</h3>
-            </div>
-            <img src="../static/image/resume+(1).jpg" alt="hands"id="image">
-        </div>
-        <div id="display">
-            <div id="disp-text">
-                <h2>Display</h2>
-                <h3>Show recruiters and others your true potential. Upload videos, documents, and photos of your work</h3>
-            </div>
-            <img src="../static/image/Resume+(2).jpg" alt="lady holding IPad" id="image">
-        </div>
-        <div id="create">
-            <div id="crea-text">
-                <h2>Create</h2>
-                <h3>Fully customize your resume and portfolio freely with our tools or integrate and manipulate your portfolio</h3>
-            </div>
-            <img src="../static/image/resume+(3).jpg" alt="create at mac"id="image">
-        </div>
-        <div id="enhance">
-            <div id="enha-text">
-                <h2>Enhance</h2>
-                <h3>Further enhance and improve your portfolio and resume to better represent yourself</h3>
-            </div>
-            <img src="../static/image/resume+(4).jpg" alt="Man at Computer"id="image">
-        </div>
-    </main>
+            <!--Visit ReumePlus-->
+            <div id = "visit">
 
-    <!--Footer Section-->
-    <footer>
+                <!--Heading-->
+                <h3>Visit</h3>
 
-    </footer>
-</body>
+                <!--ResumePlus location-->
+                <p>University of North Carolina Charlotte</p>
+                <p>9201 University City Blvd</p>
+                <p>Charlotte, NC, 28223</p>
+            </div>
+
+            <!--Contact ResumePlus-->
+            <div id = "contact">
+
+                <!--Heading-->
+                <h3>Contact</h3>
+
+                <!--ResumePlus contact informtion-->
+                <p>resumeplus@gmail.com</p>
+                <p>704-123-123</p>
+            </div>
+
+            <!--Legal-->
+            <div id = "legal">
+
+                <!--Heading-->
+                <h3>Legal</h3>
+
+                <!--Links to Terms and Privacy-->
+                <a href = "#">Terms</a><br>
+                <br><a href = "#">Privacy</a>
+            </div>
+        </footer>
+    </body>
 </html>
