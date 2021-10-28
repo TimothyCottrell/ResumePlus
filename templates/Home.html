@@ -63,6 +63,22 @@
               function save_resume() {
                 var html = document.getElementById("sample_resume_div")
                 console.log(html)
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "/save_resume", true);
+                xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+                resume = {
+
+                };
+
+                children = html.getElementsByTagName('*');
+                var e
+                for (var i = 0; i < children.length; ++i){
+                  resume[i] = {
+                    "html" : children[i].outerHTML,
+                    "text" : children[i].innerHTML
+                  }
+                }
+                xhr.send(JSON.stringify(resume));
               }
           </script>
 

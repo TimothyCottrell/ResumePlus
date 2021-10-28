@@ -3,10 +3,11 @@ import os  # os is used to get environment variables IP & PORT
 from flask import Flask  # Flask is the web app that we will customize
 from flask import render_template
 from flask import request, Response
+from flask import jsonify
 from flask import redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
-
+import json
 from database import db
 from models import User as User
 from forms import RegisterForm, LoginForm
@@ -28,6 +29,7 @@ def landing():
     if session.get('user'):
         return redirect(url_for('home_page'))
     return render_template('Landing.html')
+
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
@@ -106,6 +108,15 @@ def delete_account(fname):
     session.clear()
     db.session.commit()
     return redirect(url_for('home_page'))
+
+@app.route('/save_resume', methods=['POST'])
+def save_resume():
+    data = request.get_data()
+    data = json.loads(data)
+    print(type(data))
+    for i in data:
+        print(data[i]['html'])
+    return data
 
 app.run(host=os.getenv('IP', '127.0.0.1'), port=int(os.getenv('PORT', 5000)), debug=True)
 
