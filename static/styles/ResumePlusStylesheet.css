@@ -58,6 +58,149 @@ body {
     padding-top: 50px;
 }
 
+.signIn-button {
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    height: 40px;
+    width: 100px;
+    background-color: white;
+    color: #3982FA;
+    border-radius: 5px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+/* Top of landing page */
+.top {
+    background-color: #3982FA;
+    color: white;
+    text-align: center;
+    padding: 8%;
+    font-family: Arial;
+}
+.top h1 {
+    font-size: 50px;
+}
+
+.top h3 {
+    font-size: 25px;
+}
+/* changes color of words under dots and removed line under link */
+a {
+    text-decoration: none;
+    color: black;
+}
+
+/* small links to bring you to different areas of landing page */
+#con {
+   display: inline-block;
+   width: auto;
+   height: 10%;
+   padding: 2% 9.5% 2%;
+   text-align: center;
+   font-family: Arial;
+}
+
+#dis {
+   display: inline-block;
+   width: auto;
+   height: 10%;
+   padding: 2% 9.5% 2%;
+   text-align: center;
+   font-family: Arial;
+}
+
+#cre {
+   display: inline-block;
+   width: auto;
+   height: 10%;
+   padding: 2% 9.5% 2%;
+   text-align: center;
+   font-family: Arial;
+}
+
+#enh {
+   display: inline-block;
+   width: auto;
+   height: 10%;
+   padding: 2% 9.5% 2%;
+   text-align: center;
+   font-family: Arial;
+}
+
+/* Bottom portion of landing page gray and white areas */
+#image {
+    width: 25%;
+    height: auto;
+    padding: 5% 9% 5%;
+}
+
+#connect {
+    background-color: #F2F2F2;
+    padding: 5%;
+}
+
+#conn-text {
+    float: right;
+    padding: 7% 11% 10%;
+    width: 25%;
+    font-family: Arial;
+}
+
+#conn-text h3{
+    color: #999999;
+}
+
+#display {
+    background-color: white;
+    padding: 5%;
+}
+
+#disp-text {
+    float: left;
+    padding: 7% 11% 10%;
+    width: 25%;
+    font-family: Arial;
+}
+
+#disp-text h3{
+    color: #999999;
+}
+
+#create {
+    background-color: #F2F2F2;
+    padding: 5%;
+}
+
+#crea-text {
+    float: right;
+    padding: 7% 11% 10%;
+    width: 25%;
+    font-family: Arial;
+}
+
+#crea-text h3{
+    color: #999999;
+}
+#enhance {
+    background-color: white;
+    padding: 5%;
+}
+
+#enha-text {
+    float: left;
+    padding: 7% 11% 10%;
+    width: 25%;
+    font-family: Arial;
+}
+
+#enha-text h3{
+    color: #999999;
+}
+
+
 /************************** Home Page *************************/
 
 /* Style background color in body*/
