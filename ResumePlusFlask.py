@@ -12,6 +12,7 @@ from database import db
 from models import User as User
 from forms import RegisterForm, LoginForm
 import bcrypt
+import pickle
 
 app = Flask(__name__)  # create an app
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///resumeplus_flask_app.db'
