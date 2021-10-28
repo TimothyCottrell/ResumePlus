@@ -62,14 +62,14 @@ def login():
     if request.method == 'POST':
         # for i in request.form:
         #     print(str(i) + ": " + str(request.form[i]))
-        the_user = db.session.query(User).filter_by(username=request.form['username']).one_or_none()
+        the_user = db.session.query(User).filter_by(email=request.form['email']).one_or_none()
         if the_user == None:
-            the_user = db.session.query(User).filter_by(fname=request.form['username']).one_or_none()
+            the_user = db.session.query(User).filter_by(username=request.form['username']).one_or_none()
             if the_user == None:
                 return render_template('Login.html')
         if bcrypt.checkpw(request.form['password'].encode(bcryptCode), the_user.password):
-            session['user'] = the_user.fname
-            session['email'] = the_user.username
+            session['user'] = the_user.username
+            session['email'] = the_user.email
             session['user_id'] = the_user.id
             return redirect(url_for('home_page'))
         return render_template('Login.html')
@@ -78,7 +78,7 @@ def login():
 
 @app.route('/account/settings')
 def settings():
-    the_user = db.session.query(User).filter_by(username=session.get('email')).one_or_none()
+    the_user = db.session.query(User).filter_by(username=session.get('username')).one_or_none()
     if the_user:
         return render_template('Setting.html', user=the_user)
     return(redirect(url_for('login')))
@@ -101,7 +101,7 @@ def about():
 
 @app.route('/<fname>/delete')
 def delete_account(fname):
-    the_user = db.session.query(User).filter_by(username=session.get('email')).one_or_none()
+    the_user = db.session.query(User).filter_by(username=session.get('username')).one_or_none()
     db.session.delete(the_user)
     session.clear()
     db.session.commit()
