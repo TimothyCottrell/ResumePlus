@@ -976,15 +976,9 @@ textarea {
     color: white;
 }
 
-/* Style support wrapper */
-#support-wrapper {
-    justify-content: center;
-}
-
 /* Style support search */
-#search-support {
-    padding-left: 550px;
-    padding-top: 30px;
+#search-support input {
+    margin: 0 auto; 
 }
 
 /* Style support search bar */
@@ -1131,4 +1125,254 @@ textarea {
 /* Style team position */
 .team-name p {
     font-size: 18px;
+}
+
+/************************** Profile Page *************************/
+
+/* Style main */
+#profile-main {
+    height: 100%;
+    margin: 0;
+    margin: 90px 200px 90px 200px;
+}
+
+/* Style profile info section */
+#profile-information {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 10px 10px;
+    background-color: white;
+    height: 250px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 .5rem 0 rgba(0, 0, 0, .2);
+}
+
+/* Style profile wrapper */
+.profile-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Style the profile image */
+#profile-image img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+/* Style profile information */
+#profile-info {
+    padding-left: 80px;
+    font-size: 20px;
+}
+
+/* Style message button */
+#message-button button {
+    width: 80px;
+    height: 40px;
+    border: 1px #3982FA solid; 
+    border-radius: 10px;
+    background-color: #3982FA;
+    color: white;
+    cursor: pointer;
+}
+
+/* Style user information */
+#user-information {
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0 20px;
+    margin-top: 50px;
+}
+
+/* Style profile solid line */
+.profile-solid {
+    border: 0.5px #C4C4C4 solid; 
+    margin: 0 20px;
+}
+
+/* Style profile line */
+#profile-solid {
+    margin: 0;
+}
+
+/* Style icons */
+.icon-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 4px;
+    font-size: 16px;
+}
+
+/* Style icon i */
+.icons i {
+    color: #3982FA;
+    margin-right: 15px;
+}
+
+/* Style the containers */
+.contact-container h1, .about-me-container h1, .skill-container h1, 
+.searches-container h1, .education-container h1, .job-container h1,
+.certification-container h1, .accomplishment-container h1 {
+    text-align: center;
+}
+
+/* Style user container */
+.contact-container, .social-media-container {
+    border: none;
+    border-radius: 5px;
+    width: 400px;
+    margin-right: 100px;
+    margin-bottom: 50px;
+    box-shadow: 0 0 .5rem 0 rgba(0, 0, 0, .2);
+    height: 250px;
+}
+
+/* Style about me container */
+.about-me-container {
+    border: none;
+    border-radius: 5px;
+    height: 250px;
+    margin-bottom: 50px;
+    box-shadow: 0 0 .5rem 0 rgba(0, 0, 0, .2);
+}
+
+/* Style user aboue me paragraph */
+#user-paragraph {
+    margin-left: 20px;
+}
+
+/* Style social media container */
+.social-media-container {
+    height: 200px;
+}
+
+/* Style user list */
+.other-user {
+    margin-left: 110px;
+}
+
+/* Style user list */
+.user-list {
+    display: flex;
+}
+
+/* Style user img */
+.user-img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    padding-top: 5px;
+}
+
+/* Style user profile */
+.user-profile {
+    padding-left: 10px;
+}
+
+/* Style user profile heading */
+.user-profile h4 {
+    padding-top: 5px;
+}
+
+/* Style user profile paragraph */
+.user-profile p {
+    position: relative;
+    top: -18px;
+    font-size: 14px;
+    color: #C4C4C4;
+}
+
+/* Style the show more button */
+#show-more-button {
+    margin-top: 5px;
+    position: relative;
+    left: 150px;
+}
+
+/* Style the show more button */
+#show-more-button button {
+    border: none;
+    background-color: white;
+    color: #C4C4C4;
+    padding-top: 5px;
+    cursor: pointer;
+}
+
+/* Style education container */
+.education-container, .skill-container, .job-container, 
+.certification-container {
+    border: none;
+    border-radius: 5px;
+    height: 200px;
+    box-shadow: 0 0 .5rem 0 rgba(0, 0, 0, .2);
+    margin-bottom: 50px;
+}
+
+/* Style education content */
+#education-content {
+    padding-left: 20px;
+}
+
+/* Style user degree, major, minor */ 
+#degree-major, #job-title, #award {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 14px;
+}
+
+/* Style skill container */
+.skill-container {
+    grid-column: 2 / -1;
+    width: 100%;
+    height: 210px;
+}
+
+/* Style search container */
+.searches-container {
+    grid-row: 2 / 5;
+    border: none;
+    border-radius: 5px;
+    width: 400px;
+    margin-right: 100px;
+    margin-bottom: 50px;
+    box-shadow: 0 0 .5rem 0 rgba(0, 0, 0, .2);
+}
+
+/* Style job container */
+.job-container, .certification-container, .accomplishment-container {
+    grid-column: 2 / -1;
+}
+
+/* Style the paragraph */
+#job-title, #company-name, #award, #company, #issue-date,
+#course, #course-list, #languages, #language-list {
+    margin-left: 20px;
+}
+
+/* Style certification container */
+.certification-container {
+    border: none;
+    border-radius: 5px;
+    height: 200px;
+    box-shadow: 0 0 .5rem 0 rgba(0, 0, 0, .2);
+}
+
+/* Style accomplishment container */
+.accomplishment-container {
+    border: none;
+    border-radius: 5px;
+    height: 200px;
+    box-shadow: 0 0 .5rem 0 rgba(0, 0, 0, .2);
+    height: 230px;
+}
+
+/* Style search container */
+.searches-container {
+    height: 495px;
 }
