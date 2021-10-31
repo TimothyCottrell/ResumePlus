@@ -36,14 +36,12 @@ def register():
             # for i in request.form:
             #     print(str(i) + ": " + str(request.form[i]))
             h_password = bcrypt.hashpw(request.form['password'].encode(bcryptCode), bcrypt.gensalt())
-            username = request.form['username']
-            fname = request.form['fname']
-            lname = request.form['lname']
-            new_user = User(fname, lname, username, h_password)
+            new_user = User(request.form['fname'], request.form['lname'], request.form['username'],
+                            request.form['email'], h_password)
             db.session.add(new_user)
             db.session.commit()
-            session['user'] = new_user.fname
-            session['email'] = new_user.username
+            session['user'] = new_user.username
+            session['email'] = new_user.email
             session['user_id'] = new_user.id
             return redirect(url_for('home_page'))
         else:
@@ -62,7 +60,7 @@ def login():
     if request.method == 'POST':
         # for i in request.form:
         #     print(str(i) + ": " + str(request.form[i]))
-        the_user = db.session.query(User).filter_by(email=request.form['email']).one_or_none()
+        the_user = db.session.query(User).filter_by(email=request.form['username']).one_or_none()
         if the_user == None:
             the_user = db.session.query(User).filter_by(username=request.form['username']).one_or_none()
             if the_user == None:
@@ -78,10 +76,10 @@ def login():
 
 @app.route('/account/settings')
 def settings():
-    the_user = db.session.query(User).filter_by(username=session.get('username')).one_or_none()
+    the_user = db.session.query(User).filter_by(username=session.get('user')).one_or_none()
     if the_user:
         return render_template('Setting.html', user=the_user)
-    return(redirect(url_for('login')))
+    return redirect(url_for('login'))
 
 @app.route('/support')
 def support():
@@ -99,9 +97,16 @@ def logout():
 def about():
     return render_template('About.html', user=session['user'])
 
+@app.route('/account/profile')
+def profile():
+    the_user = db.session.query(User).filter_by(username=session.get('user')).one_or_none()
+    if the_user:
+        return render_template('Profile.html', user=the_user)
+    return redirect(url_for('login'))
+
 @app.route('/<fname>/delete')
 def delete_account(fname):
-    the_user = db.session.query(User).filter_by(username=session.get('username')).one_or_none()
+    the_user = db.session.query(User).filter_by(username=session.get('user')).one_or_none()
     db.session.delete(the_user)
     session.clear()
     db.session.commit()
