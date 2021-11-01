@@ -1,4 +1,5 @@
 from database import db
+from sqlalchemy.dialects.sqlite import BLOB
 
 class User(db.Model):
     id = db.Column("id", db.Integer, primary_key=True)
@@ -7,6 +8,7 @@ class User(db.Model):
     fname = db.Column("fname", db.String(20))
     lname = db.Column("lname", db.String(20))
     password = db.Column("password", db.String(30))
+    resumes = db.relationship("Resume", backref="user", cascade="all, delete-orphan", lazy=True)
 
     def __init__(self, fname, lname, username, email, pwd):
         self.email = email
@@ -18,7 +20,22 @@ class User(db.Model):
     def __repr__(self):
         return f"User('{self.id}', '{self.email}', '{self.username}', '{self.fname}', '{self.lname}','{self.password}')"
 
+
 #Just a start still gotta lot of planning to do
-# class Resume(db.Model):
-#     id = db.Column("id", db.Integer, primary_key=True)
-    
+class Resume(db.Model):
+    id = db.Column("id", db.Integer, primary_key=True)
+    user_id = db.Column("user_id", db.Integer, db.ForeignKey('user.id'))
+    html = db.Column('html', BLOB)
+    category = db.Column("category", db.String(50))
+    text = db.Column('text', db.String(300))
+    headers = db.Column("headers", db.String(300))
+
+    def __init__(self, user_id, html_in, cat, text_in, headers_in):
+        self.user_id = user_id
+        self.html = html_in
+        self.category = cat
+        self.text = text_in
+        self.headers = headers_in
+
+    def __repr__(self):
+        return f"Resume('{self.id}', '{self.category}', '{self.text}', '{self.headers}')"
