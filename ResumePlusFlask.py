@@ -6,9 +6,11 @@ from flask import redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
 import json
+import bitstring
 
 from database import db
-from models import User, Resume as User, Resume
+from models import User
+from models import Resume
 from forms import RegisterForm, LoginForm
 import bcrypt
 
@@ -60,7 +62,7 @@ def login():
     if request.method == 'POST':
         # for i in request.form:
         #     print(str(i) + ": " + str(request.form[i]))
-        the_user = db.session.query(User).filter_by(email=request.form['username'], session=db.session).column_descriptions()
+        the_user = db.session.query(User).filter_by(email=request.form['username']).one_or_none()
         if the_user == None:
             the_user = db.session.query(User).filter_by(username=request.form['username']).one_or_none()
             if the_user == None:
@@ -95,7 +97,9 @@ def logout():
 
 @app.route('/about')
 def about():
-    return render_template('About.html', user=session['user'])
+    if session.get('user'):
+        return render_template('About.html', user=session['user'])
+    return render_template('About.html')
 
 @app.route('/account/profile')
 def profile():
@@ -111,12 +115,10 @@ def save_resume():
     for i in data:
         html += data[i]['html']
     bhtml = ''.join(format(x, 'b') for x in bytearray(html, 'utf-8'))
-    #print(bhtml)
     the_user = db.session.query(User).filter_by(username=session.get('user')).one_or_none()
-    new_resume = Resume(the_user.id, bhtml, None, None, None)
+    new_resume = Resume(the_user.id, bitstring.BitArray(bin=bhtml).tobytes(), None, None, None)
     db.session.add(new_resume)
     db.session.commit()
-    return new_resume
 
 @app.route('/<fname>/delete')
 def delete_account(fname):

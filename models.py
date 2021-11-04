@@ -12,12 +12,13 @@ class User(db.Model):
     recruiter = db.Column("recruiter", db.Boolean)
     resumes = db.relationship("Resume", back_populates="user")
 
-    def __init__(self, fname, lname, username, email, pwd):
+    def __init__(self, fname, lname, username, email, pwd, is_recruiter):
         self.email = email
         self.username = username
         self.fname = fname
         self.lname = lname
         self.password = pwd
+        self.recruiter = is_recruiter
 
     def __repr__(self):
         return f"User('{self.id}', '{self.email}', '{self.username}', '{self.fname}', '{self.lname}','{self.password}')"
