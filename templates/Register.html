@@ -47,7 +47,7 @@
 
                                 <!--Dropdown Menu-->
                                 <div class = "dropdown-content">
-                                    <a href = "#" class = "dropdown-menu">Profile</a>
+                                    <a href = "{{ url_for('profile') }}" class = "dropdown-menu">Profile</a>
                                     <a href = "{{ url_for('settings') }}" class = "dropdown-menu">Setting</a>
                                     <a href = "{{ url_for('logout') }}" class = "dropdown-menu">Log Out</a>
                                 </div>
@@ -92,9 +92,14 @@
                             <input type = "text" name = "lname" id = "lname" placeholder = "Last Name" aria-required = "true">
                         </span>
 
+                        <!--Username Input-->
+                        <span id = "inputForm">
+                            <input type = "text" name = "username" id = "username" placeholder = "Username" aria-required = "true">
+                        </span>
+
                         <!--Email Input-->
                         <span id = "inputForm">
-                            <input type = "text" name = "username" id = "username" placeholder = "Email" aria-required = "true">
+                            <input type = "text" name = "email" id = "email" placeholder = "Email" aria-required = "true">
                         </span>
 
                         <!--Password Input-->

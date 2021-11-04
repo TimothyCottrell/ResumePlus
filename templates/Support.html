@@ -48,7 +48,7 @@
 
                                     <!--Dropdown Menu-->
                                     <div class = "dropdown-content">
-                                        <a href = "Profile.html" class = "dropdown-menu">Profile</a>
+                                        <a href = "{{ url_for('profile') }}" class = "dropdown-menu">Profile</a>
                                         <a href = "{{ url_for('settings') }}" class = "dropdown-menu">Setting</a>
                                         <a href = "{{ url_for('logout') }}" class = "dropdown-menu">Log Out</a>
                                     </div>
