@@ -8,7 +8,8 @@ from werkzeug.utils import secure_filename
 import json
 
 from database import db
-from models import User, Resume as User, Resume
+from models import User as User
+from models import Resume as Resume
 from forms import RegisterForm, LoginForm
 import bcrypt
 
@@ -60,7 +61,7 @@ def login():
     if request.method == 'POST':
         # for i in request.form:
         #     print(str(i) + ": " + str(request.form[i]))
-        the_user = db.session.query(User).filter_by(email=request.form['username'], session=db.session).column_descriptions()
+        the_user = db.session.query(User).filter_by(username=request.form['username']).one_or_none()
         if the_user == None:
             the_user = db.session.query(User).filter_by(username=request.form['username']).one_or_none()
             if the_user == None:
