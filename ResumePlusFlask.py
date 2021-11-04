@@ -37,7 +37,7 @@ def register():
             #     print(str(i) + ": " + str(request.form[i]))
             h_password = bcrypt.hashpw(request.form['password'].encode(bcryptCode), bcrypt.gensalt())
             new_user = User(request.form['fname'], request.form['lname'], request.form['username'],
-                            request.form['email'], h_password)
+                            request.form['email'], h_password, False)
             db.session.add(new_user)
             db.session.commit()
             session['user'] = new_user.username
@@ -112,7 +112,7 @@ def save_resume():
         html += data[i]['html']
     bhtml = ''.join(format(x, 'b') for x in bytearray(html, 'utf-8'))
     #print(bhtml)
-    the_user = db.session.query(User).filter_by(username=session.get('user')).one_or_none().column_descriptions
+    the_user = db.session.query(User).filter_by(username=session.get('user')).one_or_none()
     new_resume = Resume(the_user.id, bhtml, None, None, None)
     db.session.add(new_resume)
     db.session.commit()

@@ -2,13 +2,15 @@ from database import db
 from sqlalchemy.dialects.sqlite import BLOB
 
 class User(db.Model):
+    __tablename__ = 'user'
     id = db.Column("id", db.Integer, primary_key=True)
     email = db.Column("email", db.String(100))
     username = db.Column("username", db.String(100))
     fname = db.Column("fname", db.String(20))
     lname = db.Column("lname", db.String(20))
     password = db.Column("password", db.String(30))
-    resumes = db.relationship("Resume", backref="user", cascade="all, delete-orphan", lazy=True)
+    recruiter = db.Column("recruiter", db.Boolean)
+    resumes = db.relationship("Resume", back_populates="user")
 
     def __init__(self, fname, lname, username, email, pwd):
         self.email = email
@@ -23,8 +25,10 @@ class User(db.Model):
 
 #Just a start still gotta lot of planning to do
 class Resume(db.Model):
+    __tablename__ = 'resume'
     id = db.Column("id", db.Integer, primary_key=True)
     user_id = db.Column("user_id", db.Integer, db.ForeignKey('user.id'))
+    user = db.relationship("User", back_populates="resumes")
     html = db.Column('html', BLOB)
     category = db.Column("category", db.String(50))
     text = db.Column('text', db.String(300))
