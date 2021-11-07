@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Database</title>
+
+        <link rel = "stylesheet" type = "text/css" href = "../static/styles/ResumePlusStylesheet.css">
+        <link rel = "stylesheet" type = "text/css" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    </head>
+    <body class = "database-body">
+
+        <!--Header Section-->
+        <header class = "home-header">
+
+            <!--Logo and Title Section-->
+            <div id = "top-wrapper">
+                
+                <!--Resume+ Logo-->
+                <div id = "circle-logo"></div>
+
+                <!--Title-->
+                <h1 id = "title">Resume+</h1>
+
+                <!--Search bar-->
+                <div class = "search">
+                    <input type = "text" placeholder = "Search" id = "search-bar">
+                </div>
+
+                <!--NavBar-->
+                <nav class = "navbar-wrapper">
+                    <ul>
+                        <li><a href = "">About</a></li>
+                        <li><a href = "">Messages</a></li>
+                        <li><a href = "">Support</a></li>
+                    </ul>
+                
+                    <!--Dropdown button-->
+                    <div class = "dropdown-container dropdown">
+                    
+                        <!--Button for dropdown-->
+                        <button class = "edit-button dropbtn">Account</button>
+                    
+                        <!--Dropdown Menu-->
+                        <div class = "dropdown-content">
+                            <a href = "Profile.html" class = "dropdown-menu">Profile</a>
+                            <a href = "Setting.html" class = "dropdown-menu">Setting</a>
+                            <a href = "#" class = "dropdown-menu">Log Out</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header> 
+
+        <!--Main Section-->
+        <main class = "database-main">
+
+            <!--Database Heading-->
+            <div id = "database-heading">
+                <h1>Database</h1>
+            </div>
+
+            <!--Database container-->
+            <div id = "database-container">
+
+                <!--Search and Favorite-->
+                <div id = "top-database">
+
+                    <div class = "database-header">
+
+                        <!--Search Button-->
+                        <button>Search</button>
+                        <i class = "fas fa-chevron-down"></i>
+            
+                        <!--Favorite Button-->
+                        <button>Favorites</button>
+                        <i class = "fas fa-chevron-down"></i>
+                    </div>
+                </div>
+
+                <!--Database Solid Line-->
+                <div id = "database-solid"></div>
+
+                <!--Filters for searches-->
+                <div id = "bottom-database">
+
+                    <!--Keyword Button-->
+                    <input type = "text" placeholder = "Keyword" id = "keyword-input">
+
+                    <!--Location Button-->
+                    <input type = "text" placeholder = "Location" id = "location-input">
+
+                    <!--Miles DropDown-->
+                    <div id = "mile-choice">
+                        <select id = "miles-option">
+                            <option>Miles</option>
+                            <option>0 - 30 Miles</option>
+                            <option>20 - 50 Miles</option>
+                            <option>60 - 90 Miles</option>
+                            <option>100+ Miles</option>
+                        </select>
+                    </div>
+                    
+                    <!--Search Button-->
+                    <div id = "database-div">
+                        <button id = "database-search">Search</button>
+                    </div>
+                </div>
+
+                <div id = "more-filters">
+
+                    <!--Filter searches-->
+                    <div id = "database-filter">
+
+                        <!--Show Me-->
+                        <button>Show me</button>
+                        <i class = "fas fa-chevron-down"></i>
+            
+                        <!--Position Type-->
+                        <button>Position Type</button>
+                        <i class = "fas fa-chevron-down"></i>
+
+                        <!--Industry Type-->
+                        <button>Industry</button>
+                        <i class = "fas fa-chevron-down"></i>
+
+                        <!--More Filter-->
+                        <button>More Filter</button>
+                        <i class = "fas fa-chevron-down"></i>
+                    </div>
+                </div>
+
+                <!--Database Solid Line-->
+                <div id = "database-solid"></div>
+
+                <!--Result after search-->
+                <div id = "database-results">
+                    
+                    <p>1 - 10 of # results </p>
+
+                    <!--Show More-->
+                    <div id = "filter">
+                        <button>Relevance</button>
+                        <i class = "fas fa-chevron-down"></i>
+
+                        <button>Show More</button>
+                        <i class = "fas fa-chevron-down"></i>
+                    </div>
+                </div>
+
+                <!--Database Solid Line-->
+                <div id = "database-solid"></div>
+
+                <!--Result section-->
+                <div class = "results">
+
+                    <img src = "../static/image/profile.jpg" id = "database-profile">
+
+                    <div class = "database-user">
+                        <h3>Name</h3>
+                        <p id = "database-degreeMajor">Degree, Major</p>
+                    </div>
+
+                    <p id = "locations">Locations: City, State</p>
+
+                    <!--Add to favorites-->
+                    <div id = "favorites">
+                        <i class="far fa-star"></i>
+                        <p>Favorite</p>
+                    </div>
+                </div>
+
+                <!--Database Solid Line-->
+                <div id = "database-solid"></div>
+
+                    <!--Result section-->
+                    <div class = "results">
+
+                        <img src = "../static/image/profile.jpg" id = "database-profile">
+
+                        <div class = "database-user">
+                            <h3>Name</h3>
+                            <p id = "database-degreeMajor">Degree, Major</p>
+                    </div>
+
+                    <p id = "locations">Locations: City, State</p>
+
+                    <!--Add to favorites-->
+                    <div id = "favorites">
+                        <i class="far fa-star"></i>
+                        <p>Favorite</p>
+                    </div>
+                </div>
+
+                <!--Database Solid Line-->
+                <div id = "database-solid"></div>
+
+                <!--Result section-->
+                <div class = "results">
+
+                    <img src = "../static/image/profile.jpg" id = "database-profile">
+
+                    <div class = "database-user">
+                        <h3>Name</h3>
+                        <p id = "database-degreeMajor">Degree, Major</p>
+                    </div>
+
+                    <p id = "locations">Locations: City, State</p>
+
+                    <!--Add to favorites-->
+                    <div id = "favorites">
+                        <i class="far fa-star"></i>
+                        <p>Favorite</p>
+                    </div>
+                </div>
+
+                <!--Database Solid Line-->
+                <div id = "database-solid"></div>
+
+                <!--Result section-->
+                <div class = "results">
+
+                    <img src = "../static/image/profile.jpg" id = "database-profile">
+
+                    <div class = "database-user">
+                        <h3>Name</h3>
+                        <p id = "database-degreeMajor">Degree, Major</p>
+                    </div>
+
+                    <p id = "locations">Locations: City, State</p>
+
+                    <!--Add to favorites-->
+                    <div id = "favorites">
+                        <i class="far fa-star"></i>
+                        <p>Favorite</p>
+                    </div>
+                </div>
+
+                 <!--Database Solid Line-->
+                 <div id = "database-solid"></div>
+
+                 <!--Result section-->
+                <div class = "results">
+
+                    <img src = "../static/image/profile.jpg" id = "database-profile">
+
+                    <div class = "database-user">
+                        <h3>Name</h3>
+                        <p id = "database-degreeMajor">Degree, Major</p>
+                    </div>
+
+                    <p id = "locations">Locations: City, State</p>
+
+                    <!--Add to favorites-->
+                    <div id = "favorites">
+                        <i class="far fa-star"></i>
+                        <p>Favorite</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

@@ -1628,3 +1628,178 @@ textarea {
 .searches-container {
     height: 495px;
 }
+
+/************************** Database Page *************************/
+
+/* Style the database main */
+.database-main {
+    padding: 20px 300px 0 300px;
+    background-color: white;
+    height: 100%;
+}
+
+/* Style the database container */
+#database-container {
+    border: 1px #C4C4C4 solid;
+    border-radius: 5px;
+    height: 720px;
+}
+
+/* Style top database */
+#top-database {
+    padding: 20px 0 20px 20px;
+}
+
+/* Style database button */
+.database-header button {
+    border: none;
+    background-color: white;
+    font-size: 15px;
+}
+
+/* Style the database header i */
+.database-header i {
+    font-size: 10px;
+    position: relative;
+    left: -7px;
+}
+
+/* Style databsae solid line */
+#database-solid {
+    border: 0.5px #C4C4C4 solid;
+}
+
+/* Style bottom database */
+#bottom-database, #more-filters, #database-results {
+    display: flex;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+/* Style select option */
+#mile-choice {
+    padding-top: 10px;
+}
+
+/* Style select option */
+#miles-option {
+    height: 30px;
+    width: 60px;
+    border: 1px solid #C4C4C4;
+}
+
+/* Style bottom database input */
+#bottom-database input {
+    width: 200px;
+    height: 30px;
+    margin-right: 20px;
+}
+
+/* Style the database div */
+#database-div {
+    position: relative; 
+    left: 40px;
+    top: 10px;
+}
+
+/* Style the database search button */
+#database-search {
+    width: 60px;
+    height: 30px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    background-color: #C4C4C4;
+    border: none; 
+    border-radius: 5px;
+}
+
+/* Style the more filter content */
+#more-filters {
+    padding-bottom: 10px;
+}
+
+/* Style more filter button */
+#more-filters button, #filter button {
+    border: none; 
+    background: white;
+}
+
+/* Style the more filter i */
+#more-filters i {
+    font-size: 10px;
+    position: relative; 
+    left: -7px;
+}
+
+/* Style database results */
+#database-results {
+    padding-top: 10px;
+    display: flex;
+    padding-right: 10px;
+}
+
+/* Style filter section */
+#database-results p {
+    padding-top: 15px;
+}
+
+/* Style filter section */
+#filter {
+    padding-left: 10px;
+    padding-top: 15px;
+    padding-bottom: 20px;
+}
+
+/* Style results of searches */
+.results {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/* Style location results */
+#locations {
+    padding-top: 20px;
+}
+
+/* Style favorites */
+#favorites {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+/* style faovrite i */
+#favorites i, #database-filter i {
+    position: relative;
+    top: -0.5px;
+}
+
+#favorites i {
+    font-size: 20px;
+}
+
+/* Style faovrite p */
+#favorites p {
+    padding-left: 10px;
+}
+
+/* Style filter i */
+#filter i {
+    font-size: 10px;
+    position: relative;
+    left: -7px;
+}
+
+/* Style datbase profile */
+#database-profile {
+    width: 70px; 
+    height: 70px;
+    padding-top: 10px;
+}
+
+/* Style database degree major section */
+#database-degreeMajor {
+    position: relative;
+    top: -15px;
+}
