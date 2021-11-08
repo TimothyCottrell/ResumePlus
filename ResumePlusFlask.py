@@ -120,22 +120,25 @@ def save_resume():
     words = {}
     curHead = None
     for i in data:
+        ## Parse the text and loop through
         split = data[i]['text'].split()
         if len(split) > 0:
             for x in split:
                 count = 0
                 isHead = False
                 head = curHead
+                ## If its not a stop word like is and a
                 if not x in stop:
+                    # If we already have it count it again
                     if x in words:
                         count = words[x]['count'] + 1
-                    else:
+                    else: # If we have not seen this word yet
                         count = 1
                         ht = data[i]['html']
-                    if ht[1] == "h":
+                    if ht[1] == "h": # if its a header
                         isHead = True
                         curHead = x
-                    words[x] = {
+                    words[x] = { ## assign it to words
                     "count" : count,
                     "isHead" : isHead,
                     "head" : head
@@ -149,6 +152,7 @@ def save_resume():
 
     saved = bitstring.BitArray(bin=bhtml).tobytes()
     db.session.add(new_resume)
+    ## How we will create new words, error somewhere either in DB model or here
     # for i in words:
     #     print(new_resume.id)
     #     new_word = Text(words[i], words[i]['count'], words[i]['isHead'], words[i]['head'],new_resume)
