@@ -5,12 +5,17 @@ from flask import request, Response
 from flask import redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
+import nltk
+nltk.download('stopwords')
+from nltk.corpus import stopwords
+stop = stopwords.words('english')
 import json
 import bitstring
 
 from database import db
 from models import User
 from models import Resume
+from models import Text
 from forms import RegisterForm, LoginForm
 import bcrypt
 
@@ -112,13 +117,44 @@ def profile():
 def save_resume():
     data = json.loads(request.get_data())
     html = ''
+    words = {}
+    curHead = None
     for i in data:
+        split = data[i]['text'].split()
+        if len(split) > 0:
+            for x in split:
+                count = 0
+                isHead = False
+                head = curHead
+                if not x in stop:
+                    if x in words:
+                        count = words[x]['count'] + 1
+                    else:
+                        count = 1
+                        ht = data[i]['html']
+                    if ht[1] == "h":
+                        isHead = True
+                        curHead = x
+                    words[x] = {
+                    "count" : count,
+                    "isHead" : isHead,
+                    "head" : head
+                    }
+
         html += data[i]['html']
     bhtml = ''.join(format(x, 'b') for x in bytearray(html, 'utf-8'))
     the_user = db.session.query(User).filter_by(username=session.get('user')).one_or_none()
-    new_resume = Resume(the_user.id, bitstring.BitArray(bin=bhtml).tobytes(), None, None, None)
+    new_resume = Resume(the_user.id, bitstring.BitArray(bin=bhtml).tobytes(),"testing")
+
+
+    saved = bitstring.BitArray(bin=bhtml).tobytes()
     db.session.add(new_resume)
+    # for i in words:
+    #     print(new_resume.id)
+    #     new_word = Text(words[i], words[i]['count'], words[i]['isHead'], words[i]['head'],new_resume)
+    #     db.session.add(new_word)
     db.session.commit()
+    return("Success")
 
 @app.route('/<fname>/delete')
 def delete_account(fname):

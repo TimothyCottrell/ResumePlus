@@ -10,7 +10,7 @@ class User(db.Model):
     lname = db.Column("lname", db.String(20))
     password = db.Column("password", db.String(30))
     recruiter = db.Column("recruiter", db.Boolean)
-    resumes = db.relationship("Resume", back_populates="user")
+    resume = db.relationship("Resume", back_populates="user")
 
     def __init__(self, fname, lname, username, email, pwd, is_recruiter):
         self.email = email
@@ -29,18 +29,37 @@ class Resume(db.Model):
     __tablename__ = 'resume'
     id = db.Column("id", db.Integer, primary_key=True)
     user_id = db.Column("user_id", db.Integer, db.ForeignKey('user.id'))
-    user = db.relationship("User", back_populates="resumes")
+    user = db.relationship("User", back_populates="resume")
     html = db.Column('html', BLOB)
     category = db.Column("category", db.String(50))
-    text = db.Column('text', db.String(300))
-    headers = db.Column("headers", db.String(300))
+    text = db.relationship("Text", back_populates="resume")
 
-    def __init__(self, user_id, html_in, cat, text_in, headers_in):
+    def __init__(self, user_id, html_in, cat):
         self.user_id = user_id
         self.html = html_in
         self.category = cat
-        self.text = text_in
-        self.headers = headers_in
 
     def __repr__(self):
-        return f"Resume('{self.id}', '{self.category}', '{self.text}', '{self.headers}')"
+        return f"Resume('{self.id}', '{self.category}', '{self.text}')"
+
+class Text(db.Model):
+    __tablename__ = "text"
+    id = db.Column("id", db.Integer, primary_key=True)
+    word = db.Column("word", db.String(50))
+    count = db.Column("count", db.Integer)
+    isHead = db.Column("ishead", db.Boolean)
+    head = db.Column("head", db.String(50))
+    resume_id = db.Column("res_id", db.Integer, db.ForeignKey('resume.id'))
+    resume = db.relationship("Resume", back_populates="text")
+
+
+
+    def __init__(self,word,count,isHead,head,r):
+        self.word = word
+        self.count = count
+        self.isHead = isHead
+        self.head = head
+        self.resume = r
+
+    def __repr__(self):
+        return f"Text('{self.word}', '{self.count}', '{self.isHead}', '{self.head}')"
