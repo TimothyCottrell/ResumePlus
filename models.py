@@ -10,7 +10,7 @@ class User(db.Model):
     lname = db.Column("lname", db.String(20))
     password = db.Column("password", db.String(30))
     recruiter = db.Column("recruiter", db.Boolean)
-    resume = db.relationship("Resume", back_populates="user")
+    resume = db.relationship("Resume", backref="user")
 
     def __init__(self, fname, lname, username, email, pwd, is_recruiter):
         self.email = email
@@ -29,10 +29,9 @@ class Resume(db.Model):
     __tablename__ = 'resume'
     id = db.Column("id", db.Integer, primary_key=True)
     user_id = db.Column("user_id", db.Integer, db.ForeignKey('user.id'))
-    user = db.relationship("User", back_populates="resume")
     html = db.Column('html', BLOB)
     category = db.Column("category", db.String(50))
-    text = db.relationship("Text", back_populates="resume")
+    text = db.relationship("Text", backref="resume")
 
     def __init__(self, user_id, html_in, cat):
         self.user_id = user_id
@@ -40,7 +39,7 @@ class Resume(db.Model):
         self.category = cat
 
     def __repr__(self):
-        return f"Resume('{self.id}', '{self.category}', '{self.text}')"
+        return f"Resume('{self.id}', '{self.category}', '{self.texts}')"
 
 class Text(db.Model):
     __tablename__ = "text"
@@ -49,17 +48,16 @@ class Text(db.Model):
     count = db.Column("count", db.Integer)
     isHead = db.Column("ishead", db.Boolean)
     head = db.Column("head", db.String(50))
-    resume_id = db.Column("res_id", db.Integer, db.ForeignKey('resume.id'))
-    resume = db.relationship("Resume", back_populates="text")
+    resume_id = db.Column("resume_id", db.Integer, db.ForeignKey('resume.id'))
 
 
 
-    def __init__(self,word,count,isHead,head,r):
+    def __init__(self, word, count, isHead, head, resmue_id):
         self.word = word
         self.count = count
         self.isHead = isHead
         self.head = head
-        self.resume = r
+        self.resume_id = resmue_id
 
     def __repr__(self):
         return f"Text('{self.word}', '{self.count}', '{self.isHead}', '{self.head}')"

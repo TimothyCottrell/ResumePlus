@@ -6,9 +6,7 @@ from flask import redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
 import nltk
-nltk.download('stopwords')
 from nltk.corpus import stopwords
-stop = stopwords.words('english')
 import json
 import bitstring
 
@@ -16,13 +14,14 @@ from database import db
 from models import User
 from models import Resume
 from models import Text
-from forms import RegisterForm, LoginForm
 import bcrypt
 
 app = Flask(__name__)  # create an app
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///resumeplus_flask_app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'SE3155'
+nltk.download('stopwords')
+stop = stopwords.words('english')
 bcryptCode = 'utf-8'
 
 db.init_app(app)
@@ -113,6 +112,12 @@ def profile():
         return render_template('Profile.html', user=the_user)
     return redirect(url_for('login'))
 
+@app.route('/database')
+def database():
+    if session.get('user'):
+        return render_template('Database.html', user=session['user'])
+    return render_template('Database.html')
+
 @app.route('/save_resume', methods=['POST'])
 def save_resume():
     data = json.loads(request.get_data())
@@ -138,27 +143,25 @@ def save_resume():
                     if ht[1] == "h": # if its a header
                         isHead = True
                         curHead = x
-                    words[x] = { ## assign it to words
+                    words[x] = {  ## assign it to words
                     "count" : count,
                     "isHead" : isHead,
                     "head" : head
                     }
-
         html += data[i]['html']
-    bhtml = ''.join(format(x, 'b') for x in bytearray(html, 'utf-8'))
+    bhtml = ''.join(format(x, 'b') for x in bytearray(html, bcryptCode))
     the_user = db.session.query(User).filter_by(username=session.get('user')).one_or_none()
-    new_resume = Resume(the_user.id, bitstring.BitArray(bin=bhtml).tobytes(),"testing")
+    new_resume = Resume(the_user.id, bitstring.BitArray(bin=bhtml).tobytes(), "testing")
 
 
     saved = bitstring.BitArray(bin=bhtml).tobytes()
     db.session.add(new_resume)
     ## How we will create new words, error somewhere either in DB model or here
-    # for i in words:
-    #     print(new_resume.id)
-    #     new_word = Text(words[i], words[i]['count'], words[i]['isHead'], words[i]['head'],new_resume)
-    #     db.session.add(new_word)
+    for i in words:
+        new_word = Text(words[i], words[i]['count'], words[i]['isHead'], words[i]['head'], new_resume.id)
+        db.session.add(new_word)
     db.session.commit()
-    return("Success")
+    return "Success"
 
 @app.route('/<fname>/delete')
 def delete_account(fname):
