@@ -2,6 +2,7 @@ from database import db
 from sqlalchemy.dialects.sqlite import BLOB
 
 class User(db.Model):
+<<<<<<< HEAD
    __tablename__ = 'User'
    id = db.Column("id", db.Integer, primary_key=True)
    email = db.Column("email", db.String(100))
@@ -26,6 +27,7 @@ class User(db.Model):
 
 #Just a start still gotta lot of planning to do
 class Resume(db.Model):
+<<<<<<< HEAD
    __tablename__ = 'Resume'
    id = db.Column("id", db.Integer, primary_key=True)
    user_id = db.Column("user_id", db.Integer, db.ForeignKey('User.id'))

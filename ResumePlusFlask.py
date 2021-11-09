@@ -118,8 +118,15 @@ def database():
        return render_template('Database.html', user=session['user'])
    return render_template('Database.html')
 
+@app.route('/database')
+def database():
+    if session.get('user'):
+        return render_template('Database.html', user=session['user'])
+    return render_template('Database.html')
+
 @app.route('/save_resume', methods=['POST'])
 def save_resume():
+<<<<<<< HEAD
    data = json.loads(request.get_data())
    html = ''
    words = {}
