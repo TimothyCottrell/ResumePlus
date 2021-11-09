@@ -11,9 +11,7 @@ import json
 import bitstring
 
 from database import db
-from models import User
-from models import Resume
-from models import Text
+from models import User, Resume, Text
 import bcrypt
 
 app = Flask(__name__)  # create an app
@@ -160,13 +158,21 @@ def save_resume():
    db.session.commit()
    return "Success"
 
-@app.route('/get_html', methods=['POST', 'GET'])
-def get_html():
-   data = {'0': {'html': '<h1>Amazing Header</h1>', 'text': 'Amazing Header'},
-           '1': {'html': '<p>This text is different!</p>',
-                 'text': 'This text is different!'}}
+# @app.route('/get_html', methods=['POST', 'GET'])
+# def get_html():
+#    data = {'0': {'html': '<h1>Amazing Header</h1>', 'text': 'Amazing Header'},
+#            '1': {'html': '<p>This text is different!</p>',
+#                  'text': 'This text is different!'}}
+#    return None
 
-   return None
+@app.route('/change_location', methods=['POST'])
+def change_location():
+    if request.method == 'POST':
+        the_user = db.session.query(User).filter_by(username=session.get('user')).one_or_none()
+        the_user.change_location(request.form['address'], request.form['city'], request.form['state'], request.form['zip'])
+        db.session.add(the_user)
+        db.session.commit()
+    return redirect(url_for('settings'))
 
 @app.route('/<fname>/delete')
 def delete_account(fname):

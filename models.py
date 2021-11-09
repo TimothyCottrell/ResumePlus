@@ -13,8 +13,8 @@ class User(db.Model):
    about = db.Column("about", db.String(500))
    phoneNumber = db.Column("phoneNumber", db.Integer)
    address = db.Column("address", db.String(50))
-   city = db.Column("address", db.String(20))
-   state = db.Column("state", db.string(20))
+   city = db.Column("city", db.String(20))
+   state = db.Column("state", db.String(2))
    zip = db.Column("Zip", db.Integer)
 
    resume = db.relationship("Resume", backref="User")
@@ -29,6 +29,12 @@ class User(db.Model):
 
    def __repr__(self):
        return f"User('{self.id}', '{self.email}', '{self.username}', '{self.fname}', '{self.lname}','{self.password}')"
+
+   def change_location(self, address, city, state, zip):
+       self.address = address
+       self.city = city
+       self.state = state
+       self.zip = int(zip)
 
 #Just a start still gotta lot of planning to do
 class Resume(db.Model):
