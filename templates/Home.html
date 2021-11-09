@@ -59,7 +59,7 @@
 
         <!--Main Section-->
         <main>
-          <script>
+            <script>
               function save_resume() {
                 var html = document.getElementById("sample_resume_div")
                 console.log(html)
@@ -80,13 +80,18 @@
                 }
                 xhr.send(JSON.stringify(resume));
               }
-          </script>
+            </script>
 
-          <div id="sample_resume_div">
-            <h1>Sample Header</h1>
-            <p>This is a sample paragraph for testing purposes only</p>
-          </div>
-          <button onclick="save_resume()"> SAVE </button>
+            {% if not resume %}
+                <div id="sample_resume_div">
+                    <h1>Sample Header</h1>
+                    <p>This is a sample paragraph for testing purposes only</p>
+                </div>
+                <button onclick="save_resume()"> SAVE </button>
+            {% else %}
+                <p>THIS SHOULD APPEAR</p>
+                {{ resume.html.decode('utf-8')}}
+            {% endif %}
 
             <!--sidebar links-->
             <aside>

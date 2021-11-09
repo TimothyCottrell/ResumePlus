@@ -153,55 +153,65 @@
 
                         <!--User edit personal information-->
                         <div id = "user-edit-info">
+                            <form id = "generalForm" aria-labelledby="form" method = "POST" action = "/change_general_information">
 
-                            <!--Display Name and Full Name Input-->
-                            <div class = "info">
+                                <!--Display Name and Full Name Input-->
+                                <div class = "info">
 
-                                <!--Display Name-->
-                                <div class = "info-container">
-                                    <label>First Name</label>
+                                    <!--Display Name-->
+                                    <div class = "info-container">
+                                        <label>First Name</label>
 
-                                    <div class = "info-input">
-                                        <input type = "text" placeholder="{{user.fname}}"></input>
+                                        <div class = "info-input">
+                                            <span id = "inputForm">
+                                                <input type = "text" placeholder="{{user.fname}}"></input>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <!--Full Name-->
+                                    <div class = "info-container">
+                                        <label>Last Name</label>
+
+                                        <div class = "info-input">
+                                            <span id = "inputForm">
+                                                <input type = "text" placeholder="{{user.lname}}">
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <!--Full Name-->
-                                <div class = "info-container">
-                                    <label>Last Name</label>
+                                <!--Email Address and Phone Number Input-->
+                                <div class = "info">
 
-                                    <div class = "info-input">
-                                        <input type = "text" placeholder="{{user.lname}}">
+                                    <!--Email Address-->
+                                    <div class = "info-container"><br>
+                                        <label>Email Address</label>
+
+                                        <div class = "info-input">
+                                            <span id = "inputForm">
+                                                <input type = "text" placeholder="{{user.username}}">
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <!--Phone Number-->
+                                    <div class = "info-container"><br>
+                                        <label>Phone Number</label>
+
+                                        <div class = "info-input">
+                                            <span id = "inputForm">
+                                                <input type = "text">
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!--Email Address and Phone Number Input-->
-                            <div class = "info">
-
-                                <!--Email Address-->
-                                <div class = "info-container"><br>
-                                    <label>Email Address</label>
-
-                                    <div class = "info-input">
-                                        <input type = "text" placeholder="{{user.username}}">
-                                    </div>
+                                <!--Button for password change-->
+                                <div id = "save-button">
+                                    <button type = "submit" form = "generalForm" value = "Submit" id = "generalSave">Save</button>
                                 </div>
-
-                                <!--Phone Number-->
-                                <div class = "info-container"><br>
-                                    <label>Phone Number</label>
-
-                                    <div class = "info-input">
-                                        <input type = "text">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--Button for password change-->
-                            <div id = "save-button">
-                                <button>Save</button>
-                            </div>
+                            </form>
                         </div>
 
                         <!--Divider Line-->
