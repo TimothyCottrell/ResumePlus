@@ -2,7 +2,6 @@ from database import db
 from sqlalchemy.dialects.sqlite import BLOB
 
 class User(db.Model):
-<<<<<<< HEAD
    __tablename__ = 'User'
    id = db.Column("id", db.Integer, primary_key=True)
    email = db.Column("email", db.String(100))
@@ -11,6 +10,13 @@ class User(db.Model):
    lname = db.Column("lname", db.String(20))
    password = db.Column("password", db.String(30))
    recruiter = db.Column("recruiter", db.Boolean)
+   about = db.Column("about", db.String(500))
+   phoneNumber = db.Column("phoneNumber", db.Integer)
+   address = db.Column("address", db.String(50))
+   city = db.Column("address", db.String(20))
+   state = db.Column("state", db.string(20))
+   zip = db.Column("Zip", db.Integer)
+
    resume = db.relationship("Resume", backref="User")
 
    def __init__(self, fname, lname, username, email, pwd, is_recruiter):
@@ -24,10 +30,8 @@ class User(db.Model):
    def __repr__(self):
        return f"User('{self.id}', '{self.email}', '{self.username}', '{self.fname}', '{self.lname}','{self.password}')"
 
-
 #Just a start still gotta lot of planning to do
 class Resume(db.Model):
-<<<<<<< HEAD
    __tablename__ = 'Resume'
    id = db.Column("id", db.Integer, primary_key=True)
    user_id = db.Column("user_id", db.Integer, db.ForeignKey('User.id'))
