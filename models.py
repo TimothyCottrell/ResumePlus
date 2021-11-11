@@ -1,3 +1,5 @@
+from sys import argv
+
 from database import db
 from sqlalchemy.dialects.sqlite import BLOB
 
@@ -32,6 +34,9 @@ class User(db.Model):
     def __repr__(self):
         return f"User('{self.id}', '{self.email}', '{self.username}', '{self.fname}', '{self.lname}','{self.password}')"
 
+    def change_about(self, about_me):
+        self.about = about_me
+
     def change_location(self, address, city, state, zip, country):
         if not address == str.empty:
             self.address = address
@@ -63,6 +68,7 @@ class Resume(db.Model):
     html = db.Column('html', BLOB)
     category = db.Column("category", db.String(50))
     text = db.relationship("Text", backref="Resume")
+    section = db.relationship("Section", backref="Resume")
 
     def __init__(self, user_id, html_in, cat):
         self.user_id = user_id
@@ -91,3 +97,20 @@ class Text(db.Model):
 
     def __repr__(self):
         return f"Text('{self.word}', '{self.count}', '{self.isHead}', '{self.head}')"
+
+class Section(db.Model):
+    __tablename__ = 'Section'
+    id = db.Column("id", db.Integer, primary_key=True)
+    resume_id = db.Column("resume_id", db.Integer, db.ForeignKey('Resume.id'))
+    name = db.Column("sectionName", db.String(20))
+    info = db.Column("text", db.String(500))
+    caption = db.Column("caption", db.String(500))
+
+    def __init__(self, name, resume_id, info, caption):
+        self.name = name
+        self.info = info
+        self.resume_id = resume_id
+        self.caption = caption
+
+    def __repr__(self):
+        return f"Text('{self.name}', '{self.caption}', '{self.resume_id}', '{self.info}')"

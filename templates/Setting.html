@@ -31,7 +31,7 @@
                 <div id = "circle-logo"></div>
 
                 <!--Title-->
-                <h1 id = "title">Resume+</h1>
+                <h1 id = "title"><a href = "{{url_for('home_page')}}">Resume+</a></h1>
 
                 <!--Search bar-->
                 <div class = "search">
@@ -131,19 +131,22 @@
 
                         <!--User edit about me-->
                         <div id = "user-about"><br>
+                            <form id = "aboutForm" aria-labelledby="form" method = "POST" action = "/account/change_about">
+                                <!--Heading-->
+                                <label>About Me</label>
 
-                            <!--Heading-->
-                            <label>About Me</label>
+                                <!--Textarea-->
+                                <div class = "textarea-box">
+                                    <span id = "inputForm">
+                                        <textarea>{% if user.about %}{{user.about}}{% endif %}</textarea>
+                                    </span>
+                                </div>
 
-                            <!--Textarea-->
-                            <div class = "textarea-box">
-                                <textarea></textarea>
-                            </div>
-
-                            <!--Button for password change-->
-                            <div id = "save-button">
-                                <button>Save</button>
-                            </div>
+                                <!--Button for password change-->
+                                <div id = "save-button">
+                                    <button type = "submit" form = "aboutForm" value = "Submit" id = "aboutSave">Save</button>
+                                </div>
+                            </form>
                         </div>
 
                         <!--Divider Line-->
@@ -153,7 +156,7 @@
 
                         <!--User edit personal information-->
                         <div id = "user-edit-info">
-                            <form id = "generalForm" aria-labelledby="form" method = "POST" action = "/change_general_information">
+                            <form id = "generalForm" aria-labelledby="form" method = "POST" action = "/account/change_general_information">
 
                                 <!--Display Name and Full Name Input-->
                                 <div class = "info">
@@ -164,7 +167,7 @@
 
                                         <div class = "info-input">
                                             <span id = "inputForm">
-                                                <input type = "text" placeholder="{{user.fname}}"></input>
+                                                <input type = "text" placeholder = "First Name" {% if user.fname %} text="{{user.fname}}" {% endif %}></input>
                                             </span>
                                         </div>
                                     </div>
@@ -175,7 +178,7 @@
 
                                         <div class = "info-input">
                                             <span id = "inputForm">
-                                                <input type = "text" placeholder="{{user.lname}}">
+                                                <input type = "text" placeholder = "Last Name" {% if user.lname %} text="{{user.lname}}" {% endif %}>
                                             </span>
                                         </div>
                                     </div>
@@ -190,7 +193,7 @@
 
                                         <div class = "info-input">
                                             <span id = "inputForm">
-                                                <input type = "text" placeholder="{{user.username}}">
+                                                <input type = "text" placeholder = "Email" {% if user.email %} text="{{user.email}}" {% endif %}>
                                             </span>
                                         </div>
                                     </div>
@@ -201,7 +204,7 @@
 
                                         <div class = "info-input">
                                             <span id = "inputForm">
-                                                <input type = "text">
+                                                <input type = "text" placeholder = "Phone Number" {% if user.phoneNumber %} text="{{user.phoneNumber}}" {% endif %}>
                                             </span>
                                         </div>
                                     </div>
@@ -221,7 +224,7 @@
 
                         <!--User edit location information-->
                         <div id = "user-edit-location">
-                            <form id = "locationForm" aria-labelledby = "form" method = "POST" action = "/change_location">   
+                            <form id = "locationForm" aria-labelledby = "form" method = "POST" action = "/account/change_location">   
 
                                 <!--Heading-->
                                 <h1>Location</h1>
@@ -229,7 +232,7 @@
                                 <!--Street Address-->
                                 <label>Street Address</label>
                                 <span id = "inputForm">
-                                    <input type = "text" name = "address" id = "city" placeholder = "Street Address" aria-required = "true"><br>
+                                    <input type = "text" name = "address" id = "city" placeholder = "Street Address" aria-required = "true"  {% if user.address %} text="{{user.address}}" {% endif %}><br>
                                 </span>
 
                                 <!--City and State-->
@@ -241,7 +244,7 @@
 
                                         <div class = "info-input">
                                             <span id = "inputForm">
-                                                <input type = "text" name = "city" id = "city" placeholder = "City" aria-required = "true">
+                                                <input type = "text" name = "city" id = "city" placeholder = "City" aria-required = "true"  {% if user.city %} text="{{user.city}}" {% endif %}>
                                             </span>
                                         </div>
                                     </div>
@@ -254,7 +257,7 @@
                                         <div class = "info-input select-option">
 
                                             <!--State List-->
-                                            <select id="state" name="state" placeholder = "State" aria-required="true" form = "locationForm">
+                                            <select id="state" name="state" placeholder = "State" aria-required="true" form = "locationForm" >
                                                 <option value="---">---</option>
                                                 <option value="AL">Alabama</option>
                                                 <option value="AK">Alaska</option>
@@ -321,7 +324,7 @@
 
                                         <div class = "info-input">
                                             <span id = "inputForm">
-                                                <input type = "text" name = "zip" id = "zip" placeholder = "Zip Code" aria-required="true">
+                                                <input type = "text" name = "zip" id = "zip" placeholder = "Zip Code" aria-required="true"  {% if user.zip %} text="{{user.zip}}" {% endif %}>
                                             </span>
                                         </div>
                                     </div>
@@ -600,103 +603,116 @@
 
                         <!--User edit education information-->
                         <div id = "user-edit-education">
+                            <form id = "educationForm" aria-labelledby = "form" method = "POST" action = "{{url_for('add_section', section_name='education')}}">
+                                <!--Heading-->
+                                <h1>Education</h1>
 
-                            <!--Heading-->
-                            <h1>Education</h1>
+                                <!--School Name-->
+                                <label>School Name</label>
+                                <span id = "inputForm">
+                                    <input type = "text" name = "school-name" id = "school-name" aria-required = "true"><br>
+                                </span>
 
-                            <!--School Name-->
-                            <label>School Name</label>
-                            <input type = "text"><br>
+                                <!--Education Level-->
+                                <label>Education Level</label>
+                                <span id = "inputForm">
+                                    <input type = "text" name = "education-level" id = "education-level" aria-required = "true"><br>
+                                </span>
 
-                            <!--Education Level-->
-                            <label>Education Level</label>
-                            <input type = "text"><br>
+                                <!--Time Period Heading-->
+                                <label>Time Period</label>
 
-                            <!--Time Period Heading-->
-                            <label>Time Period</label>
+                                <!--Start Time and End Time-->
+                                <div class = "info">
 
-                            <!--Start Time and End Time-->
-                            <div class = "info">
+                                    <!--Start Time-->
+                                    <div class = "info-container"><br>
+                                        <label>Start Time</label>
 
-                                <!--Start Time-->
-                                <div class = "info-container"><br>
-                                    <label>Start Time</label>
+                                        <div class = "info-input">
+                                            <span id = "inputForm">
+                                                <input type = "text" class = "date-picker" name = "start-time" id = "start-time" aria-required = "true">
+                                            </span>
+                                        </div>
+                                    </div>
 
-                                    <div class = "info-input">
-                                        <input type = "text" class = "date-picker">
+                                    <!--End Time-->
+                                    <div class = "info-container"><br>
+                                        <label>End Time</label>
+
+                                        <div class = "info-input">
+                                            <span id = "inputForm">
+                                                <input type = "text" class = "date-picker" name = "end-time" id = "end-time" aria-required = "true">
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <!--End Time-->
-                                <div class = "info-container"><br>
-                                    <label>End Time</label>
+                                <!--Divider Line-->
+                                <div class = "solid-line" id = "line2">
+                                    <div class = "line"></div>
+                                </div>
 
-                                    <div class = "info-input">
-                                        <input type = "text" class = "date-picker">
+                                <!--Major-->
+                                <label>Major</label>
+                                <input type = "text" name = "major" id = "major" aria-required = "true"><br>
+
+                                <!--Minor-->
+                                <label>Minor</label>
+                                <input type = "text" name = "minor" id = "minor" aria-required = "true"><br>
+
+                                <!--Department and Cumulative GPA-->
+                                <div class = "info">
+
+                                    <!--Department GPA-->
+                                    <div class = "info-container">
+                                        <label>Department GPA</label>
+
+                                        <div class = "info-input">
+                                            <span id = "inputForm">
+                                                <input type = "text" name = "d-gpa" id = "d-gpa" aria-required = "true">
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <!--Cumulative GPA-->
+                                    <div class = "info-container">
+                                        <label>Cumulative GPA</label>
+
+                                        <div class = "info-input">
+                                            <span id = "inputForm">
+                                                <input type = "text" name = "c-gpa" id = "c-gpa" aria-required = "true">
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!--Divider Line-->
-                            <div class = "solid-line" id = "line2">
-                                <div class = "line"></div>
-                            </div>
+                                <!--Checkbox to hide GPA-->
+                                <div class = "info">
 
-                            <!--Major-->
-                            <label>Major</label>
-                            <input type = "text"><br>
+                                    <!--Hide Department GPA-->
+                                    <div class = "info-container">
+                                        <input type = "checkbox" class = "hide-button">
+                                        <label>Hide</label>
+                                    </div>
 
-                            <!--Minor-->
-                            <label>Minor</label>
-                            <input type = "text"><br>
-
-                            <!--Department and Cumulative GPA-->
-                            <div class = "info">
-
-                                <!--Department GPA-->
-                                <div class = "info-container">
-                                    <label>Department GPA</label>
-
-                                    <div class = "info-input">
-                                        <input type = "text">
+                                    <!--Hide Cumulative GPA-->
+                                    <div class = "info-container" id = "hide-checkbox">
+                                        <input type = "checkbox" class = "hide-button">
+                                        <label>Hide</label>
                                     </div>
                                 </div>
 
-                                <!--Cumulative GPA-->
-                                <div class = "info-container">
-                                    <label>Cumulative GPA</label>
-
-                                    <div class = "info-input">
-                                        <input type = "text">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--Checkbox to hide GPA-->
-                            <div class = "info">
-
-                                <!--Hide Department GPA-->
-                                <div class = "info-container">
-                                    <input type = "checkbox" class = "hide-button">
-                                    <label>Hide</label>
+                                <!--Button for password change-->
+                                <div id = "save-button">
+                                    <button type = "submit" form = "educationForm" value = "Submit" id = "add_section_save">Save</button>
                                 </div>
 
-                                <!--Hide Cumulative GPA-->
-                                <div class = "info-container" id = "hide-checkbox">
-                                    <input type = "checkbox" class = "hide-button">
-                                    <label>Hide</label>
+                                <!--Divider Line-->
+                                <div class = "solid-line" id = "line">
+                                    <div class = "line"></div>
                                 </div>
-                            </div>
-
-                            <!--Button for password change-->
-                            <div id = "save-button">
-                                <button>Save</button>
-                            </div>
-
-                            <!--Divider Line-->
-                            <div class = "solid-line" id = "line">
-                                <div class = "line"></div>
-                            </div>
+                            </form>
                         </div>
 
                         <!--List of skills-->
