@@ -52,13 +52,13 @@ class User(db.Model):
             self.country = country
 
     def change_general_information(self, fname, lname, email, phoneNumber):
-        if not fname == str.empty:
+        if not fname == '':
             self.fname = fname
-        if not lname == str.empty:
+        if not lname == '':
             self.lname = lname
-        if not email == str.empty:
+        if not email == '':
             self.email = email
-        if not phoneNumber == str.empty:
+        if not phoneNumber == '':
             self.phoneNumber = phoneNumber
 
 
