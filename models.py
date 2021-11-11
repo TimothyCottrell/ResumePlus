@@ -40,15 +40,15 @@ class User(db.Model):
         self.about = about_me
 
     def change_location(self, address, city, state, zip, country):
-        if not address == str.empty:
+        if not address == '':
             self.address = address
-        if not city == str.empty:
+        if not city == '':
             self.city = city
-        if not state == str.empty:
+        if not state == '':
             self.state = state
-        if not zip == str.empty:
+        if not zip == '':
             self.zip = int(zip)
-        if not country == str.empty:
+        if not country == '':
             self.country = country
 
     def change_general_information(self, fname, lname, email, phoneNumber):

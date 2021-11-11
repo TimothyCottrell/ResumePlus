@@ -130,15 +130,15 @@
                         </div>
 
                         <!--User edit about me-->
-                        <div id = "user-about"><br>
-                            <form id = "aboutForm" aria-labelledby="form" method = "POST" action = "/account/change_about">
+                        <div id = "user-about">
+                            <form id = "aboutForm" aria-labelledby="form" method = "POST" action = "{{url_for('change_about')}}">
                                 <!--Heading-->
                                 <label>About Me</label>
 
                                 <!--Textarea-->
                                 <div class = "textarea-box">
                                     <span id = "inputForm">
-                                        <textarea>{% if user.about %}{{user.about}}{% endif %}</textarea>
+                                        <textarea type = "text" name = "about" id = "about" >{% if user.about %}{{user.about}}{% endif %}</textarea>
                                     </span>
                                 </div>
 
