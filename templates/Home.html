@@ -59,7 +59,11 @@
 
         <!--Main Section-->
         <main>
+<<<<<<< HEAD
             <script>
+=======
+          <script>
+>>>>>>> Josh_main
               function save_resume() {
                 var html = document.getElementById("sample_resume_div")
                 console.log(html)
@@ -80,6 +84,7 @@
                 }
                 xhr.send(JSON.stringify(resume));
               }
+<<<<<<< HEAD
             </script>
 
             {% if not resume %}
@@ -266,6 +271,15 @@
                 <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
             </div>
             
+=======
+          </script>
+
+          <div id="sample_resume_div">
+            <h1>Sample Header</h1>
+            <p> This is a sample paragraph for testing purposes only</p>
+          </div>
+          <button onclick="save_resume()"> SAVE </button>
+>>>>>>> Josh_main
         </main>
 
         <!--Footer Section-->

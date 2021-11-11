@@ -2,17 +2,18 @@ import os  # os is used to get environment variables IP & PORT
 from flask import Flask  # Flask is the web app that we will customize
 from flask import render_template
 from flask import request, Response
+from flask import jsonify
 from flask import redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
 import nltk
 from nltk.corpus import stopwords
-import json
 import bitstring
-
+import json
 from database import db
 from models import User, Resume, Text, Section
 import bcrypt
+import pickle
 
 app = Flask(__name__)  # create an app
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///resumeplus_flask_app.db'
@@ -32,6 +33,7 @@ def landing():
     if session.get('user'):
         return redirect(url_for('home_page'))
     return render_template('Landing.html')
+
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():

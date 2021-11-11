@@ -12,6 +12,7 @@ class User(db.Model):
     fname = db.Column("fname", db.String(20))
     lname = db.Column("lname", db.String(20))
     password = db.Column("password", db.String(30))
+    pfp = db.Column("pfp", db.LargeBinary())
     recruiter = db.Column("recruiter", db.Boolean)
     about = db.Column("about", db.String(500))
     phoneNumber = db.Column("phoneNumber", db.Integer)
@@ -29,10 +30,11 @@ class User(db.Model):
         self.fname = fname
         self.lname = lname
         self.password = pwd
+        #self.pfp = pfp
         self.recruiter = is_recruiter
 
     def __repr__(self):
-        return f"User('{self.id}', '{self.email}', '{self.username}', '{self.fname}', '{self.lname}','{self.password}')"
+        return f"User('{self.id}', '{self.username}', '{self.fname}', '{self.lname}','{self.password}', '{self.pfp}')"
 
     def change_about(self, about_me):
         self.about = about_me
