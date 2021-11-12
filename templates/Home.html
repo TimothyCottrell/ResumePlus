@@ -23,7 +23,7 @@
                 <div id = "circle-logo"></div>
 
                 <!--Title-->
-                <h1 id = "title">Resume+</h1>
+                <h1 id = "title"><a href = "{{url_for('home_page')}}">Resume+</a></h1>
 
                 <!--Search bar-->
                 <div class = "search">
@@ -59,6 +59,42 @@
 
         <!--Main Section-->
         <main>
+            <script>
+              function save_resume() {
+                var html = document.getElementById("sample_resume_div")
+                console.log(html)
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "/save_resume", true);
+                xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+                resume = {
+
+                };
+
+                children = html.getElementsByTagName('*');
+                var e
+                for (var i = 0; i < children.length; ++i){
+                  resume[i] = {
+                    "html" : children[i].outerHTML,
+                    "text" : children[i].innerHTML
+                  }
+                }
+                xhr.send(JSON.stringify(resume));
+              }
+            </script>
+
+            {% if not resume %}
+                <div id="sample_resume_div">
+                    <h1>Sample Header</h1>
+                    <p>This is a sample paragraph for testing purposes only</p>
+                </div>
+                <button onclick="save_resume()"> SAVE </button>
+            {% else %}
+            <h1>THIS SHOULD APPEAR</h1>
+                {% autoescape false %}
+                    {{ resume.html.decode('utf-8') }}
+                {% endautoescape %}
+            {% endif %}
+
             <!--sidebar links-->
             <aside>
             <div class="sidebar">
@@ -68,12 +104,6 @@
                     <option value="Template 1">Template 1</option>
                     <option value="Template 2">Template 2</option>
                     <option value="Template 3">Template 3</option>
-                <label for="text">Text:</label>
-                <select name="text" id="Text">
-                    <option value="n/a">n/a</option>
-                    <option value="Text 1">Text 1</option>
-                    <option value="Text 2">Text 2</option>
-                    <option value="Text 3">Text 3</option>
                  <a href="">Elements</a>
                  <a href="">Maps</a>
                  <a href="">Background</a>
@@ -235,7 +265,6 @@
             <div class="slidecontainer">
                 <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
             </div>
-            
         </main>
 
         <!--Footer Section-->
@@ -255,7 +284,7 @@
 
                 <!--Links to other pages in ResumePlus-->
                 <div id = "explore-links">
-                    <a href = "Home.html">Home</a><br>
+                    <br><a href = "Home.html">Home</a><br>
                     <br><a href = "{{url_for('about')}}">About</a><br>
                     <br><a href = "{{url_for('support')}}">Support</a>
                 </div>

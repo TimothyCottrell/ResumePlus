@@ -1,26 +1,31 @@
-import os
 import os  # os is used to get environment variables IP & PORT
 from flask import Flask  # Flask is the web app that we will customize
 from flask import render_template
 from flask import request, Response
+from flask import jsonify
 from flask import redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
-
+import nltk
+from nltk.corpus import stopwords
+import bitstring
+import json
 from database import db
-from models import User as User
-from forms import RegisterForm, LoginForm
+from models import User, Resume, Text, Section
 import bcrypt
+import pickle
 
 app = Flask(__name__)  # create an app
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///resumeplus_flask_app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'SE3155'
+nltk.download('stopwords')
+stop = stopwords.words('english')
 bcryptCode = 'utf-8'
 
 db.init_app(app)
 with app.app_context():
-    db.create_all() # run under the app context
+    db.create_all()  # run under the app context
 
 @app.route('/')
 @app.route('/index')
@@ -28,6 +33,7 @@ def landing():
     if session.get('user'):
         return redirect(url_for('home_page'))
     return render_template('Landing.html')
+
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
@@ -37,7 +43,7 @@ def register():
             #     print(str(i) + ": " + str(request.form[i]))
             h_password = bcrypt.hashpw(request.form['password'].encode(bcryptCode), bcrypt.gensalt())
             new_user = User(request.form['fname'], request.form['lname'], request.form['username'],
-                            request.form['email'], h_password)
+                            request.form['email'], h_password, False)
             db.session.add(new_user)
             db.session.commit()
             session['user'] = new_user.username
@@ -52,7 +58,9 @@ def register():
 @app.route('/home_page')
 def home_page():
     if session.get('user'):
-        return render_template('Home.html', user=session['user'])
+        the_user = db.session.query(User).filter_by(username=session.get('user')).one_or_none()
+        the_resume = db.session.query(Resume).filter_by(user_id=the_user.id).one_or_none()
+        return render_template('Home.html', user=the_user, resume=the_resume)
     return redirect(url_for('login'))
 
 @app.route('/login', methods=['POST', 'GET'])
@@ -95,7 +103,9 @@ def logout():
 
 @app.route('/about')
 def about():
-    return render_template('About.html', user=session['user'])
+    if session.get('user'):
+        return render_template('About.html', user=session['user'])
+    return render_template('About.html')
 
 @app.route('/account/profile')
 def profile():
@@ -104,10 +114,133 @@ def profile():
         return render_template('Profile.html', user=the_user)
     return redirect(url_for('login'))
 
+@app.route('/database')
+def database():
+    if session.get('user'):
+        return render_template('Database.html', user=session['user'])
+    return render_template('Database.html')
+
+@app.route('/save_resume', methods=['POST'])
+def save_resume():
+    data = json.loads(request.get_data())
+    html = ''
+    words = {}
+    curHead = None
+    for i in data:
+        ## Parse the text and loop through
+        split = data[i]['text'].split()
+        if len(split) > 0:
+            for x in split:
+                count = 0
+                isHead = False
+                head = curHead
+                ## If its not a stop word like is and a
+                if not x in stop:
+                    # If we already have it count it again
+                    if x in words:
+                        count = words[x]['count'] + 1
+                    else:  # If we have not seen this word yet
+                        count = 1
+                        ht = data[i]['html']
+                    if ht[1] == "h":  # if its a header
+                        isHead = True
+                        curHead = x
+                    words[x] = {  ## assign it to words
+                        "count": count,
+                        "isHead": isHead,
+                        "head": head
+                    }
+        html += data[i]['html']
+    bhtml = html.encode(bcryptCode)
+    the_user = db.session.query(User).filter_by(username=session.get('user')).one_or_none()
+    new_resume = Resume(the_user.id, bhtml, "testing")
+    db.session.add(new_resume)
+    for i in words:
+        new_word = Text(i, words[i]['count'], words[i]['isHead'], words[i]['head'], new_resume.id)
+        db.session.add(new_word)
+    db.session.commit()
+    return "Success"
+
+# @app.route('/get_html', methods=['POST', 'GET'])
+# def get_html():
+#    data = {'0': {'html': '<h1>Amazing Header</h1>', 'text': 'Amazing Header'},
+#            '1': {'html': '<p>This text is different!</p>',
+#                  'text': 'This text is different!'}}
+#    return None
+
+@app.route('/account/change_location', methods=['POST'])
+def change_location():
+    if request.method == 'POST':
+        the_user = db.session.query(User).filter_by(username=session.get('user')).one_or_none()
+        the_user.change_location(request.form['address'], request.form['city'], request.form['state'],
+                                 request.form['zip'], request.form['country'])
+        db.session.add(the_user)
+        db.session.commit()
+    return redirect(url_for('settings'))
+
+@app.route('/account/change_general_information', methods=['POST'])
+def change_general_information():
+    if request.method == 'POST':
+        the_user = db.session.query(User).filter_by(username=session.get('user')).one_or_none()
+        the_user.change_general_information(request.form['fname'], request.form['lname'], request.form['email'],
+                                            request.form['phoneNumber'])
+        db.session.add(the_user)
+        db.session.commit()
+    return redirect(url_for('settings'))
+
+@app.route('/account/change_about', methods=['POST'])
+def change_about():
+    if request.method == 'POST':
+        the_user = db.session.query(User).filter_by(username=session.get('user')).one_or_none()
+        the_user.change_about(request.form['about'])
+        db.session.add(the_user)
+        db.session.commit()
+    return redirect(url_for('settings'))
+
+@app.route('/account/add_section/<section_name>', methods=['POST'])
+def add_section(section_name):
+    if request.method == 'POST':
+        the_user = db.session.query(User).filter_by(username=session.get('user')).one_or_none()
+        the_resume = db.session.query(Resume).filter_by(user_id=the_user.id).one_or_none()
+        info, caption = '', ''
+        for keyvalue in request.form.lists():
+            if not (value for value in keyvalue[1]) == '':
+                for value in keyvalue[1]:
+                    if not value == '':
+                        if section_name == 'skills':
+                            skills = value.split(",")
+                            for i, skill in enumerate(skills):
+                                info += skill + "\n"
+                                caption += "skill " + str(i + 1) + "\n"
+                        else:
+                            info += value + "\n"
+                            caption += keyvalue[0] + "\n"
+        new_section = Section(the_resume.id, section_name, info, caption)
+        db.session.add(new_section)
+        db.session.commit()
+    return redirect(url_for('settings'))
+
+@app.route('/account/change_password', methods=['POST'])
+def change_password():
+    if request.method == 'POST':
+        the_user = db.session.query(User).filter_by(username=session.get('user')).one_or_none()
+        if request.form['current-password'] == request.form['confirm-password'] and bcrypt.checkpw(
+                request.form['current-password'].encode(bcryptCode), the_user.password):
+            the_user.change_password(bcrypt.hashpw(request.form['new-password'].encode(bcryptCode), bcrypt.gensalt()))
+            db.session.add(the_user)
+            db.session.commit()
+    return redirect(url_for('settings'))
+
 @app.route('/<fname>/delete')
 def delete_account(fname):
     the_user = db.session.query(User).filter_by(username=session.get('user')).one_or_none()
     db.session.delete(the_user)
+    session.clear()
+    db.session.commit()
+    return redirect(url_for('home_page'))
+
+@app.route('/clear')
+def clear():
     session.clear()
     db.session.commit()
     return redirect(url_for('home_page'))
