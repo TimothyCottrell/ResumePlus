@@ -203,15 +203,32 @@ def add_section(section_name):
         the_user = db.session.query(User).filter_by(username=session.get('user')).one_or_none()
         the_resume = db.session.query(Resume).filter_by(user_id=the_user.id).one_or_none()
         info, caption = '', ''
-        for i in request.form.lists():
-            if not (t for t in i[1]) == '':
-                for t in i[1]:
-                    if not t == '':
-                        info += t + "\n"
-                        caption += i[0] + "\n"
+        for keyvalue in request.form.lists():
+            if not (value for value in keyvalue[1]) == '':
+                for value in keyvalue[1]:
+                    if not value == '':
+                        if section_name == 'skills':
+                            skills = value.split(",")
+                            for i, skill in enumerate(skills):
+                                info += skill + "\n"
+                                caption += "skill " + str(i + 1) + "\n"
+                        else:
+                            info += value + "\n"
+                            caption += keyvalue[0] + "\n"
         new_section = Section(the_resume.id, section_name, info, caption)
         db.session.add(new_section)
         db.session.commit()
+    return redirect(url_for('settings'))
+
+@app.route('/account/change_password', methods=['POST'])
+def change_password():
+    if request.method == 'POST':
+        the_user = db.session.query(User).filter_by(username=session.get('user')).one_or_none()
+        if request.form['current-password'] == request.form['confirm-password'] and bcrypt.checkpw(
+                request.form['current-password'].encode(bcryptCode), the_user.password):
+            the_user.change_password(bcrypt.hashpw(request.form['new-password'].encode(bcryptCode), bcrypt.gensalt()))
+            db.session.add(the_user)
+            db.session.commit()
     return redirect(url_for('settings'))
 
 @app.route('/<fname>/delete')

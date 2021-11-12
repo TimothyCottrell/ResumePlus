@@ -1,5 +1,3 @@
-from sys import argv
-
 from database import db
 from sqlalchemy.dialects.sqlite import BLOB
 
@@ -60,6 +58,10 @@ class User(db.Model):
             self.email = email
         if not phoneNumber == '':
             self.phoneNumber = phoneNumber
+
+    def change_password(self, new_password):
+        if not new_password == '':
+            self.password = new_password
 
 
 # Just a start still gotta lot of planning to do

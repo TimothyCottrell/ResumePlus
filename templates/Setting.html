@@ -138,7 +138,7 @@
                                 <!--Textarea-->
                                 <div class = "textarea-box">
                                     <span id = "inputForm">
-                                        <textarea type = "text" name = "about" id = "about" >{% if user.about %}{{user.about}}{% endif %}</textarea>
+                                        <textarea type = "text" name = "about" id = "about">{% if user.about %}{{user.about}}{% endif %}</textarea>
                                     </span>
                                 </div>
 
@@ -716,22 +716,25 @@
                         </div>
 
                         <!--List of skills-->
-                        <div id = "user-skills">
-                            
-                            <!--Heading-->
-                            <h1>Skills</h1>
+                        <form id = "skillsForm" aria-labelledby = "form" method = "POST" action = "{{url_for('add_section', section_name='skills')}}">
+                            <div id = "user-skills">
+                                
+                                <!--Heading-->
+                                <h1>Skills</h1>
 
-                            <!--Description on how to update skills-->
-                            <p id = "skill-description">If multiple skills, list them in commas</p>
+                                <!--Description on how to update skills-->
+                                <p id = "skill-description">If multiple skills, list them in commas</p>
 
-                            <!--Text box-->
-                            <textarea></textarea>
-                        </div>
+                                <!--Text box-->
+                                <textarea type = "text" name = "skills" id = "skills"></textarea>
+                            </div>
 
-                        <!--Button for password change-->
-                        <div id = "save-button">
-                            <button>Save</button>
-                        </div>
+                            <!--Button for password change-->
+                            <div id = "save-button">
+                                <button type = "submit" form = "skillsForm" value = "Submit" id = "add_skills_save">Save</button>
+                            </div>
+                        </form>
+                        
 
                         <!--Divider Line-->
                         <div class = "solid-line" id = "line">
@@ -740,63 +743,65 @@
 
                         <!--Work And Volunteer Experience-->
                         <div id = "user-edit-work">
+                            <form id = "workForm" aria-labelledby = "form" method = "POST" action = "{{url_for('add_section', section_name='work')}}">
 
-                            <!--Heading-->
-                            <h1>Work & Volunteer Experience</h1>
+                                <!--Heading-->
+                                <h1>Work & Volunteer Experience</h1>
 
-                            <!--Job Title-->
-                            <label>Job Title</label>
-                            <input type = "text"><br>
+                                <!--Job Title-->
+                                <label>Job Title</label>
+                                <input type = "text" name = "job-title" id = "job title"><br>
 
-                            <!--Employer-->
-                            <label>Employer</label>
-                            <input type = "text"><br>
+                                <!--Employer-->
+                                <label>Employer</label>
+                                <input type = "text" name = "employer" id = "employer"><br>
 
-                            <!--Heading-->
-                            <label>Time Period</label>
+                                <!--Heading-->
+                                <label>Time Period</label>
 
-                            <!--Checkbox for current position-->
-                            <input type = "checkbox">
-                            <label>Current Position</label><br>
+                                <!--Checkbox for current position-->
+                                <input type = "checkbox">
+                                <label>Current Position</label><br>
 
-                            <!--Start Time and End Time-->
-                            <div class = "info">
+                                <!--Start Time and End Time-->
+                                <div class = "info">
 
-                                 <!--Start Time-->
-                                <div class = "info-container"><br>
-                                    <label>Start Time</label>
+                                    <!--Start Time-->
+                                    <div class = "info-container"><br>
+                                        <label>Start Time</label>
 
-                                    <div class = "info-input">
-                                        <input type = "text" class = "date-picker">
+                                        <div class = "info-input">
+                                            <input type = "text" class = "date-picker" name = "start-time" id = "start-time">
+                                        </div>
                                     </div>
+
+                                    <!--End Time-->
+                                    <div class = "info-container"><br>
+                                        <label>End Time</label>
+
+                                        <div class = "info-input">
+                                            <input type = "text" class = "date-picker" name = "end-time" id = "end-time">
+                                        </div>
+                                    </div>
+                                </div><br>
+
+                                <!--Location-->
+                                <label>Location</label>
+                                <input type = "text" name = "location" id = "location"><br>
+
+                                <!--Description-->
+                                <label>Description</label>
+
+                                <!--Textarea-->
+                                <div class = "textarea-box">
+                                    <textarea name = "description" id = "description"></textarea>
                                 </div>
 
-                                <!--End Time-->
-                                <div class = "info-container"><br>
-                                    <label>End Time</label>
-
-                                    <div class = "info-input">
-                                        <input type = "text" class = "date-picker">
-                                    </div>
+                                <!--Button for password change-->
+                                <div id = "save-button">
+                                    <button type = "submit" form = "workForm" value = "Submit" id = "add_work_save">Save</button>
                                 </div>
-                            </div><br>
-
-                            <!--Location-->
-                            <label>Location</label>
-                            <input type = "text"><br>
-
-                            <!--Description-->
-                            <label>Description</label>
-
-                            <!--Textarea-->
-                            <div class = "textarea-box">
-                                <textarea></textarea>
-                            </div>
-
-                            <!--Button for password change-->
-                            <div id = "save-button">
-                                <button>Save</button>
-                            </div>
+                            </form>
                         </div>
 
                         <!--Divider Line-->
@@ -806,74 +811,80 @@
 
                         <!--User list of certification-->
                         <div id = "user-certification">
+                            <form id = "licenseForm" aria-labelledby = "form" method = "POST" action = "{{url_for('add_section', section_name='license')}}">
 
-                            <!--Heading-->
-                            <h1>License & Certification </h1>
+                                <!--Heading-->
+                                <h1>License & Certification </h1>
 
-                            <!--Certification Name-->
-                            <label>License/Ceritifcation Name</label>
-                            <input type = "text"><br>
+                                <!--Certification Name-->
+                                <label>License/Ceritifcation Name</label>
+                                <input type = "text" name = "license-name" id = "license-name"><br>
 
-                            <!--License/Certification Company-->
-                            <label>License/Ceritifcation Company (Who issue it)</label>
-                            <input type = "text">
+                                <!--License/Certification Company-->
+                                <label>License/Ceritifcation Company (Who issue it)</label>
+                                <input type = "text" name = "company" id = "company">
 
-                            <!--Start Time and End Time-->
-                            <div class = "info">
+                                <!--Start Time and End Time-->
+                                <div class = "info">
 
-                                <!--Start Time-->
-                                <div class = "info-container"><br>
-                                    <label>Start Time</label>
+                                    <!--Start Time-->
+                                    <div class = "info-container"><br>
+                                        <label>Start Time</label>
 
-                                    <div class = "info-input">
-                                        <input type = "text" class = "date-picker">
+                                        <div class = "info-input">
+                                            <input type = "text" class = "date-picker" name = "start-time" id = "start-time">
+                                        </div>
                                     </div>
-                                </div>
 
-                                <!--End Time-->
-                                <div class = "info-container"><br>
-                                    <label>End Time</label>
+                                    <!--End Time-->
+                                    <div class = "info-container"><br>
+                                        <label>End Time</label>
 
-                                    <div class = "info-input">
-                                        <input type = "text" class = "date-picker">
+                                        <div class = "info-input">
+                                            <input type = "text" class = "date-picker" name = "end-time" id = "end-time">
+                                        </div>
                                     </div>
-                                </div>
-                            </div><br>
+                                </div><br>
 
-                            <!--User Issue Date-->
-                            <label>License/Ceritifcation Date Issue</label>
-                            <input type = "text">
+                                <!--User Issue Date-->
+                                <label>License/Ceritifcation Date Issue</label>
+                                <input type = "text" name = "issue-date" id = "issue-date">
+                                
+                                <!--Button for saving License/Ceritifcation-->
+                                <div id = "save-button">
+                                    <button type = "submit" form = "licenseForm" value = "Submit" id = "add_license_save">Save</button>
+                                </div>
+                            </form>
                         </div>
 
-                        <!--Button for password change-->
-                        <div id = "save-button">
-                            <button>Save</button>
-                        </div>
+                        
 
                         <!--Divider Line-->
                         <div class = "solid-line" id = "line" id = "solid-line">
                             <div class = "line"></div>
                         </div>
+                        
+                        <form id = "accomplishmentForm" aria-labelledby = "form" method = "POST" action = "{{url_for('add_section', section_name='accomplishment')}}">
+                            <!--User accomplishment-->
+                            <div id = "user-accomplishment">
 
-                        <!--User accomplishment-->
-                        <div id = "user-accomplishment">
+                                <!--Heading-->
+                                <h1>Accomplishments</h1>
 
-                            <!--Heading-->
-                            <h1>Accomplishments</h1>
+                                <!--User list of courses-->
+                                <p class = "accomplishment-description">List Courses</p>
+                                <textarea name = "courses" id = "courses"></textarea>
 
-                            <!--User list of courses-->
-                            <p class = "accomplishment-description">List Courses</p>
-                            <textarea></textarea>
+                                <!--User list of languages-->
+                                <p class = "accomplishment-description">List Languages</p>
+                                <textarea name = "languages" id = "languages"></textarea>
+                            </div>
 
-                            <!--User list of languages-->
-                            <p class = "accomplishment-description">List Languages</p>
-                            <textarea></textarea>
-                        </div>
-
-                        <!--Button for password change-->
-                        <div id = "save-button">
-                            <button>Save</button>
-                        </div>
+                            <!--Button for password change-->
+                            <div id = "save-button">
+                                <button type = "submit" form = "accomplishmentForm" value = "Submit" id = "add_accomplishment_save">Save</button>
+                            </div>
+                        </form>
 
                         <!--Divider Line-->
                         <div class = "solid-line" id = "line" id = "solid-line">
@@ -943,30 +954,30 @@
                         <div class = "line"></div>
 
                         <!--Form for password change-->
-                        <form id = "password-change">
+                        <form id = "password-change" aria-labelledby = "form" method = "POST" action = "{{url_for('change_password')}}">
 
                             <!--User enter current password-->
                             <div class = "change-password-form">
                                 <br><label>Current Password</label>
-                                <input type = "password" placeholder = "Enter current password"><br>
+                                <input type = "password" placeholder = "Enter current password" name = "current-password" id = "current-password"><br>
                             </div>
 
                             <!--User confirm password-->
                             <div class = "change-password-form">
                                 <label>Confirm Password</label>
-                                <input type = "password" placeholder = "Confirm password">
+                                <input type = "password" placeholder = "Confirm password" name = "confirm-password" id = "confirm-password">
                             </div>
 
                             <!--User enter new password-->
                             <div class = "change-password-form">
                                 <label>New Password</label>
-                                <input type = "password" placeholder = "Enter new password"><br>
+                                <input type = "password" placeholder = "Enter new password" name = "new-password" id = "new-password"><br>
                             </div>
                         </form>
 
                         <!--Button for password change-->
                         <div id = "save-button">
-                            <button>Save</button>
+                            <button type = "submit" form = "password-change" value = "Submit" id = "change_password_save">Save</button>
                         </div>
                     </div>
                 </div>
