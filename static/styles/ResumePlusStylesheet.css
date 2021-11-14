@@ -1803,3 +1803,184 @@ textarea {
     position: relative;
     top: -15px;
 }
+
+/************************** Message Box *************************/
+
+/* Style message box */
+.message-container {
+    display: flex;
+}
+
+#message-main {
+    padding-top: 50px;
+}
+
+.message-box {
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 350px;
+    height: auto;
+    margin-left: 20px;
+}
+
+#message-icon i {
+    float: right;
+    padding-right: 20px;
+    position: relative; 
+    top: -20px;
+}
+
+#top-message {
+    color: white;
+    padding: 10px 0;
+    background-color: #3982FA;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#top-message h3 {
+    padding: 0;
+    margin: 0;
+}
+
+#status {
+    font-size: 14px;
+    color: gray;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#message-search {
+    padding: 0 10px;
+    position: relative;
+    top: -30px;
+}
+
+#msg-search, #message-user {
+    background-color: white;
+}
+
+#message-user {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+#message-search i {
+    position: relative; 
+    top: 34px;
+    left: 15px;
+    color: gray;
+}
+
+#message-search input {
+    padding-left: 40px;
+    height: 30px;
+}
+
+#message-user {
+    padding-top: 20px;
+}
+
+.user1 {
+    display: flex;
+    justify-content: space-evenly;
+    position: relative;
+    top: -20px;
+}
+
+.user1 img {
+    width: 50px; 
+    height: 50px;
+    border-radius: 50%;
+}
+
+.msg-name h3 {
+    position: relative;
+    top: -10px;
+}
+
+.msg-name p {
+    position: relative;
+    top: -20px;
+    font-size: 12px;
+    color: gray;
+}
+
+.date-status {
+    padding-top: 10px;
+}
+
+.date-status i {
+    color: #66FF00;
+    padding-top: 5px;
+    position: relative;
+    left: 25px;
+}
+
+#msg-box {
+    height: 400px;
+    background-color: white;
+}
+
+#send-message {
+    position: relative;
+    top: 305px;
+}
+
+#send-message input {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+#msg-box {
+    background-color: white;
+}
+
+.dropdown {
+    float: right;
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    color: black;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.dropdown-content i {
+    position: relative;
+    left: 15px;
+    padding-top: 31px;
+}
+
+#on-status {
+    color: #66FF00;
+}
+
+#distrub-status {
+    color: red;
+}
+
+#off-status {
+    color: gray;
+}
+
+.dropdown-content li {
+    list-style-type: none;
+    padding: 14px; 
+    font-size: 16px;
+}
+
+.dropdown-content li:hover {
+    background-color: #C4C4C4;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
