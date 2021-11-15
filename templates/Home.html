@@ -137,6 +137,24 @@
                                     </li>
                                 </ul>
                             </section>
+
+                            <!-- {% if user %}
+                            <section class="contact">
+                                <h3>Contact</h3>
+                                <ul>
+                                    {% if user.country and user.state %}
+                                        <li><p><i class="fa fa-map-marker-alt" title="Location"></i>{{user.country}}, {{user.state}}</p></li>
+                                    {% endif %}
+                                    {% if user.phoneNumber %}
+                                        <li><p><i class="fa fa-phone" title="Cell phone"></i> <a href="tel:{{user.phoneNumber}}">({{user.phoneNumber[0:2]}}) {{user.phoneNumber[3:5]}}-{{user.phoneNumber[6:9]}}</a></p></li>
+                                    {% endif %}
+                                    {% if user.email %}
+                                        <li><p><i class="fa fa-envelope" title="Email"></i> <a href="mailto:{{user.email}}">{{user.email}}</a></p></li>
+                                    {% endif %}
+                                </ul>
+                            </section>
+                            {% endif %} -->
+
                             <section class="skills">
                                 <h3>Skills</h3>
                                 <ul>
@@ -146,7 +164,17 @@
                                     <li><span>Photography</span></li>
 
                                 </ul>
-                            </section>
+                            </section> 
+                            <!-- {% for section in sections %}
+                                <section class="skills">
+                                    <h3>{{ section.name }}</h3>
+                                    <ul>
+                                        {% for line in section.info.split("\n") %}
+                                            <li><span>line</span></li>
+                                        {% endfor %}
+                                    </ul>
+                                </section>
+                            {% endfor %} -->
                             <section class="skills">
                                 <h3>Technologies</h3>
                                 <ul>
@@ -156,6 +184,20 @@
                                     <li><span>Microsoft</span></li>
                                 </ul>
                             </section>
+                            <!-- {% if sections %}
+                                {% for section in sections %}
+                                    {% if section.name == 'skills' %}
+                                        <section class="skills">
+                                            <h3>Technologies</h3>
+                                            <ul>
+                                                {% for line in section.info.split("\n") %}
+                                                    <li><span>line</span></li>
+                                                {% endfor %}
+                                            </ul>
+                                        </section>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %} -->
                         </aside>
                         <section>
                             <header class="name" aria-label="Jeff Deckard">
@@ -178,6 +220,16 @@
                                     <h3>About Me</h3>
                                     <p>Text</p>
                                 </section>
+
+                                <!-- {% if user.about %}
+                                    <section class="summary">
+                                        <h3>About Me</h3>
+                                        <ul>
+                                            <p>user.about</p>
+                                        </ul>
+                                    </section>
+                                {% endif %} -->
+
                                 <section class="experience">
                                     <h3>Experience</h3>
                                     <ol>
@@ -229,6 +281,33 @@
                                         </li>
                                     </ol>
                                 </section>
+
+                                {% if sections %}
+                                        {% for i, section in enumerate(sections) %}
+                                            {% if section.name == 'experience'  or section.name == 'work' %}
+                                                {% if i == 0 %}
+                                                    <section class="experience">
+                                                        <h3>Experience</h3>
+                                                        <ol>
+                                                {% endif %}
+                                                            <li>
+                                                                <header>
+                                                                    <p class="sanserif">{{dict(zip(section.caption.split("\n"), section.info.split("\n")))['job-title']}}</p>
+                                                                    <time>{{dict(zip(section.caption.split("\n"), section.info.split("\n")))['start-time']}}-{{dict(zip(section.caption.split("\n"), section.info.split("\n")))['end-time']}}</time>
+                                                                </header>
+                                                                <span>{{dict(zip(section.caption.split("\n"), section.info.split("\n")))['employer']}}</span>
+                                                                <ul>
+                                                                    <li>{{dict(zip(section.caption.split("\n"), section.info.split("\n")))['description']}}</li>
+                                                                </ul>
+                                                            </li>
+                                                {% if i == len(sections) - 1 %}
+                                                        </ol>
+                                                    </section>
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endfor %}
+                                {% endif %}
+
                                 <section class="education">
                                     <h3>Education</h3>
                                     <ol>
@@ -254,6 +333,33 @@
                                         </li>
                                     </ol>
                                 </section>
+
+                                <!-- {% if sections %}
+                                    {% for i, section in enumerate(sections) %}
+                                        {% if section.name == 'education' %}
+                                                {% if i == '0' %}
+                                                    <section class="education">
+                                                        <h3>Education</h3>
+                                                        <ol>
+                                                {% endif %}
+                                                            <li>
+                                                                <div>
+                                                                    <p class="sanserif">{{dict(zip(section.caption.split("\n"), section.info.split("\n")))['education-level'], dict(zip(section.caption.split("\n"), section.info.split("\n")))['major']}}</p>
+                                                                    <time>{{dict(zip(section.caption.split("\n"), section.info.split("\n")))['start-time']}}-{{dict(zip(section.caption.split("\n"), section.info.split("\n")))['end-time']}}</time>
+                                                                </div>
+                                                                <div>
+                                                                    <span>{{dict(zip(section.caption.split("\n"), section.info.split("\n")))['school-name']}}</span>
+                                                                    <span>{{dict(zip(section.caption.split("\n"), section.info.split("\n")))['c-gpa']}}</span>
+                                                                </div>
+                                                            </li>
+                                                {% if i == len(sections) - 1 %}
+                                                        </ol>
+                                                    </section>
+                                                {% endif %}
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %} -->
+                                
                             </section>
                         </section>
                     </section>
