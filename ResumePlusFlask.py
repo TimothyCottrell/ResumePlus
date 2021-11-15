@@ -60,7 +60,10 @@ def home_page():
     if session.get('user'):
         the_user = db.session.query(User).filter_by(username=session.get('user')).one_or_none()
         the_resume = db.session.query(Resume).filter_by(user_id=the_user.id).one_or_none()
-        sections = db.session.query(Section).filter_by(resume_id=the_resume.id).all()
+        if the_resume:
+            sections = db.session.query(Section).filter_by(resume_id=the_resume.id).all()
+        else:
+            sections = None
         return render_template('Home.html', user=the_user, resume=the_resume, sections=sections)
     return redirect(url_for('login'))
 
