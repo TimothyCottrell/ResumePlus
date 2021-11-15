@@ -82,6 +82,10 @@ class Resume(db.Model):
     def __repr__(self):
         return f"Resume('{self.id}', '{self.category}', '{self.texts}')"
 
+    def update_resume(self, html, category):
+        self.html = html
+        self.category = category
+
 
 class Text(db.Model):
     __tablename__ = 'Text'
