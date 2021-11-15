@@ -106,14 +106,14 @@ class Section(db.Model):
     __tablename__ = 'Section'
     id = db.Column("id", db.Integer, primary_key=True)
     resume_id = db.Column("resume_id", db.Integer, db.ForeignKey('Resume.id'))
-    name = db.Column("sectionName", db.String(20))
-    info = db.Column("text", db.String(500))
+    name = db.Column("name", db.String(20))
+    info = db.Column("info", db.String(500))
     caption = db.Column("caption", db.String(500))
 
-    def __init__(self, name, resume_id, info, caption):
+    def __init__(self, resume_id, name, info, caption):
+        self.resume_id = resume_id
         self.name = name
         self.info = info
-        self.resume_id = resume_id
         self.caption = caption
 
     def __repr__(self):
