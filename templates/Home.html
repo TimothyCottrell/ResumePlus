@@ -91,8 +91,10 @@
             {% else %}
             <h1>THIS SHOULD APPEAR</h1>
                 <!-- {% autoescape false %} -->
+                <div id="sample_resume_div">
                     {{ resume.html.decode('utf-8') }}
                 <!-- {% endautoescape %} -->
+                </div>
             {% endif %}
 
             <!--sidebar links-->
@@ -163,7 +165,7 @@
                                 <li><span>Photography</span></li>
 
                             </ul>
-                        </section> 
+                        </section>
                         <!-- {% if sections %}
                             {% for section in sections %}
                                 <section class="skills">
@@ -360,14 +362,14 @@
                                     {% endif %}
                                 {% endfor %}
                             {% endif %} -->
-                            
+
                         </section>
                     </section>
                 </section>
             </section>
 
         <!--scalebar for zoom-->
-            
+
             <div class="slidecontainer">
                 <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
             </div>
