@@ -282,7 +282,7 @@
                                     </ol>
                                 </section>
 
-                                {% if sections %}
+                                <!-- {% if sections %}
                                         {% for i, section in enumerate(sections) %}
                                             {% if section.name == 'experience'  or section.name == 'work' %}
                                                 {% if i == 0 %}
@@ -292,7 +292,7 @@
                                                 {% endif %}
                                                             <li>
                                                                 <header>
-                                                                    <p class="sanserif">{{dict(zip(section.caption.split("\n"), section.info.split("\n")))['job-title']}}</p>
+                                                                 git    <p class="sanserif">{{dict(zip(section.caption.split("\n"), section.info.split("\n")))['job-title']}}</p>
                                                                     <time>{{dict(zip(section.caption.split("\n"), section.info.split("\n")))['start-time']}}-{{dict(zip(section.caption.split("\n"), section.info.split("\n")))['end-time']}}</time>
                                                                 </header>
                                                                 <span>{{dict(zip(section.caption.split("\n"), section.info.split("\n")))['employer']}}</span>
@@ -306,7 +306,7 @@
                                                 {% endif %}
                                             {% endif %}
                                         {% endfor %}
-                                {% endif %}
+                                {% endif %} -->
 
                                 <section class="education">
                                     <h3>Education</h3>
