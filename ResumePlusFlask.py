@@ -62,13 +62,10 @@ def home_page():
         the_resume = db.session.query(Resume).filter_by(user_id=the_user.id).one_or_none()
         if the_resume:
             sections = db.session.query(Section).filter_by(resume_id=the_resume.id).all()
-            for section in sections:
-                if section.name == 'skills':
-                    for i in section.info.split('/n'):
-                        print(i)
         else:
             sections = None
-        return render_template('Home.html', user=the_user, resume=the_resume, sections=sections, enumerate=enumerate, zip=zip, len=len)
+        return render_template('Home.html', user=the_user, resume=the_resume, sections=sections, enumerate=enumerate,
+                               zip=zip, len=len)
     return redirect(url_for('login'))
 
 @app.route('/login', methods=['POST', 'GET'])
