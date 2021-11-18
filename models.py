@@ -117,4 +117,4 @@ class Section(db.Model):
         self.caption = caption
 
     def __repr__(self):
-        return f"Text('{self.name}', '{self.caption}', '{self.resume_id}', '{self.info}')"
+        return f"Section('{self.name}', '{self.caption}', '{self.resume_id}', '{self.info}')"
