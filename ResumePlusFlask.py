@@ -59,13 +59,18 @@ def register():
 def home_page():
     if session.get('user'):
         the_user = db.session.query(User).filter_by(username=session.get('user')).one_or_none()
-        the_resume = db.session.query(Resume).filter_by(user_id=the_user.id).one_or_none()
-        if the_resume:
-            sections = db.session.query(Section).filter_by(resume_id=the_resume.id).all()
-        else:
-            sections = None
-        return render_template('Home.html', user=the_user, resume=the_resume, sections=sections, enumerate=enumerate,
-                               zip=zip, len=len)
+        if the_user:
+            the_resume = db.session.query(Resume).filter_by(user_id=the_user.id).all()
+            newest_resume = None
+            for i in the_resume:
+                if i.order == 0:
+                    newest_resume = i
+            if newest_resume :
+                sections = db.session.query(Section).filter_by(resume_id=newest_resume.id).all()
+            else:
+                sections = None
+            return render_template('Home.html', user=the_user, resume=newest_resume, sections=sections, enumerate=enumerate,
+                                   zip=zip, len=len)
     return redirect(url_for('login'))
 
 @app.route('/login', methods=['POST', 'GET'])
@@ -158,8 +163,16 @@ def save_resume():
         html += data[i]['html']
     bhtml = html.encode(bcryptCode)
     the_user = db.session.query(User).filter_by(username=session.get('user')).one_or_none()
-    new_resume = Resume(the_user.id, bhtml, "testing")
+    old_res = db.session.query(Resume).filter_by(user_id=the_user.id).all()
+    if len(old_res) > 0:
+        for i in old_res:
+            if i.order > 5:
+                db.session.delete(i)
+            else:
+                i.push_order()
+    new_resume = Resume(the_user.id, 0, bhtml, "testing")
     db.session.add(new_resume)
+    db.session.commit()
     for i in words:
         new_word = Text(i, words[i]['count'], words[i]['isHead'], words[i]['head'], new_resume.id)
         db.session.add(new_word)
@@ -206,7 +219,13 @@ def change_about():
 def add_section(section_name):
     if request.method == 'POST':
         the_user = db.session.query(User).filter_by(username=session.get('user')).one_or_none()
-        the_resume = db.session.query(Resume).filter_by(user_id=the_user.id).one_or_none()
+        the_resume = db.session.query(Resume).filter_by(user_id=the_user.id).all()
+
+        if len(the_resume) > 0:
+            for i in the_resume:
+                if i.order ==0:
+                    the_resume = i
+                    break
         info, caption = '', ''
         for keyvalue in request.form.lists():
             if not (value for value in keyvalue[1]) == '':
