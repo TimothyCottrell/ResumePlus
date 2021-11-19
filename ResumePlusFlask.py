@@ -13,7 +13,6 @@ import json
 from database import db
 from models import User, Resume, Text, Section
 import bcrypt
-import pickle
 
 app = Flask(__name__)  # create an app
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///resumeplus_flask_app.db'
@@ -156,9 +155,8 @@ def save_resume():
                         "head": head
                     }
         html += data[i]['html']
-    bhtml = html.encode(bcryptCode)
     the_user = db.session.query(User).filter_by(username=session.get('user')).one_or_none()
-    new_resume = Resume(the_user.id, bhtml, "testing")
+    new_resume = Resume(the_user.id, html.encode(bcryptCode), "testing")
     db.session.add(new_resume)
     for i in words:
         new_word = Text(i, words[i]['count'], words[i]['isHead'], words[i]['head'], new_resume.id)
