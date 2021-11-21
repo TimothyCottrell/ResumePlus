@@ -530,10 +530,17 @@ li .fa, li .fab {
     margin-left: 1.618em;
 }
 
+.sheet {
+    position: relative; 
+    left: 200px;
+    top: -800px;
+}
+
 @page { margin: 0 }
 body { margin: 0 }
 .sheet {
   margin: 0;
+  margin-left: 20%;
   overflow: hidden;
   position: relative;
   box-sizing: border-box;
@@ -603,6 +610,73 @@ body.letter.landscape .sheet { width: 280mm; height: 215mm }
 /* Style hover Effect */
 #legal a:hover {
     color: #C4C4C4;
+}
+
+/* Style top nav and side nav bar */
+.bottom-nav {
+    background-color: #32425E;
+    height: 50px;
+    padding-top: 20px;
+    padding-right: 20px;
+}
+
+.bottom-nav a {
+    display: inline-block;
+}
+
+.bottom-nav-wrapper {
+    float: right; 
+}
+
+.top-button {
+    height: 30px;
+    font-size: 12px;
+    background-color: white;
+    border-style: none;
+    border-radius: 3px;
+    border-color: white;
+    padding: 0 10px;
+}
+
+#sidebar {
+    background-color: #32425E;
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 0;
+    color: white; 
+    padding-left: 30px;
+    padding-top: 20px;
+}
+
+.elements h3 {
+    font-weight: bold;
+    position: relative;
+    top: -15px;
+}
+
+#template-logo, #text-logo, 
+#element-logo, #map-logo,
+#upload-logo, #more-logo {
+    width: 50px;
+}
+
+#map-logo {
+    height: 55px;
+}
+
+.template-sample {
+    position: relative; 
+    left: 130px;
+    width: 250px;
+    height: 600px;
+    padding-top: 20px;
+    background-color: #32425E;
+}
+
+.template-sample h1 {
+    margin: 0;
+    padding: 0;
 }
 
 /************************** Sign In Page *************************/
