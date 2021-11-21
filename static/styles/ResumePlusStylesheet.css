@@ -530,6 +530,12 @@ li .fa, li .fab {
     margin-left: 1.618em;
 }
 
+.sheet {
+    position: relative; 
+    left: 200px;
+    top: -800px;
+}
+
 @page { margin: 0 }
 body { margin: 0 }
 .sheet {
@@ -656,6 +662,20 @@ body.letter.landscape .sheet { width: 280mm; height: 215mm }
 
 #map-logo {
     height: 55px;
+}
+
+.template-sample {
+    position: relative; 
+    left: 130px;
+    width: 250px;
+    height: 600px;
+    padding-top: 20px;
+    background-color: #32425E;
+}
+
+.template-sample h1 {
+    margin: 0;
+    padding: 0;
 }
 
 /************************** Sign In Page *************************/
