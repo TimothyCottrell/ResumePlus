@@ -534,6 +534,7 @@ li .fa, li .fab {
 body { margin: 0 }
 .sheet {
   margin: 0;
+  margin-left: 20%;
   overflow: hidden;
   position: relative;
   box-sizing: border-box;
@@ -636,7 +637,7 @@ body.letter.landscape .sheet { width: 280mm; height: 215mm }
     position: absolute;
     left: 0;
     height: 100%;
-    width: 100px;
+    width: 0;
     color: white; 
     padding-left: 30px;
     padding-top: 20px;
@@ -658,6 +659,22 @@ body.letter.landscape .sheet { width: 280mm; height: 215mm }
     height: 55px;
 }
 
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
+  .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+
+  #saveHeader {
+    padding-left: 200px;
+  }
 /************************** Sign In Page *************************/
 
 /* Style the sign in body section */

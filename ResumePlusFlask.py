@@ -38,7 +38,9 @@ def landing():
 @app.route('/register', methods=['POST', 'GET'])
 def register():
     if request.method == 'POST':
+        #Check that no one in the database has the same username
         if db.session.query(User).filter_by(username=request.form['username']).count() == 0:
+            #Encrypt password
             h_password = bcrypt.hashpw(request.form['password'].encode(bcryptCode), bcrypt.gensalt())
             new_user = User(request.form['fname'], request.form['lname'], request.form['username'],
                             request.form['email'], h_password, False)
@@ -59,8 +61,11 @@ def home_page():
     if session.get('user'):
         the_user = db.session.query(User).filter_by(username=session.get('user')).one_or_none()
         the_resume = db.session.query(Resume).filter_by(user_id=the_user.id).one_or_none()
-        sections = db.session.query(Section).filter_by(resume_id=the_resume.id).all()
-        return render_template('Home.html', user=the_user, resume=the_resume, sections=sections)
+        if the_resume:
+            sections = db.session.query(Section).filter_by(resume_id=the_resume.id).all()
+            #If the user has a resume then it will be displayed
+            return render_template('Home.html', user=the_user, resume=the_resume, sections=sections)
+        return render_template('Home.html', user=the_user)
     return redirect(url_for('login'))
 
 
@@ -73,13 +78,16 @@ def login():
         if the_user == None:
             the_user = db.session.query(User).filter_by(username=request.form['username']).one_or_none()
             if the_user == None:
+                print("Incorrect Email or Username")
                 return render_template('Login.html')
         if bcrypt.checkpw(request.form['password'].encode(bcryptCode), the_user.password):
             session['user'] = the_user.username
             session['email'] = the_user.email
             session['user_id'] = the_user.id
             return redirect(url_for('home_page'))
-        return render_template('Login.html')
+        else:
+            print("Incorrect Password")
+            return render_template('Login.html')
     else:
         return render_template('Login.html')
 
@@ -102,6 +110,7 @@ def support():
 @app.route('/logout')
 def logout():
     if session.get('user'):
+        #Clear current session
         session.clear()
     return redirect(url_for('login'))
 
@@ -159,7 +168,7 @@ def save_resume():
                         "head": head
                     }
         html += data[i]['html']
-    bhtml = html.encode(bcryptCode)
+    bhtml = html.encode(bcryptCode) ##Stores html as bytes
     the_user = db.session.query(User).filter_by(username=session.get('user')).one_or_none()
     new_resume = Resume(the_user.id, bhtml, "testing")
     db.session.add(new_resume)

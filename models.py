@@ -106,7 +106,7 @@ class Section(db.Model):
     __tablename__ = 'Section'
     id = db.Column("id", db.Integer, primary_key=True)
     resume_id = db.Column("resume_id", db.Integer, db.ForeignKey('Resume.id'))
-    name = db.Column("sectionName", db.String(20))
+    name = db.Column("name", db.String(20))
     info = db.Column("text", db.String(500))
     caption = db.Column("caption", db.String(500))
 
