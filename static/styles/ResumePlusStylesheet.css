@@ -664,19 +664,33 @@ body.letter.landscape .sheet { width: 280mm; height: 215mm }
     height: 55px;
 }
 
-.template-sample {
+.side-bar-elements {
     position: relative; 
     left: 130px;
     width: 250px;
-    height: 600px;
+    height: 750px;
     padding-top: 20px;
     background-color: #32425E;
 }
 
-.template-sample h1 {
+.template-element h1 {
     margin: 0;
     padding: 0;
 }
+
+.template1, .template2, .template3 {
+    width: 200px;
+    height: 200px;
+    margin: 20px 0;
+    background-color: gray;
+}
+
+.sheet {
+    position: absolute; 
+    left: 500px;
+    top: 190px;
+}
+
 
 /************************** Sign In Page *************************/
 
