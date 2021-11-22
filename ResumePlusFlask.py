@@ -13,7 +13,6 @@ import json
 from database import db
 from models import User, Resume, Text, Section
 import bcrypt
-import pickle
 
 app = Flask(__name__)  # create an app
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///resumeplus_flask_app.db'
@@ -27,6 +26,7 @@ db.init_app(app)
 with app.app_context():
     db.create_all()  # run under the app context
 
+
 @app.route('/')
 @app.route('/index')
 def landing():
@@ -39,8 +39,6 @@ def landing():
 def register():
     if request.method == 'POST':
         if db.session.query(User).filter_by(username=request.form['username']).count() == 0:
-            # for i in request.form:
-            #     print(str(i) + ": " + str(request.form[i]))
             h_password = bcrypt.hashpw(request.form['password'].encode(bcryptCode), bcrypt.gensalt())
             new_user = User(request.form['fname'], request.form['lname'], request.form['username'],
                             request.form['email'], h_password, False)
@@ -54,6 +52,7 @@ def register():
             # Insert case for if the username is already taken
             return render_template('Register.html')
     return render_template('Register.html')
+
 
 @app.route('/home_page')
 def home_page():
@@ -72,6 +71,7 @@ def home_page():
             return render_template('Home.html', user=the_user, resume=newest_resume, sections=sections, enumerate=enumerate,
                                    zip=zip, len=len)
     return redirect(url_for('login'))
+
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
@@ -92,6 +92,7 @@ def login():
     else:
         return render_template('Login.html')
 
+
 @app.route('/account/settings')
 def settings():
     the_user = db.session.query(User).filter_by(username=session.get('user')).one_or_none()
@@ -99,11 +100,13 @@ def settings():
         return render_template('Setting.html', user=the_user)
     return redirect(url_for('login'))
 
+
 @app.route('/support')
 def support():
     if session.get('user'):
         return render_template('Support.html', user=session['user'])
     return render_template('Support.html')
+
 
 @app.route('/logout')
 def logout():
@@ -111,11 +114,13 @@ def logout():
         session.clear()
     return redirect(url_for('login'))
 
+
 @app.route('/about')
 def about():
     if session.get('user'):
         return render_template('About.html', user=session['user'])
     return render_template('About.html')
+
 
 @app.route('/account/profile')
 def profile():
@@ -124,11 +129,13 @@ def profile():
         return render_template('Profile.html', user=the_user)
     return redirect(url_for('login'))
 
+
 @app.route('/database')
 def database():
     if session.get('user'):
         return render_template('Database.html', user=session['user'])
     return render_template('Database.html')
+
 
 @app.route('/save_resume', methods=['POST'])
 def save_resume():
@@ -179,12 +186,6 @@ def save_resume():
     db.session.commit()
     return "Success"
 
-# @app.route('/get_html', methods=['POST', 'GET'])
-# def get_html():
-#    data = {'0': {'html': '<h1>Amazing Header</h1>', 'text': 'Amazing Header'},
-#            '1': {'html': '<p>This text is different!</p>',
-#                  'text': 'This text is different!'}}
-#    return None
 
 @app.route('/account/change_location', methods=['POST'])
 def change_location():
@@ -196,6 +197,7 @@ def change_location():
         db.session.commit()
     return redirect(url_for('settings'))
 
+
 @app.route('/account/change_general_information', methods=['POST'])
 def change_general_information():
     if request.method == 'POST':
@@ -206,6 +208,7 @@ def change_general_information():
         db.session.commit()
     return redirect(url_for('settings'))
 
+
 @app.route('/account/change_about', methods=['POST'])
 def change_about():
     if request.method == 'POST':
@@ -214,6 +217,7 @@ def change_about():
         db.session.add(the_user)
         db.session.commit()
     return redirect(url_for('settings'))
+
 
 @app.route('/account/add_section/<section_name>', methods=['POST'])
 def add_section(section_name):
@@ -244,6 +248,7 @@ def add_section(section_name):
         db.session.commit()
     return redirect(url_for('settings'))
 
+
 @app.route('/account/change_password', methods=['POST'])
 def change_password():
     if request.method == 'POST':
@@ -255,6 +260,7 @@ def change_password():
             db.session.commit()
     return redirect(url_for('settings'))
 
+
 @app.route('/<fname>/delete')
 def delete_account(fname):
     the_user = db.session.query(User).filter_by(username=session.get('user')).one_or_none()
@@ -263,11 +269,13 @@ def delete_account(fname):
     db.session.commit()
     return redirect(url_for('home_page'))
 
+
 @app.route('/clear')
 def clear():
     session.clear()
     db.session.commit()
     return redirect(url_for('home_page'))
+
 
 app.run(host=os.getenv('IP', '127.0.0.1'), port=int(os.getenv('PORT', 5000)), debug=True)
 

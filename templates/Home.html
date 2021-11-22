@@ -82,6 +82,67 @@
               }
             </script>
 
+            <!--Buttons just below the header-->
+            <div class="bottom-nav">
+                <div class = "bottom-nav-wrapper">
+                    <a href = ""><button class = "top-button" id = "share-button">Share</button></a>
+                    <a href = ""><button class = "top-button" id = "download-button">Download</button></a>
+                    <a href = ""><button class = "top-button" id = "dot-button">...</button></a>
+                </div>
+            </div>
+
+            <!--sidebar links-->
+            <div id = "vertical-nav">
+                <div id = "sidebar">
+
+                    <div class = "elements" id = "template-feature">
+                    
+                        <!--Sidebar elements-->
+                        <img src = "../static/image/Template.png" id = "template-logo">
+                        <h3>Templates</h3>
+                    </div>
+
+                    <div class = "elements" id = "text-feature">
+
+                        <!--Sidebar elements-->
+                        <img src = "../static/image/Text.png" id = "text-logo">
+                        <h3>Text</h3>
+                    </div>
+
+                    <div class = "elements" id = "element-feature">
+
+                        <!--Sidebar elements-->
+                        <img src = "../static/image/Elements.png" id = "element-logo">
+                        <h3>Elements</h3>
+                    </div>
+
+                    <div class = "elements" id = "map-feature">
+
+                        <!--Sidebar elements-->
+                        <img src = "../static/image/map.png" id = "map-logo">
+                        <h3>Map</h3>
+                    </div> 
+                    
+                    <div class = "elements" id = "upload-feature">
+
+                        <!--Sidebar elements-->
+                        <img src = "../static/image/upload.png" id = "upload-logo">
+                        <h3>Upload</h3>
+                    </div>
+                    
+                    <div class = "elements" id = "more-feature">
+
+                        <!--Sidebar elements-->
+                        <img src = "../static/image/more.png" id = "more-logo">
+                        <h3>More</h3>
+                    </div>
+                </div>
+
+                <div class = "template-sample">
+                    <h1 id = "h">Hello</h1>
+                </div>
+            </div>
+
             {% if not resume %}
                 <div id="sample_resume_div">
                     <h1>Sample Header</h1>
@@ -95,6 +156,7 @@
                     {{ resume.html.decode('utf-8') }}
                 <!-- {% endautoescape %} -->
                 </div>
+<<<<<<< HEAD
                 <button onclick="save_resume()"> SAVE </button>
             {% endif %}
 
@@ -265,6 +327,104 @@
                                     </li>
                                     <li>
                                         <header>
+=======
+            {% endif %}
+        
+            <body class = "letter">
+                <section id="save">
+                    <section class="sheet">
+                        <aside>
+                            
+                            {% if user %}
+                            <section class="contact">
+                                <h3>Contact</h3>
+                                <ul>
+                                    {% if user.country and user.state %}
+                                        <li><p><i class="fa fa-map-marker-alt" title="Location"></i>{{user.country}}, {{user.state}}</p></li>
+                                    {% endif %}
+                                    {% if user.phoneNumber %}
+                                        <li><p><i class="fa fa-phone" title="Cell phone"></i> <a href="tel:{{user.phoneNumber}}">({{user.phoneNumber[0:2]}}) {{user.phoneNumber[3:5]}}-{{user.phoneNumber[6:9]}}</a></p></li>
+                                    {% endif %}
+                                    {% if user.email %}
+                                        <li><p><i class="fa fa-envelope" title="Email"></i> <a href="mailto:{{user.email}}">{{user.email}}</a></p></li>
+                                    {% endif %}
+                                </ul>
+                            </section>
+                            {% endif %}
+
+                            <section class="skills">
+                                <h3>Skills</h3>
+                                <ul>
+                                    <li><span>UX Design</span></li>
+                                    <li><span>Communication</span></li>
+                                    <li><span>Team Work</span></li>
+                                    <li><span>Photography</span></li>
+
+                                </ul>
+                            </section>
+                            <section class="skills">
+                                <h3>Technologies</h3>
+                                <ul>
+                                    <li><span>Excel</span></li>
+                                    <li><span>Sketch</span></li>
+                                    <li><span>Adobe Photoshop</span></li>
+                                    <li><span>Microsoft</span></li>
+                                </ul>
+                            </section>
+                        </aside>
+
+                        <section>
+                            <header class="name" aria-label="Jeff Deckard">
+                                <a href="">
+                                    <svg width="350px" height="25px" viewBox="0 0 257 35" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-family="Montserrat-Regular, Montserrat" font-size="48" font-weight="normal">
+                                            <g id="Letter" transform="translate(-54.000000, -140.000000)" fill="#484848">
+                                                <text id="JEFF-DECKARD">
+                                                    <tspan x="-62" y="174">Name</tspan>
+                                                </text>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </a>
+                                <h3>Designer</h3>
+                                <hr />
+                            </header>
+                            <section>
+                                <section class="summary">
+                                    <h3>About Me</h3>
+                                    <p>Text</p>
+                                </section>
+
+                                <section class="experience">
+                                    <h3>Experience</h3>
+                                    <ol>
+                                        <li>
+                                            <header>
+                                                <p class="sanserif">Lead Designer</p>
+                                                <time>Mar 2016-Feb 2017</time>
+                                            </header>
+                                            <span>Google</span>
+                                            <ul>
+                                                <li>Developed</li>
+                                                <li>Created </li>
+                                                <li>Leveraged </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <header>
+                                                <p class="sanserif">Software Engineer</p>
+                                                <time>2017-2018</time>
+                                            </header>
+                                            <span>Facebook</span>
+                                            <ul>
+                                                <li>Collected </li>
+                                                <li>Authored </li>
+                                                <li>Introduced</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <header>
+>>>>>>> main
                                             <p class="sanserif">Software Engineer Intern</p>
                                             <time>2019-2020</time>
                                         </header>
@@ -286,6 +446,7 @@
                                         </ul>
                                     </li>
                                 </ol>
+<<<<<<< HEAD
                             </section> -->
 
                             {% if sections %}
@@ -315,6 +476,10 @@
                             {% endif %}
 
                             <!-- <section class="education">
+=======
+                            </section>
+                            <section class="education">
+>>>>>>> main
                                 <h3>Education</h3>
                                 <ol>
                                     <li>
@@ -338,6 +503,7 @@
                                         </div>
                                     </li>
                                 </ol>
+<<<<<<< HEAD
                             </section> -->
 
                             {% if sections %}
@@ -366,10 +532,17 @@
                                 {% endfor %}
                             {% endif %}
 
+=======
+                            </section>
+>>>>>>> main
                         </section>
                     </section>
                 </section>
             </section>
+<<<<<<< HEAD
+=======
+        </body>
+>>>>>>> main
 
         <!--scalebar for zoom-->
 

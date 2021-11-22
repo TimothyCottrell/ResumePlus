@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <!--Head Section-->
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+        <title>ResumePlus Home Page3</title>
+
+        <link rel = "stylesheet" type = "text/css" href = "HomeSample.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    </head>
+
+    <!--Body Section-->
+    <body id = "home-page-body">
+
+        <!--Header Section-->
+       <header id = "home-header">
+
+            <!--Logo and Title Section-->
+            <div id = "top-wrapper">
+
+                <!--Resume+ Logo-->
+                <div id = "circle-logo"></div>
+
+                <!--Title-->
+                <h1 id = "title">Resume+</h1>
+
+                <!--Search bar-->
+                <div class = "search">
+                    <input type = "text" placeholder = "Search" id = "search-bar">
+                </div>
+
+                <!--NavBar-->
+                <nav class = "navbar-wrapper">
+                    <ul>
+                        <li><a href = "{{url_for('about')}}">About</a></li>
+                        <li><a href = "">Messages</a></li>
+                        <li><a href = "{{ url_for('support') }}">Support</a></li>
+                    </ul>
+
+                    {% if user %}
+                        <!--Dropdown button-->
+                        <div class = "dropdown-container dropdown">
+
+                            <!--Button for dropdown-->
+                            <button class = "edit-button dropbtn">Account</button>
+
+                                <!--Dropdown Menu-->
+                                <div class = "dropdown-content">
+                                    <a href = "{{ url_for('profile') }}" class = "dropdown-menu">Profile</a>
+                                    <a href = "{{ url_for('settings') }}" class = "dropdown-menu">Setting</a>
+                                    <a href = "{{ url_for('logout') }}" class = "dropdown-menu">Log Out</a>
+                                </div>
+                        </div>
+                    {% endif %}
+                </nav>
+            </div>
+        </header>
+
+        <!--Main Section-->
+        <main>
+
+            <script>
+                function save_resume() {
+                  var html = document.getElementById("sample_resume_div")
+                  console.log(html)
+                  var xhr = new XMLHttpRequest();
+                  xhr.open("POST", "/save_resume", true);
+                  xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+                  resume = {
+  
+                  };
+  
+                  children = html.getElementsByTagName('*');
+                  var e
+                  for (var i = 0; i < children.length; ++i){
+                    resume[i] = {
+                      "html" : children[i].outerHTML,
+                      "text" : children[i].innerHTML
+                    }
+                  }
+                  xhr.send(JSON.stringify(resume));
+                }
+              </script>
+  
+              {% if not resume %}
+                  <div id="sample_resume_div">
+                      <h1>Sample Header</h1>
+                      <p>This is a sample paragraph for testing purposes only</p>
+                  </div>
+                  <button onclick="save_resume()"> SAVE </button>
+              {% else %}
+              <h1>THIS SHOULD APPEAR</h1>
+                  {% autoescape false %}
+                      {{ resume.html.decode('utf-8') }}
+                  {% endautoescape %}
+              {% endif %}
+            
+            <!--sidebar links-->
+            <aside>
+            <div class="sidebar">
+                <label for="templates">Templates:</label>
+                <select name="templates" id="templates">
+                    <option value="n/a">n/a</option>
+                    <option value="Template 1">Template 1</option>
+                    <option value="Template 2">Template 2</option>
+                    <option value="Template 3">Template 3</option>
+                <label for="text">Text:</label>
+                <select name="text" id="Text">
+                    <option value="n/a">n/a</option>
+                    <option value="Text 1">Text 1</option>
+                    <option value="Text 2">Text 2</option>
+                    <option value="Text 3">Text 3</option>
+                 <a href="">Elements</a>
+                 <a href="">Maps</a>
+                 <a href="">Background</a>
+                 <a href="">Images</a>
+                 <a href="">More</a>
+            </div>
+            </aside>
+
+            <!--Buttons just below the header-->
+            <div class="top-buttons">
+                <a href = ""><button class = "share-button" id = "share-button">Share</button></a>
+                <a href = ""><button class = "download-button" id = "download-button">Download</button></a>
+                <a href = ""><button class = "dot-button" id = "dot-button">...</button></a>
+            </div>
+
+
+            <body class="letter">
+                <section id="save">
+                    <section class="sheet">
+                        <aside>
+                            <section class="contact">
+                                <h3>Contact</h3>
+                                <ul>
+                                    <li>
+                                        <p><i class="fa fa-map-marker-alt" title="Location"></i>Phonix, AZ</p>
+                                    </li>
+                                    <li>
+                                        <p><i class="fa fa-phone" title="Cell phone"></i> <a href="tel:9191231231">(919) 123-1231</a></p>
+                                    </li>
+                                    <li>
+                                        <p><i class="fa fa-envelope" title="Email"></i> <a href="mailto:jdeckard@gmail.com">jdeckard@gmail.com</a></p>
+                                    </li>
+                                </ul>
+                            </section>
+                            <section class="skills">
+                                <h3>Skills</h3>
+                                <ul>
+                                    <li><span>UX Design</span></li>
+                                    <li><span>Communication</span></li>
+                                    <li><span>Team Work</span></li>
+                                    <li><span>Photography</span></li>
+
+                                </ul>
+                            </section>
+                            <section class="skills">
+                                <h3>Technologies</h3>
+                                <ul>
+                                    <li><span>Excel</span></li>
+                                    <li><span>Sketch</span></li>
+                                    <li><span>Adobe Photoshop</span></li>
+                                    <li><span>Microsoft</span></li>
+                                </ul>
+                            </section>
+                        </aside>
+                        <section>
+                            <header class="name" aria-label="Jeff Deckard">
+                                <a href="">
+                                    <svg width="350px" height="25px" viewBox="0 0 257 35" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-family="Montserrat-Regular, Montserrat" font-size="48" font-weight="normal">
+                                            <g id="Letter" transform="translate(-54.000000, -140.000000)" fill="#484848">
+                                                <text id="JEFF-DECKARD">
+                                                    <tspan x="-62" y="174">Name</tspan>
+                                                </text>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </a>
+                                <h3>Designer</h3>
+                                <hr />
+                            </header>
+                            <section>
+                                <section class="summary">
+                                    <h3>About Me</h3>
+                                    <p>Text</p>
+                                </section>
+                                <section class="experience">
+                                    <h3>Experience</h3>
+                                    <ol>
+                                        <li>
+                                            <header>
+                                                <p class="sanserif">Lead Designer</p>
+                                                <time>Mar 2016-Feb 2017</time>
+                                            </header>
+                                            <span>Google</span>
+                                            <ul>
+                                                <li>Developed</li>
+                                                <li>Created </li>
+                                                <li>Leveraged </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <header>
+                                                <p class="sanserif">Software Engineer</p>
+                                                <time>2017-2018</time>
+                                            </header>
+                                            <span>Facebook</span>
+                                            <ul>
+                                                <li>Collected </li>
+                                                <li>Authored </li>
+                                                <li>Introduced</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <header>
+                                                <p class="sanserif">Software Engineer Intern</p>
+                                                <time>2019-2020</time>
+                                            </header>
+                                            <span>Twitter</span>
+                                            <ul>
+                                                <li>Analyzed </li>
+                                                <li>Created </li>
+                                                <li>Maintained </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <header>
+                                                <p class="sanserif">Independent iOS Engineer</p>
+                                                <time>2021-Present</time>
+                                            </header>
+                                            <ul>
+                                                <li>Developed </li>
+                                                <li>Shipped </li>
+                                            </ul>
+                                        </li>
+                                    </ol>
+                                </section>
+                                <section class="education">
+                                    <h3>Education</h3>
+                                    <ol>
+                                        <li>
+                                            <div>
+                                                <p class="sanserif">M.S., Data Science</p>
+                                                <time>Sept '20-May '22</time>
+                                            </div>
+                                            <div>
+                                                <span>North Carolina State Univeristy</span>
+                                                <span></span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <p class="sanserif">B.S., Computer Science</p>
+                                                <time>Sept '16-May '20</time>
+                                            </div>
+                                            <div>
+                                                <span>University of North Carolina at Charlotte</span>
+                                                <span>GPA: 3.91</span>
+                                            </div>
+                                        </li>
+                                    </ol>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+             </body>
+
+             <!--scalebar for zoom-->
+            
+            <div class="slidecontainer">
+                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+            </div>
+            
+        </main>
+
+        <!--Footer Section-->
+        <footer id = "footer">
+
+            <!--About Section of ResumePlus-->
+            <div id = "about">
+                <h2>Resume+</h2>
+                <p>Creating opportunities by allowing your true worth show.</p>
+            </div>
+
+            <!--Explore ResumePlus-->
+            <div id = "explore">
+
+                <!--Heading-->
+                <h3 class = "footer-heading">Explore</h3>
+
+                <!--Links to other pages in ResumePlus-->
+                <div id = "explore-links">
+                    <a href = "Home.html">Home</a><br>
+                    <br><a href = "{{url_for('about')}}">About</a><br>
+                    <br><a href = "{{url_for('support')}}">Support</a>
+                </div>
+            </div>
+
+            <!--Visit ReumePlus-->
+            <div id = "visit">
+
+                <!--Heading-->
+                <h3>Visit</h3>
+
+                <!--ResumePlus location-->
+                <p>University of North Carolina Charlotte</p>
+                <p>9201 University City Blvd</p>
+                <p>Charlotte, NC, 28223</p>
+            </div>
+
+            <!--Contact ResumePlus-->
+            <div id = "contact">
+
+                <!--Heading-->
+                <h3>Contact</h3>
+
+                <!--ResumePlus contact informtion-->
+                <p>resumeplus@gmail.com</p>
+                <p>704-123-123</p>
+            </div>
+
+            <!--Legal-->
+            <div id = "legal">
+
+                <!--Heading-->
+                <h3>Legal</h3>
+
+                <!--Links to Terms and Privacy-->
+                <a href = "#">Terms</a><br>
+                <br><a href = "#">Privacy</a>
+            </div>
+        </footer>
+    </body>
+</html>
