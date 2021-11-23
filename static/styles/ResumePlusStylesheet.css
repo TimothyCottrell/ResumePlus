@@ -643,9 +643,9 @@ body.letter.landscape .sheet { width: 280mm; height: 215mm }
     position: absolute;
     left: 0;
     height: 100%;
-    width: 0;
-    color: white; 
+    color: white;
     padding-left: 30px;
+    padding-right: 30px;
     padding-top: 20px;
 }
 
@@ -668,9 +668,10 @@ body.letter.landscape .sheet { width: 280mm; height: 215mm }
 .side-bar-elements {
     position: relative; 
     left: 130px;
-    width: 250px;
-    height: 750px;
+    width: 0px;
+    height: 778px;
     padding-top: 20px;
+    overflow-x: hidden;
     background-color: #32425E;
 }
 
@@ -678,6 +679,10 @@ body.letter.landscape .sheet { width: 280mm; height: 215mm }
     margin: 0;
     padding: 0;
 }
+
+/* .template-element {
+    display: none;
+} */
 
 .template1, .template2, .template3 {
     width: 200px;

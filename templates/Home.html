@@ -79,14 +79,24 @@
                     xhr.send(JSON.stringify(resume));
                 }
 
-                function openNav() {
-                    document.getElementById("templates").style.width = "250px";
-                    document.getElementById("sheet").style.marginLeft = "250px";
+                function openTemplates() {
+                    document.getElementById("sidebar-popout-template").style.width = "250px";
+                    // document.getElementById("sidebar-popout-template").style.display = "block";
                 }
-                
-                function closeNav() {
-                    document.getElementById("templates").style.width = "0";
-                    document.getElementById("sheet").style.marginLeft= "0";
+                function openTexts() {
+                    document.getElementById("sidebar-popout-text").style.width = "250px";
+                }
+                function openElements() {
+                    document.getElementById("sidebar-popout-elements").style.width = "250px";
+                }
+                function closeTemplates() {
+                    document.getElementById("sidebar-popout-template").style.width = "0px";
+                }
+                function closeTexts() {
+                    document.getElementById("sidebar-popout-text").style.width = "0px";
+                }
+                function closeElements() {
+                    document.getElementById("sidebar-popout-elements").style.width = "0px";
                 }
             </script>
 
@@ -103,20 +113,20 @@
             <div id = "vertical-nav">
                 <div id = "sidebar">
 
-                    <div class = "elements" id = "template-feature">
+                    <div class = "elements" id = "template-feature" onclick = openTemplates()>
                         <!--Sidebar elements-->
                         <img src = "../static/image/Template.png" id = "template-logo">
                         <h3>Templates</h3>
                     </div>
 
-                    <div class = "elements" id = "text-feature">
+                    <div class = "elements" id = "text-feature" onclick = openTexts()>
 
                         <!--Sidebar elements-->
                         <img src = "../static/image/Text.png" id = "text-logo">
                         <h3>Text</h3>
                     </div>
 
-                    <div class = "elements" id = "element-feature">
+                    <div class = "elements" id = "element-feature" onclick = openElements()>
 
                         <!--Sidebar elements-->
                         <img src = "../static/image/Elements.png" id = "element-logo">
@@ -145,11 +155,11 @@
                     </div>
                 </div>
                 <!--Side bar elements-->
-                <div class = "side-bar-elements">
+                <div class = "side-bar-elements" id = "sidebar-popout-template">
 
                     <div class = "template-element">
 
-                        <h3>Template</h3>
+                        <h3 onclick = closeTemplates()>Template</h3>
 
                         <div class = "template1"></div>
 
@@ -159,6 +169,12 @@
 
                         <div class = "template4"></div>
                     </div>
+                </div>
+                <div class = "side-bar-elements" id = "sidebar-popout-text">
+                    <h3 onclick = closeTexts()>Texts</h3>
+                </div>
+                <div class = "side-bar-elements" id = "sidebar-popout-element">
+                    <h3 onclick = closeElements()>Elements</h3>
                 </div>
             </div>
             </div>
