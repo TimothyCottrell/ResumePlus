@@ -34,6 +34,72 @@ def landing():
         return redirect(url_for('home_page'))
     return render_template('Landing.html')
 
+## Method to retrieve a resume, its text and sections
+## Parameter user is the user to retrieve resume from
+## Returns a dictionary if no resume found returns none
+def getResumeInfo(user):
+    resume = db.session.query(Resume).filter_by(user_id = user.id).all()
+    current_resume = None;
+    if len(resume) > 1:
+        for i in resume:
+            if i.order == 0:
+                current_resume = i
+                break
+    elif len(resume) == 1:
+        current_resume = resume
+    else:
+        return None
+    text = db.session.query(Text).filter_by(resume_id = current_resume.id).all()
+    sections = db.session.query(Section).filter_by(resume_id = current_resume.id).all()
+    info = {
+    'resume' : current_resume,
+    'text' : text,
+    'sections' : sections
+    }
+    return info
+
+## Method to compare two text objects
+## params two text objects text1 and text 2 to be compared
+## returns a float value of similatrity
+def compare_text(text1, text2):
+    headers1 = []
+    headers2 = []
+    for i in text1.items():
+        if i.isHead:
+            headers1.append(i)
+
+    for i in text2.items():
+        if i.isHead:
+            headers2.append(i)
+    numHeaders = 0
+    if len(headers1) > len(headers2):
+        numHeaders = len(headers1)
+    else:
+        numHeaders = len(headers2)
+
+    ## Each header accounts for 100/ num headers of similarity
+    ## Each headers % of similarity is compared to the other resumes equal section word by word
+    header_weight = 100 / numHeaders
+    similarity = 0
+    for i in headers1.items():
+        if i in headers2:
+            words1 = []
+            words2 = []
+            for t in text1.items():
+                if t.head == i:
+                    words1.append(t)
+            for t in text2.items():
+                if t.head == i:
+                    words2.append(t)
+            #TODO --------------------------------------
+            sim = .50 # For now assume 50% similar
+            #compare words1 and words2 lists and get similarity between sections
+            #-------------------------------------------------
+            similarity = similarity + (header_weight * sim)
+    return similarity
+
+
+
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
