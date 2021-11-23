@@ -80,13 +80,18 @@
                 }
 
                 function openTemplates() {
+                    // closeTexts()
+                    // closeElements()
                     document.getElementById("sidebar-popout-template").style.width = "250px";
-                    // document.getElementById("sidebar-popout-template").style.display = "block";
                 }
                 function openTexts() {
+                    // closeTemplates()
+                    // closeElements()
                     document.getElementById("sidebar-popout-text").style.width = "250px";
                 }
                 function openElements() {
+                    // closeTemplates()
+                    // closeTexts()
                     document.getElementById("sidebar-popout-elements").style.width = "250px";
                 }
                 function closeTemplates() {
@@ -156,9 +161,7 @@
                 </div>
                 <!--Side bar elements-->
                 <div class = "side-bar-elements" id = "sidebar-popout-template">
-
                     <div class = "template-element">
-
                         <h3 onclick = closeTemplates()>Template</h3>
 
                         <div class = "template1"></div>
@@ -169,14 +172,13 @@
 
                         <div class = "template4"></div>
                     </div>
+                    <div class = "side-bar-elements" id = "sidebar-popout-text">
+                        <h3 onclick = closeTexts()>Texts</h3>
+                    </div>
+                    <div class = "side-bar-elements" id = "sidebar-popout-element">
+                        <h3 onclick = closeElements()>Elements</h3>
+                    </div>
                 </div>
-                <div class = "side-bar-elements" id = "sidebar-popout-text">
-                    <h3 onclick = closeTexts()>Texts</h3>
-                </div>
-                <div class = "side-bar-elements" id = "sidebar-popout-element">
-                    <h3 onclick = closeElements()>Elements</h3>
-                </div>
-            </div>
             </div>
 
             <!-- <div id = "saveHeader" class = "saveHeader">

@@ -583,6 +583,7 @@ body.letter.landscape .sheet { width: 280mm; height: 215mm }
     justify-content: space-evenly;
     padding-top: 20px;
     color: white;
+    bottom: 0;
 }
 
 /* Style the about page */
@@ -669,6 +670,7 @@ body.letter.landscape .sheet { width: 280mm; height: 215mm }
     position: relative; 
     left: 130px;
     width: 0px;
+    float: left;
     height: 778px;
     padding-top: 20px;
     overflow-x: hidden;
@@ -679,10 +681,6 @@ body.letter.landscape .sheet { width: 280mm; height: 215mm }
     margin: 0;
     padding: 0;
 }
-
-/* .template-element {
-    display: none;
-} */
 
 .template1, .template2, .template3 {
     width: 200px;
