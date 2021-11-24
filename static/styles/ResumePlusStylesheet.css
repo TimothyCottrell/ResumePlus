@@ -666,25 +666,175 @@ body.letter.landscape .sheet { width: 280mm; height: 215mm }
     height: 55px;
 }
 
+/* Style feature */
 .side-bar-elements {
     position: relative; 
     left: 130px;
-    width: 0px;
-    float: left;
-    height: 778px;
+    width: 260px;
+    height: 860px;
     padding-top: 20px;
+    padding-right: 10px;
     overflow-x: hidden;
     background-color: #32425E;
 }
 
-.template-element h1 {
+/* Style template feature */
+.template-element, .text-element {
+    padding-left: 15px;
+}
+
+.template-element h3 {
     margin: 0;
     padding: 0;
+    color: white;
+    font-size: 20px;
+}
+
+#template-search {
+    width: 220px;
+}
+
+/* Style text feature */
+.text-element h3 {
+    color: white;
+    font-size: 20px;
+}
+
+.text-element {
+    padding: 0 20px;
+}
+
+#heading-choice-one {
+    border: none;
+    border-radius: 5px;
+    background-color: #4B5B78;
+    height: 50px;
+    color: white;
+    font-size: 30px;
+    padding-left: 20px;
+    padding-top: 10px;
+}
+
+#subheading-wrapper {
+    padding: 10px 0;
+}
+
+#subheading {
+    border: none;
+    border-radius: 5px;
+    background-color: #4B5B78;
+    height: 30px;
+    padding-left: 20px;
+    padding-top: 10px;
+}
+
+#heading-choice-one h2, #subheading h3, #body-text h4 {
+    color: white;
+    font-size: 17px; 
+}
+
+#body-text {
+    border: none;
+    border-radius: 5px;
+    background-color: #4B5B78;
+    height: 30px;
+    padding-left: 20px;
+    padding-top: 10px; 
+    color: white;
+}
+
+#sidebar-popout-text {
+    height: 660px;
+    width: 260px;
+}
+
+#text-choice select {
+    width: 100%;
+    height: 40px;
+    font-size: 15px;
+    background-color: white;
+}
+
+#text-size {
+    padding-top: 10px;
+    padding-bottom: 15px;
+}
+
+#font-text {
+    width: 150px;
+    height: 40px;
+    font-size: 15px;
+}
+
+#font-size {
+    width: 65px;
+    height: 40px;
+    font-size: 15px;
+}
+
+.column {
+    float: left;
+    padding: 10px;
+    height: 20px;
+    border: 1px solid white;
+    color: white;
+}
+
+.column i {
+    font-size: 20px;
+    padding: 2px 5px;
+}
+
+.text-element-container {
+    display: flex;
+    border: 1px solid white;
+}
+
+#height-element {
+    width: 100px;
+    padding-top: 10px;
+    padding-left: 10px;
+    height: 40px;
+}
+
+#height-element h4 {
+    position: relative;
+    top: -15px;
+    left: 15px;
+    color: white;
+}
+
+#AV-element {
+    float: right;
+    position: relative; 
+    top: -52px;
+    width: 80px;
+    padding-top: 10px;
+    padding-left: 10px;
+    height: 40px;
+}
+
+#AV-element h4 {
+    position: relative;
+    top: -15px;
+    left: 15px;
+    color: white;
+}
+
+#height, #AV {
+    width: 30px;
+    height: 30px;
+}
+
+/* Style all feature */
+.more-element {
+    width: 20px; 
+    height: 20px;
 }
 
 .template1, .template2, .template3 {
-    width: 200px;
-    height: 200px;
+    width: 220px;
+    height: 250px;
     margin: 20px 0;
     background-color: gray;
 }
@@ -695,6 +845,9 @@ body.letter.landscape .sheet { width: 280mm; height: 215mm }
     top: 190px;
 }
 
+#home-page-main {
+    padding-bottom: 400px;
+}
 
 /************************** Sign In Page *************************/
 

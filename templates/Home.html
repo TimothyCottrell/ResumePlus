@@ -8,6 +8,7 @@
         <title>ResumePlus Home Page</title>
 
         <link rel = "stylesheet" type = "text/css" href = "../static/styles/ResumePlusStylesheet.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
 
     <!--Body Section-->
@@ -87,7 +88,7 @@
                 function openTexts() {
                     // closeTemplates()
                     // closeElements()
-                    document.getElementById("sidebar-popout-text").style.width = "250px";
+                    document.getElementById("sidebar-popout-text").style.width = "260px";
                 }
                 function openElements() {
                     // closeTemplates()
@@ -159,25 +160,118 @@
                         <h3>More</h3>
                     </div>
                 </div>
+
                 <!--Side bar elements-->
                 <div class = "side-bar-elements" id = "sidebar-popout-template">
                     <div class = "template-element">
-                        <h3 onclick = closeTemplates()>Template</h3>
 
+                        <!--Heading-->
+                        <h3 onclick = closeTemplates()>Templates</h3>
+
+                        <!--Search-->
+                        <input type = "text" placeholder = "Search" id = "template-search">
+
+                        <!--Templates-->
                         <div class = "template1"></div>
 
                         <div class = "template2"></div>
 
                         <div class = "template3"></div>
+                    </div>
+                </div>
 
-                        <div class = "template4"></div>
-                    </div>
-                    <div class = "side-bar-elements" id = "sidebar-popout-text">
-                        <h3 onclick = closeTexts()>Texts</h3>
-                    </div>
-                    <div class = "side-bar-elements" id = "sidebar-popout-element">
-                        <h3 onclick = closeElements()>Elements</h3>
-                    </div>
+                <div class = "side-bar-elements" id = "sidebar-popout-text">
+                    <div class = "text-element">
+
+                        <!--Heading-->
+                        <h3 onclick = closeTexts()>Text</h3> 
+
+                        <!--Search-->
+                        <input type = "text" placeholder = "Search" id = "text-search">
+
+                        <!--Heading option-->
+                        <div class = "heading-choice">
+
+                            <h2 id = "heading-choice-one">Heading</h2>
+
+                            <h3 class = "heading-option" id = "subheading">Subheading</h3>
+
+                            <h4 class = "heading-option" id = "body-text">Body text</h4>
+                        </div>
+
+                        <!--User can choose text font-->
+                        <div id = "text-choice">
+                            <select>
+                                <option>Time New Roman</option>
+                            </select>
+                        </div>
+
+                        <!--User choose text size-->
+                        <div id = "text-size">
+
+                            <!--Font text-->
+                            <select id = "font-text">
+                                <option>Regular</option>
+                            </select>
+
+                            <!--Font size-->
+                            <select id = "font-size">
+                                <option>50</option>
+                            </select>
+                        </div>
+
+                        <!--User choose text position-->
+                        <div id = "text-position">
+                            <div class = "column">
+                                <i class="far fa-align-left"></i>
+                            </div>
+
+                            <div class = "column">
+                                <i class="far fa-align-left"></i>
+                            </div>
+
+                            <div class = "column">
+                                <i class="fas fa-align-center"></i>
+                            </div>
+
+                            <div class = "column">
+                                <i class="far fa-align-justify"></i>
+                            </div>
+                        </div><br><br><br><br>
+
+                        <div id = "text-element-wrapper">
+                            
+                            <div class = "text-element-container" id = "height-element">
+                                <img src = "height.png" id = "height">
+                                <h4>Auto</h4>
+                            </div>
+
+                            <div class = "text-element-container" id = "AV-element">
+                                <img src = "AV.png" id = "AV">
+                                <h4>0%</h4>
+                            </div>
+                        </div><br><br>
+
+                        <!--Additional Text elements-->
+                        <div id = "more-text">
+                            <div class = "column">
+                                <img src = "Element1.png" class = "more-element">
+                            </div>
+
+                            <div class = "column">
+                                <img src = "Element2.png" class = "more-element">
+                            </div>
+
+                            <div class = "column">
+                                <img src = "Element3.png" class = "more-element">
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+                   
+                <!--<div class = "side-bar-elements" id = "sidebar-popout-element">
+                    <h3 onclick = closeElements()>Elements</h3>
+                </div>-->
                 </div>
             </div>
 
