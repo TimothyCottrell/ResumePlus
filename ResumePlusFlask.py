@@ -8,7 +8,6 @@ from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
 import nltk
 from nltk.corpus import stopwords
-import bitstring
 import json
 from database import db
 from models import User, Resume, Text, Section

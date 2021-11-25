@@ -670,12 +670,12 @@ body.letter.landscape .sheet { width: 280mm; height: 215mm }
 .side-bar-elements {
     position: relative; 
     left: 130px;
-    width: 260px;
+    width: 0px;
     height: 860px;
-    padding-top: 20px;
-    padding-right: 10px;
+    padding: 0px;
     overflow-x: hidden;
     background-color: #32425E;
+    float: left;  /* testing this */
 }
 
 /* Style template feature */
@@ -743,10 +743,10 @@ body.letter.landscape .sheet { width: 280mm; height: 215mm }
     color: white;
 }
 
-#sidebar-popout-text {
+/* #sidebar-popout-text {
     height: 660px;
     width: 260px;
-}
+} */
 
 #text-choice select {
     width: 100%;
