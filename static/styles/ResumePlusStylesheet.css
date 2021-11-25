@@ -826,6 +826,148 @@ body.letter.landscape .sheet { width: 280mm; height: 215mm }
     height: 30px;
 }
 
+/* Style element element */
+#sidebar-popout-element {
+    height: 700px;
+}
+
+.element-element {
+    padding-left: 15px;
+    padding-right: 10px;
+}
+
+.element-element h3 {
+    color: white;
+    font-size: 17px; 
+}
+
+.heading-wrapper {
+    display: flex;
+}
+
+.heading-wrapper h5 {
+    position: relative;
+    left: 100px;
+    color: white;
+}
+
+#photo-see-all {
+    position: relative;
+    left: 150px;
+}
+
+#video-see-all {
+    position: relative; 
+    left: 150px;
+}
+
+#audio-see-all {
+    position: relative; 
+    left: 155px;
+}
+
+#line-shape {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#square-shape {
+    border: 1px solid white;
+    width: 30%;
+    height: 80px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+#circle-shape {
+    border: 1px solid white;
+    border-radius: 50%;
+    background-color: white;
+    width: 30%;
+    height: 80px;
+}
+
+#triangle-shape {
+    width: 0;
+	height: 0;
+	border-left: 40px solid transparent;
+	border-right: 40px solid transparent;
+	border-bottom: 50px solid white;
+}
+
+#photos-list {
+    display: flex;
+    justify-content: space-around;
+    width: 150px;
+    height: 50px;
+}
+
+#photos-list img {
+    padding: 0 5px 0 5px;
+}
+
+.videos-list {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+iframe {
+    width: 45%;
+    height: 80px;
+}
+
+/* Style map feature */
+#sidebar-popout-map {
+    height: 1050px;
+}
+
+.map-element, .upload-feature, .more-feature {
+    padding-left: 15px;
+    padding-right: 10px;
+    color: white;
+}
+
+#map-heading {
+    color: white;
+    font-size: 17px;
+}
+
+#big-map iframe {
+    width: 100%;
+    height: 200px;
+    padding: 10px 0;    
+    border-radius: 5px;
+}
+
+.small-map {
+    display: flex;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.small-map iframe {
+    width: 80px;
+    padding: 10px 10px 10px 10px;
+}
+
+#map-info {
+    color: black;
+}
+
+#map-info p {
+    position: relative; 
+    top: -15px;
+    padding: 5px 0;
+}
+
+#recent {
+    color: white;
+}
+
+.map-list {
+    padding-bottom: 15px;
+}
+
 /* Style all feature */
 .more-element {
     width: 20px; 
