@@ -916,11 +916,6 @@ iframe {
     height: 80px;
 }
 
-/* Style map feature */
-#sidebar-popout-map {
-    height: 1050px;
-}
-
 .map-element, .upload-feature, .more-feature {
     padding-left: 15px;
     padding-right: 10px;
