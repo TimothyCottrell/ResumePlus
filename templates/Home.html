@@ -82,74 +82,64 @@
 
                 //Open Features
                 function openTemplates() {
-                    // closeTexts()
-                    // closeElements()
-                    // closeMap()
-                    // closeUpload()
-                    // closeMore()
+                    document.getElementById("sidebar-popout-text").style.width = "0px";
+                    document.getElementById("sidebar-popout-element").style.width = "0px";
+                    document.getElementById("sidebar-popout-map").style.width = "0px";
                     document.getElementById("sidebar-popout-template").style.width = "250px";
                     document.getElementById("sidebar-popout-template").style.paddingTop = "20px";
                     document.getElementById("sidebar-popout-template").style.paddingRight = "10px";
                 }
                 function openTexts() {
-                    // closeTemplate()
-                    // closeElements()
-                    // closeMap()
-                    // closeUpload()
-                    // closeMore()
+                    document.getElementById("sidebar-popout-template").style.width = "0px";
+                    document.getElementById("sidebar-popout-template").style.padding = "0px";
+                    document.getElementById("sidebar-popout-element").style.width = "0px";
+                    document.getElementById("sidebar-popout-map").style.width = "0px";
                     document.getElementById("sidebar-popout-text").style.width = "260px";
-                    document.getElementById("sidebar-popout-text").style.position = "relative";
                 }
                 function openElements() {
-                    // closeTemplate()
-                    // closeTexts()
-                    // closeMap()
-                    // closeUpload()
-                    // closeMore()
+                    document.getElementById("sidebar-popout-template").style.width = "0px";
+                    document.getElementById("sidebar-popout-template").style.padding = "0px";
+                    document.getElementById("sidebar-popout-text").style.width = "0px";
+                    document.getElementById("sidebar-popout-map").style.width = "0px";
                     document.getElementById("sidebar-popout-element").style.width = "250px";
-                    document.getElementById("sidebar-popout-element").style.position = "relative";
                 }
                 function openMap() {
-                    // closeTemplate()
-                    // closeTexts()
-                    // closeElements()
-                    // closeUpload()
-                    // closeMore()
-                    document.getElementById("sidebar-popout-map").style.width = "250px"; 
-                    document.getElementById("sidebar-popout-map").style.position = "relative";
+                    document.getElementById("sidebar-popout-template").style.width = "0px";
+                    document.getElementById("sidebar-popout-template").style.padding = "0px";
+                    document.getElementById("sidebar-popout-text").style.width = "0px";
+                    document.getElementById("sidebar-popout-element").style.width = "0px";
+                    document.getElementById("sidebar-popout-map").style.width = "250px";
                 }
                 function openUpload() {
-                    // closeTemplate()
-                    // closeTexts()
-                    // closeElements()
-                    // closeMap()
-                    // closeMore()
-                    document.getElementById("sidebar-popout-upload").style.width = "250px"; 
-                    document.getElementById("sidebar-popout-upload").style.position = "relative";
+                    document.getElementById("sidebar-popout-template").style.width = "0px";
+                    document.getElementById("sidebar-popout-template").style.padding = "0px";
+                    document.getElementById("sidebar-popout-text").style.width = "0px";
+                    document.getElementById("sidebar-popout-element").style.width = "0px";
+                    document.getElementById("sidebar-popout-map").style.width = "0px";
+                    document.getElementById("sidebar-popout-upload").style.width = "250px";
                 }
                 function openMore() {
-                    // closeTemplate()
-                    // closeTexts()
-                    // closeElements()
-                    // closeMap()
-                    // closeUpload()
+                    document.getElementById("sidebar-popout-template").style.width = "0px";
+                    document.getElementById("sidebar-popout-template").style.padding = "0px";
+                    document.getElementById("sidebar-popout-text").style.width = "0px";
+                    document.getElementById("sidebar-popout-element").style.width = "0px";
+                    document.getElementById("sidebar-popout-map").style.width = "0px";
                     document.getElementById("sidebar-popout-more").style.width = "250px"; 
-                    document.getElementById("sidebar-popout-more").style.position = "relative";
                 }
 
                 //Close Features
                 function closeTemplates() {
                     document.getElementById("sidebar-popout-template").style.width = "0px";
-                    document.getElementById("sidebar-popout-template").style.padding = "0px"
+                    document.getElementById("sidebar-popout-template").style.padding = "0px";
                 }
                 function closeTexts() {
                     document.getElementById("sidebar-popout-text").style.width = "0px";
                 }
                 function closeElements() {
-                    document.getElementById("sidebar-popout-element").style.width = "0px"; 
+                    document.getElementById("sidebar-popout-element").style.width = "0px";
                 }
                 function closeMap() {
-                    document.getElementById("sidebar-popout-map").style.width = "0px"; 
+                    document.getElementById("sidebar-popout-map").style.width = "0px";
                 }
                 function closeUpload() {
                     document.getElementById("sidebar-popout-upload").style.width = "0px"; 

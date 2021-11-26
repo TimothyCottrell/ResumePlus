@@ -671,7 +671,7 @@ body.letter.landscape .sheet { width: 280mm; height: 215mm }
     position: relative; 
     left: 130px;
     width: 0px;
-    height: 860px;
+    height: 100%;
     padding: 0px;
     overflow-x: hidden;
     background-color: #32425E;
