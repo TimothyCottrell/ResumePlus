@@ -80,21 +80,37 @@
                     xhr.send(JSON.stringify(resume));
                 }
 
+                //Open Features
                 function openTemplates() {
-                    // closeTexts()
-                    // closeElements()
                     document.getElementById("sidebar-popout-template").style.width = "250px";
                 }
                 function openTexts() {
-                    // closeTemplates()
-                    // closeElements()
                     document.getElementById("sidebar-popout-text").style.width = "260px";
+                    document.getElementById("sidebar-popout-text").style.position = "relative";
+                    document.getElementById("sidebar-popout-text").style.top = "-900px";
                 }
                 function openElements() {
-                    // closeTemplates()
-                    // closeTexts()
-                    document.getElementById("sidebar-popout-elements").style.width = "250px";
+                    document.getElementById("sidebar-popout-element").style.width = "250px";
+                    document.getElementById("sidebar-popout-element").style.position = "relative";
+                    document.getElementById("sidebar-popout-element").style.top = "-1570px";
                 }
+                function openMap() {
+                    document.getElementById("sidebar-popout-map").style.width = "250px"; 
+                    document.getElementById("sidebar-popout-map").style.position = "relative";
+                    document.getElementById("sidebar-popout-map").style.top = "-2290px";
+                }
+                function openUpload() {
+                    document.getElementById("sidebar-popout-upload").style.width = "250px"; 
+                    document.getElementById("sidebar-popout-upload").style.position = "relative";
+                    document.getElementById("sidebar-popout-upload").style.top = "-3370px";
+                }
+                function openMore() {
+                    document.getElementById("sidebar-popout-map").style.width = "250px"; 
+                    document.getElementById("sidebar-popout-map").style.position = "relative";
+                    document.getElementById("sidebar-popout-more").style.top = "-4250px";
+                }
+
+                //Close Features
                 function closeTemplates() {
                     document.getElementById("sidebar-popout-template").style.width = "0px";
                 }
@@ -102,7 +118,16 @@
                     document.getElementById("sidebar-popout-text").style.width = "0px";
                 }
                 function closeElements() {
-                    document.getElementById("sidebar-popout-elements").style.width = "0px";
+                    document.getElementById("sidebar-popout-element").style.width = "0px"; 
+                }
+                function closeMap() {
+                    document.getElementById("sidebar-popout-map").style.width = "0px"; 
+                }
+                function closeUpload() {
+                    document.getElementById("sidebar-popout-upload").style.width = "0px"; 
+                }
+                function closeMore() {
+                    document.getElementById("sidebar-popout-more").style.width = "0px"; 
                 }
             </script>
 
@@ -139,21 +164,21 @@
                         <h3>Elements</h3>
                     </div>
 
-                    <div class = "elements" id = "map-feature">
+                    <div class = "elements" id = "map-feature" onclick = openMap()>
 
                         <!--Sidebar elements-->
                         <img src = "../static/image/map.png" id = "map-logo">
                         <h3>Map</h3>
                     </div> 
                     
-                    <div class = "elements" id = "upload-feature">
+                    <div class = "elements" id = "upload-feature" onclick = openUpload()>
 
                         <!--Sidebar elements-->
                         <img src = "../static/image/upload.png" id = "upload-logo">
                         <h3>Upload</h3>
                     </div>
                     
-                    <div class = "elements" id = "more-feature">
+                    <div class = "elements" id = "more-feature" onclick = openMore()>
 
                         <!--Sidebar elements-->
                         <img src = "../static/image/more.png" id = "more-logo">
@@ -244,12 +269,12 @@
                         <div id = "text-element-wrapper">
                             
                             <div class = "text-element-container" id = "height-element">
-                                <img src = "height.png" id = "height">
+                                <img src = "../static/image/height.png" id = "height">
                                 <h4>Auto</h4>
                             </div>
 
                             <div class = "text-element-container" id = "AV-element">
-                                <img src = "AV.png" id = "AV">
+                                <img src = "../static/image/AV.png" id = "AV">
                                 <h4>0%</h4>
                             </div>
                         </div><br><br>
@@ -257,23 +282,190 @@
                         <!--Additional Text elements-->
                         <div id = "more-text">
                             <div class = "column">
-                                <img src = "Element1.png" class = "more-element">
+                                <img src = "../static/image/Element1.png" class = "more-element">
                             </div>
 
                             <div class = "column">
-                                <img src = "Element2.png" class = "more-element">
+                                <img src = "../static/image/Element2.png" class = "more-element">
                             </div>
 
                             <div class = "column">
-                                <img src = "Element3.png" class = "more-element">
+                                <img src = "../static/image/Element3.png" class = "more-element">
                             </div>
                         </div>
                     </div>  
                 </div>
-                   
-                <!--<div class = "side-bar-elements" id = "sidebar-popout-element">
-                    <h3 onclick = closeElements()>Elements</h3>
-                </div>-->
+
+                 <!--Elements Feature-->
+                 <div class = "side-bar-elements" id = "sidebar-popout-element">
+                    <div class = "element-element">
+
+                        <!--Heading-->
+                        <h3 onclick = closeElements()>Elements</h3>
+
+                         <!--Search-->
+                         <input type = "text" placeholder = "Search" id = "element-search">
+
+                        <div id = "recently-used">
+                            <h3>Recently Used</h3>
+                            
+                            <!--Shape Choice-->
+                            <div id = "shapes">
+
+                            </div>
+                        </div>
+
+                        <!--Line shape wrapper-->
+                        <div class = "heading-wrapper">
+                            <h3>Line & Shape</h3>
+                            <h5>See All</h5>
+                        </div>
+
+                        <!--Shapes-->
+                        <div id = "line-shape">
+                            <div id = "square-shape"></div>
+                            <div id = "circle-shape"></div>
+                            <div id = "triangle-shape"></div>
+                        </div>
+
+                        <!--Photo List-->
+                        <div class = "heading-wrapper">
+                            <h3>Photos</h3>
+                            <h5 id = "photo-see-all">See All</h5>
+                        </div>
+
+                        <!--Photo List-->
+                        <div id = "photos-list">
+                            <img src = "../static/image/photo1.jpeg">
+                            <img src = "../static/image/photo1.jpeg">
+                            <img src = "../static/image/photo1.jpeg">
+                            <img src = "../static/image/photo1.jpeg">
+                        </div>
+
+                        <!--Video heading-->
+                        <div class = "heading-wrapper">
+                            <h3>Videos</h3>
+                            <h5 id = "video-see-all">See All</h5>
+                        </div>
+
+                        <!--Video list choice-->
+                        <div class = "videos-list">
+                            <iframe src="https://www.youtube.com/embed/B1T06UhcX0Q" title="YouTube video player" 
+                            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen></iframe>
+
+                            <iframe src="https://www.youtube.com/embed/B1T06UhcX0Q" title="YouTube video player" 
+                            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen></iframe>
+                        </div>
+
+                        <!--Audio heading-->
+                        <div class = "heading-wrapper">
+                            <h3>Audio</h3>
+                            <h5 id = "audio-see-all">See All</h5>
+                        </div>
+
+                        <!--Audio list-->
+                        <div class = "audio-element">
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <!--Map Feature-->
+                <div class = "side-bar-elements" id = "sidebar-popout-map">
+                    <div class = "map-element">
+                        <h3 id = "map-heading" onclick = closeMap()>Map</h3>
+
+                        <!--Search-->
+                        <input type = "text" placeholder = "Search" id = "map-search">
+
+                        <div id = "big-map">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3255.955094543436!2d-80.73735268505635!3d35.307097258007396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88541c1ad0a92357%3A0x6b3f67f7f19324f3!2sUniversity%20of%20North%20Carolina%20at%20Charlotte!5e0!3m2!1sen!2sus!4v1637799767461!5m2!1sen!2sus" 
+                            style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+
+                        <div class = "small-map">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3255.955094543436!2d-80.73735268505635!3d35.307097258007396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88541c1ad0a92357%3A0x6b3f67f7f19324f3!2sUniversity%20of%20North%20Carolina%20at%20Charlotte!5e0!3m2!1sen!2sus!4v1637799767461!5m2!1sen!2sus" 
+                            style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+                            <div id = "map-info">
+                                <h3>Title</h3>
+                                <p>Address Line 1</p>
+                                <p>City, State, Zip Code</p>
+                            </div>
+                        </div>
+
+                        <div id = "recent-searches">
+                            <h3 id = "recent">Recent</h3>
+
+                            <div class = "map-list">
+                                <div class = "small-map" class = "recent-map">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3255.955094543436!2d-80.73735268505635!3d35.307097258007396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88541c1ad0a92357%3A0x6b3f67f7f19324f3!2sUniversity%20of%20North%20Carolina%20at%20Charlotte!5e0!3m2!1sen!2sus!4v1637799767461!5m2!1sen!2sus" 
+                                    style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        
+                                    <div id = "map-info">
+                                        <h3>Title</h3>
+                                        <p>Address Line 1</p>
+                                        <p>City, State, Zip Code</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class = "map-list">
+                                <div class = "small-map" class = "recent-map">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3255.955094543436!2d-80.73735268505635!3d35.307097258007396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88541c1ad0a92357%3A0x6b3f67f7f19324f3!2sUniversity%20of%20North%20Carolina%20at%20Charlotte!5e0!3m2!1sen!2sus!4v1637799767461!5m2!1sen!2sus" 
+                                    style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        
+                                    <div id = "map-info">
+                                        <h3>Title</h3>
+                                        <p>Address Line 1</p>
+                                        <p>City, State, Zip Code</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class = "map-list">
+                                <div class = "small-map" class = "recent-map">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3255.955094543436!2d-80.73735268505635!3d35.307097258007396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88541c1ad0a92357%3A0x6b3f67f7f19324f3!2sUniversity%20of%20North%20Carolina%20at%20Charlotte!5e0!3m2!1sen!2sus!4v1637799767461!5m2!1sen!2sus" 
+                                    style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        
+                                    <div id = "map-info">
+                                        <h3>Title</h3>
+                                        <p>Address Line 1</p>
+                                        <p>City, State, Zip Code</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class = "map-list">
+                                <div class = "small-map" class = "recent-map">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3255.955094543436!2d-80.73735268505635!3d35.307097258007396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88541c1ad0a92357%3A0x6b3f67f7f19324f3!2sUniversity%20of%20North%20Carolina%20at%20Charlotte!5e0!3m2!1sen!2sus!4v1637799767461!5m2!1sen!2sus" 
+                                    style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        
+                                    <div id = "map-info">
+                                        <h3>Title</h3>
+                                        <p>Address Line 1</p>
+                                        <p>City, State, Zip Code</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+
+                <!--Upload Feature-->
+                <div class = "side-bar-elements" id = "sidebar-popout-upload">
+                    <div class = "upload-feature">
+                        <h3 onclick = closeUpload()>Upload</h3>
+                    </div>
+                </div>
+
+                <!--More Feature-->
+                <div class = "side-bar-elements" id = "sidebar-popout-more">
+                    <div class = "more-feature">
+                        <h3 onclick = closeMore()>More</h3>
+                    </div>
                 </div>
             </div>
 
