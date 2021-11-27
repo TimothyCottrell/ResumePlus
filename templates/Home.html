@@ -455,16 +455,58 @@
                 </div>
 
                 <!--Upload Feature-->
-                <div class = "side-bar-elements" id = "sidebar-popout-upload">
-                    <div class = "upload-feature">
+                <div class = "side-bar-elements" id="sidebar-popout-upload">
+                    <div class = "upload-element">
+                        <!--Heading-->
                         <h3 onclick = closeUpload()>Upload</h3>
+
+                        <form action="">
+                            <input type="file" id="myFile" name="filename">
+                        </form>
+
+                        <div class="recent">
+                            <h4>Recent</h4>
+                            <img style="margin-right:2px;" src="Frog.jpg" alt="frog" width="40" height = auto>
+                        </div>
+
+                        <div class="images">
+                            <h4>Images</h4>
+                            <img style="margin-right:2px;" src="Trees.jpg" alt="trees" width="40" height = auto>
+                        </div>
+
+                        <div class="video">
+
+                            <h4>Videos</h4>
+                            <video width="40" height="auto" controls>
+                                <source src="Skydive.mp4" type="video/mp4">
+                            </video>
+                        </div>
                     </div>
                 </div>
 
                 <!--More Feature-->
                 <div class = "side-bar-elements" id = "sidebar-popout-more">
-                    <div class = "more-feature">
+                    <div class="more-element">
+                        <!--Heading-->
                         <h3 onclick = closeMore()>More</h3>
+                        <div id="more-search" class="">
+                             <input type="text" id="moreSearch" placeholder="Search" onkeydown="submitOnEnter(event)" onfocus="clearWrongInput();" style="z-index:0;">
+                        </div>
+                        </div>
+                        <div class = "more-buttons">
+                            <div id="Video">
+                                <a href = "#Video"><div id = "circle-logo"></div></a>
+                                <a href = "#Video">Video</a>
+                            </div>
+                            <div id="Background">
+                                <a href = "#Background"><div id = "circle-logo"></div></a>
+                                <a href = "#Background">Background</a>
+                            </div>
+                            <div id="Style">
+                                <a href = "#Style"><div id = "circle-logo"></div></a>
+                                <a href = "#Style">Style</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -485,64 +527,6 @@
                     </div>
                 {% endif %}
             </div> -->
-
-            <!--Side bar upload-->
-            <div class = "side-bar-elements" id="sidebar-popout-upload">
-            <div class = "upload-element">
-                <!--Heading-->
-                <h3 onclick = closeUpload()>Upload</h3>
-
-                <form action="">
-                    <input type="file" id="myFile" name="filename">
-                </form>
-
-                <div class="recent">
-                    <h4>Recent</h4>
-                    <img style="margin-right:2px;" src="Frog.jpg" alt="frog" width="40" height = auto>
-                </div>
-
-                <div class="images">
-                    <h4>Images</h4>
-                    <img style="margin-right:2px;" src="Trees.jpg" alt="trees" width="40" height = auto>
-                </div>
-
-                <div class="video">
-
-                    <h4>Videos</h4>
-                    <video width="40" height="auto" controls>
-                        <source src="Skydive.mp4" type="video/mp4">
-                    </video>
-                </div>
-                </div>
-            </div>
-            
-
-            <!--Side bar More-->
-            <div class = "side-bar-elements" id = "sidebar-popout-more">
-                <div class="more-element">
-                    <!--Heading-->
-                    <h3 onclick = closeMore()>More</h3>
-                    <div id="more-search" class="">
-                         <input type="text" id="moreSearch" placeholder="Search" onkeydown="submitOnEnter(event)" onfocus="clearWrongInput();" style="z-index:0;">
-                    </div>
-                    </div>
-                    <div class = "more-buttons">
-                        <div id="Video">
-                            <a href = "#Video"><div id = "circle-logo"></div></a>
-                            <a href = "#Video">Video</a>
-                        </div>
-                        <div id="Background">
-                            <a href = "#Background"><div id = "circle-logo"></div></a>
-                            <a href = "#Background">Background</a>
-                        </div>
-                        <div id="Style">
-                            <a href = "#Style"><div id = "circle-logo"></div></a>
-                            <a href = "#Style">Style</a>
-                        </div>
-                    </div>
-            </div>
-
-
 
                 <!--Side bar background-->
                 <div class = "side-bar-elements" id = "sidebar-popout-background">
