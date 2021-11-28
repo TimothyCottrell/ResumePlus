@@ -326,6 +326,7 @@ a {
 body {
     font-size: 0.95em;
     margin: 0 auto;
+    padding-bottom: 100%;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
@@ -585,7 +586,7 @@ body.letter.landscape .sheet { width: 280mm; height: 215mm }
     justify-content: space-evenly;
     padding-top: 20px;
     color: white;
-    bottom: 0;
+    /* bottom: 0; */
     font-family: Arial;
 }
 
@@ -674,7 +675,7 @@ body.letter.landscape .sheet { width: 280mm; height: 215mm }
 /* Style feature */
 .side-bar-elements {
     position: relative; 
-    left: 130px;
+    left: 140px;
     width: 0px;
     height: 100%;
     padding: 0px;
