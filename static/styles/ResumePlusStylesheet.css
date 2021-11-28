@@ -334,6 +334,7 @@ body {
     text-rendering: optimizeLegibility;
     text-decoration-skip: ink;
     hyphens: auto;
+    position: relative;
 }
 
 #save > section:first-of-type {
@@ -576,6 +577,7 @@ body.letter.landscape .sheet { width: 280mm; height: 215mm }
 
 /* Style the Footer */
 #footer {
+    position: absolute;
     width: 100%;
     height: 180px;
     background-color: #3982FA;
@@ -584,11 +586,13 @@ body.letter.landscape .sheet { width: 280mm; height: 215mm }
     padding-top: 20px;
     color: white;
     bottom: 0;
+    font-family: Arial;
 }
 
 /* Style the about page */
 #about h2 {
     font-size: 18pt;
+    font-family: Arial;
 }
 
 /* Style the explore links */
@@ -654,6 +658,7 @@ body.letter.landscape .sheet { width: 280mm; height: 215mm }
     font-weight: bold;
     position: relative;
     top: -15px;
+    font-family: Arial;
 }
 
 #template-logo, #text-logo, 
@@ -688,16 +693,105 @@ body.letter.landscape .sheet { width: 280mm; height: 215mm }
     padding: 0;
     color: white;
     font-size: 20px;
+    font-family: Arial;
 }
 
 #template-search {
     width: 220px;
 }
 
+/* Style upload feature */
+.upload-element h3 {
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-size: 20px;
+    font-family: Arial;
+}
+.video {
+   width: auto;
+   height: 10%;
+   padding: 8% 0% 2%;
+   text-align: left;
+   font-family: Arial;
+}
+.images{
+   width: auto;
+   height: 10%;
+   padding: 8% 0% 2%;
+   text-align: left;
+   font-family: Arial;
+}
+.recent{
+   width: auto;
+   height: 10%;
+   padding: 8% 0% 2%;
+   text-align: left;
+   font-family: Arial;
+}
+.upload-element h4 {
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-size: 15px;
+    font-family: Arial;
+}
+
+
+/* Style more feature */
+.more-element h3 {
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-size: 20px;
+    font-family: Arial;
+}
+#more-search {
+    width: 220px;
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+
+#Video {
+   display: inline-block;
+   width: auto;
+   height: 10%;
+   padding: 20% 0% 2%;
+   text-align: center;
+   font-family: Arial;
+}
+#Background {
+   display: inline-block;
+   width: auto;
+   height: 10%;
+   padding: 20% 0% 2%;
+   text-align: center;
+   font-family: Arial;
+}
+#Style {
+   display: inline-block;
+   width: auto;
+   height: 10%;
+   padding: 20% 0% 2%;
+   text-align: center;
+   font-family: Arial;
+}
+
+/* Style background feature */
+.color-hex h3 {
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-size: 20px;
+    font-family: Arial;
+}
 /* Style text feature */
 .text-element h3 {
     color: white;
     font-size: 20px;
+    font-family: Arial;
 }
 
 .text-element {
@@ -713,6 +807,7 @@ body.letter.landscape .sheet { width: 280mm; height: 215mm }
     font-size: 30px;
     padding-left: 20px;
     padding-top: 10px;
+    font-family: Arial;
 }
 
 #subheading-wrapper {
@@ -726,11 +821,13 @@ body.letter.landscape .sheet { width: 280mm; height: 215mm }
     height: 30px;
     padding-left: 20px;
     padding-top: 10px;
+    font-family: Arial;
 }
 
 #heading-choice-one h2, #subheading h3, #body-text h4 {
     color: white;
-    font-size: 17px; 
+    font-size: 17px;
+    font-family: Arial;
 }
 
 #body-text {
@@ -741,6 +838,7 @@ body.letter.landscape .sheet { width: 280mm; height: 215mm }
     padding-left: 20px;
     padding-top: 10px; 
     color: white;
+    font-family: Arial;
 }
 
 /* #sidebar-popout-text {
@@ -753,23 +851,27 @@ body.letter.landscape .sheet { width: 280mm; height: 215mm }
     height: 40px;
     font-size: 15px;
     background-color: white;
+    font-family: Arial;
 }
 
 #text-size {
     padding-top: 10px;
     padding-bottom: 15px;
+    font-family: Arial;
 }
 
 #font-text {
     width: 150px;
     height: 40px;
     font-size: 15px;
+    font-family: Arial;
 }
 
 #font-size {
     width: 65px;
     height: 40px;
     font-size: 15px;
+    font-family: Arial;
 }
 
 .column {
@@ -802,6 +904,7 @@ body.letter.landscape .sheet { width: 280mm; height: 215mm }
     top: -15px;
     left: 15px;
     color: white;
+    font-family: Arial;
 }
 
 #AV-element {
@@ -819,6 +922,7 @@ body.letter.landscape .sheet { width: 280mm; height: 215mm }
     top: -15px;
     left: 15px;
     color: white;
+    font-family: Arial;
 }
 
 #height, #AV {
@@ -985,6 +1089,10 @@ iframe {
 #home-page-main {
     padding-bottom: 400px;
 }
+
+
+
+
 
 /************************** Sign In Page *************************/
 
