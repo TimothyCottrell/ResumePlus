@@ -10,7 +10,7 @@ left_align.addEventListener("click", left_align_clicked)
 
 //----------------------- On-click events ----------------------------
 function left_align_clicked(){
-  console.log(ALIGNTEXT);
+  console.log("ALIGNTEXT");
 }
 
 left_align.addEventListener("click", left_align_clicked)
