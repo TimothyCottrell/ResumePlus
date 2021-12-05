@@ -2188,6 +2188,17 @@ textarea {
     margin-right: 20px;
 }
 
+#bottom-database {
+    position: relative; 
+    top: -10px;
+    padding-bottom: 10px;
+}
+
+/* Style database filter */
+#database-filter {
+    display: flex;
+}
+
 /* Style the database div */
 #database-div {
     position: relative; 
@@ -2295,6 +2306,78 @@ textarea {
 #database-degreeMajor {
     position: relative;
     top: -15px;
+}
+
+/* Add to database */
+.checkbox-dropdown {
+    width: 200px;
+    border: 1px solid #aaa;
+    padding: 10px;
+    position: relative;
+    margin: 0 auto;
+    user-select: none;
+}
+
+/* Changes to add to database css */
+.checkbox-dropdown {
+    width: 200px;
+    border: 1px solid #aaa;
+    padding: 10px;
+    position: relative;
+    margin: 0 auto;
+    user-select: none;
+}
+
+/* Display CSS arrow to the right of the dropdown text */
+.checkbox-dropdown:after {
+    content:'';
+    height: 0;
+    position: absolute;
+    width: 0;
+    border: 6px solid white;
+    border-top-color: #000;
+    top: 50%;
+    right: 10px;
+    margin-top: -3px;
+}
+
+/* Reverse the CSS arrow when the dropdown is active */
+.checkbox-dropdown.is-active:after {
+    border-bottom-color: #000;
+    border-top-color: #fff;
+    margin-top: -9px;
+}
+
+.checkbox-dropdown-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 100%; 
+    border: inherit;
+    border-top: none;
+    left: -1px; 
+    right: -1px; 
+    opacity: 0;
+    height: 100px;
+    overflow: scroll;
+    overflow-x: hidden;
+    pointer-events: none; 
+}
+.is-active .checkbox-dropdown-list {
+    opacity: 1; 
+    pointer-events: auto;
+}
+
+.checkbox-dropdown-list li label {
+    display: block;
+    border-bottom: 1px solid silver;
+    padding: 10px;
+}
+
+.checkbox-dropdown-list li label:hover {
+    background-color: gray;
+    color: white;
 }
 
 /************************** Message Box *************************/
