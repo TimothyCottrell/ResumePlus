@@ -2137,6 +2137,12 @@ textarea {
     padding: 20px 0 20px 20px;
 }
 
+/* Style database header */
+#database-header {
+    background-color: white;
+    border-bottom: 0.5px solid gray;
+}
+
 /* Style database button */
 .database-header button {
     border: none;
