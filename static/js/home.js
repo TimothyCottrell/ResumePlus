@@ -1,3 +1,4 @@
+
 var selected = null;
 var actions = [];
 
@@ -5,7 +6,7 @@ var actions = [];
 //
 //var element = document.getElementById("elementName") - Example
 var font_size = document.getElementById("font-size");
-var left_align = document.getElementById("left-align");
+var left_align = document.getElementById("leftAlign");
 
 // ---------------------- Event listeners --------------------------
 
@@ -72,16 +73,19 @@ function alignText(item, alignment){
 
 function changeText(item,text){
   var old_text = item.innerHTML;
-  var item.innerHTML = text;
+  item.innerHTML = text;
   var new_text = text;
   addAction(old_text, new_text, changetext);
 }
 
 //----------------------- On-click events ----------------------------
-left_align.onclick = function left_align_clicked(){
-  if (selected != null){
-    alignText(left_align, 0);
+window.onload = function(){
+  document.getElementById("leftAlign").onclick = function(){
+    console.log("clicked!");
+    if (selected != null){
+      alignText(left_align, 0);
+    }
   }
 }
 
-left_align.addEventListener("click", left_align_clicked)
+  left_align.addEventListener("click", left_align_clicked);

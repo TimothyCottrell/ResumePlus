@@ -9,7 +9,6 @@
 
         <link rel = "stylesheet" type = "text/css" href = "../static/styles/ResumePlusStylesheet.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <script type="text/javascript" src="../static/js/home.js"></script>
     </head>
 
     <!--Body Section-->
@@ -81,7 +80,83 @@
                     xhr.send(JSON.stringify(resume));
                 }
 
+                //Open Features
+                function openTemplates() {
+                    document.getElementById("sidebar-popout-text").style.width = "0px";
+                    document.getElementById("sidebar-popout-element").style.width = "0px";
+                    document.getElementById("sidebar-popout-map").style.width = "0px";
+                    document.getElementById("sidebar-popout-upload").style.width = "0px";
+                    document.getElementById("sidebar-popout-more").style.width = "0px";
+                    document.getElementById("sidebar-popout-template").style.width = "250px";
+                    document.getElementById("sidebar-popout-template").style.paddingTop = "20px";
+                    document.getElementById("sidebar-popout-template").style.paddingRight = "10px";
+                }
+                function openTexts() {
+                    document.getElementById("sidebar-popout-template").style.width = "0px";
+                    document.getElementById("sidebar-popout-template").style.padding = "0px";
+                    document.getElementById("sidebar-popout-element").style.width = "0px";
+                    document.getElementById("sidebar-popout-map").style.width = "0px";
+                    document.getElementById("sidebar-popout-upload").style.width = "0px";
+                    document.getElementById("sidebar-popout-more").style.width = "0px";
+                    document.getElementById("sidebar-popout-text").style.width = "260px";
+                }
+                function openElements() {
+                    document.getElementById("sidebar-popout-template").style.width = "0px";
+                    document.getElementById("sidebar-popout-template").style.padding = "0px";
+                    document.getElementById("sidebar-popout-text").style.width = "0px";
+                    document.getElementById("sidebar-popout-map").style.width = "0px";
+                    document.getElementById("sidebar-popout-upload").style.width = "0px";
+                    document.getElementById("sidebar-popout-more").style.width = "0px";
+                    document.getElementById("sidebar-popout-element").style.width = "260px";
+                }
+                function openMap() {
+                    document.getElementById("sidebar-popout-template").style.width = "0px";
+                    document.getElementById("sidebar-popout-template").style.padding = "0px";
+                    document.getElementById("sidebar-popout-text").style.width = "0px";
+                    document.getElementById("sidebar-popout-element").style.width = "0px";
+                    document.getElementById("sidebar-popout-upload").style.width = "0px";
+                    document.getElementById("sidebar-popout-more").style.width = "0px";
+                    document.getElementById("sidebar-popout-map").style.width = "250px";
+                }
+                function openUpload() {
+                    document.getElementById("sidebar-popout-template").style.width = "0px";
+                    document.getElementById("sidebar-popout-template").style.padding = "0px";
+                    document.getElementById("sidebar-popout-text").style.width = "0px";
+                    document.getElementById("sidebar-popout-element").style.width = "0px";
+                    document.getElementById("sidebar-popout-map").style.width = "0px";
+                    document.getElementById("sidebar-popout-more").style.width = "0px";
+                    document.getElementById("sidebar-popout-upload").style.width = "250px";
+                }
+                function openMore() {
+                    document.getElementById("sidebar-popout-template").style.width = "0px";
+                    document.getElementById("sidebar-popout-template").style.padding = "0px";
+                    document.getElementById("sidebar-popout-text").style.width = "0px";
+                    document.getElementById("sidebar-popout-element").style.width = "0px";
+                    document.getElementById("sidebar-popout-map").style.width = "0px";
+                    document.getElementById("sidebar-popout-upload").style.width = "0px";
+                    document.getElementById("sidebar-popout-more").style.width = "250px";
+                }
 
+                //Close Features
+                function closeTemplates() {
+                    document.getElementById("sidebar-popout-template").style.width = "0px";
+                    document.getElementById("sidebar-popout-template").style.padding = "0px";
+                }
+                function closeTexts() {
+                    document.getElementById("sidebar-popout-text").style.width = "0px";
+                }
+                function closeElements() {
+                    document.getElementById("sidebar-popout-element").style.width = "0px";
+                }
+                function closeMap() {
+                    document.getElementById("sidebar-popout-map").style.width = "0px";
+                }
+                function closeUpload() {
+                    document.getElementById("sidebar-popout-upload").style.width = "0px";
+                }
+                function closeMore() {
+                    document.getElementById("sidebar-popout-more").style.width = "0px";
+                }
 
             </script>
 
@@ -98,41 +173,41 @@
             <div id = "vertical-nav">
                 <div id = "sidebar">
 
-                    <div class = "elements" id = "template-feature" onclick = "toggle_templates()">
+                    <div class = "elements" id = "template-feature" onclick = openTemplates()>
                         <!--Sidebar elements-->
                         <img src = "../static/image/Template.png" id = "template-logo">
                         <h3>Templates</h3>
                     </div>
 
-                    <div class = "elements" id = "text-feature" onclick = "toggle_texts()">
+                    <div class = "elements" id = "text-feature" onclick = openTexts()>
 
                         <!--Sidebar elements-->
                         <img src = "../static/image/Text.png" id = "text-logo">
                         <h3>Text</h3>
                     </div>
 
-                    <div class = "elements" id = "element-feature" onclick = "elements()">
+                    <div class = "elements" id = "element-feature" onclick = openElements()>
 
                         <!--Sidebar elements-->
                         <img src = "../static/image/Elements.png" id = "element-logo">
                         <h3>Elements</h3>
                     </div>
 
-                    <div class = "elements" id = "map-feature" onclick = "map()">
+                    <div class = "elements" id = "map-feature" onclick = openMap()>
 
                         <!--Sidebar elements-->
                         <img src = "../static/image/map.png" id = "map-logo">
                         <h3>Map</h3>
                     </div>
 
-                    <div class = "elements" id = "upload-feature" onclick = "upload()">
+                    <div class = "elements" id = "upload-feature" onclick = openUpload()>
 
                         <!--Sidebar elements-->
                         <img src = "../static/image/upload.png" id = "upload-logo">
                         <h3>Upload</h3>
                     </div>
 
-                    <div class = "elements" id = "more-feature" onclick = "more()">
+                    <div class = "elements" id = "more-feature" onclick = openMore()>
 
                         <!--Sidebar elements-->
                         <img src = "../static/image/more.png" id = "more-logo">
@@ -145,7 +220,7 @@
                     <div class = "template-element">
 
                         <!--Heading-->
-                        <h3 onclick = "templates()">Templates</h3>
+                        <h3 onclick = closeTemplates()>Templates</h3>
 
                         <!--Search-->
                         <input type = "text" placeholder = "Search" id = "template-search">
@@ -165,7 +240,7 @@
                     <div class = "text-element">
 
                         <!--Heading-->
-                        <h3 onclick = texts()>Text</h3>
+                        <h3 onclick = closeTexts()>Text</h3>
 
                         <!--Search-->
                         <input type = "text" placeholder = "Search" id = "text-search">
@@ -173,11 +248,11 @@
                         <!--Heading option-->
                         <div class = "heading-choice">
 
-                            <h2 draggable ="true" id = "heading-choice-one">Heading</h2>
+                            <h2 id = "heading-choice-one">Heading</h2>
 
-                            <h3 draggable="true"class = "heading-option" id = "subheading">Subheading</h3>
+                            <h3 class = "heading-option" id = "subheading">Subheading</h3>
 
-                            <h4 draggable="true" class = "heading-option" id = "body-text">Body text</h4>
+                            <h4 class = "heading-option" id = "body-text">Body text</h4>
                         </div>
 
                         <!--User can choose text font-->
@@ -203,8 +278,8 @@
 
                         <!--User choose text position-->
                         <div id = "text-position">
-                            <div class = "column">
-                                <i class="far fa-align-left"></i>
+                            <div id = "leftAlign" class = "column">
+                                <i  class="far fa-align-left"></i>
                             </div>
 
                             <div class = "column">
@@ -255,7 +330,7 @@
                     <div class = "element-element">
 
                         <!--Heading-->
-                        <h3 onclick = elements()>Elements</h3>
+                        <h3 onclick = closeElements()>Elements</h3>
 
                          <!--Search-->
                          <input type = "text" placeholder = "Search" id = "element-search">
@@ -329,7 +404,7 @@
                 <!--Map Feature-->
                 <div class = "side-bar-elements" id = "sidebar-popout-map">
                     <div class = "map-element">
-                        <h3 id = "map-heading" onclick = map()>Map</h3>
+                        <h3 id = "map-heading" onclick = closeMap()>Map</h3>
 
                         <!--Search-->
                         <input type = "text" placeholder = "Search" id = "map-search">
@@ -412,7 +487,7 @@
                 <div class = "side-bar-elements" id="sidebar-popout-upload">
                     <div class = "upload-element">
                         <!--Heading-->
-                        <h3 onclick = upload()>Upload</h3>
+                        <h3 onclick = closeUpload()>Upload</h3>
 
                         <form action="">
                             <input type="file" id="myFile" name="filename">
@@ -442,7 +517,7 @@
                 <div class = "side-bar-elements" id = "sidebar-popout-more">
                     <div class="more-element">
                         <!--Heading-->
-                        <h3 onclick = more()>More</h3>
+                        <h3 onclick = closeMore()>More</h3>
                         <div id="more-search" class="">
                              <input type="text" id="moreSearch" placeholder="Search" onkeydown="submitOnEnter(event)" onfocus="clearWrongInput();" style="z-index:0;">
                         </div>
@@ -646,177 +721,8 @@
 
 
                 </div>
-<<<<<<< HEAD
-                <button onclick="save_resume()"> SAVE </button>
 
 
-            <!--sidebar links-->
-            <aside>
-            <div class="sidebar">
-                <label for="templates">Templates:</label>
-                <select name="templates" id="templates">
-                    <option value="n/a">n/a</option>
-                    <option value="Template 1">Template 1</option>
-                    <option value="Template 2">Template 2</option>
-                    <option value="Template 3">Template 3</option>
-                    <a href="">Elements</a>
-                    <a href="">Maps</a>
-                    <a href="">Background</a>
-                    <a href="">Images</a>
-                    <a href="">More</a>
-                 </select>
-            </div>
-            </aside>
-            <!--Buttons just below the header-->
-            <div class="top-buttons">
-                <a href = ""><button class = "share-button" id = "share-button">Share</button></a>
-                <a href = ""><button class = "download-button" id = "download-button">Download</button></a>
-                <a href = ""><button class = "dot-button" id = "dot-button">...</button></a>
-            </div>
-
-            <section id="save">
-                <section class="sheet">
-                    <aside>
-                        <!-- <section class="contact">
-                            <h3>Contact</h3>
-                            <ul>
-                                <li>
-                                    <p><i class="fa fa-map-marker-alt" title="Location"></i>Phonix, AZ</p>
-                                </li>
-                                <li>
-                                    <p><i class="fa fa-phone" title="Cell phone"></i> <a href="tel:9191231231">(919) 123-1231</a></p>
-                                </li>
-                                <li>
-                                    <p><i class="fa fa-envelope" title="Email"></i> <a href="mailto:jdeckard@gmail.com">jdeckard@gmail.com</a></p>
-                                </li>
-                            </ul>
-                        </section> -->
-
-                        {% if user %}
-                        <section class="contact">
-                            <h3>Contact</h3>
-                            <ul>
-                                {% if user.country and user.state %}
-                                    <li><p><i class="fa fa-map-marker-alt" title="Location"></i>{{user.country}}, {{user.state}}</p></li>
-                                {% endif %}
-                                {% if user.phoneNumber %}
-                                    <li><p><i class="fa fa-phone" title="Cell phone"></i> <a href="tel:{{user.phoneNumber}}">({{user.phoneNumber[0:2]}}) {{user.phoneNumber[3:5]}}-{{user.phoneNumber[6:9]}}</a></p></li>
-                                {% endif %}
-                                {% if user.email %}
-                                    <li><p><i class="fa fa-envelope" title="Email"></i> <a href="mailto:{{user.email}}">{{user.email}}</a></p></li>
-                                {% endif %}
-                            </ul>
-                        </section>
-                        {% endif %}
-
-                        <!-- <section class="skills">
-                            <h3>Skills</h3>
-                            <ul>
-                                <li><span>UX Design</span></li>
-                                <li><span>Communication</span></li>
-                                <li><span>Team Work</span></li>
-                                <li><span>Photography</span></li>
-
-                            </ul>
-                        </section> -->
-                        {% if sections %}
-                            {% for section in sections %}
-                                {% if section.name == 'skills' %}
-                                    <section class="skills">
-                                        <h3>{{ section.name }}</h3>
-                                        <ul>
-                                            {% for line in section.info.split("\n") %}
-                                                <li><span>{% if not line == "" %}{{line}}{% endif %}</span></li> <!-- This doens't quite work -->
-                                            {% endfor %}
-                                        </ul>
-                                    </section>
-                                {% endif %}
-                            {% endfor %}
-                        {% endif %}
-                        <!-- <section class="skills">
-                            <h3>Technologies</h3>
-                            <ul>
-                                <li><span>Excel</span></li>
-                                <li><span>Sketch</span></li>
-                                <li><span>Adobe Photoshop</span></li>
-                                <li><span>Microsoft</span></li>
-                            </ul>
-                        </section> -->
-                        {% if sections %}
-                            {% for section in sections %}
-                                {% if section.name == 'skills' %}
-                                    <section class="skills">
-                                        <h3>Technologies</h3>
-                                        <ul>
-                                            {% for line in section.info.split("\n") %}
-                                                <li><span>line</span></li>
-                                            {% endfor %}
-                                        </ul>
-                                    </section>
-                                {% endif %}
-                            {% endfor %}
-                        {% endif %}
-                    </aside>
-                    <section>
-                        <header class="name" aria-label="Jeff Deckard">
-                            <a href="">
-                                <svg width="350px" height="25px" viewBox="0 0 257 35" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-family="Montserrat-Regular, Montserrat" font-size="48" font-weight="normal">
-                                        <g id="Letter" transform="translate(-54.000000, -140.000000)" fill="#484848">
-                                            <text id="JEFF-DECKARD">
-                                                <tspan x="-62" y="174">Name</tspan>
-                                            </text>
-                                        </g>
-                                    </g>
-                                </svg>
-                            </a>
-                            <h3>Designer</h3>
-                            <hr />
-                        </header>
-                        <section>
-                            <!-- <section class="summary">
-                                <h3>About Me</h3>
-                                <p>Text</p>
-                            </section> -->
-
-                            {% if user.about %}
-                                <section class="summary">
-                                    <h3>About Me</h3>
-                                    <ul>
-                                        <p>{{user.about}}</p>
-                                    </ul>
-                                </section>
-                            {% endif %}
-
-                            <!-- <section class="experience">
-                                <h3>Experience</h3>
-                                <ol>
-                                    <li>
-                                        <header>
-                                            <p class="sanserif">Lead Designer</p>
-                                            <time>Mar 2016-Feb 2017</time>
-                                        </header>
-                                        <span>Google</span>
-                                        <ul>
-                                            <li>Developed</li>
-                                            <li>Created </li>
-                                            <li>Leveraged </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <header>
-                                            <p class="sanserif">Software Engineer</p>
-                                            <time>2017-2018</time>
-                                        </header>
-                                        <span>Facebook</span>
-                                        <ul>
-                                            <li>Collected </li>
-                                            <li>Authored </li>
-                                            <li>Introduced</li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <header>
 
                 <body class = "letter">
                     <section id="save">
@@ -938,83 +844,6 @@
                                     <h3>Education</h3>
                                     <ol>
                                         <li>
-                                            <header>
->>>>>>> main
-                                            <p class="sanserif">Software Engineer Intern</p>
-                                            <time>2019-2020</time>
-                                        </header>
-                                        <span>Twitter</span>
-                                        <ul>
-                                            <li>Analyzed </li>
-                                            <li>Created </li>
-                                            <li>Maintained </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <header>
-                                            <p class="sanserif">Independent iOS Engineer</p>
-                                            <time>2021-Present</time>
-                                        </header>
-                                        <ul>
-                                            <li>Developed </li>
-                                            <li>Shipped </li>
-                                        </ul>
-                                    </li>
-                                </ol>
-<<<<<<< HEAD
-                            </section> -->
-
-                            {% if sections %}
-                                {% for i, section in enumerate(sections) %}
-                                    {% if section.name == 'experience'  or section.name == 'work' %}
-                                        {% if i == 0 %}
-                                            <section class="experience">
-                                                <h3>Experience</h3>
-                                                <ol>
-                                        {% endif %}
-                                                    <li>
-                                                        <header>
-                                                            <p class="sanserif">{{dict(zip(section.caption.split("\n"), section.info.split("\n")))['job-title']}}</p>
-                                                            <time>{{dict(zip(section.caption.split("\n"), section.info.split("\n")))['start-time']}}-{{dict(zip(section.caption.split("\n"), section.info.split("\n")))['end-time']}}</time>
-                                                        </header>
-                                                        <span>{{dict(zip(section.caption.split("\n"), section.info.split("\n")))['employer']}}</span>
-                                                        <ul>
-                                                            <li>{{dict(zip(section.caption.split("\n"), section.info.split("\n")))['description']}}</li>
-                                                        </ul>
-                                                    </li>
-                                        {% if i == len(sections) - 1 %}
-                                                </ol>
-                                            </section>
-                                        {% endif %}
-                                    {% endif %}
-                                {% endfor %}
-                            {% endif %}
-
-                            <!-- <section class="education">
-                                <h3>Education</h3>
-                                <ol>
-                                    <li>
-                                        <div>
-                                            <p class="sanserif">M.S., Data Science</p>
-                                            <time>Sept '20-May '22</time>
-                                        </div>
-                                        <div>
-                                            <span>North Carolina State Univeristy</span>
-                                            <span></span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div>
-                                            <p class="sanserif">B.S., Computer Science</p>
-                                            <time>Sept '16-May '20</time>
-                                        </div>
-                                        <div>
-                                            <span>University of North Carolina at Charlotte</span>
-                                            <span>GPA: 3.91</span>
-                                        </div>
-                                    </li>
-                                </ol>
-=======
                                             <div>
                                                 <p class="sanserif">M.S., Data Science</p>
                                                 <time>Sept '20-May '22</time>
@@ -1037,16 +866,10 @@
                                     </ol>
                                 </section>
                             </section>
->>>>>>> main
                         </section>
                     </section>
                 </section>
-        </body>
-
-        <!--scalebar for zoom-->
-=======
             </body>
->>>>>>> main
 
             <!--scalebar for zoom-->
             <div class="slidecontainer">
@@ -1111,5 +934,7 @@
                 <br><a href = "#">Privacy</a>
             </div>
         </footer>
+        <script src="../static/js/home.js" type="text/javascript"></script>
+
     </body>
 </html>
