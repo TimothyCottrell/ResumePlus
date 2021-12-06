@@ -17,10 +17,10 @@ var left_align = document.getElementById("leftAlign");
 // @param the method used to change settings
 function addAction(old_setting, new_setting, method){
   var info = {
-    oldSetting : old_setting,
-    new_setting : new_Setting,
+    oldsetting : old_setting,
+    new_setting : new_setting,
     method : method,
-    text : string(method) + string(oldSetting) + " -> " + string(new_setting)
+    text : String(method.name) + String(old_setting) + " -> " + String(new_setting)
   };
   console.log(info.text);
   actions.push(info);
@@ -46,23 +46,24 @@ function getLog(){
 // @param item is the text item to align
 // @param alignment [0,1,2]
 // @return None
-function alignText(item, alignment){
+function alignText(alignment){
+  item = selected;
   if (item == null || alignment > 3 || alignment < 0){
     console.log("ERROR | Invalid argument")
     return;
   }
-  old_setting = item.style.textAlign;
+  var old_setting = item.style.textAlign;
   switch(alignment){
     case 0:{
-      item.style.textAlign("left");
+      item.style.textAlign = "left";
       break;
     }
     case 1:{
-      item.style.textAlign("center");
+      item.style.textAlign = "center";
       break;
     }
     case 2:{
-      item.style.textAlign("right");
+      item.style.textAlign = "right";
       break;
     }
   }
@@ -78,14 +79,39 @@ function changeText(item,text){
   addAction(old_text, new_text, changetext);
 }
 
+function selectItem(ev){
+  var item = ev.target;
+  if (selected != null){
+    selected.style.border = "None";
+  }
+  selected = item;
+  selected.style.border = "thick dotted red";
+}
+
 //----------------------- On-click events ----------------------------
 window.onload = function(){
   document.getElementById("leftAlign").onclick = function(){
-    console.log("clicked!");
     if (selected != null){
-      alignText(left_align, 0);
+      alignText(0);
     }
   }
-}
 
-  left_align.addEventListener("click", left_align_clicked);
+  document.getElementById("centerAlign").onclick = function(){
+    if (selected != null){
+      alignText(1)
+    }
+  }
+
+  document.getElementById("rightAlign").onclick = function(){
+    if (selected != null){
+      alignText(2)
+    }
+  }
+
+  resume = document.getElementById("save");
+  children = resume.children;
+  for (var i = 0; i < children.length; i++){
+    children[i].addEventListener('click', selectItem)
+  }
+
+}
