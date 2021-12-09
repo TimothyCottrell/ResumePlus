@@ -11,13 +11,13 @@ var left_align = document.getElementById("leftAlign");
 // ---------------------- Event listeners --------------------------
 
 // ---------------------- Logging Functions ------------------------
-// Method to add an action to the log ;
+// Method to add an action to the log
 // @param The the setting before being changed
 // @param the new setting that the object is changed too
 // @param the method used to change settings
 function addAction(old_setting, new_setting, method){
   var info = {
-    oldsetting : old_setting,
+    old_setting : old_setting,
     new_setting : new_setting,
     method : method,
     text : String(method.name) + String(old_setting) + " -> " + String(new_setting)
@@ -49,7 +49,7 @@ function getLog(){
 function alignText(alignment){
   item = selected;
   if (item == null || alignment > 3 || alignment < 0){
-    console.log("ERROR | Invalid argument")
+    console.log("ERROR | Invalid argument");
     return;
   }
   var old_setting = item.style.textAlign;
@@ -67,12 +67,20 @@ function alignText(alignment){
       break;
     }
   }
-  var new_setting = item.style.textAlign
+  var new_setting = item.style.textAlign;
   var method = alignText;
   addAction(old_setting, new_setting, method);
 }
 
-function changeText(item,text){
+function font_size(size){
+  item = selected;
+  var old_setting = item.style.fontSize;
+  item.style.font_size = size;
+  var new_setting = item.style.fontSize;
+  var method = font_size;
+}
+
+function changeText(item, text){
   var old_text = item.innerHTML;
   item.innerHTML = text;
   var new_text = text;
@@ -98,20 +106,20 @@ window.onload = function(){
 
   document.getElementById("centerAlign").onclick = function(){
     if (selected != null){
-      alignText(1)
+      alignText(1);
     }
   }
 
   document.getElementById("rightAlign").onclick = function(){
     if (selected != null){
-      alignText(2)
+      alignText(2);
     }
   }
 
   resume = document.getElementById("save");
   children = resume.children;
   for (var i = 0; i < children.length; i++){
-    children[i].addEventListener('click', selectItem)
+    children[i].addEventListener('click', selectItem);
   }
 
 }
