@@ -72,12 +72,15 @@ function alignText(alignment){
   addAction(old_setting, new_setting, method);
 }
 
-function font_size(size){
+function fontsize(size){
   item = selected;
   var old_setting = item.style.fontSize;
-  item.style.font_size = size;
+  // console.log(size.toString() + "px");
+  item.style.fontSize = size.toString() + "px";
+  console.log(item.style.fontSize);
   var new_setting = item.style.fontSize;
-  var method = font_size;
+  var method = fontsize;
+  addAction(old_setting, new_setting, method);
 }
 
 function changeText(item, text){
@@ -113,6 +116,12 @@ window.onload = function(){
   document.getElementById("rightAlign").onclick = function(){
     if (selected != null){
       alignText(2);
+    }
+  }
+
+  document.getElementById("font-size").onchange = function(){
+    if (selected != null){
+      fontsize(this.value);
     }
   }
 
