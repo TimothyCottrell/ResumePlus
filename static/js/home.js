@@ -75,9 +75,7 @@ function alignText(alignment){
 function fontsize(size){
   item = selected;
   var old_setting = item.style.fontSize;
-  // console.log(size.toString() + "px");
   item.style.fontSize = size.toString() + "px";
-  console.log(item.style.fontSize);
   var new_setting = item.style.fontSize;
   var method = fontsize;
   addAction(old_setting, new_setting, method);
@@ -105,8 +103,17 @@ function handleDrop(e){
   e.stopPropagation();
   var node = document.getElementById(e.dataTransfer.getData('text'));
   var clone = node.cloneNode();
-  console.log(this);
-  this.appendChild(clone);
+  console.log((((e.target.getBoundingClientRect().bottom - e.target.getBoundingClientRect().top) / 2) + e.target.getBoundingClientRect().top));
+  console.log(e.y);
+  if ( (((e.target.getBoundingClientRect().bottom - e.target.getBoundingClientRect().top) / 2) + e.target.getBoundingClientRect().top) < e.y) {
+    var newItem = document.createElement(e.target.tagName);
+    newItem.appendChild(clone);
+    e.target.appendChild(newItem);
+  } else {
+    var newItem = document.createElement(e.target.tagName);
+    newItem.appendChild(clone);
+    e.target.parentElement.insertBefore(newItem, e.target);
+  }
 }
 
 function handleDragOver(e){
@@ -117,17 +124,22 @@ function handleDragOver(e){
 
 function handleDragStart(e){
   e.dataTransfer.effectAllowed = "copy";
-  console.log(this);
+  // console.log(this);
   e.dataTransfer.setData('text', this.id);
 }
 
 function handleDragEnter(e){
   //this.appendChild(e.dataTransfer.getData('text/html'));
-  console.log(this);
+  // console.log(this);
 }
 
 function handleDragLeave(e){
   //this.removeChild(e.dataTransfer.getData('text/html'));
+}
+
+function deleteCur() {
+  selected.remove();
+  selected = null;
 }
 
 //----------------------- On-click events ----------------------------
@@ -163,11 +175,6 @@ window.onload = function(){
   document.getElementById("heading-choice-one").addEventListener('dragstart', handleDragStart);
   document.getElementById("subheading").addEventListener('dragstart', handleDragStart);
   document.getElementById("body-text").addEventListener('dragstart', handleDragStart);
-
-
-
-
-
 
 // Adds event listeners to the resume so that we can select items :3
   resume = document.getElementById("sheet");
