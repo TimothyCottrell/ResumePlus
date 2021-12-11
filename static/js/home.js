@@ -95,7 +95,7 @@ function handleDrop(e){
   var node = document.getElementById(e.dataTransfer.getData('text'));
   var clone = node.cloneNode();
   console.log(this);
-  this.appendChild(clone);
+  e.target.appendChild(clone);
 }
 
 function handleDragOver(e){
