@@ -79,6 +79,10 @@ function changeText(item,text){
   addAction(old_text, new_text, changetext);
 }
 
+function updateSettings(){
+
+}
+
 function selectItem(ev){
   var item = ev.target;
   if (selected != null){
