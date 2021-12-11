@@ -69,22 +69,23 @@ class Resume(db.Model):
     __tablename__ = 'Resume'
     id = db.Column("id", db.Integer, primary_key=True)
     user_id = db.Column("user_id", db.Integer, db.ForeignKey('User.id'))
+    order = db.Column("order", db.Integer)
     html = db.Column('html', BLOB)
     category = db.Column("category", db.String(50))
     text = db.relationship("Text", backref="Resume")
     section = db.relationship("Section", backref="Resume")
 
-    def __init__(self, user_id, html_in, cat):
+    def __init__(self, user_id, order,html_in, cat):
         self.user_id = user_id
         self.html = html_in
+        self.order = order
         self.category = cat
 
     def __repr__(self):
-        return f"Resume('{self.id}', '{self.category}', '{self.texts}')"
+        return f"Resume('{self.id}', '{self.category}')"
 
-    def update_resume(self, html, category):
-        self.html = html
-        self.category = category
+    def push_order(self):
+        self.order = self.order + 1
 
 
 class Text(db.Model):
