@@ -97,12 +97,28 @@ function selectItem(ev){
   if (selected != null){
     selected.style.border = "None";
   }
+  if (item == selected){
+    selected.style.border = "None";
+    selected = null;
+    return;
+  }
   selected = item;
   selected.style.border = "dotted red";
   if (selected.innerText != null){
     box = document.getElementById("text-search");
     box.value = selected.innerText;
   }
+}
+
+function hoverItem(ev){
+  ev.target.style.border = "1px dotted grey"
+}
+
+function hoverEnd(ev){
+  if (ev.target != selected){
+    ev.target.style.border = "None";
+  }
+
 }
 
 
@@ -148,6 +164,14 @@ function handleDragLeave(e){
 function deleteCur() {
   selected.remove();
   selected = null;
+}
+
+function loadTemplate(template){
+  // first remove old things
+  old_setting = document.getElementById("sheet").innerHTML;
+  document.getElementById("sheet").innerHTML = template;
+  new_setting = template;
+  addAction(old_setting, new_setting, loadTemplate);
 }
 
 //----------------------- On-click events ----------------------------
@@ -205,6 +229,8 @@ window.onload = function(){
     children[i].addEventListener('dragenter', handleDragEnter);
     children[i].addEventListener('dragleave', handleDragLeave);
     children[i].addEventListener('drop', handleDrop);
+    children[i].addEventListener("mouseover", hoverItem);
+    children[i].addEventListener("mouseout", hoverEnd);
   }
 
 }
