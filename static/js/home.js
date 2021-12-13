@@ -72,11 +72,20 @@ function alignText(alignment){
   addAction(old_setting, new_setting, method);
 }
 
+function fontsize(size){
+  item = selected;
+  var old_setting = item.style.fontSize;
+  item.style.fontSize = size.toString() + "px";
+  var new_setting = item.style.fontSize;
+  var method = fontsize;
+  addAction(old_setting, new_setting, method);
+}
+
 function changeText(item,text){
   var old_text = item.innerHTML;
   item.innerHTML = text;
   var new_text = text;
-  addAction(old_text, new_text, changetext);
+  addAction(old_text, new_text, changeText);
 }
 
 function updateSettings(){
@@ -90,6 +99,10 @@ function selectItem(ev){
   }
   selected = item;
   selected.style.border = "dotted red";
+  if (selected.innerText != null){
+    box = document.getElementById("text-search");
+    box.value = selected.innerText;
+  }
 }
 
 
@@ -98,8 +111,17 @@ function handleDrop(e){
   e.stopPropagation();
   var node = document.getElementById(e.dataTransfer.getData('text'));
   var clone = node.cloneNode();
-  console.log(this);
-  e.target.appendChild(clone);
+  console.log((((e.target.getBoundingClientRect().bottom - e.target.getBoundingClientRect().top) / 2) + e.target.getBoundingClientRect().top));
+  console.log(e.y);
+  if ( (((e.target.getBoundingClientRect().bottom - e.target.getBoundingClientRect().top) / 2) + e.target.getBoundingClientRect().top) < e.y) {
+    var newItem = document.createElement(e.target.tagName);
+    newItem.appendChild(clone);
+    e.target.appendChild(newItem);
+  } else {
+    var newItem = document.createElement(e.target.tagName);
+    newItem.appendChild(clone);
+    e.target.parentElement.insertBefore(newItem, e.target);
+  }
 }
 
 function handleDragOver(e){
@@ -123,6 +145,11 @@ function handleDragLeave(e){
   //this.removeChild(e.dataTransfer.getData('text/html'));
 }
 
+function deleteCur() {
+  selected.remove();
+  selected = null;
+}
+
 //----------------------- On-click events ----------------------------
 
 window.onload = function(){
@@ -144,6 +171,18 @@ window.onload = function(){
   document.getElementById("rightAlign").onclick = function(){
     if (selected != null){
       alignText(2);
+    }
+  }
+
+  document.getElementById("font-size").onchange = function(){
+    if (selected != null){
+      fontsize(this.value);
+    }
+  }
+
+  document.getElementById("text-search").onchange = function(e){
+    if (selected != null){
+        changeText(selected, document.getElementById("text-search").value)
     }
   }
 
