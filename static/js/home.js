@@ -213,7 +213,11 @@ window.onload = function(){
   document.getElementById("heading-choice-one").addEventListener('dragstart', handleDragStart);
   document.getElementById("subheading").addEventListener('dragstart', handleDragStart);
   document.getElementById("body-text").addEventListener('dragstart', handleDragStart);
-
+  var videos = document.getElementById("videos").children;
+  for (var i = 0; i < videos.length; i++){
+    videos[i].setAttribute('id', 'video' + String(i));
+    videos[i].addEventListener('dragstart', handleDragStart);
+  }
 
 
 
