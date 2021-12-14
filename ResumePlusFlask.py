@@ -211,6 +211,7 @@ def database():
 @app.route('/save_resume', methods=['POST'])
 def save_resume():
     data = json.loads(request.get_data())
+    print(data)
     html = ''
     words = {}
     curHead = None
@@ -257,6 +258,13 @@ def save_resume():
     db.session.commit()
     return "Success"
 
+@app.route('/deleteResume', methods=['POST'])
+def deleteResume():
+    the_user = db.session.query(User).filter_by(username=session.get('user')).one_or_none()
+    res = db.session.query(Resume).filter_by(user_id=the_user.id).one_or_none()
+    db.session.delete(res)
+    db.session.commit()
+    return "Success"
 
 @app.route('/account/change_location', methods=['POST'])
 def change_location():

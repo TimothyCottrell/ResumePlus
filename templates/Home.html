@@ -63,8 +63,7 @@
         <main style="padding-bottom: 100%;">
             <script>
                 function save_resume() {
-                    var html = document.getElementById("sample_resume_div")
-                    console.log(html)
+                    var html = document.getElementById("sheet");
                     var xhr = new XMLHttpRequest();
                     xhr.open("POST", "/save_resume", true);
                     xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
@@ -79,6 +78,13 @@
                     }
                     }
                     xhr.send(JSON.stringify(resume));
+                }
+
+                function deleteResume() {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("POST", "/deleteResume", true);
+                    xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+                    xhr.send();
                 }
 
                 //Open Features
@@ -164,9 +170,10 @@
             <!--Buttons just below the header-->
             <div class="bottom-nav">
                 <div class = "bottom-nav-wrapper">
+                    <button onclick="save_resume()"> SAVE </button>
                     <a href = ""><button class = "top-button" id = "share-button">Share</button></a>
                     <a href = ""><button class = "top-button" id = "download-button">Download</button></a>
-                    <a href = ""><button class = "top-button" id = "dot-button">...</button></a>
+                    <button class = "top-button" id = "dot-button" onclick="deleteResume()">...</button>
                 </div>
             </div>
 
@@ -551,23 +558,6 @@
                 </div>
             </div>
 
-            <!-- <div id = "saveHeader" class = "saveHeader">
-                {% if not resume %}
-                    <div id="sample_resume_div">
-                        <h1>Sample Header</h1>
-                        <p>This is a sample paragraph for testing purposes only</p>
-                    </div>
-                    <button onclick="save_resume()"> SAVE </button>
-                {% else %}
-                <h1>THIS SHOULD APPEAR</h1>
-                    {% autoescape false %}
-                    <div id="sample_resume_div">
-                        {{ resume.html.decode('utf-8') }}
-                    {% endautoescape %}
-                    </div>
-                {% endif %}
-            </div> -->
-
                 <!--Side bar background-->
                 <div class = "side-bar-elements" id = "sidebar-popout-background">
                     <div class="color-hex" style="text-align:center;">
@@ -737,6 +727,7 @@
 
                 <body class = "letter">
                     <section id="save">
+                        {% if not resume %}
                         <section id = "sheet" class="sheet">
                             <aside>
 
@@ -878,6 +869,13 @@
                                 </section>
                             </section>
                         </section>
+                        {% else %}
+                            <section id = "sheet" class="sheet">
+                                {% autoescape false %}
+                                    {{ resume.html.decode('utf-8') }}
+                                {% endautoescape %}
+                            </section>
+                        {% endif %}
                     </section>
                 </section>
                 
