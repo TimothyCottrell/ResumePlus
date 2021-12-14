@@ -28,7 +28,9 @@ function addAction(old_setting, new_setting, method){
 
 function undo(){
   var action = actions[actions.length - 1];
-  action.method(action.old_setting);
+  console.log(action);
+  console.log(action['old_setting']);
+  action.method(action['old_setting']);
   actions.pop();
 }
 
@@ -54,20 +56,7 @@ function alignText(alignment){
     return;
   }
   var old_setting = item.style.textAlign;
-  switch(alignment){
-    case 0:{
-      item.style.textAlign = "left";
-      break;
-    }
-    case 1:{
-      item.style.textAlign = "center";
-      break;
-    }
-    case 2:{
-      item.style.textAlign = "right";
-      break;
-    }
-  }
+  item.style.textAlign = alignment;
   var new_setting = item.style.textAlign;
   var method = alignText;
   addAction(old_setting, new_setting, method);
@@ -163,12 +152,12 @@ function handleDragLeave(e){
 }
 
 function create(item){
-  console.log(item.parent);
+  console.log(item);
 }
 
 function deleteCur(undo) {
   if (undo != null){
-    create(item)
+    create(undo)
   }
   if (selected != null && undo == null){
     old_setting = selected;
@@ -199,20 +188,20 @@ window.onload = function(){
   // Aligment click functions
   document.getElementById("leftAlign").onclick = function(){
     if (selected != null){
-      alignText(0);
+      alignText("left");
     }
   }
 
 
   document.getElementById("centerAlign").onclick = function(){
     if (selected != null){
-      alignText(1);
+      alignText("center");
     }
   }
 
   document.getElementById("rightAlign").onclick = function(){
     if (selected != null){
-      alignText(2);
+      alignText("right");
     }
   }
 
