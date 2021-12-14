@@ -162,9 +162,11 @@ function handleDragLeave(e){
 }
 
 function deleteCur() {
+  console.log("DELETE A FOOL");
   if (selected != null){
     selected.remove();
     selected = null;
+    console.log("TEHE");
   }
 
 }
@@ -232,7 +234,10 @@ window.onload = function(){
 // Adds event listeners to the resume so that we can select items :3
   resume = document.getElementById("sheet");
   children = resume.children;
-
+  resume.addEventListener('drop', handleDrop);
+  resume.addEventListener('dragover', handleDragOver);
+  resume.addEventListener('dragenter', handleDragEnter);
+  resume.addEventListener('dragleave', handleDragLeave);
   for (var i = 0; i < children.length; i++){
     children[i].addEventListener('click', selectItem);
     children[i].addEventListener('dragover', handleDragOver);
