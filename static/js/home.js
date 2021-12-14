@@ -166,7 +166,6 @@ function deleteCur() {
   selected = null;
 }
 
-<<<<<<< HEAD
 function loadTemplate(template){
   // first remove old things
   old_setting = document.getElementById("sheet").innerHTML;
@@ -175,8 +174,6 @@ function loadTemplate(template){
   addAction(old_setting, new_setting, loadTemplate);
 }
 
-=======
->>>>>>> timain
 //----------------------- On-click events ----------------------------
 
 window.onload = function(){
@@ -207,7 +204,6 @@ window.onload = function(){
     }
   }
 
-<<<<<<< HEAD
   document.getElementById("text-search").onchange = function(e){
     if (selected != null){
         changeText(selected, document.getElementById("text-search").value)
@@ -226,11 +222,6 @@ window.onload = function(){
 
 
 
-=======
-  document.getElementById("heading-choice-one").addEventListener('dragstart', handleDragStart);
-  document.getElementById("subheading").addEventListener('dragstart', handleDragStart);
-  document.getElementById("body-text").addEventListener('dragstart', handleDragStart);
->>>>>>> timain
 
 // Adds event listeners to the resume so that we can select items :3
   resume = document.getElementById("sheet");
