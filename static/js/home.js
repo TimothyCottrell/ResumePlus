@@ -162,8 +162,11 @@ function handleDragLeave(e){
 }
 
 function deleteCur() {
-  selected.remove();
-  selected = null;
+  if (selected != null){
+    selected.remove();
+    selected = null;
+  }
+
 }
 
 function loadTemplate(template){
@@ -185,6 +188,7 @@ window.onload = function(){
       alignText(0);
     }
   }
+
 
   document.getElementById("centerAlign").onclick = function(){
     if (selected != null){
@@ -209,6 +213,8 @@ window.onload = function(){
         changeText(selected, document.getElementById("text-search").value)
     }
   }
+
+  document.getElementById("delete").addEventListener("click", deleteCur);
 
   document.getElementById("heading-choice-one").addEventListener('dragstart', handleDragStart);
   document.getElementById("subheading").addEventListener('dragstart', handleDragStart);
