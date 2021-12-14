@@ -239,7 +239,7 @@ def save_resume():
                         "isHead": isHead,
                         "head": head
                     }
-        html += data[i]['html']
+    html = data["raw_html"]
     bhtml = html.encode(bcryptCode) ##Stores html as bytes
     the_user = db.session.query(User).filter_by(username=session.get('user')).one_or_none()
     old_res = db.session.query(Resume).filter_by(user_id=the_user.id).all()

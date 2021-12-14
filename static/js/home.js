@@ -85,7 +85,11 @@ function changeText(item, text){
   var old_text = item.innerHTML;
   item.innerHTML = text;
   var new_text = text;
-  addAction(old_text, new_text, changetext);
+  addAction(old_text, new_text, changeText);
+}
+
+function updateSettings(){
+
 }
 
 function selectItem(ev){
@@ -93,8 +97,28 @@ function selectItem(ev){
   if (selected != null){
     selected.style.border = "None";
   }
+  if (item == selected){
+    selected.style.border = "None";
+    selected = null;
+    return;
+  }
   selected = item;
   selected.style.border = "dotted red";
+  if (selected.innerText != null){
+    box = document.getElementById("text-search");
+    box.value = selected.innerText;
+  }
+}
+
+function hoverItem(ev){
+  ev.target.style.border = "1px dotted grey"
+}
+
+function hoverEnd(ev){
+  if (ev.target != selected){
+    ev.target.style.border = "None";
+  }
+
 }
 
 
@@ -138,8 +162,21 @@ function handleDragLeave(e){
 }
 
 function deleteCur() {
-  selected.remove();
-  selected = null;
+  console.log("DELETE A FOOL");
+  if (selected != null){
+    selected.remove();
+    selected = null;
+    console.log("TEHE");
+  }
+
+}
+
+function loadTemplate(template){
+  // first remove old things
+  old_setting = document.getElementById("sheet").innerHTML;
+  document.getElementById("sheet").innerHTML = template;
+  new_setting = template;
+  addAction(old_setting, new_setting, loadTemplate);
 }
 
 //----------------------- On-click events ----------------------------
@@ -153,6 +190,7 @@ window.onload = function(){
       alignText(0);
     }
   }
+
 
   document.getElementById("centerAlign").onclick = function(){
     if (selected != null){
@@ -172,20 +210,42 @@ window.onload = function(){
     }
   }
 
+  document.getElementById("text-search").onchange = function(e){
+    if (selected != null){
+        changeText(selected, document.getElementById("text-search").value)
+    }
+  }
+
+  document.getElementById("delete").addEventListener("click", deleteCur);
+
   document.getElementById("heading-choice-one").addEventListener('dragstart', handleDragStart);
   document.getElementById("subheading").addEventListener('dragstart', handleDragStart);
   document.getElementById("body-text").addEventListener('dragstart', handleDragStart);
+  var videos = document.getElementById("videos").children;
+  for (var i = 0; i < videos.length; i++){
+    videos[i].setAttribute('id', 'video' + String(i));
+    videos[i].addEventListener('dragstart', handleDragStart);
+  }
+
+
+
+
 
 // Adds event listeners to the resume so that we can select items :3
   resume = document.getElementById("sheet");
   children = resume.children;
-
+  resume.addEventListener('drop', handleDrop);
+  resume.addEventListener('dragover', handleDragOver);
+  resume.addEventListener('dragenter', handleDragEnter);
+  resume.addEventListener('dragleave', handleDragLeave);
   for (var i = 0; i < children.length; i++){
     children[i].addEventListener('click', selectItem);
     children[i].addEventListener('dragover', handleDragOver);
     children[i].addEventListener('dragenter', handleDragEnter);
     children[i].addEventListener('dragleave', handleDragLeave);
     children[i].addEventListener('drop', handleDrop);
+    children[i].addEventListener("mouseover", hoverItem);
+    children[i].addEventListener("mouseout", hoverEnd);
   }
 
 }

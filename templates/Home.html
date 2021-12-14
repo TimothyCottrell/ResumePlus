@@ -76,6 +76,7 @@
                         "html" : children[i].outerHTML,
                         "text" : children[i].innerHTML
                     }
+                    resume['raw_html'] = html;
                     }
                     xhr.send(JSON.stringify(resume));
                 }
@@ -274,24 +275,19 @@
                         <div id = "text-size">
 
                             <!--Font text-->
-                            <select id = "font-text">
-                                <option>Regular</option>
-                            </select>
-
-                            <!--Font size-->
                             <select id = "font-size">
-                                <option value=10>10</option>
-                                <option value=15>15</option>
-                                <option value=20>20</option>
-                                <option value=25>25</option>
-                                <option value=30>30</option>
-                                <option value=35>35</option>
-                                <option value=40>40</option>
-                                <option value=45>45</option>
-                                <option value=50>50</option>
-                                <option value=55>55</option>
-                                <option value=60>60</option>
-                            </select>
+                               <option value=10>10</option>
+                               <option value=15>15</option>
+                               <option value=20>20</option>
+                               <option value=25>25</option>
+                               <option value=30>30</option>
+                               <option value=35>35</option>
+                               <option value=40>40</option>
+                               <option value=45>45</option>
+                               <option value=50>50</option>
+                               <option value=55>55</option>
+                               <option value=60>60</option>
+                           </select>
                         </div>
 
                         <!--User choose text position-->
@@ -308,7 +304,7 @@
                                 <i class="fas fa-align-center"></i>
                             </div>
 
-                            <div id = "delete" class = "column" onclick = deleteCur()>
+                            <div id = "delete" class = "column">
                                 <i class="far fa-align-justify"></i>
                             </div>
                         </div><br><br><br><br>
@@ -396,12 +392,12 @@
                         </div>
 
                         <!--Video list choice-->
-                        <div class = "videos-list">
-                            <iframe src="https://www.youtube.com/embed/B1T06UhcX0Q" title="YouTube video player"
+                        <div id="videos" class = "videos-list">
+                            <iframe draggable="true" src="https://www.youtube.com/embed/B1T06UhcX0Q" title="YouTube video player"
                             frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen></iframe>
 
-                            <iframe src="https://www.youtube.com/embed/B1T06UhcX0Q" title="YouTube video player"
+                            <iframe draggable="true" src="https://www.youtube.com/embed/B1T06UhcX0Q" title="YouTube video player"
                             frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen></iframe>
                         </div>
@@ -878,7 +874,7 @@
                         {% endif %}
                     </section>
                 </section>
-                
+
             </body>
 
             <!--scalebar for zoom-->
