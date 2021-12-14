@@ -211,7 +211,6 @@ def database():
 @app.route('/save_resume', methods=['POST'])
 def save_resume():
     data = json.loads(request.get_data())
-    print(data)
     html = ''
     words = {}
     curHead = None

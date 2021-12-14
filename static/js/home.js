@@ -212,7 +212,7 @@ window.onload = function(){
 
   document.getElementById("text-search").onchange = function(e){
     if (selected != null){
-        changeText(selected, document.getElementById("text-search").value)
+        changeText(selected, document.getElementById("text-search").value);
     }
   }
 
@@ -226,10 +226,6 @@ window.onload = function(){
     videos[i].setAttribute('id', 'video' + String(i));
     videos[i].addEventListener('dragstart', handleDragStart);
   }
-
-
-
-
 
 // Adds event listeners to the resume so that we can select items :3
   resume = document.getElementById("sheet");
