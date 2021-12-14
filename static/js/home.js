@@ -26,9 +26,10 @@ function addAction(old_setting, new_setting, method){
   actions.push(info);
 }
 
-function undo(action){
-  action.method(action.oldSetting);
-  actions.remove(actions.length - 1);
+function undo(){
+  var action = actions[actions.length - 1];
+  action.method(action.old_setting);
+  actions.pop();
 }
 
 function getLastAction(){
@@ -161,15 +162,26 @@ function handleDragLeave(e){
   //this.removeChild(e.dataTransfer.getData('text/html'));
 }
 
-function deleteCur() {
-  console.log("DELETE A FOOL");
-  if (selected != null){
+function create(item){
+  console.log(item.parent);
+}
+
+function deleteCur(undo) {
+  if (undo != null){
+    create(item)
+  }
+  if (selected != null && undo == null){
+    old_setting = selected;
+    new_setting = selected.parent;
+    method = deleteCur;
     selected.remove();
     selected = null;
-    console.log("TEHE");
+    addAction(old_setting,new_setting,method);
   }
 
 }
+
+
 
 function loadTemplate(template){
   // first remove old things
@@ -215,7 +227,7 @@ window.onload = function(){
         changeText(selected, document.getElementById("text-search").value);
     }
   }
-
+  document.getElementById("undo").addEventListener("click", undo)
   document.getElementById("delete").addEventListener("click", deleteCur);
 
   document.getElementById("heading-choice-one").addEventListener('dragstart', handleDragStart);
