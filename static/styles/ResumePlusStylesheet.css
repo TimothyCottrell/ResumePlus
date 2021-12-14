@@ -586,7 +586,7 @@ body.letter.landscape .sheet { width: 280mm; height: 215mm }
     background-color: #3982FA;
     display: flex;
     justify-content: space-evenly;
-    padding-top: 20px;
+    padding-top: 25px;
     color: white;
     /* bottom: 0; */
     font-family: Arial;
@@ -1099,6 +1099,11 @@ iframe {
     background-color: #3982FA;
 }
 
+/* Style login body */
+.login-body {
+    padding: 0 0 0 0;
+}
+
 #register-header, #login-header {
     background-color: white;
 }
@@ -1265,6 +1270,12 @@ input[type = text], input[type = password] {
     color: black;
 }
 
+/* Stle sign up body*/
+.register-body {
+    padding: 0 0 0 0;
+}
+
+/* Style sign up title */
 #signup-title {
     text-align: center;
 }
@@ -1800,6 +1811,11 @@ textarea {
     font-size: 20px;
 }
 
+/* Style about body */
+#about-body {
+    padding: 0 0 150px 0;
+}
+
 /* Style the heading */
 #about-wrapper h1 {
     margin: 0;
@@ -1871,6 +1887,17 @@ textarea {
     font-size: 18px;
 }
 
+/* Style about page main section */
+#about-main {
+    background-color: white;
+}
+
+/* Style team member div */
+#team-member {
+    padding-top: 20px;
+    padding-bottom: 105px;
+}
+
 /************************** Profile Page *************************/
 
 /* Style main */
@@ -1892,8 +1919,10 @@ textarea {
     box-shadow: 0 0 .5rem 0 rgba(0, 0, 0, .2);
 }
 
+/* Style profile body */
 #profile-page-body {
     background-color: white;
+    padding: 0 0 150px 0;
 }
 
 /* Style profile wrapper */
@@ -2125,13 +2154,23 @@ textarea {
     height: 495px;
 }
 
+.profile-footer, .about-footer {
+    position: absolute;
+    bottom: 0;
+}
+
 /************************** Database Page *************************/
 
 /* Style the database main */
 .database-main {
-    padding: 20px 300px 0 300px;
+    padding: 20px 300px 100px 300px;
     background-color: white;
     height: 100%;
+}
+
+/* Style database body */
+.database-body {
+    padding: 0 0 0 0;
 }
 
 /* Style the database container */
