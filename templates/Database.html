@@ -8,11 +8,12 @@
 
         <link rel = "stylesheet" type = "text/css" href = "../static/styles/ResumePlusStylesheet.css">
         <link rel = "stylesheet" type = "text/css" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+        <script src = "../static/js/jquery-3.6.0.js"></script>
     </head>
     <body class = "database-body">
 
         <!--Header Section-->
-        <header class = "home-header">
+        <header class = "home-header" id = "database-header">
 
             <!--Logo and Title Section-->
             <div id = "top-wrapper">
@@ -21,7 +22,7 @@
                 <div id = "circle-logo"></div>
 
                 <!--Title-->
-                <h1 id = "title">Resume+</h1>
+                <h1 id = "title"><a href = "">Resume+</a></h1>
 
                 <!--Search bar-->
                 <div class = "search">
@@ -34,6 +35,7 @@
                         <li><a href = "{{url_for('about')}}">About</a></li>
                         <li><a href = "">Messages</a></li>
                         <li><a href = "{{ url_for('support') }}">Support</a></li>
+                        <li><a href = "#">Database</a></li>
                     </ul>
                 
                     {% if user %}
@@ -59,6 +61,19 @@
                 </nav>
             </div>
         </header> 
+
+        <script>
+            $(document).ready(function() {
+            
+                $(".checkbox-dropdown").click(function () {
+                    $(this).toggleClass("is-active");
+                });
+
+                $(".checkbox-dropdown ul").click(function(e) {
+                    e.stopPropagation();
+                });
+            })
+        </script>
 
         <!--Main Section-->
         <main class = "database-main">
@@ -115,27 +130,108 @@
                     </div>
                 </div>
 
-                <div id = "more-filters">
+                <!--Filter searches-->
+                <div id = "database-filter">
 
-                    <!--Filter searches-->
-                    <div id = "database-filter">
-
-                        <!--Show Me-->
-                        <button>Show me</button>
-                        <i class = "fas fa-chevron-down"></i>
-            
-                        <!--Position Type-->
-                        <button>Position Type</button>
-                        <i class = "fas fa-chevron-down"></i>
-
-                        <!--Industry Type-->
-                        <button>Industry</button>
-                        <i class = "fas fa-chevron-down"></i>
-
-                        <!--More Filter-->
-                        <button>More Filter</button>
-                        <i class = "fas fa-chevron-down"></i>
+                    <!--Show Me-->
+                    <div class = "checkbox-dropdown">
+                        Show Me
+                        <ul class = "checkbox-dropdown-list">
+                            <li>
+                                <label>
+                                    <input type = "checkbox" value = "Interview" name = "Interview" /> Looking for Interview</label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type = "checkbox" value = "Interview" name = "Interview" /> All Job Seeker Profile</label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type = "checkbox" value = "Interview" name = "Interview" /> All Job Recuriter Profile</label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type = "checkbox" value = "Interview" name = "Interview" /> Jobs | Qualify for</label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input type = "checkbox" value = "Interview" name = "Interview" /> Jobs Matching My Profile</label>
+                            </li>
+                        </ul>
                     </div>
+
+                    <!--Position Type-->
+                    <div class="checkbox-dropdown">
+                        Position Type
+                        <ul class="checkbox-dropdown-list">
+                            <li>
+                                <label>
+                                <input type="checkbox" value="Full-Time" name="Full-Time" />Full Time</label>
+                            </li>
+                            <li>
+                                <label>
+                                <input type="checkbox" value="Part-Time" name="Part-Time" />Part Time</label>
+                            </li>
+                            <li>
+                                <label>
+                                <input type="checkbox" value="Temporary" name="Temporary" />Temporary</label>
+                            </li>
+                            <li>
+                                <label>
+                                <input type="checkbox" value="On-Campus" name="On-Campus" />On Campus Employment</label>
+                            </li>
+                            <li>
+                                <label>
+                                <input type="checkbox" value="Internship" name="Internship" />Internship</label>
+                            </li>
+                            
+                            <li>
+                                <label>
+                                <input type="checkbox" value="Coop" name="Coop" />Coop</label>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!--Industry Type-->
+                    <div class="checkbox-dropdown">
+                        Industry Type
+                        <ul class="checkbox-dropdown-list">
+                            <li>
+                                <input type = "text" placeholder = "Search" id = "industry-search">
+                            </li>
+                            <li>
+                                <label>
+                                <input type="checkbox" value="Full-Time" name="Full-Time" />Accounting</label>
+                            </li>
+                            <li>
+                                <label>
+                                <input type="checkbox" value="Part-Time" name="Part-Time" />Arigculture</label>
+                            </li>
+                            <li>
+                                <label>
+                                <input type="checkbox" value="Temporary" name="Temporary" />Arts & Entertainment</label>
+                            </li>
+                            <li>
+                                <label>
+                                <input type="checkbox" value="On-Campus" name="On-Campus" />Automotive</label>
+                            </li>
+                            <li>
+                                <label>
+                                <input type="checkbox" value="Internship" name="Internship" />Aviation/Aerospace</label>
+                            </li>
+                            
+                            <li>
+                                <label>
+                                <input type="checkbox" value="Coop" name="Coop" />Biotechnology</label>
+                            </li>
+                        </ul>
+                    </div>
+                
+                    <!--More Filter-->
+                    <div class = "checkbox-dropdown">
+                        More Filters
+                    </div>
+                
                 </div>
 
                 <!--Database Solid Line-->

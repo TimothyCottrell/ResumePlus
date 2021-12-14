@@ -11,7 +11,7 @@
     </head>
 
     <!--Body Section-->
-    <body id = "profile-page-body">
+    <body id = "about-body">
 
        <!--Header Section-->
        <header id = "home-header">
@@ -36,6 +36,7 @@
                         <li><a href = "{{url_for('about')}}">About</a></li>
                         <li><a href = "">Messages</a></li>
                         <li><a href = "{{url_for('support')}}">Support</a></li>
+                        <li><a href = "#">Database</a></li>
                     </ul>
 
                     {% if user %}
@@ -63,7 +64,7 @@
         </header>
 
         <!--Main Section-->
-        <main>
+        <main id = "about-main">
 
             <!--About Page Header Section-->
             <div id = "about-wrapper">
@@ -185,7 +186,7 @@
         </main>
 
         <!--Footer Section-->
-        <footer id = "footer">
+        <footer id = "footer" class = "about-footer">
 
             <!--About Section of ResumePlus-->
             <div id = "about">

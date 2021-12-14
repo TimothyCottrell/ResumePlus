@@ -200,6 +200,9 @@ a {
     color: #999999;
 }
 
+#landing-page-body {
+    height: 100px;
+}
 
 /************************** Home Page *************************/
 
@@ -578,13 +581,12 @@ body.letter.landscape .sheet { width: 280mm; height: 215mm }
 
 /* Style the Footer */
 #footer {
-    position: absolute;
     width: 100%;
     height: 180px;
     background-color: #3982FA;
     display: flex;
     justify-content: space-evenly;
-    padding-top: 20px;
+    padding-top: 25px;
     color: white;
     /* bottom: 0; */
     font-family: Arial;
@@ -648,7 +650,7 @@ body.letter.landscape .sheet { width: 280mm; height: 215mm }
     background-color: #32425E;
     position: absolute;
     left: 0;
-    height: 100%;
+    height: 1444px;
     color: white;
     padding-left: 30px;
     padding-right: 30px;
@@ -1087,15 +1089,19 @@ iframe {
     top: 190px;
 }
 
-#home-page-main {
-    padding-bottom: 400px;
+#home-page-body {
+    height: 50px;
 }
-
 /************************** Sign In Page *************************/
 
 /* Style the sign in body section */
 .login-body, .register-body {
     background-color: #3982FA;
+}
+
+/* Style login body */
+.login-body {
+    padding: 0 0 0 0;
 }
 
 #register-header, #login-header {
@@ -1264,6 +1270,12 @@ input[type = text], input[type = password] {
     color: black;
 }
 
+/* Stle sign up body*/
+.register-body {
+    padding: 0 0 0 0;
+}
+
+/* Style sign up title */
 #signup-title {
     text-align: center;
 }
@@ -1372,6 +1384,10 @@ input[type = password] {
 
 /* Style setting page header */
 #setting-header {
+    height: 100px;
+}
+
+#setting-body {
     height: 100px;
 }
 
@@ -1795,6 +1811,11 @@ textarea {
     font-size: 20px;
 }
 
+/* Style about body */
+#about-body {
+    padding: 0 0 150px 0;
+}
+
 /* Style the heading */
 #about-wrapper h1 {
     margin: 0;
@@ -1866,6 +1887,17 @@ textarea {
     font-size: 18px;
 }
 
+/* Style about page main section */
+#about-main {
+    background-color: white;
+}
+
+/* Style team member div */
+#team-member {
+    padding-top: 20px;
+    padding-bottom: 105px;
+}
+
 /************************** Profile Page *************************/
 
 /* Style main */
@@ -1885,6 +1917,12 @@ textarea {
     border: none;
     border-radius: 5px;
     box-shadow: 0 0 .5rem 0 rgba(0, 0, 0, .2);
+}
+
+/* Style profile body */
+#profile-page-body {
+    background-color: white;
+    padding: 0 0 150px 0;
 }
 
 /* Style profile wrapper */
@@ -2116,13 +2154,23 @@ textarea {
     height: 495px;
 }
 
+.profile-footer, .about-footer {
+    position: absolute;
+    bottom: 0;
+}
+
 /************************** Database Page *************************/
 
 /* Style the database main */
 .database-main {
-    padding: 20px 300px 0 300px;
+    padding: 20px 300px 100px 300px;
     background-color: white;
     height: 100%;
+}
+
+/* Style database body */
+.database-body {
+    padding: 0 0 0 0;
 }
 
 /* Style the database container */
@@ -2135,6 +2183,12 @@ textarea {
 /* Style top database */
 #top-database {
     padding: 20px 0 20px 20px;
+}
+
+/* Style database header */
+#database-header {
+    background-color: white;
+    border-bottom: 0.5px solid gray;
 }
 
 /* Style database button */
@@ -2180,6 +2234,17 @@ textarea {
     width: 200px;
     height: 30px;
     margin-right: 20px;
+}
+
+#bottom-database {
+    position: relative; 
+    top: -10px;
+    padding-bottom: 10px;
+}
+
+/* Style database filter */
+#database-filter {
+    display: flex;
 }
 
 /* Style the database div */
@@ -2289,6 +2354,78 @@ textarea {
 #database-degreeMajor {
     position: relative;
     top: -15px;
+}
+
+/* Add to database */
+.checkbox-dropdown {
+    width: 200px;
+    border: 1px solid #aaa;
+    padding: 10px;
+    position: relative;
+    margin: 0 auto;
+    user-select: none;
+}
+
+/* Changes to add to database css */
+.checkbox-dropdown {
+    width: 200px;
+    border: 1px solid #aaa;
+    padding: 10px;
+    position: relative;
+    margin: 0 auto;
+    user-select: none;
+}
+
+/* Display CSS arrow to the right of the dropdown text */
+.checkbox-dropdown:after {
+    content:'';
+    height: 0;
+    position: absolute;
+    width: 0;
+    border: 6px solid white;
+    border-top-color: #000;
+    top: 50%;
+    right: 10px;
+    margin-top: -3px;
+}
+
+/* Reverse the CSS arrow when the dropdown is active */
+.checkbox-dropdown.is-active:after {
+    border-bottom-color: #000;
+    border-top-color: #fff;
+    margin-top: -9px;
+}
+
+.checkbox-dropdown-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 100%; 
+    border: inherit;
+    border-top: none;
+    left: -1px; 
+    right: -1px; 
+    opacity: 0;
+    height: 100px;
+    overflow: scroll;
+    overflow-x: hidden;
+    pointer-events: none; 
+}
+.is-active .checkbox-dropdown-list {
+    opacity: 1; 
+    pointer-events: auto;
+}
+
+.checkbox-dropdown-list li label {
+    display: block;
+    border-bottom: 1px solid silver;
+    padding: 10px;
+}
+
+.checkbox-dropdown-list li label:hover {
+    background-color: gray;
+    color: white;
 }
 
 /************************** Message Box *************************/
