@@ -11,7 +11,7 @@ var left_align = document.getElementById("leftAlign");
 // ---------------------- Event listeners --------------------------
 
 // ---------------------- Logging Functions ------------------------
-// Method to add an action to the log ;
+// Method to add an action to the log
 // @param The the setting before being changed
 // @param the new setting that the object is changed too
 // @param the method used to change settings
@@ -81,7 +81,7 @@ function fontsize(size){
   addAction(old_setting, new_setting, method);
 }
 
-function changeText(item,text){
+function changeText(item, text){
   var old_text = item.innerHTML;
   item.innerHTML = text;
   var new_text = text;
@@ -148,13 +148,13 @@ function handleDragOver(e){
 
 function handleDragStart(e){
   e.dataTransfer.effectAllowed = "copy";
-  console.log(this);
+  // console.log(this);
   e.dataTransfer.setData('text', this.id);
 }
 
 function handleDragEnter(e){
   //this.appendChild(e.dataTransfer.getData('text/html'));
-  console.log(this);
+  // console.log(this);
 }
 
 function handleDragLeave(e){
@@ -166,6 +166,7 @@ function deleteCur() {
   selected = null;
 }
 
+<<<<<<< HEAD
 function loadTemplate(template){
   // first remove old things
   old_setting = document.getElementById("sheet").innerHTML;
@@ -174,6 +175,8 @@ function loadTemplate(template){
   addAction(old_setting, new_setting, loadTemplate);
 }
 
+=======
+>>>>>>> timain
 //----------------------- On-click events ----------------------------
 
 window.onload = function(){
@@ -204,6 +207,7 @@ window.onload = function(){
     }
   }
 
+<<<<<<< HEAD
   document.getElementById("text-search").onchange = function(e){
     if (selected != null){
         changeText(selected, document.getElementById("text-search").value)
@@ -222,6 +226,11 @@ window.onload = function(){
 
 
 
+=======
+  document.getElementById("heading-choice-one").addEventListener('dragstart', handleDragStart);
+  document.getElementById("subheading").addEventListener('dragstart', handleDragStart);
+  document.getElementById("body-text").addEventListener('dragstart', handleDragStart);
+>>>>>>> timain
 
 // Adds event listeners to the resume so that we can select items :3
   resume = document.getElementById("sheet");

@@ -107,11 +107,13 @@
                         <!--Icons for contact-->
                         <div class = "icons">
 
-                            <!--Contact info-->
-                            <p><i class = "far fa-envelope"></i>Email</p>
-                            <p><i class = "fas fa-mobile-alt"></i>Phone Number</p>
-                            <p><i class = "fas fa-map-marker-alt"></i>Street Address</p>
-                            <p>City, State, Zip Code, Country</p>
+                            {% if user %}
+                                <!--Contact info-->
+                                <p><i class = "far fa-envelope"></i>{{ user.email }}</p>
+                                <p><i class = "fas fa-mobile-alt"></i>{{ user.phoneNumber }}</p>
+                                <p><i class = "fas fa-map-marker-alt"></i>{{ user.address }}</p>
+                                <p>{{user.city}}{{", "}}{{ user.state }}{{", "}}{{ user.zip }}{{", "}}{{ user.country }}</p>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -126,7 +128,16 @@
                     <div class = "profile-solid"></div>
 
                     <!--User about me paragraph-->
-                    <p id = "user-paragraph"></p>
+                    <p id = "user-paragraph">
+                        {% if user.about %}
+                            <section class="summary">
+                                <h3>About Me</h3>
+                                <ul>
+                                    <p>{{user.about}}</p>
+                                </ul>
+                            </section>
+                        {% endif %}
+                    </p>
                 </div>
 
                 <!--Social media container-->
@@ -214,56 +225,84 @@
 
                     <div id = "education-content">
                         <!--User about me paragraph-->
-                        <p id = "degree-major">Degree, Major, Minor</p>
-
+                        <!-- <p id = "degree-major">Degree, Major, Minor</p> -->
                         <!--User school name-->
-                        <p id = "school-name">University Name | Start Time - End Time</p>
-
+                        <!-- <p id = "school-name">University Name | Start Time - End Time</p> -->
                         <!--User GPA-->
-                        <p id = "gpa">GPA: </p>
+                        <!-- <p id = "gpa">GPA: </p> -->
+                        {% if sections %}
+                            {% for i, section in enumerate(sections) %}
+                                {% if section.name == 'education' %}
+                                        {% if i == 0 %}
+                                            <section class="education">
+                                                <h3>Education</h3>
+                                                <ol>
+                                        {% endif %}
+                                                    <li>
+                                                        <div>
+                                                            <p class="sanserif">{{dict(zip(section.caption.split("\n"), section.info.split("\n")))['education-level'], dict(zip(section.caption.split("\n"), section.info.split("\n")))['major']}}</p>
+                                                            <time>{{dict(zip(section.caption.split("\n"), section.info.split("\n")))['start-time']}}-{{dict(zip(section.caption.split("\n"), section.info.split("\n")))['end-time']}}</time>
+                                                        </div>
+                                                        <div>
+                                                            <span>{{dict(zip(section.caption.split("\n"), section.info.split("\n")))['school-name']}}</span>
+                                                            <span>{{dict(zip(section.caption.split("\n"), section.info.split("\n")))['c-gpa']}}</span>
+                                                        </div>
+                                                    </li>
+                                        {% if i == len(sections) - 1 %}
+                                                </ol>
+                                            </section>
+                                        {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
                     </div>
                 </div>
 
                 <!--User Job Experience or Volunteer work-->
                 <div class = "skill-container">
-
-                    <!--Heading-->
-                    <h1>Skills</h1>
-
-                    <!--Create solid line-->
-                    <div class = "profile-solid"></div>
-
-                    <!--User Skill list-->
-                    <ul id = "skill-list">
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                    </ul>
+                    {% if sections %}
+                        {% for section in sections %}
+                            {% if section.name == 'skills' %}
+                                <section class="skills">
+                                    <h3>Technologies</h3>
+                                    <ul>
+                                        {% for line in section.info.split("\n") %}
+                                            <li><span>line</span></li>
+                                        {% endfor %}
+                                    </ul>
+                                </section>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
                 </div>
 
                 <!--User Job Experience or Volunteer work-->
                 <div class = "job-container">
-
-                    <!--Heading-->
-                    <h1>Job Experience & Volunteer</h1>
-
-                    <!--Create solid line-->
-                    <div class = "profile-solid"></div>
-
-                    <!--User about me paragraph-->
-                    <p id = "job-title">Job Position Title</p>
-
-                    <!--User school name-->
-                    <p id = "company-name">Company Name | Start Time - End Time</p>
-
-                    <!--User GPA-->
-                    <ul id = "job-description">
-                        <li class = "job-list"></li>
-                        <li class = "job-list"></li>
-                    </ul>
+                    {% if sections %}
+                        {% for i, section in enumerate(sections) %}
+                            {% if section.name == 'experience'  or section.name == 'work' %}
+                                {% if i == 0 %}
+                                    <section class="experience">
+                                        <h3>Experience</h3>
+                                        <ol>
+                                {% endif %}
+                                            <li>
+                                                <header>
+                                                    <p class="sanserif">{{dict(zip(section.caption.split("\n"), section.info.split("\n")))['job-title']}}</p>
+                                                    <time>{{dict(zip(section.caption.split("\n"), section.info.split("\n")))['start-time']}}-{{dict(zip(section.caption.split("\n"), section.info.split("\n")))['end-time']}}</time>
+                                                </header>
+                                                <span>{{dict(zip(section.caption.split("\n"), section.info.split("\n")))['employer']}}</span>
+                                                <ul>
+                                                    <li>{{dict(zip(section.caption.split("\n"), section.info.split("\n")))['description']}}</li>
+                                                </ul>
+                                            </li>
+                                {% if i == len(sections) - 1 %}
+                                        </ol>
+                                    </section>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
                 </div>
 
                 <!--User license and certification-->
