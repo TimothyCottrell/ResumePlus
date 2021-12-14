@@ -118,10 +118,7 @@ function hoverEnd(ev){
   if (ev.target != selected){
     ev.target.style.border = "None";
   }
-
 }
-
-
 
 function handleDrop(e){
   e.stopPropagation();
@@ -162,11 +159,9 @@ function handleDragLeave(e){
 }
 
 function deleteCur() {
-  console.log("DELETE A FOOL");
   if (selected != null){
     selected.remove();
     selected = null;
-    console.log("TEHE");
   }
 
 }
