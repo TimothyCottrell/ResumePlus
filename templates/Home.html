@@ -76,7 +76,7 @@
                         "html" : children[i].outerHTML,
                         "text" : children[i].innerHTML
                     }
-                    resume['raw_html'] = html;
+                    resume['raw_html'] = html.innerHTML;
                     }
                     xhr.send(JSON.stringify(resume));
                 }

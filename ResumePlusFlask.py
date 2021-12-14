@@ -215,30 +215,32 @@ def save_resume():
     words = {}
     curHead = None
     for i in data:
-        ## Parse the text and loop through
-        split = data[i]['text'].split()
-        if len(split) > 0:
-            for x in split:
-                count = 0
-                isHead = False
-                head = curHead
-                ## If its not a stop word like is and a
-                if not x in stop:
-                    # If we already have it count it again
-                    if x in words:
-                        count = words[x]['count'] + 1
-                    else:  # If we have not seen this word yet
-                        count = 1
-                        ht = data[i]['html']
-                    if ht[1] == "h":  # if its a header
-                        isHead = True
-                        curHead = x
-                    words[x] = {  ## assign it to words
-                        "count": count,
-                        "isHead": isHead,
-                        "head": head
-                    }
-    html = data["raw_html"]
+        if not i == "raw_html":
+            ## Parse the text and loop through
+            split = data[i]['text'].split()
+            if len(split) > 0:
+                for x in split:
+                    count = 0
+                    isHead = False
+                    head = curHead
+                    ## If its not a stop word like is and a
+                    if not x in stop:
+                        # If we already have it count it again
+                        if x in words:
+                            count = words[x]['count'] + 1
+                        else:  # If we have not seen this word yet
+                            count = 1
+                            ht = data[i]['html']
+                        if ht[1] == "h":  # if its a header
+                            isHead = True
+                            curHead = x
+                        words[x] = {  ## assign it to words
+                            "count": count,
+                            "isHead": isHead,
+                            "head": head
+                        }
+    html = str(data["raw_html"])
+    print(html)
     bhtml = html.encode(bcryptCode) ##Stores html as bytes
     the_user = db.session.query(User).filter_by(username=session.get('user')).one_or_none()
     old_res = db.session.query(Resume).filter_by(user_id=the_user.id).all()
