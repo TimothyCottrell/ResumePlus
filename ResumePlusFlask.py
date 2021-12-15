@@ -58,7 +58,9 @@ def getResumeInfo(user):
     return info
 
 @app.route('/search_resume', methods=['POST'])
-def search(search_things):
+def search():
+    search_things = json.loads(request.get_data())
+    print(search_things)
     search_things.lower()
     swords  = search_things.split()
     resumes = []

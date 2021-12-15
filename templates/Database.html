@@ -9,6 +9,15 @@
         <link rel = "stylesheet" type = "text/css" href = "../static/styles/ResumePlusStylesheet.css">
         <link rel = "stylesheet" type = "text/css" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
         <script src = "../static/js/jquery-3.6.0.js"></script>
+        <script>
+            document.getElementById("database-search").onclick = function(){
+              var text = document.getElementById("keyword-input").innerText
+              var xhr = new XMLHttpRequest();
+              xhr.open("POST", "/search_resume", true);
+              xhr.setRequestHeader("Content-Type", 'application/json');
+              xhr.send(JSON.stringify(text))
+            }
+        </script>
     </head>
     <body class = "database-body">
 
