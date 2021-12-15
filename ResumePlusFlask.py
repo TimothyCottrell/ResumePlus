@@ -38,7 +38,7 @@ def landing():
 ## Returns a dictionary if no resume found returns none
 def getResumeInfo(user):
     resume = db.session.query(Resume).filter_by(user_id = user.id).all()
-    current_resume = None;
+    current_resume = None
     if len(resume) > 1:
         for i in resume:
             if i.order == 0:
@@ -56,6 +56,22 @@ def getResumeInfo(user):
     'sections' : sections
     }
     return info
+
+@app.route('/search_resume', methods=['POST'])
+def search(search_things):
+    search_things.lower()
+    swords  = search_things.split()
+    resumes = []
+    for i in swords:
+        matches = db.session.query(Text).filter_by(word = i).all()
+        for n in matches.items():
+            res = db.session.query(Resume).filter_by(id = n.resume_id).one()
+            if res.order = 0 and not res in resumes:
+                resumes.append()
+    return resumes
+
+
+
 
 ## Method to compare two text objects
 ## params two text objects text1 and text 2 to be compared
@@ -90,7 +106,6 @@ def compare_text(text1, text2):
             for t in text2.items():
                 if t.head == i:
                     words2.append(t)
-            #TODO --------------------------------------
             sim = 0 # For now assume 50% similar
             dotp = 0
             sumsq1 = 0
@@ -104,8 +119,6 @@ def compare_text(text1, text2):
             sumsq1 = math.sqrt(sumsq1)
             sumsw2 = math.sqrt(sumsq2)
             sim = dotp / (sumsq1 * sumsq2)
-
-            #-------------------------------------------------
             similarity = similarity + (header_weight * sim)
     return similarity
 

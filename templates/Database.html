@@ -17,7 +17,7 @@
 
             <!--Logo and Title Section-->
             <div id = "top-wrapper">
-                
+
                 <!--Resume+ Logo-->
                 <div id = "circle-logo"></div>
 
@@ -37,7 +37,7 @@
                         <li><a href = "{{ url_for('support') }}">Support</a></li>
                         <li><a href = "#">Database</a></li>
                     </ul>
-                
+
                     {% if user %}
                         <!--Dropdown button-->
                         <div class = "dropdown-container dropdown">
@@ -51,7 +51,7 @@
                                     <a href = "{{ url_for('settings') }}" class = "dropdown-menu">Setting</a>
                                     <a href = "{{ url_for('logout') }}" class = "dropdown-menu">Log Out</a>
                                 </div>
-                        </div>            
+                        </div>
                     {% else %}
                         <div class = "dropdown-container dropdown" id = "user-button">
                             <a href = "{{ url_for('login') }}"><button class = "sign-button" id = "signin-button">Sign In</button></a>
@@ -60,11 +60,11 @@
                     {% endif %}
                 </nav>
             </div>
-        </header> 
+        </header>
 
         <script>
             $(document).ready(function() {
-            
+
                 $(".checkbox-dropdown").click(function () {
                     $(this).toggleClass("is-active");
                 });
@@ -94,7 +94,7 @@
                         <!--Search Button-->
                         <button>Search</button>
                         <i class = "fas fa-chevron-down"></i>
-            
+
                         <!--Favorite Button-->
                         <button>Favorites</button>
                         <i class = "fas fa-chevron-down"></i>
@@ -111,10 +111,10 @@
                     <input type = "text" placeholder = "Keyword" id = "keyword-input">
 
                     <!--Location Button-->
-                    <input type = "text" placeholder = "Location" id = "location-input">
+                    <!---<input type = "text" placeholder = "Location" id = "location-input">-->
 
                     <!--Miles DropDown-->
-                    <div id = "mile-choice">
+                    <!-- <div id = "mile-choice">
                         <select id = "miles-option">
                             <option>Miles</option>
                             <option>0 - 30 Miles</option>
@@ -122,8 +122,8 @@
                             <option>60 - 90 Miles</option>
                             <option>100+ Miles</option>
                         </select>
-                    </div>
-                    
+                    </div> -->
+
                     <!--Search Button-->
                     <div id = "database-div">
                         <button id = "database-search">Search</button>
@@ -184,7 +184,7 @@
                                 <label>
                                 <input type="checkbox" value="Internship" name="Internship" />Internship</label>
                             </li>
-                            
+
                             <li>
                                 <label>
                                 <input type="checkbox" value="Coop" name="Coop" />Coop</label>
@@ -219,19 +219,19 @@
                                 <label>
                                 <input type="checkbox" value="Internship" name="Internship" />Aviation/Aerospace</label>
                             </li>
-                            
+
                             <li>
                                 <label>
                                 <input type="checkbox" value="Coop" name="Coop" />Biotechnology</label>
                             </li>
                         </ul>
                     </div>
-                
+
                     <!--More Filter-->
                     <div class = "checkbox-dropdown">
                         More Filters
                     </div>
-                
+
                 </div>
 
                 <!--Database Solid Line-->
@@ -239,7 +239,7 @@
 
                 <!--Result after search-->
                 <div id = "database-results">
-                    
+
                     <p>1 - 10 of # results </p>
 
                     <!--Show More-->
