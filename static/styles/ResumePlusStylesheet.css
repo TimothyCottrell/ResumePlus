@@ -1231,6 +1231,87 @@ iframe {
      font-size: 14px;
      padding: 5px 5px 5px 5px;
  }
+
+ /* Style the template 2 */
+#template-header2 {
+    text-align: center;
+    padding: 20px 20px 0 20px;
+    font-size: 25px;
+}
+
+#template-contact2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#template-contact2 p {
+    padding: 0 10px;
+    position: relative;
+    top: -10px;
+    font-size: 20px;
+}
+
+#template-about2 {
+    font-size: 15px;
+    padding: 10px 40px 20px 40px;
+    text-align: justify;
+}
+
+.template-solid-line {
+    border: 0.5px solid black;
+    position: relative;
+    top: -20px;
+}
+
+.template-solid-line2 {
+    border: 0.5px solid black;
+    position: relative;
+    top: -2px;
+}
+
+.template-solid-line3 {
+    border: 0.5px solid black;
+    position: relative;
+    top: -5px;
+}
+
+.skills2 {
+    padding-top: 10px;
+}
+
+.edu2 {
+    padding-top: 10px;
+}
+
+#left-template {
+    width: 500px;
+    padding-left: 20px;;
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 500px;
+    color: black;
+    padding-top: 15px;
+}
+
+#left-template h3, #right-template2 h3 {
+    font-size: 20px;
+}
+
+#right-template2 {
+    position: relative;
+    left: 500px;
+    height: auto;
+    width: 280px;
+    color: black;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+#position-description2 {
+    padding-top: 10px;
+}
  
 /************************** Sign In Page *************************/
 
