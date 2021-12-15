@@ -153,6 +153,13 @@ function create(item){
   console.log(item);
 }
 
+function hexChangeColor(e) {
+    if (selected != null){
+        selected.style.backgroundColor = e.target.style.backgroundColor;
+    }
+    console.log(e.target.style.backgroundColor);
+}
+
 function deleteCur(undo) {
   if (undo != null){
     create(undo);
@@ -244,3 +251,26 @@ window.onload = function(){
   }
 
 }
+
+//testing colors ahhhh
+container=document.getElementById('colormap');
+colChildren = container.children;
+
+for(var i=0; i < colChildren.length; i++){
+    colChildren[i].addEventListener('click', hexChangeColor);
+}
+
+
+function changeColor(){
+    let red = document.getElementById('rangeRed').value;
+    let green = document.getElementById('rangeGreen').value;
+    let blue = document.getElementById('rangeBlue').value;
+    let colorRange = 'rgb(' + red + ',' + green + ',' + blue +')';
+    selected.style.backgroundColor = colorRange;
+    document.getElementById('colorOutput').innerHTML = ': ' + colorRange;
+}
+
+document.getElementById('rangeRed').addEventListener('input', changeColor);
+document.getElementById('rangeGreen').addEventListener('input', changeColor);
+document.getElementById('rangeBlue').addEventListener('input', changeColor);
+
