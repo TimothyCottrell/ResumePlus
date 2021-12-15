@@ -98,8 +98,6 @@ def compare_text(text1, text2):
     return similarity
 
 
-
-
 @app.route('/register', methods=['POST', 'GET'])
 def register():
     if request.method == 'POST':
