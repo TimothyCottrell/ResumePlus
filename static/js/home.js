@@ -28,19 +28,12 @@ function addAction(old_setting, new_setting, method){
 }
 
 function undo(){
-<<<<<<< HEAD
-  var action = actions[actions.length - 1];
-  console.log(action);
-  console.log(action['old_setting']);
-  action.method(action['old_setting']);
-  actions.pop();
-=======
   console.log(actions);
   var action = actions.pop();
   console.log(actions);
   selected = action.item;
   action.method(action.old_setting);
->>>>>>> timain
+  actio.pop();
 }
 
 function getLastAction(){
@@ -107,7 +100,9 @@ function selectItem(ev){
 }
 
 function hoverItem(ev){
-  ev.target.style.border = "1px dotted grey"
+  if (ev.target != selected){
+    ev.target.style.border = "1px dotted grey";
+  }
 }
 
 function hoverEnd(ev){
