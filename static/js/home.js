@@ -155,11 +155,7 @@ function create(item){
 
 function deleteCur(undo) {
   if (undo != null){
-<<<<<<< HEAD
-    create(undo)
-=======
     create(undo);
->>>>>>> timain
   }
   if (selected != null && undo == null){
     old_setting = selected;
