@@ -12,6 +12,8 @@ import json
 from database import db
 from models import User, Resume, Text, Section
 import bcrypt
+import csv
+import os.path
 
 app = Flask(__name__)  # create an app
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///resumeplus_flask_app.db'
@@ -68,7 +70,7 @@ def search():
         matches = db.session.query(Text).filter_by(word = i).all()
         for n in matches.items():
             res = db.session.query(Resume).filter_by(id = n.resume_id).one()
-            if res.order = 0 and not res in resumes:
+            if res.order == 0 and not res in resumes:
                 resumes.append()
     return resumes
 
@@ -116,7 +118,7 @@ def compare_text(text1, text2):
                 sumsq1 = sumsq1 + (i.count * i.count)
                 for x in words2.items():
                     sumsq2 = sumsq2 + (x.count * x.count)
-                    if i.word = x.word:
+                    if i.word == x.word:
                         dotp = dotp + (i.count * x.count)
             sumsq1 = math.sqrt(sumsq1)
             sumsw2 = math.sqrt(sumsq2)
@@ -283,6 +285,15 @@ def save_resume():
         db.session.add(new_word)
     db.session.commit()
     return "Success"
+
+@app.route('/getTempalte', methods = ['GET'])
+def getTemplate():
+    path = os.path.abspath(os.path.dirname(__file__))
+    path_2 = os.path.join(path, "../templates/Template.html")
+    with open(path_2)as f:
+        test = csv.reader(f)
+
+
 
 @app.route('/deleteResume', methods=['POST'])
 def deleteResume():
