@@ -54,20 +54,7 @@ function alignText(alignment){
     return;
   }
   var old_setting = item.style.textAlign;
-  switch(alignment){
-    case 0:{
-      item.style.textAlign = "left";
-      break;
-    }
-    case 1:{
-      item.style.textAlign = "center";
-      break;
-    }
-    case 2:{
-      item.style.textAlign = "right";
-      break;
-    }
-  }
+  item.style.textAlign = alignment;
   var new_setting = item.style.textAlign;
   var method = alignText;
   addAction(old_setting, new_setting, method);
@@ -111,7 +98,9 @@ function selectItem(ev){
 }
 
 function hoverItem(ev){
-  ev.target.style.border = "1px dotted grey"
+  if (ev.target != selected){
+    ev.target.style.border = "1px dotted grey";
+  }
 }
 
 function hoverEnd(ev){
@@ -159,7 +148,7 @@ function handleDragLeave(e){
 }
 
 function create(item){
-  console.log(item.parent);
+  console.log(item);
 }
 
 function deleteCur(undo) {
@@ -195,20 +184,20 @@ window.onload = function(){
   // Aligment click functions
   document.getElementById("leftAlign").onclick = function(){
     if (selected != null){
-      alignText(0);
+      alignText("left");
     }
   }
 
 
   document.getElementById("centerAlign").onclick = function(){
     if (selected != null){
-      alignText(1);
+      alignText("center");
     }
   }
 
   document.getElementById("rightAlign").onclick = function(){
     if (selected != null){
-      alignText(2);
+      alignText("right");
     }
   }
 
