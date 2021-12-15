@@ -1092,6 +1092,146 @@ iframe {
 #home-page-body {
     height: 50px;
 }
+
+/* Style the template 1 */
+#template-header {
+    padding-left: 50px;
+    padding-top: 20px;
+ }
+ 
+ #template {
+     font-family: arial;
+ }
+ 
+ #template-header {
+     border-bottom: 0.9px solid black;
+ }
+ 
+ #template-header h1 {
+     font-size: 35px;
+     font-weight: bold;
+     position: relative; 
+     top: -20px;
+ }
+ 
+ #template-job {
+     font-weight: bold;
+ }
+ 
+ #template-header p {
+     position: relative; 
+     top: -50px;
+     color: black;
+     padding: 20px 20px 0 0;
+ }
+ 
+ #template-bottom-header {
+     display: flex;
+     justify-content: space-evenly;
+     border-bottom: 0.9px solid black;
+ }
+ 
+ #template-sidebar {
+     background-color: #F5F5F5;
+     position: absolute;
+     left: 0;
+     height: 100%;
+     width: 300px;
+     color: black;
+     padding-top: 20px;
+ }
+ 
+ #template-contact, #template-education, #template-awards {
+     padding-left: 20px;
+ }
+ 
+ #template-skills {
+     display: flex;
+ }
+ 
+ #template-skills p {
+     border: none;
+     background-color: gray;
+     color: 	#D0D0D0;
+     border-radius: 2px;
+     padding: 5px;
+     width: 35px;
+ }
+ 
+ #template-education {
+     padding-bottom: 30px;
+ }
+ 
+ #template-education h3, #template-contact h3, #template-awards h3 {
+     font-size: 20px;
+     padding-bottom: 10px;
+     border-bottom: 1px solid gray;
+ }
+ 
+ .edu {
+     font-weight: bold;
+     padding-bottom: 10px;
+ }
+ 
+ .uni {
+     font-size: 13px;
+     padding-bottom: 10px;
+ }
+ 
+ .yr {
+     font-size: 11px;
+ }
+ 
+ .GPA {
+     float: right;
+     font-size: 11px;
+     position: relative;
+     top: -12px;
+     padding-right: 90px;
+ }
+ 
+ #main-template {
+     display: flex;
+     flex-direction: column;
+ }
+ 
+ #right-template {
+     position: relative;
+     left: 300px;
+     height: auto;
+     width: 500px;
+     color: black;
+     padding-top: 20px;
+     padding-left: 20px;
+ }
+ 
+ #right-template h3 {
+     font-size: 20px;
+     padding-bottom: 10px;
+ }
+ 
+ .position {
+     font-weight: bold;
+     font-size: 15px;
+ }
+ 
+ .yr2 {
+     padding-top: 10px;
+     padding-bottom: 10px;
+ }
+ 
+ .position-description {
+     padding-left: 10px;
+     padding-bottom: 20px;
+     line-height: 20px;
+ 
+ }
+ 
+ .position-description li {
+     font-size: 14px;
+     padding: 5px 5px 5px 5px;
+ }
+ 
 /************************** Sign In Page *************************/
 
 /* Style the sign in body section */
