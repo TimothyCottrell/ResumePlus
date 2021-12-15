@@ -17,6 +17,7 @@ var left_align = document.getElementById("leftAlign");
 // @param the method used to change settings
 function addAction(old_setting, new_setting, method){
   var info = {
+    item : selected,
     old_setting : old_setting,
     new_setting : new_setting,
     method : method,
@@ -27,18 +28,24 @@ function addAction(old_setting, new_setting, method){
 }
 
 function undo(){
+<<<<<<< HEAD
   var action = actions[actions.length - 1];
   console.log(action);
   console.log(action['old_setting']);
   action.method(action['old_setting']);
   actions.pop();
+=======
+  console.log(actions);
+  var action = actions.pop();
+  console.log(actions);
+  selected = action.item;
+  action.method(action.old_setting);
+>>>>>>> timain
 }
 
 function getLastAction(){
   return actions[actions.length - 1];
 }
-
-
 
 function getLog(){
   return actions;
@@ -63,10 +70,9 @@ function alignText(alignment){
 }
 
 function fontsize(size){
-  item = selected;
-  var old_setting = item.style.fontSize;
-  item.style.fontSize = size.toString() + "px";
-  var new_setting = item.style.fontSize;
+  var old_setting = selected.style.fontSize.substr(0, selected.style.fontSize.length - 2);
+  selected.style.fontSize = size.toString() + "px";
+  var new_setting = size.toString();
   var method = fontsize;
   addAction(old_setting, new_setting, method);
 }
@@ -108,10 +114,7 @@ function hoverEnd(ev){
   if (ev.target != selected){
     ev.target.style.border = "None";
   }
-
 }
-
-
 
 function handleDrop(e){
   e.stopPropagation();
@@ -157,7 +160,11 @@ function create(item){
 
 function deleteCur(undo) {
   if (undo != null){
+<<<<<<< HEAD
     create(undo)
+=======
+    create(undo);
+>>>>>>> timain
   }
   if (selected != null && undo == null){
     old_setting = selected;
@@ -213,7 +220,7 @@ window.onload = function(){
 
   document.getElementById("text-search").onchange = function(e){
     if (selected != null){
-        changeText(selected, document.getElementById("text-search").value);
+      changeText(selected, document.getElementById("text-search").value);
     }
   }
   document.getElementById("undo").addEventListener("click", undo)
