@@ -1092,7 +1092,7 @@ iframe {
     width: 220px;
     height: 250px;
     margin: 20px 0;
-    background-color: gray;
+    padding-bottom: 10px;
 }
 
 .sheet {
