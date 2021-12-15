@@ -28,11 +28,10 @@ function addAction(old_setting, new_setting, method){
 }
 
 function undo(){
-  console.log(actions);
   var action = actions.pop();
-  console.log(actions);
   selected = action.item;
   action.method(action.old_setting);
+  actions.pop();
 }
 
 function getLastAction(){
@@ -243,6 +242,7 @@ window.onload = function(){
   resume.addEventListener('dragover', handleDragOver);
   resume.addEventListener('dragenter', handleDragEnter);
   resume.addEventListener('dragleave', handleDragLeave);
+
   for (var i = 0; i < children.length; i++){
     children[i].addEventListener('click', selectItem);
     children[i].addEventListener('dragover', handleDragOver);
