@@ -37,7 +37,7 @@
                         <li><a href = "{{url_for('about')}}">About</a></li>
                         <li><a href = "">Messages</a></li>
                         <li><a href = "{{ url_for('support') }}">Support</a></li>
-                        <li><a href = "#">Database</a></li>
+                        <li><a href = "{{ url_for('database') }}">Database</a></li>
                     </ul>
 
                     {% if user %}
@@ -268,7 +268,16 @@
                         <!--User can choose text font-->
                         <div id = "text-choice">
                             <select>
-                                <option>Time New Roman</option>
+                                <span style="font-family: &quot;Times New Roman&quot;;">Times New Roman</span>
+                                <span style="font-family: Arial;">Arial</span>
+                                <span style="font-family: Verdana;">Verdana</span>
+                                <span style="font-family: docs-Barlow--Menu;">Barlow</span>
+                                <span style="font-family: &quot;Comic Sans MS&quot;;">Comic Sans MS</span>
+                                <span style="font-family: docs-Comfortaa--Menu;">Comfortaa</span>
+                                <span style="font-family: docs-Pacifico--Menu;">Pacifico</span>
+                                <span style="font-family: &quot;docs-Permanent Marker--Menu&quot;;">Permanent Marker</span>
+                                <span style="font-family: Impact;">Impact</span>
+                                <span style="font-family: docs-Montserrat--Menu;">Montserrat</span>
                             </select>
                         </div>
 
