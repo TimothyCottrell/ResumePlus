@@ -91,8 +91,20 @@ def compare_text(text1, text2):
                 if t.head == i:
                     words2.append(t)
             #TODO --------------------------------------
-            sim = .50 # For now assume 50% similar
-            #compare words1 and words2 lists and get similarity between sections
+            sim = 0 # For now assume 50% similar
+            dotp = 0
+            sumsq1 = 0
+            sumsq2 = 0
+            for i in words1.items():
+                sumsq1 = sumsq1 + (i.count * i.count)
+                for x in words2.items():
+                    sumsq2 = sumsq2 + (x.count * x.count)
+                    if i.word = x.word:
+                        dotp = dotp + (i.count * x.count)
+            sumsq1 = math.sqrt(sumsq1)
+            sumsw2 = math.sqrt(sumsq2)
+            sim = dotp / (sumsq1 * sumsq2)
+
             #-------------------------------------------------
             similarity = similarity + (header_weight * sim)
     return similarity
