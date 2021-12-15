@@ -566,7 +566,7 @@ body.letter.landscape .sheet { width: 280mm; height: 215mm }
 @media screen {
   body { background-color: #F2F2F2;}
   .sheet {
-    background: #ffffff;
+    background:  #ffffff;
     box-shadow: 0 .5mm 2mm rgba(0,0,0,.5);
     margin: 5mm auto;
   }
@@ -757,7 +757,7 @@ a {
     color: white;
 }
 
-#Video {
+#video-more {
    display: inline-block;
    width: auto;
    height: 10%;
@@ -783,6 +783,18 @@ a {
 }
 
 /* Style background feature */
+#colorRange h2{
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-size: 20px;
+    font-family: Arial;
+}
+#colorRange label{
+    color: white;
+    font-family: Arial;
+}
+
 .color-hex h3 {
     margin: 0;
     padding: 0;
