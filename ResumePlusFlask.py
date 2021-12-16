@@ -1,3 +1,4 @@
+import math
 import os  # os is used to get environment variables IP & PORT
 from flask import Flask  # Flask is the web app that we will customize
 from flask import render_template
@@ -13,6 +14,7 @@ from database import db
 from models import User, Resume, Text, Section
 import bcrypt
 import csv
+import os.path
 
 app = Flask(__name__)  # create an app
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///resumeplus_flask_app.db'
@@ -39,7 +41,7 @@ def landing():
 ## Returns a dictionary if no resume found returns none
 def getResumeInfo(user):
     resume = db.session.query(Resume).filter_by(user_id = user.id).all()
-    current_resume = None;
+    current_resume = None
     if len(resume) > 1:
         for i in resume:
             if i.order == 0:
@@ -52,11 +54,44 @@ def getResumeInfo(user):
     text = db.session.query(Text).filter_by(resume_id = current_resume.id).all()
     sections = db.session.query(Section).filter_by(resume_id = current_resume.id).all()
     info = {
+    'user' : user,
     'resume' : current_resume,
     'text' : text,
     'sections' : sections
     }
     return info
+
+
+
+@app.route('/search_resume', methods=['POST'])
+def search():
+    search_things = json.loads(request.get_data())
+    search_things = search_things['text']
+    search_things.lower()
+    swords  = search_things.split()
+    resumes = []
+    for i in swords:
+        matches = db.session.query(Text).filter_by(word = i).all()
+        for n in matches:
+            res = db.session.query(Resume).filter_by(id = n.resume_id).one()
+            if res.order == 0 and not res in resumes:
+                resumes.append(res)
+    response = {}
+    n = 0
+    for i in resumes:
+        user = db.session.query(User).filter_by(id = i.user_id).one()
+        info = {
+            "fname" : user.fname,
+            "lname" : user.lname,
+            "id" : user.id
+        };
+        response[n] = info;
+        n = n + 1
+    print(response)
+    return json.dumps(response)
+
+
+
 
 ## Method to compare two text objects
 ## params two text objects text1 and text 2 to be compared
@@ -91,10 +126,19 @@ def compare_text(text1, text2):
             for t in text2.items():
                 if t.head == i:
                     words2.append(t)
-            #TODO --------------------------------------
-            sim = .50 # For now assume 50% similar
-            #compare words1 and words2 lists and get similarity between sections
-            #-------------------------------------------------
+            sim = 0 # For now assume 50% similar
+            dotp = 0
+            sumsq1 = 0
+            sumsq2 = 0
+            for i in words1.items():
+                sumsq1 = sumsq1 + (i.count * i.count)
+                for x in words2.items():
+                    sumsq2 = sumsq2 + (x.count * x.count)
+                    if i.word == x.word:
+                        dotp = dotp + (i.count * x.count)
+            sumsq1 = math.sqrt(sumsq1)
+            sumsw2 = math.sqrt(sumsq2)
+            sim = dotp / (sumsq1 * sumsq2)
             similarity = similarity + (header_weight * sim)
     return similarity
 
@@ -213,31 +257,33 @@ def save_resume():
     html = ''
     words = {}
     curHead = None
+    print(data)
     for i in data:
         if not i == "raw_html":
             ## Parse the text and loop through
-            split = data[i]['text'].split()
-            if len(split) > 0:
-                for x in split:
-                    count = 0
-                    isHead = False
-                    head = curHead
-                    ## If its not a stop word like is and a
-                    if not x in stop:
-                        # If we already have it count it again
-                        if x in words:
-                            count = words[x]['count'] + 1
-                        else:  # If we have not seen this word yet
-                            count = 1
-                            ht = data[i]['html']
-                        if ht[1] == "h":  # if its a header
-                            isHead = True
-                            curHead = x
-                        words[x] = {  ## assign it to words
-                            "count": count,
-                            "isHead": isHead,
-                            "head": head
-                        }
+            if 'text' in data[i].keys():
+                split = data[i]['text'].split()
+                if len(split) > 0:
+                    for x in split:
+                        count = 0
+                        isHead = False
+                        head = curHead
+                        ## If its not a stop word like is and a
+                        if not x in stop:
+                            # If we already have it count it again
+                            if x in words:
+                                count = words[x]['count'] + 1
+                            else:  # If we have not seen this word yet
+                                count = 1
+                                ht = data[i]['html']
+                            if ht[1] == "h":  # if its a header
+                                isHead = True
+                                curHead = x
+                            words[x] = {  ## assign it to words
+                                "count": count,
+                                "isHead": isHead,
+                                "head": head
+                            }
     html = str(data["raw_html"])
     bhtml = html.encode(bcryptCode) ##Stores html as bytes
     the_user = db.session.query(User).filter_by(username=session.get('user')).one_or_none()
@@ -256,7 +302,6 @@ def save_resume():
         db.session.add(new_word)
     db.session.commit()
     return "Success"
-
 
 @app.route('/getTemplate/<tempNum>', methods=['GET'])
 def getTemplate(tempNum):

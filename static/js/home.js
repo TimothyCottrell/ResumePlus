@@ -156,12 +156,28 @@ function handleDragLeave(e){
 function create(item){
 }
 
-function deleteCur() {
-  old_setting = selected;
-  new_setting = selected.parent;
-  selected.remove();
-  selected = null;
-  addAction(old_setting, new_setting, deleteCur);
+function hexChangeColor(e) {
+    if (selected != null){
+        id = e.target.id
+        item = document.getElementById(id)
+        console.log(e.target)
+        selected.style.backgroundColor = item.style.backgroundColor;
+    }
+    console.log(e.target.style.backgroundColor);
+}
+
+function deleteCur(undo) {
+  if (undo != null){
+    create(undo);
+  }
+  if (selected != null && undo == null){
+    old_setting = selected;
+    new_setting = selected.parent;
+    method = deleteCur;
+    selected.remove();
+    selected = null;
+    addAction(old_setting,new_setting,method);
+  }
 }
 
 function loadTemplate(e){
@@ -288,3 +304,25 @@ window.onload = function(){
     children[i].addEventListener("mouseout", hoverEnd);
   }
 }
+
+//testing colors ahhhh
+container=document.getElementById('colormap');
+colChildren = container.children;
+
+for(var i=0; i < colChildren.length; i++){
+    colChildren[i].addEventListener('click', hexChangeColor);
+}
+
+
+function changeColor(){
+    let red = document.getElementById('rangeRed').value;
+    let green = document.getElementById('rangeGreen').value;
+    let blue = document.getElementById('rangeBlue').value;
+    let colorRange = 'rgb(' + red + ',' + green + ',' + blue +')';
+    selected.style.backgroundColor = colorRange;
+    document.getElementById('colorOutput').innerHTML = ': ' + colorRange;
+}
+
+document.getElementById('rangeRed').addEventListener('input', changeColor);
+document.getElementById('rangeGreen').addEventListener('input', changeColor);
+document.getElementById('rangeBlue').addEventListener('input', changeColor);
