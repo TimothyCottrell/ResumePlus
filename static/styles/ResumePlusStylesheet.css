@@ -810,7 +810,7 @@ a {
 }
 
 .text-element {
-    padding: 0 20px;
+    height: 1000px;
 }
 
 #heading-choice-one {
@@ -1113,6 +1113,10 @@ iframe {
  
  #template {
      font-family: arial;
+ }
+
+ #template-two {
+     padding-bottom: 20px;
  }
  
  #template-header {
