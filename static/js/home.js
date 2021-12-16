@@ -155,7 +155,10 @@ function create(item){
 
 function hexChangeColor(e) {
     if (selected != null){
-        selected.style.backgroundColor = e.target.style.backgroundColor;
+        id = e.target.id
+        item = document.getElementById(id)
+        console.log(e.target)
+        selected.style.backgroundColor = item.style.backgroundColor;
     }
     console.log(e.target.style.backgroundColor);
 }
@@ -273,4 +276,3 @@ function changeColor(){
 document.getElementById('rangeRed').addEventListener('input', changeColor);
 document.getElementById('rangeGreen').addEventListener('input', changeColor);
 document.getElementById('rangeBlue').addEventListener('input', changeColor);
-

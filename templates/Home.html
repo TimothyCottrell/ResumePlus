@@ -74,7 +74,7 @@
                     for (var i = 0; i < children.length; ++i){
                     resume[i] = {
                         "html" : children[i].outerHTML,
-                        "text" : children[i].innerHTML
+                        "text" : children[i].innerText
                     }
                     resume['raw_html'] = html.innerHTML;
                     }
@@ -165,7 +165,7 @@
                 function closeMore() {
                     document.getElementById("sidebar-popout-more").style.width = "0px";
                 }
-               
+
             </script>
 
             <!--Buttons just below the header-->

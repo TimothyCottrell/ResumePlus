@@ -10,12 +10,25 @@
         <link rel = "stylesheet" type = "text/css" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
         <script src = "../static/js/jquery-3.6.0.js"></script>
         <script>
-            document.getElementById("database-search").onclick = function(){
-              var text = document.getElementById("keyword-input").innerText
-              var xhr = new XMLHttpRequest();
-              xhr.open("POST", "/search_resume", true);
-              xhr.setRequestHeader("Content-Type", 'application/json');
-              xhr.send(JSON.stringify(text))
+            function search(){
+              var text = document.getElementById("keyword-input").value
+              if (text != null){
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "/search_resume", true);
+                xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+                var data = {
+                  'text' : text,
+                }
+                xhr.send(JSON.stringify(data));
+                console.log(text);
+
+                xhr.onreadystatechange = (e) => {
+                  console.log(xhr.response);
+                }
+              }
+            }
+            window.onload = function(){
+              document.getElementById("database-div").addEventListener("click", search);
             }
         </script>
     </head>

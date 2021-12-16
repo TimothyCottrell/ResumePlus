@@ -63,16 +63,25 @@ def getResumeInfo(user):
 def search():
     search_things = json.loads(request.get_data())
     print(search_things)
+    search_things = search_things['text']
+    print(search_things)
     search_things.lower()
     swords  = search_things.split()
     resumes = []
     for i in swords:
         matches = db.session.query(Text).filter_by(word = i).all()
-        for n in matches.items():
+        for n in matches:
             res = db.session.query(Resume).filter_by(id = n.resume_id).one()
             if res.order == 0 and not res in resumes:
                 resumes.append()
-    return resumes
+    response = {}
+    n = 0
+    for i in resumes:
+        response[n] = i.id
+        n = n + 1
+
+    print(json.dumps(response))
+    return json.dumps(response)
 
 
 
@@ -241,31 +250,33 @@ def save_resume():
     html = ''
     words = {}
     curHead = None
+    print(data)
     for i in data:
         if not i == "raw_html":
             ## Parse the text and loop through
-            split = data[i]['text'].split()
-            if len(split) > 0:
-                for x in split:
-                    count = 0
-                    isHead = False
-                    head = curHead
-                    ## If its not a stop word like is and a
-                    if not x in stop:
-                        # If we already have it count it again
-                        if x in words:
-                            count = words[x]['count'] + 1
-                        else:  # If we have not seen this word yet
-                            count = 1
-                            ht = data[i]['html']
-                        if ht[1] == "h":  # if its a header
-                            isHead = True
-                            curHead = x
-                        words[x] = {  ## assign it to words
-                            "count": count,
-                            "isHead": isHead,
-                            "head": head
-                        }
+            if 'text' in data[i].keys():
+                split = data[i]['text'].split()
+                if len(split) > 0:
+                    for x in split:
+                        count = 0
+                        isHead = False
+                        head = curHead
+                        ## If its not a stop word like is and a
+                        if not x in stop:
+                            # If we already have it count it again
+                            if x in words:
+                                count = words[x]['count'] + 1
+                            else:  # If we have not seen this word yet
+                                count = 1
+                                ht = data[i]['html']
+                            if ht[1] == "h":  # if its a header
+                                isHead = True
+                                curHead = x
+                            words[x] = {  ## assign it to words
+                                "count": count,
+                                "isHead": isHead,
+                                "head": head
+                            }
     html = str(data["raw_html"])
     print(html)
     bhtml = html.encode(bcryptCode) ##Stores html as bytes
