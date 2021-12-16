@@ -53,18 +53,19 @@ def getResumeInfo(user):
     text = db.session.query(Text).filter_by(resume_id = current_resume.id).all()
     sections = db.session.query(Section).filter_by(resume_id = current_resume.id).all()
     info = {
+    'user' : user,
     'resume' : current_resume,
     'text' : text,
     'sections' : sections
     }
     return info
 
+
+
 @app.route('/search_resume', methods=['POST'])
 def search():
     search_things = json.loads(request.get_data())
-    print(search_things)
     search_things = search_things['text']
-    print(search_things)
     search_things.lower()
     swords  = search_things.split()
     resumes = []
@@ -73,14 +74,19 @@ def search():
         for n in matches:
             res = db.session.query(Resume).filter_by(id = n.resume_id).one()
             if res.order == 0 and not res in resumes:
-                resumes.append()
+                resumes.append(res)
     response = {}
     n = 0
     for i in resumes:
-        response[n] = i.id
+        user = db.session.query(User).filter_by(id = i.user_id).one()
+        info = {
+            "fname" : user.fname,
+            "lname" : user.lname,
+            "id" : user.id
+        };
+        response[n] = info;
         n = n + 1
-
-    print(json.dumps(response))
+    print(response)
     return json.dumps(response)
 
 
