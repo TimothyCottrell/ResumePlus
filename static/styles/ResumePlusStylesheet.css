@@ -810,7 +810,7 @@ a {
 }
 
 .text-element {
-    padding: 0 20px;
+    height: 1000px;
 }
 
 #heading-choice-one {
@@ -1092,7 +1092,7 @@ iframe {
     width: 220px;
     height: 250px;
     margin: 20px 0;
-    background-color: gray;
+    padding-bottom: 10px;
 }
 
 .sheet {
@@ -1113,6 +1113,10 @@ iframe {
  
  #template {
      font-family: arial;
+ }
+
+ #template-two {
+     padding-bottom: 20px;
  }
  
  #template-header {
@@ -1323,6 +1327,90 @@ iframe {
 
 #position-description2 {
     padding-top: 10px;
+}
+
+/* Style template 4 */
+/**Add to page**/
+#template-header4 h1 {
+    font-size: 50px;
+    position: relative; 
+    left: 30px;
+}
+
+#template-left-side {
+    width: 300px;
+    padding-top: 20px;
+}
+
+#template-job4 {
+    position: relative; 
+    top: -50px;
+    left: 35px;
+    font-weight: bold;
+}
+
+#template-contact4 h3 {
+    padding-bottom: 10px;
+    border-bottom: 0.5px solid black;
+}
+
+#template-contact4 p {
+    padding: 5px 0 0 10px;
+}
+
+#template-about4 {
+    text-align: justify;
+    padding-bottom: 10px;
+    padding-right: 25px;
+    position: relative; 
+    top: -20px;
+}
+
+#template-education4 h3 {
+    padding-bottom: 10px;
+    border-bottom: 0.5px solid black;
+}
+
+#template-education4 p {
+    padding-left: 10px; 
+}
+
+.GPA4 {
+    position: relative; 
+    left: 45px;
+}
+
+#template-skill4 h3, #template-awards4 h3 {
+    padding-bottom: 10px;
+    border-bottom: 0.5px solid black;
+}
+
+.skill-list {
+    padding-left: 5px;
+}
+
+#template-right-side4 {
+    position: relative; 
+    top: 70px;
+}
+
+#template-right-side4 h1, #right-template4 h3 {
+    font-size: 20px;
+    padding-bottom: 10px;
+}
+
+#right-template4, #about-me-template, #template-about4 {
+    padding-left: 20px;
+}
+
+.position-description4 {
+    line-height: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.position4 {
+    padding-top: 20px;
 }
  
 /************************** Sign In Page *************************/
