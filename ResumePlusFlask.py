@@ -314,10 +314,10 @@ def save_resume():
 def getTemplate(tempNum):
     if (int(tempNum) == 1):
         path = os.path.abspath(os.path.dirname(__file__))
-        path_2 = os.path.join(path, "templates/Template.html")
+        path_2 = os.path.join(path, "templates/Template2.html")
     elif (int(tempNum) == 2):
         path = os.path.abspath(os.path.dirname(__file__))
-        path_2 = os.path.join(path, "templates/Template2.html")
+        path_2 = os.path.join(path, "templates/Template.html")
     else:
         return "No Resume"
     with open(path_2) as f:
