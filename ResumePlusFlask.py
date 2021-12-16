@@ -12,6 +12,7 @@ import json
 from database import db
 from models import User, Resume, Text, Section
 import bcrypt
+import csv
 
 app = Flask(__name__)  # create an app
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///resumeplus_flask_app.db'
@@ -129,12 +130,12 @@ def home_page():
             for i in the_resume:
                 if i.order == 0:
                     newest_resume = i
-            if newest_resume :
+            if newest_resume:
                 sections = db.session.query(Section).filter_by(resume_id=newest_resume.id).all()
             else:
                 sections = None
             return render_template('Home.html', user=the_user, resume=newest_resume, sections=sections, enumerate=enumerate,
-                                   zip=zip, len=len)
+                                   zip=zip, len=len, str=str, type=type)
     return redirect(url_for('login'))
 
 
@@ -238,7 +239,6 @@ def save_resume():
                             "head": head
                         }
     html = str(data["raw_html"])
-    print(html)
     bhtml = html.encode(bcryptCode) ##Stores html as bytes
     the_user = db.session.query(User).filter_by(username=session.get('user')).one_or_none()
     old_res = db.session.query(Resume).filter_by(user_id=the_user.id).all()
@@ -257,6 +257,25 @@ def save_resume():
     db.session.commit()
     return "Success"
 
+
+@app.route('/getTemplate/<tempNum>', methods=['GET'])
+def getTemplate(tempNum):
+    if (int(tempNum) == 1):
+        path = os.path.abspath(os.path.dirname(__file__))
+        path_2 = os.path.join(path, "templates/Template.html")
+    elif (int(tempNum) == 2):
+        path = os.path.abspath(os.path.dirname(__file__))
+        path_2 = os.path.join(path, "templates/Template2.html")
+    elif (int(tempNum) == 3):
+        path = os.path.abspath(os.path.dirname(__file__))
+        path_2 = os.path.join(path, "templates/Template3.html")
+    with open(path_2) as f:
+        test = csv.reader(f)
+        resume = ''
+        for line in test:
+            resume += ''.join(line)
+    return resume
+
 @app.route('/deleteResume', methods=['POST'])
 def deleteResume():
     the_user = db.session.query(User).filter_by(username=session.get('user')).one_or_none()
@@ -264,6 +283,7 @@ def deleteResume():
     db.session.delete(res)
     db.session.commit()
     return "Success"
+
 
 @app.route('/account/change_location', methods=['POST'])
 def change_location():

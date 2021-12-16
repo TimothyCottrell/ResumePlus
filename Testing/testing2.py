@@ -1,2 +1,2 @@
-for i in zip([1, 2, 3], [4, 5, 6]):
-    print(i['2'])
+words = "things"
+print(type(words)==str)

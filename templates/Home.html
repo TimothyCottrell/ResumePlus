@@ -236,11 +236,11 @@
                         <input type = "text" placeholder = "Search" id = "template-search">
 
                         <!--Templates-->
-                        <div class = "template1"></div>
+                        <div id = "template1" class = "template1"></div>
 
-                        <div class = "template2"></div>
+                        <div id = "template2" class = "template2"></div>
 
-                        <div class = "template3"></div>
+                        <div id = "template3" class = "template3"></div>
                     </div>
                 </div>
 
@@ -263,21 +263,18 @@
                             <h3 draggable="true" class = "heading-option" id = "subheading">Subheading</h3>
 
                             <h4 draggable="true" class = "heading-option" id = "body-text">Body text</h4>
+
+                            <section id = "section-creator">Section</section>
                         </div>
 
                         <!--User can choose text font-->
                         <div id = "text-choice">
-                            <select>
-                                <span style="font-family: &quot;Times New Roman&quot;;">Times New Roman</span>
-                                <span style="font-family: Arial;">Arial</span>
-                                <span style="font-family: Verdana;">Verdana</span>
-                                <span style="font-family: docs-Barlow--Menu;">Barlow</span>
-                                <span style="font-family: &quot;Comic Sans MS&quot;;">Comic Sans MS</span>
-                                <span style="font-family: docs-Comfortaa--Menu;">Comfortaa</span>
-                                <span style="font-family: docs-Pacifico--Menu;">Pacifico</span>
-                                <span style="font-family: &quot;docs-Permanent Marker--Menu&quot;;">Permanent Marker</span>
-                                <span style="font-family: Impact;">Impact</span>
-                                <span style="font-family: docs-Montserrat--Menu;">Montserrat</span>
+                            <select id = "font-type">
+                                <option value="Times New Roman" style="font-family: Times New Roman;">Times New Roman</option>
+                                <option value="Arial" style="font-family: Arial;">Arial</option>
+                                <option value="Verdana" style="font-family: Verdana;">Verdana</option>
+                                <option value="Comic Sans MS" style="font-family: Comic Sans MS;">Comic Sans MS</option>
+                                <option value="Impact" style="font-family: Impact;">Impact</option>
                             </select>
                         </div>
 
@@ -875,8 +872,14 @@
                                 </section>
                             </section>
                         </section>
+                        {% elif type(resume) == str %}
+                            <section id = "sheet" class="sheet sheet1">
+                                {% autoescape false %}
+                                    {{ resume }}
+                                {% endautoescape %}
+                            </section>
                         {% else %}
-                            <section id = "sheet" class="sheet">
+                            <section id = "sheet" class="sheet sheet1">
                                 {% autoescape false %}
                                     {{ resume.html.decode('utf-8') }}
                                 {% endautoescape %}

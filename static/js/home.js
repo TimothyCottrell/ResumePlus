@@ -68,6 +68,14 @@ function fontsize(size){
   addAction(old_setting, new_setting, method);
 }
 
+function changeFont(style){
+  var old_setting = selected.style.getPropertyValue("font-family");
+  selected.style.setProperty("font-family", style);
+  var new_setting = style;
+  var method = changeFont;
+  addAction(old_setting, new_setting, method);
+}
+
 function changeText(item, text){
   var old_text = item.innerHTML;
   item.innerHTML = text;
@@ -113,8 +121,6 @@ function handleDrop(e){
   e.stopPropagation();
   var node = document.getElementById(e.dataTransfer.getData('text'));
   var clone = node.cloneNode();
-  console.log((((e.target.getBoundingClientRect().bottom - e.target.getBoundingClientRect().top) / 2) + e.target.getBoundingClientRect().top));
-  console.log(e.y);
   if ( (((e.target.getBoundingClientRect().bottom - e.target.getBoundingClientRect().top) / 2) + e.target.getBoundingClientRect().top) < e.y) {
     var newItem = document.createElement(e.target.tagName);
     newItem.appendChild(clone);
@@ -148,30 +154,45 @@ function handleDragLeave(e){
 }
 
 function create(item){
-  console.log(item);
 }
 
-function deleteCur(undo) {
-  if (undo != null){
-    create(undo);
-  }
-  if (selected != null && undo == null){
+function deleteCur() {
+  // if (undo != null){
+  //   create(undo);
+  // }
+  // if (selected != null && undo == null){
     old_setting = selected;
     new_setting = selected.parent;
-    method = deleteCur;
     selected.remove();
     selected = null;
-    addAction(old_setting,new_setting,method);
-  }
+    addAction(old_setting, new_setting, deleteCur);
+  // }
 
 }
 
-
-
-function loadTemplate(template){
+function loadTemplate(e){
   // first remove old things
+  template = e.target.param;
   old_setting = document.getElementById("sheet").innerHTML;
   document.getElementById("sheet").innerHTML = template;
+  // document.getElementById("sheet").style.display = "block";
+  
+  children = document.getElementById("sheet").children;
+  resume.addEventListener('drop', handleDrop);
+  resume.addEventListener('dragover', handleDragOver);
+  resume.addEventListener('dragenter', handleDragEnter);
+  resume.addEventListener('dragleave', handleDragLeave);
+
+  for (var i = 0; i < children.length; i++){
+    children[i].addEventListener('click', selectItem);
+    children[i].addEventListener('dragover', handleDragOver);
+    children[i].addEventListener('dragenter', handleDragEnter);
+    children[i].addEventListener('dragleave', handleDragLeave);
+    children[i].addEventListener('drop', handleDrop);
+    children[i].addEventListener("mouseover", hoverItem);
+    children[i].addEventListener("mouseout", hoverEnd);
+  }
+
   new_setting = template;
   addAction(old_setting, new_setting, loadTemplate);
 }
@@ -201,9 +222,15 @@ window.onload = function(){
     }
   }
 
-  document.getElementById("font-size").onchange = function(){
+  document.getElementById("font-size").onclick = function(){
     if (selected != null){
       fontsize(this.value);
+    }
+  }
+
+  document.getElementById("font-type").onclick = function(){
+    if (selected != null){
+      changeFont(this.value);
     }
   }
 
@@ -212,12 +239,37 @@ window.onload = function(){
       changeText(selected, document.getElementById("text-search").value);
     }
   }
-  document.getElementById("undo").addEventListener("click", undo)
+
+  document.getElementById("undo").addEventListener("click", undo);
   document.getElementById("delete").addEventListener("click", deleteCur);
+
+  var xmlOne = new XMLHttpRequest;
+  xmlOne.open("GET", "/getTemplate/1");
+  xmlOne.send();
+  xmlOne.onreadystatechange = (e) => {
+    document.getElementById("template1").addEventListener("click", loadTemplate);
+    document.getElementById("template1").param = xmlOne.responseText;
+  }
+  var xmlTwo = new XMLHttpRequest;
+  xmlTwo.open("GET", "/getTemplate/2");
+  xmlTwo.send();
+  xmlTwo.onreadystatechange = (e) => {
+    document.getElementById("template2").addEventListener("click", loadTemplate);
+    document.getElementById("template2").param = xmlTwo.responseText;
+  }
+  var xmlThree = new XMLHttpRequest;
+  xmlThree.open("GET", "/getTemplate/3");
+  xmlThree.send();
+  xmlThree.onreadystatechange = (e) => {
+    document.getElementById("template3").addEventListener("click", loadTemplate);
+    document.getElementById("template3").param = xmlThree.responseText;
+  }
 
   document.getElementById("heading-choice-one").addEventListener('dragstart', handleDragStart);
   document.getElementById("subheading").addEventListener('dragstart', handleDragStart);
   document.getElementById("body-text").addEventListener('dragstart', handleDragStart);
+  document.getElementById("section-creator").addEventListener('dragstart', handleDragStart);
+
   var videos = document.getElementById("videos").children;
   for (var i = 0; i < videos.length; i++){
     videos[i].setAttribute('id', 'video' + String(i));
@@ -241,5 +293,6 @@ window.onload = function(){
     children[i].addEventListener("mouseover", hoverItem);
     children[i].addEventListener("mouseout", hoverEnd);
   }
+
 
 }
