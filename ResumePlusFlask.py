@@ -266,9 +266,8 @@ def getTemplate(tempNum):
     elif (int(tempNum) == 2):
         path = os.path.abspath(os.path.dirname(__file__))
         path_2 = os.path.join(path, "templates/Template2.html")
-    elif (int(tempNum) == 3):
-        path = os.path.abspath(os.path.dirname(__file__))
-        path_2 = os.path.join(path, "templates/Template3.html")
+    else:
+        return "No Resume"
     with open(path_2) as f:
         test = csv.reader(f)
         resume = ''

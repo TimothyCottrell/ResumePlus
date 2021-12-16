@@ -157,17 +157,11 @@ function create(item){
 }
 
 function deleteCur() {
-  // if (undo != null){
-  //   create(undo);
-  // }
-  // if (selected != null && undo == null){
-    old_setting = selected;
-    new_setting = selected.parent;
-    selected.remove();
-    selected = null;
-    addAction(old_setting, new_setting, deleteCur);
-  // }
-
+  old_setting = selected;
+  new_setting = selected.parent;
+  selected.remove();
+  selected = null;
+  addAction(old_setting, new_setting, deleteCur);
 }
 
 function loadTemplate(e){
@@ -247,23 +241,23 @@ window.onload = function(){
   xmlOne.open("GET", "/getTemplate/1");
   xmlOne.send();
   xmlOne.onreadystatechange = (e) => {
-    document.getElementById("template1").addEventListener("click", loadTemplate);
-    document.getElementById("template1").param = xmlOne.responseText;
+    document.getElementById("template-one").addEventListener("click", loadTemplate);
+    document.getElementById("template-one").param = xmlOne.responseText;
   }
   var xmlTwo = new XMLHttpRequest;
   xmlTwo.open("GET", "/getTemplate/2");
   xmlTwo.send();
   xmlTwo.onreadystatechange = (e) => {
-    document.getElementById("template2").addEventListener("click", loadTemplate);
-    document.getElementById("template2").param = xmlTwo.responseText;
+    document.getElementById("template-two").addEventListener("click", loadTemplate);
+    document.getElementById("template-two").param = xmlTwo.responseText;
   }
-  var xmlThree = new XMLHttpRequest;
-  xmlThree.open("GET", "/getTemplate/3");
-  xmlThree.send();
-  xmlThree.onreadystatechange = (e) => {
-    document.getElementById("template3").addEventListener("click", loadTemplate);
-    document.getElementById("template3").param = xmlThree.responseText;
-  }
+  // var xmlThree = new XMLHttpRequest;
+  // xmlThree.open("GET", "/getTemplate/3");
+  // xmlThree.send();
+  // xmlThree.onreadystatechange = (e) => {
+  //   document.getElementById("template3").addEventListener("click", loadTemplate);
+  //   document.getElementById("template3").param = xmlThree.responseText;
+  // }
 
   document.getElementById("heading-choice-one").addEventListener('dragstart', handleDragStart);
   document.getElementById("subheading").addEventListener('dragstart', handleDragStart);
@@ -293,6 +287,4 @@ window.onload = function(){
     children[i].addEventListener("mouseover", hoverItem);
     children[i].addEventListener("mouseout", hoverEnd);
   }
-
-
 }
