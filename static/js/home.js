@@ -166,11 +166,8 @@ function hexChangeColor(e) {
     console.log(e.target.style.backgroundColor);
 }
 
-function deleteCur(undo) {
-  if (undo != null){
-    create(undo);
-  }
-  if (selected != null && undo == null){
+function deleteCur() {
+  if (selected != null){
     old_setting = selected;
     new_setting = selected.parent;
     method = deleteCur;
