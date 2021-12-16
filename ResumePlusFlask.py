@@ -240,7 +240,14 @@ def about():
 def profile():
     the_user = db.session.query(User).filter_by(username=session.get('user')).one_or_none()
     if the_user:
-        return render_template('Profile.html', user=the_user)
+        the_resume = db.session.query(Resume).filter_by(user_id=the_user.id).all()
+        newest_resume = None
+        for i in the_resume:
+            if i.order == 0:
+                newest_resume = i
+        if newest_resume:
+            sections = db.session.query(Section).filter_by(resume_id=newest_resume.id).all()
+        return render_template('Profile.html', user=the_user, sections=sections, enumerate=enumerate, zip=zip, len=len)
     return redirect(url_for('login'))
 
 

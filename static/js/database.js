@@ -15,7 +15,7 @@ function search(){
 
     xhr.onreadystatechange = (e) => {
       info = xhr.response;
-      console.log(info);
+      console.log(xhr.response);
       nodes = [];
       model = document.getElementById("result");
       child = model.children;

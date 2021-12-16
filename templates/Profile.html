@@ -262,13 +262,18 @@
                 <!--User Job Experience or Volunteer work-->
                 <div class = "skill-container">
                     {% if sections %}
-                        {% for section in sections %}
+                        {% for i, section in enumerate(sections) %}
                             {% if section.name == 'skills' %}
+                                {% if i == 0 %}
+                                    <section class="education">
+                                    <h3>Skills</h3>
+                                    <ol>
+                                {% endif %}
                                 <section class="skills">
                                     <h3>Technologies</h3>
                                     <ul>
                                         {% for line in section.info.split("\n") %}
-                                            <li><span>line</span></li>
+                                            <li><span>{{line}}</span></li>
                                         {% endfor %}
                                     </ul>
                                 </section>
@@ -281,12 +286,12 @@
                 <div class = "job-container">
                     {% if sections %}
                         {% for i, section in enumerate(sections) %}
-                            {% if section.name == 'experience'  or section.name == 'work' %}
                                 {% if i == 0 %}
                                     <section class="experience">
-                                        <h3>Experience</h3>
-                                        <ol>
+                                    <h3>Experience</h3>
+                                    <ol>
                                 {% endif %}
+                            {% if section.name == 'experience'  or section.name == 'work' %}
                                             <li>
                                                 <header>
                                                     <p class="sanserif">{{dict(zip(section.caption.split("\n"), section.info.split("\n")))['job-title']}}</p>
