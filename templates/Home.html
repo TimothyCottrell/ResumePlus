@@ -98,6 +98,7 @@
                     document.getElementById("sidebar-popout-template").style.width = "250px";
                     document.getElementById("sidebar-popout-template").style.paddingTop = "20px";
                     document.getElementById("sidebar-popout-template").style.paddingRight = "10px";
+                    document.getElementById("sidebar-popout-background").style.width = "0px";
                 }
                 function openTexts() {
                     document.getElementById("sidebar-popout-template").style.width = "0px";
@@ -107,6 +108,7 @@
                     document.getElementById("sidebar-popout-upload").style.width = "0px";
                     document.getElementById("sidebar-popout-more").style.width = "0px";
                     document.getElementById("sidebar-popout-text").style.width = "260px";
+                    document.getElementById("sidebar-popout-background").style.width = "0px";
                 }
                 function openElements() {
                     document.getElementById("sidebar-popout-template").style.width = "0px";
@@ -116,6 +118,7 @@
                     document.getElementById("sidebar-popout-upload").style.width = "0px";
                     document.getElementById("sidebar-popout-more").style.width = "0px";
                     document.getElementById("sidebar-popout-element").style.width = "260px";
+                    document.getElementById("sidebar-popout-background").style.width = "0px";
                 }
                 function openMap() {
                     document.getElementById("sidebar-popout-template").style.width = "0px";
@@ -125,6 +128,7 @@
                     document.getElementById("sidebar-popout-upload").style.width = "0px";
                     document.getElementById("sidebar-popout-more").style.width = "0px";
                     document.getElementById("sidebar-popout-map").style.width = "250px";
+                    document.getElementById("sidebar-popout-background").style.width = "0px";
                 }
                 function openUpload() {
                     document.getElementById("sidebar-popout-template").style.width = "0px";
@@ -134,6 +138,7 @@
                     document.getElementById("sidebar-popout-map").style.width = "0px";
                     document.getElementById("sidebar-popout-more").style.width = "0px";
                     document.getElementById("sidebar-popout-upload").style.width = "250px";
+                    document.getElementById("sidebar-popout-background").style.width = "0px";
                 }
                 function openMore() {
                     document.getElementById("sidebar-popout-template").style.width = "0px";
@@ -221,7 +226,7 @@
 
                         <!--Sidebar elements-->
                         <img src = "../static/image/more.png" id = "more-logo">
-                        <h3>More</h3>
+                        <h3>Background</h3>
                     </div>
                 </div>
 
@@ -264,8 +269,6 @@
                             <h3 draggable="true" class = "heading-option" id = "subheading">Subheading</h3>
 
                             <h4 draggable="true" class = "heading-option" id = "body-text">Body text</h4>
-
-                            <section id = "section-creator">Section</section>
                         </div>
 
                         <!--User can choose text font-->
@@ -554,9 +557,9 @@
                         <!--Heading-->
                         <h3 onclick = closeMore()>More</h3>
                         <div id="more-search" class="">
-                             <input type="text" id="moreSearch" placeholder="Search" onkeydown="submitOnEnter(event)" onfocus="clearWrongInput();" style="z-index:0;">
+                            <input type="text" id="moreSearch" placeholder="Search" onkeydown="submitOnEnter(event)" onfocus="clearWrongInput();" style="z-index:0;">
                         </div>
-                        </div>
+                    </div>
                         <div class = "more-buttons">
                             <div id="video-more">
                                 <a href = "#Video"><div id = "circle-logo"></div></a>
@@ -581,7 +584,7 @@
                         <div class="color-hex" style="text-align:center;">
                             <h3>Pick a Color:</h3>
                             <div style="margin:auto;width:236px;">
-                                <img style="margin-right:2px;" src="../static/image/img_colormap.gif" usemap="#colormap" alt="colormap">
+                                <!-- <img style="margin-right:2px;" src="../static/image/img_colormap.gif" usemap="#colormap" alt="colormap"> -->
                                 <map id="colormap" name="colormap">
                                     <area style="cursor:pointer" shape="poly" coords="63,0,72,4,72,15,63,19,54,15,54,4" onclick="clickColor("#003366",-200,54)" onmouseover="mouseOverColor("#003366")" alt="#003366">
                                     <area style="cursor:pointer" shape="poly" coords="81,0,90,4,90,15,81,19,72,15,72,4" onclick="clickColor("#336699",-200,72)" onmouseover="mouseOverColor("#336699")" alt="#336699">
